@@ -149,7 +149,7 @@ endfunction
 set statusline=%!StatusLine()
 
 " Largely ripped from :h setting-tabline
-function! MyTabLine()
+function! TabLine()
   let s = "%1*"
   let s.= s:git_branch_status_line()
   for i in range(tabpagenr('$'))
@@ -163,8 +163,8 @@ function! MyTabLine()
     " set the tab page number (for mouse clicks)
     let s .= '%' . (i + 1) . 'T'
 
-    " the label is made by MyTabLabel()
-    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+    " the label is made by TabLabel()
+    let s .= ' %{TabLabel(' . (i + 1) . ')} '
   endfor
 
   " after the last tab fill with TabLineFill and reset tab page nr
@@ -179,7 +179,7 @@ function! MyTabLine()
 
   return s
 endfunction
-function! MyTabLabel(n)
+function! TabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
   let bufname = bufname(buflist[winnr - 1])
@@ -195,7 +195,7 @@ function! MyTabLabel(n)
   endif
   return filename[:36]
 endfunction
-set tabline=%!MyTabLine()
+set tabline=%!TabLine()
 
 " Misc Auto {{{1
 augroup AutoMkdir
