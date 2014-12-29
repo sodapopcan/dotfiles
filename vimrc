@@ -346,10 +346,10 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 " Signify {{{1
 "
-let g:signify_sign_add                 = '▎'
-let g:signify_sign_delete              = '▎'
-let g:signify_sign_delete_first_line   = '▎'
-let g:signify_sign_change              = '▎'
+let g:signify_sign_add                 = "\u258D"
+let g:signify_sign_delete              = "\u258D"
+let g:signify_sign_delete_first_line   = "\u258D"
+let g:signify_sign_change              = "\u258D"
 let g:signify_sign_changedelete        = g:signify_sign_change
 let g:signify_vcs_list                 = ['git']
 let g:signify_cursorhold_normal        = 1
