@@ -246,7 +246,7 @@ nnoremap <C-Y> 2<C-Y>
 " Wipe buffer while maintaining its split
 nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 " Strip whitespace
-nnoremap <silent> gw :%s/\s\+$//<CR>
+nnoremap <silent> g= :%s/\s\+$//<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
@@ -301,10 +301,10 @@ let g:ctrlp_custom_ignore = {
 
 " Fugitive/Extradite {{{1
 "
-nnoremap <silent> _ :Gstatus<CR>
-nnoremap <silent> & :Gdiff<CR>
-nnoremap <silent> ! :Gblame<CR>
-nnoremap <silent> + :Gwrite<CR>:w<CR>
+nnoremap <silent> gs :Gstatus<CR>
+nnoremap <silent> gd :Gdiff<CR>
+nnoremap <silent> g? :Gblame<CR>
+nnoremap <silent> gw :Gwrite<CR>:w<CR>
 nnoremap          g<Space>  :Ggrep ""<Left>
 for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
   exec "nnoremap gy".t."<Space> y".t.":Ggrep \"\"<Left><C-R><C-\">"
@@ -312,9 +312,9 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gya".t."<Space> ya".t.":Ggrep \"\"<Left><C-R><C-\">"
 endfor
 nnoremap          gh :Glog<CR>
-nnoremap <silent> H :Extradite<CR>:wincmd p<CR>:wincmd p<CR>
-nnoremap <silent> <C-H> :Gitv<CR>
-nnoremap <silent> <C-B> :Twiggy<CR>
+nnoremap <silent> gl :Extradite<CR>:wincmd p<CR>:wincmd p<CR>
+nnoremap <silent> gL :Gitv<CR>
+nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 
 " Goyo {{{1
