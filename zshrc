@@ -10,6 +10,11 @@ source $HOME/.env
 autoload -U promptinit && promptinit
 setopt PROMPT_SUBST
 
+setopt histignoredups
+setopt histreduceblanks
+setopt inc_append_history
+setopt share_history
+
 # system stuffs {{{1
 alias l="ls -lh"
 alias la="ls -lah"
@@ -39,7 +44,6 @@ export CLICOLOR=1
 export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
-
 
 # projects {{{1
 alias gelaskins="cd $SRC/work/spree_gelaskins && clear"
