@@ -35,6 +35,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-rails'
 
+Plugin 'junegunn/limelight.vim'
 Plugin 'junegunn/goyo.vim'
 
 call vundle#end()
@@ -113,6 +114,14 @@ hi SpecialKey ctermfg=9
 
 syn match EqualCompare "=="
 hi link EqualCompare Comment
+
+set formatoptions=
+set formatoptions+=c     " Format comments
+set formatoptions+=r     " Continue comments by default
+set formatoptions+=q     " Format comments with gq
+set formatoptions+=2     " Use indent from 2nd line of a paragraph
+set formatoptions+=l     " Don't break lines that are already long
+set formatoptions+=1     " Break before 1-letter words
 
 set wildmenu
 set wildmode=list:longest,full
