@@ -296,7 +296,7 @@ let g:ctrlp_prompt_mappings = {
       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
       \ }
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v(doc|db|tmp|log|bin|vendor)\/(.*)'
+  \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle)\/(.*)'
   \ }
 
 " Fugitive/Extradite {{{1
