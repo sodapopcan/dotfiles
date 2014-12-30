@@ -259,6 +259,8 @@ nnoremap <silent> da<Space> :%s/\s\+$//<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
+" Just take me quick to github
+vnoremap <CR> :Gbrowse<CR>
 
 " Autocommands {{{1
 augroup FileTypeOptions
