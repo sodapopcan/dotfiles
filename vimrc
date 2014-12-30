@@ -255,7 +255,7 @@ nnoremap <C-Y> 2<C-Y>
 " Wipe buffer while maintaining its split
 nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 " Strip whitespace
-nnoremap <silent> g= :%s/\s\+$//<CR>
+nnoremap <silent> da<Space> :%s/\s\+$//<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
