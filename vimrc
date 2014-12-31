@@ -86,7 +86,7 @@ set nowrap
 set scroll=5
 set scrolloff=7
 set sidescrolloff=0
-set shortmess=at
+set shortmess=atTsWc
 set pumheight=5
 set autoread
 set autowrite
