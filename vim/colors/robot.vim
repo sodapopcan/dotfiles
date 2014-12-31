@@ -11,6 +11,7 @@ hi StatusLine          ctermfg=52    ctermbg=250   cterm=NONE
 hi StatusLinenc        ctermfg=250   ctermbg=250   cterm=NONE
 hi VertSplit           ctermfg=NONE  ctermbg=254   cterm=NONE
 hi Folded              ctermfg=NONE  ctermbg=254   cterm=NONE
+hi FoldColumn          ctermfg=255   ctermbg=255   cterm=NONE
 
 hi! Directory          ctermfg=24    ctermbg=NONE  cterm=BOLD
 
@@ -60,7 +61,6 @@ hi! link Conceal Normal
 hi! link Cursor Normal
 hi! link CursorIM Normal
 hi! link CursorColumn Normal
-hi! link FoldColumn Normal
 hi! link LineNr Normal
 hi! link CursorLineNr Normal
 hi! link MatchParen Normal

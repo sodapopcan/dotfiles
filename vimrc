@@ -80,6 +80,7 @@ set ignorecase smartcase
 " I just like this stuff
 set ruler
 set cursorline
+set foldcolumn=1
 set textwidth=80
 set nowrap
 set scroll=5
