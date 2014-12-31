@@ -220,6 +220,8 @@ nnoremap <C-C> <silent> <C-C>
 nnoremap <CR> :w<CR>
 " Write everything and quit
 nnoremap Q :wall \| qall!<CR>
+" I don't like this, but it's somewhat life-changing
+nnoremap <C-J> <C-W>
 " Undo an 'o'
 inoremap <C-O> <Esc>ddk
 " Only show this window
@@ -330,7 +332,7 @@ autocmd User GoyoLeave nested call <SID>goyo_leave()
 
 " NERDTree {{{1
 "
-nnoremap <silent> M :NERDTreeToggle<CR>
+nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
 
 let NERDTreeQuitOnOpen          = 1
 let NERDTreeHijackNetrw         = 0
