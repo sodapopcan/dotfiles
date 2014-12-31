@@ -43,6 +43,7 @@ call vundle#end()
 
 filetype plugin indent on
 runtime! macros/matchit.vim
+let g:netrw_dirhistmax = 0
 
 " Syntax {{{1
 
