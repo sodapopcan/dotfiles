@@ -281,6 +281,11 @@ augroup CursorStatusLines
   autocmd WinLeave * setlocal nocursorline statusline=\ \ \=^..^\=
 augroup END
 
+augroup AlwaysShowSignColumn
+  autocmd!
+  autocmd BufEnter * sign define dummy
+  autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+augroup END
 
 " Cut and Paste Functions {{{1
 
