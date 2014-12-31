@@ -49,14 +49,6 @@ runtime! macros/matchit.vim
 syntax on
 colorscheme robot
 
-" Gotta watch out for them double operators
-hi clear DoubleOperator
-syn match DoubleOperator '\v\=\='
-syn match DoubleOperator '\v\.\='
-syn match DoubleOperator '\v\+\='
-syn match DoubleOperator '\v\~\='
-hi link DoubleOperator Comment
-
 hi User1 ctermfg=252 ctermbg=130   " git branch
 hi User2 ctermfg=255 ctermbg=88    " warn
 hi User3 ctermfg=52  ctermbg=250   " filename
@@ -111,9 +103,6 @@ set notimeout ttimeout ttimeoutlen=10
 
 set list listchars=tab:\ \ ,eol:\ ,trail:\.
 hi SpecialKey ctermfg=9
-
-syn match EqualCompare "=="
-hi link EqualCompare Comment
 
 set formatoptions=
 set formatoptions+=c     " Format comments
