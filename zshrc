@@ -77,6 +77,10 @@ gitprune() {
     --prune-empty --tag-name-filter cat -- --all
 }
 
+is_git_repo() {
+  git symbolic-ref HEAD 2> /dev/null
+}
+
 # If it's a git repository, show only the name of the containing directory
 current_project() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
@@ -89,7 +93,7 @@ current_project() {
 
 # If in a subdirectory of a git repository, show the sub-path in a different colour
 current_relative_path() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  ref=$(is_git_repo) || return
   project_dir=$(git rev-parse --show-toplevel)
   rel_path=${${PWD}/${project_dir}}
   if [ -n ${rel_path} ]; then
@@ -98,23 +102,27 @@ current_relative_path() {
 }
 
 current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo $(git branch | grep \* | sed 's/^..//')
+  ref=$(is_git_repo) || return
+  echo " $(git branch | grep \* | sed 's/^..//') "
 }
 
 dirty_tree()
 {
-  if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
-    echo '%{%F{red}%}✗%{%F{black}%}'
+  if [ -z $(is_git_repo) ]; then
+    echo ""
   else
-    echo '%{%F{green}%}✔%{%F{black}%}'
+    if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+      echo '%{%F{red}%}✗%{%F{black}%}'
+    else
+      echo '%{%F{green}%}✔%{%F{black}%}'
+    fi
   fi
 }
 
 
 # ㋡
 PS1='
-   %{%F{232}%}%B$(current_project)%b%{%F{248}%}$(current_relative_path) $(dirty_tree) %{%F{130}%}%S $(current_branch) %s%{%F{232}%}
+   %{%F{232}%}%B$(current_project)%b%{%F{248}%}$(current_relative_path) $(dirty_tree) %{%F{130}%}%S$(current_branch)%s%{%F{232}%}
 %(?.%{%F{232}%}◔◔.%{%F{52}%}◔̯◔)%{%F{232}%}%b '
 
 
