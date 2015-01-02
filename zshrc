@@ -123,7 +123,7 @@ dirty_tree()
 # ㋡
 PS1='
    %{%F{232}%}%B$(current_project)%b%{%F{248}%}$(current_relative_path) $(dirty_tree) %{%F{130}%}%S$(current_branch)%s%{%F{232}%}
-%(?.%{%F{232}%}◔◔.%{%F{52}%}◔̯◔)%{%F{232}%}%b '
+%(?.%{%F{22}%}◔◔.%{%F{52}%}◔̯◔)%{%F{232}%}%b '
 
 
 # vim / editor {{{1
