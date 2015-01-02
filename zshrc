@@ -115,7 +115,7 @@ dirty_tree()
 
 PS1='
   %B%{%F{black}%}$(current_project) $(dirty_tree) %b$(current_branch) $(current_relative_path)
-%(?.%{%F{black}%}.%{%F{red}%})$%{%F{black}%} '
+%(?.%{%F{green}%}.%{%F{red}%})$%{%F{black}%} '
 
 
 # vim / editor {{{1
