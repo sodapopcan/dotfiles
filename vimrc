@@ -62,6 +62,8 @@ set hidden				  " navigate away from  a buffer without saving it first
 set shell=/bin/bash " Necessary to run the correct versions of unix programs
 									  " when using zsh
 
+set lazyredraw
+
 set mouse=a
 
 set encoding=utf-8
