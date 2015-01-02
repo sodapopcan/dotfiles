@@ -18,10 +18,15 @@ hi TabLine             ctermfg=254   ctermbg=248   cterm=NONE
 hi TabLineFill         ctermfg=233   ctermbg=248   cterm=NONE
 hi TabLineSel          ctermfg=233   ctermbg=253   cterm=NONE
 
-hi! DiffAdd            ctermfg=NONE  ctermbg=22
-hi! DiffChange         ctermfg=NONE  ctermbg=3
-hi! DiffDelete         ctermfg=NONE  ctermbg=52
-hi! DiffText           ctermfg=NONE  ctermbg=13
+" hi! DiffAdd            ctermfg=NONE  ctermbg=47
+" hi! DiffChange         ctermfg=NONE  ctermbg=11
+" hi! DiffDelete         ctermfg=NONE  ctermbg=9
+" hi! DiffText           ctermfg=NONE  ctermbg=191
+
+hi! DiffAdd            ctermfg=2     ctermbg=NONE  cterm=NONE
+hi! DiffChange         ctermfg=94    ctermbg=NONE  cterm=NONE
+hi! DiffDelete         ctermfg=124   ctermbg=NONE  cterm=NONE
+hi! DiffText           ctermfg=24    ctermbg=NONE  cterm=BOLD
 
 hi! Pmenu              ctermfg=233   ctermbg=252
 hi! PmenuSel           ctermfg=233   ctermbg=248
