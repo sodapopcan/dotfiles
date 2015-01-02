@@ -26,7 +26,6 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-commentary'
 
 Plugin 'tpope/vim-fugitive'
-Plugin 'int3/vim-extradite'
 Plugin 'gregsexton/gitv'
 Plugin 'mhinz/vim-signify'
 " Plugin 'file:///' . expand('~') . '/src/projects/vim-twiggy'
@@ -306,7 +305,7 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle)\/(.*)'
   \ }
 
-" Fugitive/Extradite {{{1
+" Git {{{1
 "
 nnoremap <silent> gs :Gstatus<CR>
 nnoremap <silent> gd :Gdiff<CR>
@@ -319,7 +318,7 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gya".t."<Space> ya".t.":Ggrep \"\"<Left><C-R><C-\">"
 endfor
 nnoremap          gh :Glog<CR>
-nnoremap <silent> gl :Extradite<CR>:wincmd p<CR>:wincmd p<CR>
+nnoremap <silent> gl :Gitv!<CR>
 nnoremap <silent> gL :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
