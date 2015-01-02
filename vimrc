@@ -139,6 +139,7 @@ function! StatusLine()
   let s.= "%2*"
   let s.= "%{&paste?'\ \ paste\ ':''}"
   let s.= "%*"
+  " let s.= "\ %(%f%)"
   let s.= "%="
   let s.= "%3*"
   let s.= "\ %(%p%%\ \ %l/%L,%v\ \ %)"
@@ -173,8 +174,6 @@ function! TabLine()
   if tabpagenr('$') > 1
     let s .= '%=%#TabLine#'
   endif
-
-  let s.= "\ %(%F%)"
 
   return s
 endfunction
@@ -354,10 +353,10 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 " Signify {{{1
 "
-let g:signify_sign_add                 = "\u258D"
-let g:signify_sign_delete              = "\u258D"
-let g:signify_sign_delete_first_line   = "\u258D"
-let g:signify_sign_change              = "\u258D"
+let g:signify_sign_add                 = "\u258F"
+let g:signify_sign_delete              = "\u2581"
+let g:signify_sign_delete_first_line   = "\u2594"
+let g:signify_sign_change              = "\u258F"
 let g:signify_sign_changedelete        = g:signify_sign_change
 let g:signify_vcs_list                 = ['git']
 let g:signify_cursorhold_normal        = 1

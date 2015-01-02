@@ -1,5 +1,3 @@
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_THEME="andrwedisagrees"
 export DISABLE_AUTO_UPDATE=true
 export DISABLE_AUTO_TITLE=true
 export SRC="$HOME/src"
@@ -104,8 +102,19 @@ current_branch() {
   echo $(git branch | grep \* | sed 's/^..//')
 }
 
+dirty_tree()
+{
+  if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]]; then
+    echo '%{%F{red}%}✗%{%F{black}%}'
+  else
+    echo '%{%F{green}%}✔%{%F{black}%}'
+  fi
+}
+
+# ⦁
+
 PS1='
-  %B%{%F{black}%}$(current_project) %b%{%F{red}%}$(current_branch)%{%F{black}%} $(current_relative_path)
+  %B%{%F{black}%}$(current_project) $(dirty_tree) %b$(current_branch) $(current_relative_path)
 %(?.%{%F{black}%}.%{%F{red}%})$%{%F{black}%} '
 
 

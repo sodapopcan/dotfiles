@@ -4,7 +4,7 @@ hi Comment             ctermfg=23    ctermbg=NONE  cterm=NONE
 hi Search              ctermfg=NONE  ctermbg=191   cterm=NONE
 hi IncSearch           ctermfg=255   ctermbg=24    cterm=NONE
 hi WarningMsg          ctermfg=52    ctermbg=NONE  cterm=NONE
-hi ErrorMsg            ctermfg=52    ctermbg=NONE  cterm=NONE
+hi ErrorMsg            ctermfg=255   ctermbg=124   cterm=NONE
 hi Function            ctermfg=NONE  ctermbg=NONE  cterm=BOLD
 hi CursorLine          ctermfg=NONE  ctermbg=192   cterm=NONE
 hi StatusLine          ctermfg=52    ctermbg=250   cterm=NONE
@@ -12,7 +12,7 @@ hi StatusLinenc        ctermfg=250   ctermbg=250   cterm=NONE
 hi VertSplit           ctermfg=NONE  ctermbg=254   cterm=NONE
 hi Folded              ctermfg=NONE  ctermbg=254   cterm=NONE
 
-hi! Directory          ctermfg=24    ctermbg=NONE  cterm=BOLD
+hi! Directory          ctermfg=232    ctermbg=255   cterm=BOLD
 
 hi TabLine             ctermfg=254   ctermbg=248   cterm=NONE
 hi TabLineFill         ctermfg=233   ctermbg=248   cterm=NONE
@@ -45,15 +45,14 @@ hi! clear Statement
 hi! clear PreProc
 hi! clear Type
 hi! clear Keyword
-hi! link Special Normal
-hi! link Underlined Normal
-hi! link Ignore Normal
-hi! link Error ErrorMsg
-hi! link Number Normal
-hi! link String Normal
+hi! clear Special
+hi! clear Underlined
+hi! clear Ignore
+hi! clear Number
+hi! clear String
 hi! Todo ctermfg=5 ctermbg=NONE cterm=BOLD
 
-hi! link NonText Normal
+hi! NonText ctermfg=bg
 
 hi! link ColorColumn Normal
 hi! link Conceal Normal
@@ -66,7 +65,6 @@ hi! link CursorLineNr Normal
 hi! link MatchParen Normal
 hi! link ModeMsg Normal
 hi! link MoreMsg Normal
-hi! link NonText Normal
 hi! link Question Normal
 hi! link SpecialKey Normal
 hi! link SpellBad Normal
@@ -76,10 +74,10 @@ hi! link SpellRare Normal
 hi! link VisualNOS Normal
 hi! link WildMenu Normal
 
-hi! htmlTag     ctermfg=58 cterm=BOLD
-hi! htmlTagName ctermfg=58 cterm=BOLD
-hi! htmlEndTag  ctermfg=58 cterm=BOLD
-hi! htmlArg     ctermfg=58 cterm=BOLD
+hi! htmlTag     ctermfg=239 cterm=NONE
+hi! htmlTagName ctermfg=239 cterm=NONE
+hi! htmlEndTag  ctermfg=239 cterm=NONE
+hi! htmlArg     ctermfg=239 cterm=NONE
 hi! link xmlTag      htmlTag
 hi! link xmlTagName  htmlTag
 hi! link xmlEndTag   htmlTag
