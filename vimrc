@@ -53,7 +53,7 @@ colorscheme robot
 
 hi User1 ctermfg=252 ctermbg=130   " git branch
 hi User2 ctermfg=255 ctermbg=88    " warn
-hi User3 ctermfg=52  ctermbg=250   " filename
+hi User3 ctermfg=52  ctermbg=253   " filename
 
 " Settings {{{1
 
