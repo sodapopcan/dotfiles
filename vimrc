@@ -325,6 +325,11 @@ nnoremap <silent> gL :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 
+" Gitv {{{1
+"
+
+let g:Gitv_OpenHorizontal  = 1
+
 " Goyo {{{1
 "
 nnoremap <C-K> :Goyo<CR>
