@@ -6,7 +6,7 @@ hi IncSearch           ctermfg=255   ctermbg=24    cterm=NONE
 hi WarningMsg          ctermfg=52    ctermbg=NONE  cterm=NONE
 hi ErrorMsg            ctermfg=255   ctermbg=124   cterm=NONE
 hi Function            ctermfg=NONE  ctermbg=NONE  cterm=BOLD
-hi CursorLine          ctermfg=NONE  ctermbg=192   cterm=NONE
+hi CursorLine          ctermfg=NONE  ctermbg=229   cterm=NONE
 hi StatusLine          ctermfg=52    ctermbg=253   cterm=NONE
 hi StatusLinenc        ctermfg=253   ctermbg=253   cterm=NONE
 hi VertSplit           ctermfg=NONE  ctermbg=254   cterm=NONE
