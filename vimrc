@@ -30,6 +30,8 @@ Plugin 'gregsexton/gitv'
 Plugin 'mhinz/vim-signify'
 " Plugin 'file:///' . expand('~') . '/src/projects/vim-twiggy'
 
+Plugin 'plasticboy/vim-markdown'
+
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-rails'
@@ -338,6 +340,39 @@ function! s:goyo_leave()
   source ~/.vimrc
 endfunction
 autocmd User GoyoLeave nested call <SID>goyo_leave()
+
+" Markdown
+"
+let g:vim_markdown_folding_disabled=1
+
+func! MarkdownFold(lnum)
+    if (a:lnum == 1)
+        let l0 = ''
+    else
+        let l0 = getline(a:lnum-1)
+    endif
+
+    let l1 = getline(a:lnum)
+
+    let l2 = getline(a:lnum+1)
+
+    if  l2 =~ '^==\+\s*'
+        " next line is underlined (level 1)
+        return '>1'
+    elseif l2 =~ '^--\+\s*'
+        " next line is underlined (level 2)
+        return '>2'
+    elseif l1 =~ '^#'
+        " current line starts with hashes
+        " return '>'.matchend(l0, '^#\+')
+        return '>1'
+    else
+        " keep previous foldlevel
+        return '='
+    endif
+endfunc
+
+autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmethod=expr
 
 " NERDTree {{{1
 "
