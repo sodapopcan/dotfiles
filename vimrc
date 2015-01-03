@@ -402,9 +402,9 @@ let g:signify_sign_changedelete        = g:signify_sign_change
 let g:signify_vcs_list                 = ['git']
 let g:signify_cursorhold_normal        = 1
 
-highlight SignifySignAdd    ctermfg=2   ctermbg=255 cterm=NONE
-highlight SignifySignChange ctermfg=136 ctermbg=255 cterm=NONE
-highlight SignifySignDelete ctermfg=52  ctermbg=255 cterm=NONE
+highlight SignifySignAdd    ctermfg=2   ctermbg=bg cterm=NONE
+highlight SignifySignChange ctermfg=136 ctermbg=bg cterm=NONE
+highlight SignifySignDelete ctermfg=52  ctermbg=bg cterm=NONE
 
 
 " Twiggy {{{1
