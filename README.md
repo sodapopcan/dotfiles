@@ -38,9 +38,10 @@ Preferences -> Profiles -> Keys
   - `Left option keys acts as: +Esc`
 
 Preferences -> Keys
-  - `Right option ket: Control`
   - `Left command key: Left Option`
   (The left command key gets used for the tmux prefix)
+  - Need to download Karabiner (https://pqrs.org/osx/karabiner/index.html.en)
+    and remap the right-hand option key to control.
 
 ### OS X
 System Preferences -> Keyboard -> Modifier Keys...
