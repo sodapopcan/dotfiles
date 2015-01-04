@@ -141,6 +141,7 @@ function! StatusLine()
   let s =     ''
   let s.= "%2*"
   let s.= "%{&paste?'\ \ paste\ ':''}"
+  let s.= "%{match(expand('%:p'), 'fugitive') >= 0?'\ \ fugitive \ ':''}"
   let s.= "%*"
   " let s.= "\ %(%f%)"
   let s.= "%="
