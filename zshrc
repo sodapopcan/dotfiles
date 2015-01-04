@@ -44,12 +44,12 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
 
 # projects {{{1
-alias gelaskins="cd $SRC/work/spree_gelaskins && clear"
+alias nuvango="cd $SRC/nuvango && clear"
 alias dotfiles="cd ~/dotfiles"
 alias songs="$EDITOR ~/docs/band/songs.md"
 
 # tmux
-ide() { $HOME/dotfiles/ide.sh }
+ide() { $HOME/ide.sh }
 
 # git {{{1
 alias gs="clear && git status"
