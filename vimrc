@@ -28,7 +28,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 Plugin 'mhinz/vim-signify'
-" Plugin 'file:///' . expand('~') . '/src/projects/vim-twiggy'
+Plugin 'file:///' . expand('~') . '/src/vim/twiggy'
 
 Plugin 'plasticboy/vim-markdown'
 
