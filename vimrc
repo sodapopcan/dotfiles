@@ -216,7 +216,7 @@ augroup END
 " I've never grown out of using jk to escape insert mode
 inoremap jk <ESC>
 " I already know how to quit; no need to remind me
-nnoremap <C-C> <silent> <C-C>
+nnoremap <C-C> <C-C>:echo ''<CR>
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w<CR>
 " Write everything and quit
