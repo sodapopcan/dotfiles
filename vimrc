@@ -332,6 +332,9 @@ nnoremap          gB :Twiggy<Space>
 "
 
 let g:Gitv_OpenHorizontal  = 1
+highlight diffAdded   ctermfg=fg
+highlight diffRemoved ctermbg=224
+
 
 " Goyo {{{1
 "
@@ -405,7 +408,7 @@ let g:signify_cursorhold_normal        = 1
 
 highlight SignifySignAdd    ctermfg=2   ctermbg=bg cterm=NONE
 highlight SignifySignChange ctermfg=136 ctermbg=bg cterm=NONE
-highlight SignifySignDelete ctermfg=52  ctermbg=bg cterm=NONE
+highlight SignifySignDelete ctermfg=187 ctermbg=bg cterm=NONE
 
 
 " Twiggy {{{1
