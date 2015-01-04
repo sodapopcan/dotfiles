@@ -1,4 +1,4 @@
-hi Normal              ctermfg=232   ctermbg=15    cterm=NONE
+hi Normal              ctermfg=235   ctermbg=15    cterm=NONE
 hi Visual              ctermfg=NONE  ctermbg=192   cterm=NONE
 hi Comment             ctermfg=23    ctermbg=NONE  cterm=NONE
 hi Search              ctermfg=NONE  ctermbg=191   cterm=NONE
