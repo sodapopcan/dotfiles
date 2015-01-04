@@ -5,7 +5,7 @@ README serves as a place to keep frack of any manual config I would have to do
 in setting up a brand new system (as opposed to setting up some extended
 automated fanciness).
 
-## Cut and Past Shell Commands
+## Cut and Paste Shell Commands
 
 ### Use zsh
 `chsh -s /bin/zsh`
