@@ -1,4 +1,4 @@
-hi Normal              ctermfg=232   ctermbg=255   cterm=NONE
+hi Normal              ctermfg=232   ctermbg=15    cterm=NONE
 hi Visual              ctermfg=NONE  ctermbg=192   cterm=NONE
 hi Comment             ctermfg=23    ctermbg=NONE  cterm=NONE
 hi Search              ctermfg=NONE  ctermbg=191   cterm=NONE
@@ -9,14 +9,14 @@ hi Function            ctermfg=NONE  ctermbg=NONE  cterm=BOLD
 hi CursorLine          ctermfg=NONE  ctermbg=229   cterm=NONE
 hi StatusLine          ctermfg=52    ctermbg=253   cterm=NONE
 hi StatusLinenc        ctermfg=253   ctermbg=253   cterm=NONE
-hi VertSplit           ctermfg=NONE  ctermbg=254   cterm=NONE
-hi Folded              ctermfg=NONE  ctermbg=254   cterm=NONE
+hi VertSplit           ctermfg=NONE  ctermbg=255   cterm=NONE
+hi Folded              ctermfg=NONE  ctermbg=255   cterm=NONE
 
 hi! Directory          ctermfg=232    ctermbg=255   cterm=BOLD
 
-hi TabLine             ctermfg=254   ctermbg=248   cterm=NONE
-hi TabLineFill         ctermfg=233   ctermbg=248   cterm=NONE
-hi TabLineSel          ctermfg=233   ctermbg=253   cterm=NONE
+hi TabLine             ctermfg=255   ctermbg=248   cterm=NONE
+hi TabLineFill         ctermfg=233   ctermbg=253   cterm=NONE
+hi TabLineSel          ctermfg=233   ctermbg=15    cterm=NONE
 
 " hi! DiffAdd            ctermfg=NONE  ctermbg=47
 " hi! DiffChange         ctermfg=NONE  ctermbg=11
