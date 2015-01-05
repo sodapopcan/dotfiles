@@ -408,8 +408,8 @@ let g:signify_sign_changedelete        = g:signify_sign_add
 let g:signify_vcs_list                 = ['git']
 let g:signify_cursorhold_normal        = 1
 
-highlight SignifySignAdd    ctermfg=70  ctermbg=bg cterm=NONE
-highlight SignifySignChange ctermfg=24  ctermbg=bg cterm=NONE
+highlight SignifySignAdd    ctermfg=2   ctermbg=bg cterm=NONE
+highlight SignifySignChange ctermfg=5   ctermbg=bg cterm=NONE
 highlight SignifySignDelete ctermfg=188 ctermbg=bg cterm=NONE
 
 
