@@ -8,6 +8,8 @@ call vundle#begin()
 
 Plugin 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
 
+Plugin 'sjl/vitality.vim'
+
 Plugin 'tpope/vim-dispatch'
 
 Plugin 'tpope/vim-obsession'
