@@ -225,6 +225,7 @@ nnoremap <CR> :w<CR>
 " Write everything and quit
 nnoremap Q :wall \| qall!<CR>
 " I don't like this, but it's somewhat life-changing
+map <C-W> <Nop>
 nnoremap <C-J> <C-W>
 " Undo an 'o'
 inoremap <C-O> <Esc>ddk
