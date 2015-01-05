@@ -2,16 +2,24 @@ export DISABLE_AUTO_UPDATE=true
 export DISABLE_AUTO_TITLE=true
 export SRC="$HOME/src"
 export EDITOR=vim
+export PROMPT_COMMAND="history -a; history -n"
 
 source $HOME/.env
 
 autoload -U promptinit && promptinit
 setopt PROMPT_SUBST
 
-setopt histignoredups
-setopt histreduceblanks
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_space
+setopt hist_verify
 setopt inc_append_history
-setopt share_history
+setopt share_history # share command history data
 
 # system stuffs {{{1
 alias l="ls -lh"
@@ -52,25 +60,23 @@ alias songs="$EDITOR ~/docs/band/songs.md"
 ide() { $HOME/ide.sh }
 
 # git {{{1
-alias gs="clear && git status"
-alias gb="clear && git branch"
-alias gbd="git branch -d"
-alias gbD="git branch -D"
+alias gs="git status"
+alias gb="git branch"
 alias gc="git commit"
 alias gC="git commit --amend --no-edit"
 alias gco="git checkout"
-alias gcom="git checkout master"
-alias gcob="git checkout -b"
+alias gM="git checkout master"
 alias gl="git log"
 alias gd="git diff"
-alias gdf="git diff --name-only"
+alias gD="git diff --name-only"
 alias gdm="git diff master"
-alias gus="git submodule foreach git pull origin master"
+alias gdM="git diff master --name-only"
+alias gus="git submodule foreach git pull origin master" # Leaving this for posterity
 alias gr="git reset"
-alias gS="git reset --soft"
+alias gS="git reset --soft HEAD\^"
 alias gR="git reset --hard"
 alias ga="git add"
-alias gap="git add -p"
+alias gA="git add -p"
 
 gitprune() {
   git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $1" \
