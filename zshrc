@@ -22,8 +22,7 @@ setopt inc_append_history
 setopt share_history # share command history data
 
 # system stuffs {{{1
-alias l="ls -lh"
-alias la="ls -lah"
+alias .="ls -lah"
 alias ..="cd .. && ls -l"
 alias ...="cd ../.. && ls -l"
 alias ....="cd ../../.. && ls -la"
@@ -34,7 +33,7 @@ alias j="autojump"
 
 alias s="cd $HOME/src"
 
-mcd () { mkdir -p "$@" && cd "$@"; }
+m () { mkdir -p "$@" && cd "$@"; }
 
 gcd() { cd $(bundle show $@) }
 
