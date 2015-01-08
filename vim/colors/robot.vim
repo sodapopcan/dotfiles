@@ -1,35 +1,36 @@
-hi Normal              ctermfg=235   ctermbg=15    cterm=NONE
+hi Normal              ctermfg=251   ctermbg=236   cterm=NONE
 hi Visual              ctermfg=NONE  ctermbg=192   cterm=NONE
-hi Comment             ctermfg=23    ctermbg=NONE  cterm=NONE
+hi Comment             ctermfg=137   ctermbg=NONE  cterm=NONE
 hi Search              ctermfg=NONE  ctermbg=191   cterm=NONE
 hi IncSearch           ctermfg=255   ctermbg=24    cterm=NONE
 hi WarningMsg          ctermfg=52    ctermbg=NONE  cterm=NONE
 hi ErrorMsg            ctermfg=255   ctermbg=124   cterm=NONE
-hi Function            ctermfg=NONE  ctermbg=NONE  cterm=BOLD
-hi CursorLine          ctermfg=NONE  ctermbg=229   cterm=NONE
-hi StatusLine          ctermfg=52    ctermbg=253   cterm=NONE
-hi StatusLinenc        ctermfg=253   ctermbg=253   cterm=NONE
-hi VertSplit           ctermfg=NONE  ctermbg=255   cterm=NONE
+hi Function            ctermfg=166   ctermbg=NONE  cterm=BOLD
+hi CursorLine          ctermfg=NONE  ctermbg=235   cterm=NONE
+hi VertSplit           ctermfg=NONE  ctermbg=235   cterm=NONE
 hi Folded              ctermfg=NONE  ctermbg=255   cterm=NONE
 
 hi! Directory          ctermfg=232    ctermbg=255   cterm=BOLD
 
-hi TabLine             ctermfg=255   ctermbg=248   cterm=NONE
-hi TabLineFill         ctermfg=233   ctermbg=253   cterm=NONE
-hi TabLineSel          ctermfg=233   ctermbg=15    cterm=NONE
+hi TabLine             ctermfg=fg    ctermbg=238   cterm=NONE
+hi TabLineFill         ctermfg=fg    ctermbg=238   cterm=NONE
+hi TabLineSel          ctermfg=15    ctermbg=bg    cterm=BOLD
+
+hi StatusLine          ctermfg=52    ctermbg=238   cterm=NONE
+hi StatusLineNC        ctermfg=238   ctermbg=238   cterm=NONE
 
 " hi! DiffAdd            ctermfg=NONE  ctermbg=47
 " hi! DiffChange         ctermfg=NONE  ctermbg=11
 " hi! DiffDelete         ctermfg=NONE  ctermbg=9
 " hi! DiffText           ctermfg=NONE  ctermbg=191
 
-hi! DiffAdd            ctermfg=2     ctermbg=NONE  cterm=NONE
-hi! DiffChange         ctermfg=94    ctermbg=NONE  cterm=NONE
-hi! DiffDelete         ctermfg=124   ctermbg=NONE  cterm=NONE
-hi! DiffText           ctermfg=24    ctermbg=NONE  cterm=BOLD
+hi! DiffAdd            ctermfg=NONE  ctermbg=2     cterm=NONE
+hi! DiffChange         ctermfg=NONE  ctermbg=94    cterm=NONE
+hi! DiffDelete         ctermfg=NONE  ctermbg=124   cterm=NONE
+hi! DiffText           ctermfg=NONE  ctermbg=24    cterm=BOLD
 
-hi! Pmenu              ctermfg=233   ctermbg=252
-hi! PmenuSel           ctermfg=233   ctermbg=248
+hi! Pmenu              ctermfg=242   ctermbg=254  cterm=NONE
+hi! PmenuSel           ctermfg=255   ctermbg=240  cterm=BOLD
 hi! PmenuThumb         ctermbg=251
 hi! link PmenuSbar     Normal
 

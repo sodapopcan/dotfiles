@@ -51,11 +51,11 @@ let g:netrw_dirhistmax = 0
 " Syntax {{{1
 
 syntax on
-colorscheme robot
+colorscheme sodapopcan
 
-hi User1 ctermfg=252 ctermbg=130   " git branch
+hi User1 ctermfg=16  ctermbg=173   " git branch
 hi User2 ctermfg=255 ctermbg=88    " warn
-hi User3 ctermfg=52  ctermbg=253   " filename
+hi User3 ctermfg=16  ctermbg=238   " filename
 
 " Settings {{{1
 
@@ -278,10 +278,10 @@ augroup END
 " Don't show cursorline and an empty statusline on inactive buffers
 augroup CursorStatusLines
   autocmd!
-  autocmd VimEnter,WinEnter,BufReadPost * if &ft !=# 'gitcommit'
-        \ | setlocal cursorline statusline=%!StatusLine()
-        \ | call sy#start()
-        \ | endif
+  " autocmd VimEnter,WinEnter,BufReadPost * if &ft !=# 'gitcommit'
+  "       \ | setlocal cursorline statusline=%!StatusLine()
+  "       \ | call sy#start()
+  "       \ | endif
   " Just put an ASCII cat on inactive status bars why not
   autocmd WinLeave * setlocal nocursorline statusline=\ \ \=^..^\=
 augroup END
@@ -291,6 +291,8 @@ augroup AlwaysShowSignColumn
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 augroup END
+
+au! BufEnter * redraw!
 
 " Cut and Paste Functions {{{1
 
@@ -335,7 +337,8 @@ nnoremap          gB :Twiggy<Space>
 "
 
 let g:Gitv_OpenHorizontal  = 1
-highlight diffAdded   ctermfg=fg
+let g:Gitv_DoNotMapCtrlKey = 1
+highlight diffAdded   ctermbg=121
 highlight diffRemoved ctermbg=224
 
 
@@ -409,9 +412,9 @@ let g:signify_sign_changedelete        = g:signify_sign_add
 let g:signify_vcs_list                 = ['git']
 let g:signify_cursorhold_normal        = 1
 
-highlight SignifySignAdd    ctermfg=2   ctermbg=bg cterm=NONE
-highlight SignifySignChange ctermfg=5   ctermbg=bg cterm=NONE
-highlight SignifySignDelete ctermfg=188 ctermbg=bg cterm=NONE
+highlight SignifySignAdd    ctermfg=28  ctermbg=bg cterm=NONE
+highlight SignifySignChange ctermfg=24  ctermbg=bg cterm=NONE
+highlight SignifySignDelete ctermfg=124 ctermbg=bg cterm=NONE
 
 
 " Twiggy {{{1
@@ -420,6 +423,12 @@ let g:twiggy_local_branch_sort = 'mru'
 let g:twiggy_group_locals_by_slash = 0
 let g:twiggy_use_dispatch = 0
 let g:twiggy_enable_remote_delete = 1
+
+hi! TwiggyIconTracking      ctermfg=2   ctermbg=NONE
+hi! TwiggyIconAhead         ctermfg=9   ctermbg=NONE
+hi! TwiggyIconAheadBehind   ctermfg=9   ctermbg=NONE
+hi! TwiggyIconDetached      ctermfg=5   ctermbg=NONE
+hi! TwiggyIconUnmerged      ctermfg=11  ctermbg=NONE
 
 " highlight TwiggyHeader ctermfg=195
 " highlight TwiggySort ctermfg=213

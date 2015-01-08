@@ -51,6 +51,8 @@ export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
 
+export MYSQL_PS1="\d> "
+
 # projects {{{1
 alias nuvango="cd $SRC/nuvango && clear"
 alias dotfiles="cd ~/dotfiles"
@@ -127,9 +129,10 @@ dirty_tree()
 
 
 # ㋡
+# ◔̯◔
 PS1='
-   %{%F{232}%}%B$(current_project)%b%{%F{248}%}$(current_relative_path) $(dirty_tree) %{%F{130}%}%S$(current_branch)%s%{%F{232}%}
-%(?.%{%F{22}%}◔◔.%{%F{52}%}◔̯◔)%{%F{232}%}%b '
+   %{%F{255}%}$(current_project)%{%F{248}%}$(current_relative_path) $(dirty_tree)%{%F{130}%}%B$(current_branch)%b%{%F{232}%}
+%(?.%{%F{2}%} *.%{%F{red}%} *)%{%F{232}%}%b '
 
 
 # vim / editor {{{1
