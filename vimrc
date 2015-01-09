@@ -278,10 +278,9 @@ augroup END
 " Don't show cursorline and an empty statusline on inactive buffers
 augroup CursorStatusLines
   autocmd!
-  " autocmd VimEnter,WinEnter,BufReadPost * if &ft !=# 'gitcommit'
-  "       \ | setlocal cursorline statusline=%!StatusLine()
-  "       \ | call sy#start()
-  "       \ | endif
+  autocmd VimEnter,WinEnter,BufReadPost * if &ft !=# 'gitcommit'
+        \ | setlocal cursorline statusline=%!StatusLine()
+        \ | endif
   " Just put an ASCII cat on inactive status bars why not
   autocmd WinLeave * setlocal nocursorline statusline=\ \ \=^..^\=
 augroup END
