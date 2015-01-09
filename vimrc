@@ -53,7 +53,7 @@ let g:netrw_dirhistmax = 0
 syntax on
 colorscheme sodapopcan
 
-hi User1 ctermfg=16  ctermbg=173   " git branch
+hi User1 ctermfg=16  ctermbg=239   " git branch
 hi User2 ctermfg=255 ctermbg=88    " warn
 hi User3 ctermfg=16  ctermbg=238   " filename
 
