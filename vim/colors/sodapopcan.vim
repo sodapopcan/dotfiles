@@ -86,11 +86,11 @@ hi MatchParen                ctermfg=15 ctermbg=23
 hi Ignore                    ctermfg=Black
 hi WildMenu                  cterm=bold
 hi Directory                 none
-hi link Directory            Identifier
+hi link Directory            String
 
-hi Folded                    ctermbg=238 ctermfg=White cterm=NONE
+hi Folded                    ctermbg=237 ctermfg=fg  cterm=NONE
 hi FoldColumn                none
-hi link FoldColumn           Folded
+hi link FoldColumn           Normal
 
 hi Pmenu                     ctermbg=238 ctermfg=White cterm=NONE
 hi PmenuSel                  ctermbg=150 ctermfg=Black
@@ -98,3 +98,6 @@ hi PMenuSbar                 cterm=NONE
 hi PMenuThumb                cterm=NONE
 
 hi SignColumn ctermbg=bg
+
+hi link NERDTreeClosable String
+hi link NERDTreeOpenable String
