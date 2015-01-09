@@ -22,7 +22,7 @@ hi TabLineSel                ctermfg=242   ctermbg=bg    cterm=NONE
 
 hi StatusLine                ctermfg=52    ctermbg=238   cterm=NONE
 hi StatusLineNC              ctermfg=238   ctermbg=238   cterm=NONE
-hi VertSplit                 ctermfg=bg    ctermbg=bg    cterm=none
+hi VertSplit                 ctermfg=bg    ctermbg=235   cterm=none
 
 hi Comment                   ctermfg=137
 hi Constant                  ctermfg=73
