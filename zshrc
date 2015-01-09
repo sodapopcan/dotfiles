@@ -1,4 +1,4 @@
-export DISABLE_AUTO_UPDATE=true
+# export DISABLE_AUTO_UPDATE=true
 export DISABLE_AUTO_TITLE=true
 export SRC="$HOME/src"
 export EDITOR=vim
@@ -33,7 +33,11 @@ alias j="autojump"
 
 alias s="cd $HOME/src"
 
-m () { mkdir -p "$@" && cd "$@"; }
+d ()
+{
+  if 
+  mkdir -p "$@" && cd "$@";
+}
 
 gcd() { cd $(bundle show $@) }
 
@@ -130,7 +134,7 @@ dirty_tree()
 # ㋡
 # ◔̯◔
 PS1='
-   %{%F{255}%}$(current_project)%{%F{248}%}$(current_relative_path) $(dirty_tree)%{%F{130}%}%B$(current_branch)%b%{%F{232}%}
+   %{%F{11}%}$(current_project)%{%F{248}%}$(current_relative_path) $(dirty_tree)%{%F{130}%}%B$(current_branch)%b%{%F{232}%}
 %(?.%{%F{2}%} *.%{%F{red}%} *)%{%F{232}%}%b '
 
 

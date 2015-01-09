@@ -404,7 +404,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 " Signify {{{1
 "
-let g:signify_sign_add                 = "\u258F"
+let g:signify_sign_add                 = "\u258E"
 let g:signify_sign_delete              = "\u2581"
 let g:signify_sign_delete_first_line   = "\u2594"
 let g:signify_sign_change              = g:signify_sign_add

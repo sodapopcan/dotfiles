@@ -12,38 +12,38 @@ hi link htmlTag              xmlTag
 hi link htmlTagName          xmlTagName
 hi link htmlEndTag           xmlEndTag
 
-hi Normal                    ctermfg=252   ctermbg=236
+hi Normal                    ctermfg=137   ctermbg=236
 hi Cursor                    ctermfg=0     ctermbg=15
 hi CursorLine                ctermfg=NONE  ctermbg=NONE  cterm=NONE
 hi CursorCol                 ctermfg=NONE
 hi TabLine                   ctermfg=254   ctermbg=238   cterm=NONE
-hi TabLineFill               ctermfg=254   ctermbg=237   cterm=NONE
+hi TabLineFill               ctermfg=254   ctermbg=bg    cterm=NONE
 hi TabLineSel                ctermfg=242   ctermbg=bg    cterm=NONE
 
 hi StatusLine                ctermfg=52    ctermbg=238   cterm=NONE
 hi StatusLineNC              ctermfg=238   ctermbg=238   cterm=NONE
-hi VertSplit                 ctermfg=237   ctermbg=235 cterm=none
+hi VertSplit                 ctermfg=bg    ctermbg=bg    cterm=none
 
 hi Comment                   ctermfg=137
 hi Constant                  ctermfg=73
 hi link Identifier Constant
-hi Define                    ctermfg=173 cterm=NONE
-hi Statement                 ctermfg=173 cterm=NONE
-hi Error                     ctermfg=221 ctermbg=88
-hi Function                  ctermfg=173 cterm=BOLD
-hi Keyword                   ctermfg=173 cterm=NONE
+hi Define                    ctermfg=173   cterm=NONE
+hi Statement                 ctermfg=173   cterm=NONE
+hi Error                     ctermfg=221   ctermbg=88
+hi Function                  ctermfg=173   cterm=BOLD
+hi Keyword                   ctermfg=173   cterm=NONE
 hi link Include              Statement
 hi link PreCondit            Statement
 
-hi LineNr                    ctermfg=243 ctermbg=235
-hi CursorLineNr              ctermfg=250 ctermbg=234 cterm=NONE
+hi LineNr                    ctermfg=243   ctermbg=235
+hi CursorLineNr              ctermfg=250   ctermbg=234 cterm=NONE
 hi String                    ctermfg=107
 hi link Number String
 hi PreProc                   ctermfg=103
-hi Search                    ctermfg=16   ctermbg=186
-hi IncSearch                 ctermfg=16   ctermbg=186
+hi Search                    ctermfg=16    ctermbg=186
+hi IncSearch                 ctermfg=16    ctermbg=186
 hi Title                     ctermfg=15
-hi Type                      ctermfg=167 cterm=NONE
+hi Type                      ctermfg=167   cterm=NONE
 hi Visual                    ctermbg=60
 
 hi link diffAdded            String
@@ -51,11 +51,11 @@ hi link diffRemoved          Type
 hi link diffLine             PreProc
 hi link diffSubname          Comment
 
-hi DiffAdd                   ctermfg=2   ctermbg=bg
-hi DiffDelete                ctermfg=9   ctermbg=bg
-hi DiffChange                ctermfg=6   ctermbg=bg
-hi DiffText                  ctermfg=12  ctermbg=bg cterm=bold
-hi Special                   ctermfg=167
+hi DiffAdd                   ctermfg=2     ctermbg=bg
+hi DiffDelete                ctermfg=9     ctermbg=bg
+hi DiffChange                ctermfg=6     ctermbg=bg
+hi DiffText                  ctermfg=12    ctermbg=bg  cterm=bold
+hi Special                   ctermfg=167   ctermbg=bg  cterm=NONE
 
 hi pythonBuiltin             ctermfg=73 cterm=NONE
 hi rubyBlockParameter        ctermfg=43
