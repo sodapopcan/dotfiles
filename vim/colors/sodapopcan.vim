@@ -12,23 +12,23 @@ hi link htmlTag              xmlTag
 hi link htmlTagName          xmlTagName
 hi link htmlEndTag           xmlEndTag
 
-hi Normal                    ctermfg=137   ctermbg=236
+hi Normal                    ctermfg=248   ctermbg=236
 hi Cursor                    ctermfg=0     ctermbg=15
 hi CursorLine                ctermfg=NONE  ctermbg=NONE  cterm=NONE
 hi CursorCol                 ctermfg=NONE
-hi TabLine                   ctermfg=254   ctermbg=238   cterm=NONE
-hi TabLineFill               ctermfg=254   ctermbg=bg    cterm=NONE
-hi TabLineSel                ctermfg=242   ctermbg=bg    cterm=NONE
+hi TabLine                   ctermfg=242   ctermbg=237   cterm=NONE
+hi TabLineFill               ctermfg=254   ctermbg=237   cterm=NONE
+hi TabLineSel                ctermfg=244   ctermbg=bg    cterm=NONE
 
-hi StatusLine                ctermfg=52    ctermbg=238   cterm=NONE
-hi StatusLineNC              ctermfg=238   ctermbg=238   cterm=NONE
+hi StatusLine                ctermfg=52    ctermbg=237   cterm=NONE
+hi StatusLineNC              ctermfg=237   ctermbg=237   cterm=NONE
 hi VertSplit                 ctermfg=bg    ctermbg=235   cterm=none
 
 hi Comment                   ctermfg=137
 hi Constant                  ctermfg=73
 hi link Identifier Constant
 hi Define                    ctermfg=173   cterm=NONE
-hi Statement                 ctermfg=173   cterm=NONE
+hi Statement                 ctermfg=137   cterm=NONE
 hi Error                     ctermfg=221   ctermbg=88
 hi Function                  ctermfg=173   cterm=BOLD
 hi Keyword                   ctermfg=173   cterm=NONE
@@ -58,10 +58,10 @@ hi DiffText                  ctermfg=12    ctermbg=bg  cterm=bold
 hi Special                   ctermfg=167   ctermbg=bg  cterm=NONE
 
 hi pythonBuiltin             ctermfg=73 cterm=NONE
-hi rubyBlockParameter        ctermfg=43
+hi rubyBlockParameter        ctermfg=132
 hi link rubyConstant           Type
 hi link rubyPredefinedConstant Type
-hi rubyInstanceVariable      ctermfg=132
+hi rubyInstanceVariable      ctermfg=110
 hi rubyInterpolation         ctermfg=107
 hi rubyLocalVariableOrMethod ctermfg=189
 hi rubyPseudoVariable        ctermfg=221

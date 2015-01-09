@@ -55,7 +55,7 @@ colorscheme sodapopcan
 
 hi User1 ctermfg=16  ctermbg=239   " git branch
 hi User2 ctermfg=255 ctermbg=88    " warn
-hi User3 ctermfg=16  ctermbg=238   " filename
+hi User3 ctermfg=16  ctermbg=237   " filename
 
 " Settings {{{1
 
@@ -107,7 +107,7 @@ set nobackup noswapfile
 
 set notimeout ttimeout ttimeoutlen=10
 
-set list listchars=tab:\ \ ,eol:\ ,trail:\.
+set list listchars=tab:\ \ ,eol:\ ,trail:\·
 hi SpecialKey ctermfg=9
 
 set formatoptions=
@@ -413,7 +413,7 @@ let g:signify_cursorhold_normal        = 1
 
 highlight SignifySignAdd    ctermfg=28  ctermbg=bg cterm=NONE
 highlight SignifySignChange ctermfg=24  ctermbg=bg cterm=NONE
-highlight SignifySignDelete ctermfg=124 ctermbg=bg cterm=NONE
+highlight SignifySignDelete ctermfg=167 ctermbg=bg cterm=NONE
 
 
 " Twiggy {{{1
