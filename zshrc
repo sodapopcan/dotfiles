@@ -134,7 +134,7 @@ dirty_tree()
 # ㋡
 # ◔̯◔
 PS1='
-   %{%F{11}%}$(current_project)%{%F{248}%}$(current_relative_path) $(dirty_tree)%{%F{130}%}%B$(current_branch)%b%{%F{232}%}
+   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{232}%}
 %(?.%{%F{2}%} *.%{%F{red}%} *)%{%F{232}%}%b '
 
 
