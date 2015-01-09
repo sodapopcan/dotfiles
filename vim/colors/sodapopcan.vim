@@ -61,7 +61,7 @@ hi pythonBuiltin             ctermfg=73 cterm=NONE
 hi rubyBlockParameter        ctermfg=43
 hi link rubyConstant           Type
 hi link rubyPredefinedConstant Type
-hi rubyInstanceVariable      ctermfg=23
+hi rubyInstanceVariable      ctermfg=132
 hi rubyInterpolation         ctermfg=107
 hi rubyLocalVariableOrMethod ctermfg=189
 hi rubyPseudoVariable        ctermfg=221
