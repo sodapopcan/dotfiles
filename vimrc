@@ -54,7 +54,7 @@ syntax on
 colorscheme sodapopcan
 
 hi User1 ctermfg=16  ctermbg=239   " git branch
-hi User2 ctermfg=255 ctermbg=88    " warn
+hi User2 ctermfg=184 ctermbg=196   " warn
 hi User3 ctermfg=16  ctermbg=237   " filename
 
 " Settings {{{1
@@ -143,7 +143,7 @@ function! StatusLine()
   let s =     ''
   let s.= "%2*"
   let s.= "%{&paste?'\ \ paste\ ':''}"
-  let s.= "%{match(expand('%:p'), 'fugitive') >= 0?'\ \ fugitive \ ':''}"
+  let s.= "%{match(expand('%:p'), '^fugitive') >= 0?'\ \ fugitive \ ':''}"
   let s.= "%*"
   " let s.= "\ %(%f%)"
   let s.= "%="
@@ -231,7 +231,7 @@ nnoremap <C-J> <C-W>
 inoremap <C-O> <Esc>ddk
 " Only show this window
 nnoremap <silent> L :only<CR>
-" I get it, Braam, but c'mon
+" Make Y do what you think it would
 nnoremap Y y$
 " Keep your lines short, children
 nnoremap j gj
@@ -259,6 +259,8 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 " Just take me quick to github
 vnoremap <CR> :Gbrowse<CR>
+" I've held off on this for a long time.  I dont' know why
+nnoremap <F5> :so ~/.vimrc<CR>
 
 " Autocommands {{{1
 augroup FileTypeOptions
@@ -287,8 +289,8 @@ augroup END
 
 augroup AlwaysShowSignColumn
   autocmd!
-  autocmd BufEnter * sign define dummy
-  autocmd BufEnter * execute 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+  autocmd BufEnter * if &modifiable | exec "sign define dummy" | endif
+  autocmd BufEnter * if &modifiable | exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('') | endif
 augroup END
 
 au! BufEnter * redraw!
