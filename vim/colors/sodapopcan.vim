@@ -22,7 +22,7 @@ hi TabLineSel                ctermfg=244   ctermbg=bg    cterm=NONE
 
 hi StatusLine                ctermfg=52    ctermbg=237   cterm=NONE
 hi StatusLineNC              ctermfg=237   ctermbg=237   cterm=NONE
-hi VertSplit                 ctermfg=237   ctermbg=bg    cterm=none
+hi VertSplit                 ctermfg=235   ctermbg=bg    cterm=none
 
 hi Comment                   ctermfg=137
 hi Constant                  ctermfg=73
@@ -46,10 +46,11 @@ hi Title                     ctermfg=15
 hi Type                      ctermfg=167   cterm=NONE
 hi Visual                    ctermbg=60
 
-hi link diffAdded            String
-hi link diffRemoved          Type
-hi link diffLine             PreProc
-hi link diffSubname          Comment
+" Gitv
+hi diffAdded                 ctermfg=16  ctermbg=108
+hi diffRemoved               ctermfg=16  ctermbg=95
+hi diffLine                  ctermfg=16  ctermbg=190 cterm=BOLD
+hi diffSubname               ctermfg=16  ctermbg=114
 
 hi DiffAdd                   ctermfg=2     ctermbg=bg
 hi DiffDelete                ctermfg=9     ctermbg=bg

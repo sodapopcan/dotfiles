@@ -54,7 +54,7 @@ syntax on
 colorscheme sodapopcan
 
 hi User1 ctermfg=16  ctermbg=239   " git branch
-hi User2 ctermfg=184 ctermbg=196   " warn
+hi User2 ctermfg=250 ctermbg=52    " warn
 hi User3 ctermfg=16  ctermbg=237   " filename
 
 " Settings {{{1
@@ -100,7 +100,8 @@ set updatetime=1
 set completeopt-=preview
 
 " There is a space at the end of the next line:
-set fillchars=fold:\ ,vert:▐
+set fillchars=fold:\ ,vert:▕
+"▐
 "  Now folds won't have those distracting dashes in 'em
 
 set nobackup noswapfile
@@ -272,6 +273,8 @@ augroup FileTypeOptions
   autocmd FileType help nnoremap <silent> <buffer> q :q<CR>
   autocmd FileType vim nnoremap <silent> <buffer> <CR> :w \|
         \ so % \| noh<CR>
+
+
   autocmd BufReadPost * if !&modifiable |
         \ nnoremap <buffer> q :q<CR> |
         \ endif
@@ -289,8 +292,8 @@ augroup END
 
 augroup AlwaysShowSignColumn
   autocmd!
-  autocmd BufEnter * if &modifiable | exec "sign define dummy" | endif
-  autocmd BufEnter * if &modifiable | exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('') | endif
+  autocmd BufEnter * sign define dummy
+  autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 augroup END
 
 au! BufEnter * redraw!
@@ -405,7 +408,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 " Signify {{{1
 "
-let g:signify_sign_add                 = "\u258E"
+let g:signify_sign_add                 = "\u258F"
 let g:signify_sign_delete              = "\u2581"
 let g:signify_sign_delete_first_line   = "\u2594"
 let g:signify_sign_change              = g:signify_sign_add
