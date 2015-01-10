@@ -100,7 +100,7 @@ set updatetime=1
 set completeopt-=preview
 
 " There is a space at the end of the next line:
-set fillchars=fold:\ 
+set fillchars=fold:\ ,vert:▐
 "  Now folds won't have those distracting dashes in 'em
 
 set nobackup noswapfile
