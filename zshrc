@@ -137,6 +137,11 @@ job_prompt_string()
   jobs | awk '{print "\(%{%F{192}%}"$4"%{%F{238}%}\)"}' | xargs
 }
 
+battery()
+{
+  ~/dotfiles/sh/battery.sh
+}
+
 
 # Prompt {{{1
 
