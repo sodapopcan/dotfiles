@@ -24,7 +24,7 @@ hi StatusLine                ctermfg=52    ctermbg=237   cterm=NONE
 hi StatusLineNC              ctermfg=237   ctermbg=237   cterm=NONE
 hi VertSplit                 ctermfg=235   ctermbg=bg    cterm=none
 
-hi Comment                   ctermfg=137
+hi Comment                   ctermfg=240
 hi Constant                  ctermfg=73
 hi link Identifier Constant
 hi Define                    ctermfg=173   cterm=NONE
@@ -46,16 +46,17 @@ hi Title                     ctermfg=15
 hi Type                      ctermfg=167   cterm=NONE
 hi Visual                    ctermbg=60
 
+hi DiffAdd                   ctermfg=16  ctermbg=108 cterm=BOLD
+hi DiffDelete                ctermfg=237 ctermbg=237 cterm=BOLD
+hi DiffChange                ctermfg=16  ctermbg=144 cterm=BOLD
+hi DiffText                  ctermfg=16  ctermbg=143 cterm=BOLD
+
 " Gitv
 hi diffAdded                 ctermfg=16  ctermbg=108
 hi diffRemoved               ctermfg=16  ctermbg=95
-hi diffLine                  ctermfg=16  ctermbg=190 cterm=BOLD
+hi diffLine                  ctermfg=16  ctermbg=190
 hi diffSubname               ctermfg=16  ctermbg=114
 
-hi DiffAdd                   ctermfg=2     ctermbg=bg
-hi DiffDelete                ctermfg=9     ctermbg=bg
-hi DiffChange                ctermfg=6     ctermbg=bg
-hi DiffText                  ctermfg=12    ctermbg=bg  cterm=bold
 hi Special                   ctermfg=167   ctermbg=bg  cterm=NONE
 
 hi pythonBuiltin             ctermfg=73 cterm=NONE
@@ -89,7 +90,7 @@ hi WildMenu                  cterm=bold
 hi Directory                 none
 hi link Directory            String
 
-hi Folded                    ctermbg=237 ctermfg=fg  cterm=NONE
+hi Folded                    ctermbg=236 ctermfg=244  cterm=NONE
 hi FoldColumn                none
 hi link FoldColumn           Normal
 

@@ -54,7 +54,7 @@ syntax on
 colorscheme sodapopcan
 
 hi User1 ctermfg=16  ctermbg=239   " git branch
-hi User2 ctermfg=250 ctermbg=52    " warn
+hi User2 ctermfg=16  ctermbg=167   " warn
 hi User3 ctermfg=16  ctermbg=237   " filename
 
 " Settings {{{1
@@ -93,25 +93,22 @@ set scrolloff=7
 set sidescrolloff=0
 set shortmess=atTsWc
 set pumheight=5
-set autoread
-set autowrite
 set linebreak
 set updatetime=1
 set completeopt-=preview
+set diffopt=filler,foldcolumn:0,context:4
 
 " There is a space at the end of the next line:
 set fillchars=fold:\ ,vert:▕
 "▐
 "  Now folds won't have those distracting dashes in 'em
 
-bs | awk '{printf("%%{%%F{190}%%}%s%%{%%F{248}%%}", $4)}' | xargs
-=
 set nobackup noswapfile
 
 set notimeout ttimeout ttimeoutlen=10
 
 set list listchars=tab:\ \ ,eol:\ ,trail:\·
-hi SpecialKey ctermfg=9
+hi SpecialKey ctermfg=75
 
 set formatoptions=
 set formatoptions+=c     " Format comments
@@ -292,13 +289,15 @@ augroup CursorStatusLines
   autocmd WinLeave * setlocal nocursorline statusline=\ \ \=^..^\=
 augroup END
 
-augroup AlwaysShowSignColumn
+augroup AlwaysDoThisStuff
   autocmd!
+  " Always show the sign column
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+  " Well, this is a bad hack to fix colours getting all messed up after
+  " shelling-out.  There's gotta be a better way.
+  autocmd BufEnter * redraw!
 augroup END
-
-au! BufEnter * redraw!
 
 " Cut and Paste Functions {{{1
 
@@ -343,7 +342,7 @@ nnoremap          gB :Twiggy<Space>
 function! GitDiffPlus()
   tabnew %
   Gvdiff
-  windo set foldcolumn=0 | SignifyToggle
+  windo SignifyToggle
   windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
 endfunction
 
