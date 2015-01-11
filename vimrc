@@ -104,6 +104,8 @@ set fillchars=fold:\ ,vert:▕
 "▐
 "  Now folds won't have those distracting dashes in 'em
 
+bs | awk '{printf("%%{%%F{190}%%}%s%%{%%F{248}%%}", $4)}' | xargs
+=
 set nobackup noswapfile
 
 set notimeout ttimeout ttimeoutlen=10
@@ -322,7 +324,7 @@ let g:ctrlp_custom_ignore = {
 " Git {{{1
 "
 nnoremap <silent> gs :Gstatus<CR>
-nnoremap <silent> gd :Gdiff<CR>
+nnoremap <silent> gd :call GitDiffPlus()<CR>
 nnoremap <silent> g? :Gblame<CR>
 nnoremap <silent> gw :Gwrite<CR>:w<CR>
 nnoremap          g<Space>  :Ggrep ""<Left>
@@ -336,6 +338,21 @@ nnoremap <silent> gl :Gitv!<CR>
 nnoremap <silent> gL :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
+
+" +++ Git Functions {{{2
+function! GitDiffPlus()
+  tabnew %
+  Gvdiff
+  windo set foldcolumn=0 | SignifyToggle
+  windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
+endfunction
+
+function! GitDiffPlusCleanUp()
+  windo write
+  tabclose
+  SignifyToggle
+  nnoremap <buffer> q q
+endfunction
 
 " Gitv {{{1
 "
