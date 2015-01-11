@@ -130,11 +130,20 @@ dirty_tree()
   fi
 }
 
+# Jobs
+
+job_prompt_string()
+{
+  jobs | awk '{print "\(%{%F{192}%}"$4"%{%F{238}%}\)"}' | xargs
+}
+
+
+# Prompt {{{1
 
 # ㋡
 # ◔̯◔
 PS1='
-   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{232}%}
+   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string)
 %(?.%{%F{2}%} *.%{%F{red}%} *)%{%F{232}%}%b '
 
 
