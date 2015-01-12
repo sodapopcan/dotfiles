@@ -91,7 +91,7 @@ set nowrap
 set scroll=5
 set scrolloff=7
 set sidescrolloff=0
-set shortmess=atTsWc
+set shortmess=at
 set pumheight=5
 set linebreak
 set updatetime=1
@@ -337,9 +337,9 @@ nnoremap          gB :Twiggy<Space>
 
 " +++ Git Functions {{{2
 function! GitDiffPlus()
+  SignifyToggle
   tabnew %
   Gvdiff
-  windo SignifyToggle
   windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
 endfunction
 
@@ -449,3 +449,10 @@ hi! TwiggyIconUnmerged      ctermfg=11  ctermbg=NONE
 
 " highlight TwiggyHeader ctermfg=195
 " highlight TwiggySort ctermfg=213
+
+" Unimpaired {{{1
+"
+
+" This is slightly more useful to me
+nnoremap ]q :keepjumps cnext<CR>
+nnoremap [q :keepjumps cprev<CR>
