@@ -98,16 +98,13 @@ set updatetime=1
 set completeopt-=preview
 set diffopt=filler,foldcolumn:0,context:4
 
-" There is a space at the end of the next line:
 set fillchars=fold:\ ,vert:▕
-"▐
-"  Now folds won't have those distracting dashes in 'em
 
 set nobackup noswapfile
 
 set notimeout ttimeout ttimeoutlen=10
 
-set list listchars=tab:\ \ ,eol:\ ,trail:\·
+set list listchars=tab:\ \ ,eol:\ ,trail:·
 hi SpecialKey ctermfg=75
 
 set formatoptions=

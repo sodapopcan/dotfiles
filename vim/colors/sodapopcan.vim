@@ -46,16 +46,16 @@ hi Title                     ctermfg=15
 hi Type                      ctermfg=167   cterm=NONE
 hi Visual                    ctermbg=60
 
-hi DiffAdd                   ctermfg=16  ctermbg=108 cterm=BOLD
-hi DiffDelete                ctermfg=237 ctermbg=237 cterm=BOLD
-hi DiffChange                ctermfg=16  ctermbg=144 cterm=BOLD
-hi DiffText                  ctermfg=16  ctermbg=143 cterm=BOLD
+hi DiffAdd                   ctermfg=16    ctermbg=108 cterm=BOLD
+hi DiffDelete                ctermfg=237   ctermbg=237 cterm=BOLD
+hi DiffChange                ctermfg=16    ctermbg=144 cterm=BOLD
+hi DiffText                  ctermfg=16    ctermbg=143 cterm=BOLD
 
 " Gitv
-hi diffAdded                 ctermfg=16  ctermbg=108
-hi diffRemoved               ctermfg=16  ctermbg=95
-hi diffLine                  ctermfg=16  ctermbg=190
-hi diffSubname               ctermfg=16  ctermbg=114
+hi diffAdded                 ctermfg=16    ctermbg=108
+hi diffRemoved               ctermfg=16    ctermbg=95
+hi diffLine                  ctermfg=16    ctermbg=190
+hi diffSubname               ctermfg=16    ctermbg=114
 
 hi Special                   ctermfg=167   ctermbg=bg  cterm=NONE
 
