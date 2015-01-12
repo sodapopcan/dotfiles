@@ -44,7 +44,7 @@ hi Search                    ctermfg=16    ctermbg=186
 hi IncSearch                 ctermfg=16    ctermbg=186
 hi Title                     ctermfg=15
 hi Type                      ctermfg=167   cterm=NONE
-hi Visual                    ctermbg=60
+hi visual                    ctermfg=16    ctermbg=11
 
 hi DiffAdd                   ctermfg=16    ctermbg=108 cterm=BOLD
 hi DiffDelete                ctermfg=237   ctermbg=237 cterm=BOLD
