@@ -150,7 +150,7 @@ battery()
 # ◔̯◔
 PS1='
    %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string)
-%(?.%{%F{2}%} *.%{%F{red}%} *)%{%F{232}%}%b '
+%(?.%{%F{108}%} *.%{%F{167}%} *)%{%F{232}%}%b '
 
 
 # vim / editor {{{1
