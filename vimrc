@@ -105,7 +105,7 @@ set nobackup noswapfile
 set notimeout ttimeout ttimeoutlen=10
 
 set list listchars=tab:\ \ ,eol:\ ,trail:·
-hi SpecialKey ctermfg=75
+hi SpecialKey ctermfg=238
 
 set formatoptions=
 set formatoptions+=c     " Format comments
