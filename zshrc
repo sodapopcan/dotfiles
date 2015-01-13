@@ -52,6 +52,7 @@ colours() {
 export CLICOLOR=1
 export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
 
 export MYSQL_PS1="\d> "
