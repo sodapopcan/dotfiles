@@ -237,7 +237,7 @@ nnoremap Y y$
 " Keep your lines short, children
 nnoremap j gj
 nnoremap k gk
-" Who doesn't prefer `'s functionailty?  Well, I do
+" Who doesn't prefer `'s functionality?  Well, I do
 nnoremap ` '
 " I always have to think for a second if I want :vsp or :sp
 nnoremap <silent>  - :sp<CR>
