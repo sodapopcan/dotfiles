@@ -216,14 +216,18 @@ augroup END
 " I've never grown out of using jk to escape insert mode
 inoremap jk <ESC>
 " I already know how to quit; no need to remind me
-nnoremap <C-C> <C-C>:echo ''<CR>
+" Redraw to reclaim <C-L> as I'm giving it up for friggin' split switching :\
+nnoremap <C-C> <C-C>:redraw!<CR>
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w<CR>
 " Write everything and quit
 nnoremap Q :wall \| qall!<CR>
-" I don't like this, but it's somewhat life-changing
-map <C-W> <Nop>
-nnoremap <C-J> <C-W>
+" I give up.  It feels like such a waste since I usually only have two splits
+" open -- if any -- but I'm back to it
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
 " Undo an 'o'
 inoremap <C-O> <Esc>ddk
 " Only show this window
@@ -241,7 +245,7 @@ nnoremap <silent> \| :vsp<CR>
 " Paste at EOL
 nnoremap <silent> K :call PasteAtEOL()<CR>
 " Help on word under cursor
-nnoremap <silent> <C-H> yiw :only \| vertical botright help <C-R><C-"><CR>
+" nnoremap <silent> <C-H> yiw :only \| vertical botright help <C-R><C-"><CR>
 " Paste into command line
 cnoremap <C-P> <C-R><C-">
 " Increase scroll speed a little
@@ -361,8 +365,6 @@ highlight diffRemoved ctermbg=224
 
 " Goyo {{{1
 "
-nnoremap <C-K> :Goyo<CR>
-
 function! s:goyo_leave()
   source ~/.vimrc
 endfunction
