@@ -231,7 +231,7 @@ nnoremap <C-L> <C-W><C-L>
 " Undo an 'o'
 inoremap <C-O> <Esc>ddk
 " Only show this window
-nnoremap <silent> L :only<CR>
+nnoremap <silent> L :call IfIOnly()<CR>
 " Make Y do what you think it would
 nnoremap Y y$
 " Keep your lines short, children
@@ -262,6 +262,38 @@ inoremap <c-w> <c-g>u<c-w>
 vnoremap <CR> :Gbrowse<CR>
 " I've held off on this for a long time.  I dont' know why
 nnoremap <F5> :so ~/.vimrc<CR>
+
+" Mappings Functions {{{2
+
+" Paste at end of the line
+function! PasteAtEOL()
+  " strip trailing space on current line
+  s/\s\+$//e
+  " add trailing space then paste
+  exec "normal! A\<space>\<esc>mzp`z"
+endfunction
+
+" Make (custom) L mapping smarter (unfinished)
+"
+" Intended behaviour: If there are only modifiable splits present, make the
+" current split the only split (ie, run :only). If any unmodifable splits are
+" open (:Gstatus, quickfix window, NERDTree, etc...) close all of those.
+function! IfIOnly()
+  let winnr = winnr()
+  let curwinnr = 0
+  let found_nomod = 0
+  while winnr != curwinnr
+    wincmd w
+    if !&modifiable
+      q
+      let found_nomod = 1
+    endif
+    let curwinnr = winnr()
+  endwhile
+  if !found_nomod
+    only
+  endif
+endfunction
 
 " Autocommands {{{1
 augroup FileTypeOptions
@@ -300,15 +332,6 @@ augroup AlwaysDoThisStuff
   autocmd BufEnter * redraw!
 augroup END
 
-" Cut and Paste Functions {{{1
-
-" Paste at end of the line
-function! PasteAtEOL()
-  " strip trailing space on current line
-  s/\s\+$//e
-  " add trailing space then paste
-  exec "normal! A\<space>\<esc>mzp`z"
-endfunction
 
 " CTRLP {{{1
 "
