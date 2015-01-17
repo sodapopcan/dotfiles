@@ -20,20 +20,25 @@ hi TabLine                   ctermfg=242   ctermbg=237   cterm=NONE
 hi TabLineFill               ctermfg=254   ctermbg=237   cterm=NONE
 hi TabLineSel                ctermfg=244   ctermbg=bg    cterm=NONE
 
-hi StatusLine                ctermfg=52    ctermbg=237   cterm=NONE
+hi StatusLine                ctermfg=248    ctermbg=237   cterm=NONE
 hi StatusLineNC              ctermfg=237   ctermbg=237   cterm=NONE
 hi VertSplit                 ctermfg=235   ctermbg=bg    cterm=none
 
-hi Comment                   ctermfg=240
-hi Constant                  ctermfg=73
-hi link Identifier Constant
-hi Define                    ctermfg=173   cterm=NONE
-hi Statement                 ctermfg=137   cterm=NONE
-hi Error                     ctermfg=221   ctermbg=88
-hi Function                  ctermfg=173   cterm=BOLD
+hi! Comment                   ctermfg=240
+hi! Constant                  ctermfg=74
+hi! link Identifier Constant
+hi! Label                     ctermfg=74
+hi! TypeDef                   ctermfg=74
+hi! StorageClass              ctermfg=74
+hi! Structure                 ctermfg=74
+hi! Define                    ctermfg=173   cterm=NONE
+hi! Statement                 ctermfg=137   cterm=NONE
+hi! Error                     ctermfg=16    ctermbg=167
+hi! link ErrorMsg Error
+hi Function                  ctermfg=215   cterm=NONE
 hi Keyword                   ctermfg=173   cterm=NONE
 hi link Include              Statement
-hi link PreCondit            Statement
+hi! link PreCondit            Statement
 
 hi LineNr                    ctermfg=243   ctermbg=235
 hi CursorLineNr              ctermfg=250   ctermbg=234 cterm=NONE
@@ -46,16 +51,16 @@ hi Title                     ctermfg=15
 hi Type                      ctermfg=167   cterm=NONE
 hi visual                    ctermfg=16    ctermbg=11
 
-hi DiffAdd                   ctermfg=16    ctermbg=108 cterm=BOLD
-hi DiffDelete                ctermfg=237   ctermbg=237 cterm=BOLD
-hi DiffChange                ctermfg=16    ctermbg=144 cterm=BOLD
-hi DiffText                  ctermfg=16    ctermbg=143 cterm=BOLD
+hi! DiffAdd                   ctermfg=108   ctermbg=NONE cterm=bold
+hi! DiffDelete                ctermfg=95    ctermbg=NONE cterm=bold
+hi! DiffChange                ctermfg=190   ctermbg=NONE cterm=BOLD
+hi! DiffText                  ctermfg=114   ctermbg=NONE cterm=BOLD
 
 " Gitv
-hi diffAdded                 ctermfg=16    ctermbg=108
-hi diffRemoved               ctermfg=16    ctermbg=95
-hi diffLine                  ctermfg=16    ctermbg=190
-hi diffSubname               ctermfg=16    ctermbg=114
+hi! diffAdded                 ctermfg=108    ctermbg=bg
+hi! diffRemoved               ctermfg=95     ctermbg=bg
+hi! diffLine                  ctermfg=190    ctermbg=bg
+hi! diffSubname               ctermfg=114    ctermbg=bg
 
 hi Special                   ctermfg=167   ctermbg=bg  cterm=NONE
 

@@ -51,7 +51,9 @@ let g:netrw_dirhistmax = 0
 " Syntax {{{1
 
 syntax on
-colorscheme sodapopcan
+if g:colors_name !=# 'diff'
+  colorscheme sodapopcan
+endif
 
 hi User1 ctermfg=16  ctermbg=239   " git branch
 hi User2 ctermfg=16  ctermbg=167   " warn
@@ -329,7 +331,7 @@ augroup AlwaysDoThisStuff
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
   " Well, this is a bad hack to fix colours getting all messed up after
   " shelling-out.  There's gotta be a better way.
-  autocmd BufEnter * redraw!
+  " autocmd BufEnter * redraw!
 augroup END
 
 
@@ -363,19 +365,26 @@ nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 
 " +++ Git Functions {{{2
-function! GitDiffPlus()
-  SignifyToggle
-  tabnew %
-  Gvdiff
-  windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
-endfunction
+if !exists('*GitDiffPlus')
+  function! GitDiffPlus()
+    SignifyToggle
+    tabnew %
+    Gvdiff
+    colorscheme diff
+    exec ":normal noh<CR>"
+    windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
+  endfunction
 
-function! GitDiffPlusCleanUp()
-  windo write
-  tabclose
-  SignifyToggle
-  nnoremap <buffer> q q
-endfunction
+  function! GitDiffPlusCleanUp()
+    windo write
+    tabclose
+    colorscheme sodapopcan
+    SignifyToggle
+    nnoremap <buffer> q q
+    source ~/.vimrc
+    exec ":normal noh<CR>"
+  endfunction
+endif
 
 " Gitv {{{1
 "
