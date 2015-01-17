@@ -33,7 +33,7 @@ alias j="autojump"
 
 alias s="cd $HOME/src"
 
-d ()
+dir ()
 {
   if 
   mkdir -p "$@" && cd "$@";
