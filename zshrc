@@ -35,7 +35,6 @@ alias s="cd $HOME/src"
 
 dir ()
 {
-  if 
   mkdir -p "$@" && cd "$@";
 }
 
