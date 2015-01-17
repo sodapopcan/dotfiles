@@ -33,14 +33,18 @@ alias j="autojump"
 
 alias s="cd $HOME/src"
 
-dir ()
+dir()
 {
   mkdir -p "$@" && cd "$@";
 }
 
-gcd() { cd $(bundle show $@) }
+gcd()
+{
+  cd $(bundle show $@)
+}
 
-colours() {
+colours()
+{
   for i in {0..255} ; do
     printf "\x1b[38;5;${i}mcolour${i}\n"
   done
@@ -83,17 +87,20 @@ alias gR="git reset --hard"
 alias ga="git add"
 alias gA="git add -p"
 
-gitprune() {
+gitprune()
+{
   git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $1" \
     --prune-empty --tag-name-filter cat -- --all
 }
 
-is_git_repo() {
+is_git_repo()
+{
   git symbolic-ref HEAD 2> /dev/null
 }
 
 # If it's a git repository, show only the name of the containing directory
-current_project() {
+current_project()
+{
   ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [ -z $ref ]; then
     echo "${PWD/#$HOME/~}"
@@ -103,7 +110,8 @@ current_project() {
 }
 
 # If in a subdirectory of a git repository, show the sub-path in a different colour
-current_relative_path() {
+current_relative_path()
+{
   ref=$(is_git_repo) || return
   project_dir=$(git rev-parse --show-toplevel)
   rel_path=${${PWD}/${project_dir}}
@@ -112,7 +120,8 @@ current_relative_path() {
   fi
 }
 
-current_branch() {
+current_branch()
+{
   ref=$(is_git_repo) || return
   echo " $(git branch | grep \* | sed 's/^..//') "
 }
