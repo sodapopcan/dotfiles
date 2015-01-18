@@ -29,7 +29,6 @@ alias ....="cd ../../.. && ls -la"
 alias r="source $HOME/.zshrc"
 alias p="$EDITOR ~/dotfiles/zshrc"
 alias mkdir="mkdir -p"
-alias j="autojump"
 
 alias s="cd $HOME/src"
 
