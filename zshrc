@@ -152,7 +152,7 @@ dirty_tree()
 job_prompt_string()
 {
   if [[ $(jobs 2> /dev/null) != "" ]]; then
-    echo $(jobs | awk 'BEGIN {ORS=""; print "("} {print "%{%F{192}%}"$4"%{%F{238}%}"} END {print ")"}' | xargs)
+    echo $(jobs | awk 'BEGIN {FS="[-+ ]+"; ORS=""; print "("} {print "%{%F{192}%}"$3"%{%F{238}%},"} END {print ")"}' | sed 's/,)$/)/g')
   else
     echo ""
   fi
