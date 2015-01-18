@@ -3,6 +3,7 @@ export DISABLE_AUTO_TITLE=true
 export SRC="$HOME/src"
 export EDITOR=vim
 export PROMPT_COMMAND="history -a; history -n"
+export LC_COLLATE=C
 
 source $HOME/.env
 
@@ -192,7 +193,7 @@ alias graphite-web='python /opt/graphite/bin/run-graphite-devel-server.py /opt/g
 alias ta="tmux attach-session -t "
 
 # tasks {{{1
-alias -g ctags="ctags -R -f tags --exclude=.git --exclude=log --exclude=public --exclude=tmp --exclude=app/assets --exclude=vendor"
+alias -g ctags="/usr/local/bin/ctags -R -f tags --exclude=.git --exclude=log --exclude=public --exclude=tmp --exclude=app/assets --exclude=vendor"
 
 # And so on {{{1
 bindkey -v

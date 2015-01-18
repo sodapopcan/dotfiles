@@ -378,8 +378,8 @@ if !exists('*GitDiffPlus')
     tabnew %
     Gvdiff
     colorscheme diff
-    windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
-  endfunction
+    nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
+endfunction
 
   function! GitDiffPlusCleanUp()
     windo write
