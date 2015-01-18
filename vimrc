@@ -51,8 +51,12 @@ let g:netrw_dirhistmax = 0
 " Syntax {{{1
 
 syntax on
-if g:colors_name !=# 'diff'
-  colorscheme sodapopcan
+if exists('g:colors_name')
+  if g:colors_name !=# 'diff'
+    colorscheme sodapopcan
+  endif
+else
+    colorscheme sodapopcan
 endif
 
 hi User1 ctermfg=16  ctermbg=239   " git branch
