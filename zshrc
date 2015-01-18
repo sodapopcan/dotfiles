@@ -53,10 +53,10 @@ colours()
 
 # theme {{{1
 export CLICOLOR=1
-export PATH="$HOME/.rvm/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export MYSQL_PS1="\d> "
 
