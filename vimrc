@@ -267,7 +267,7 @@ inoremap <c-w> <c-g>u<c-w>
 vnoremap <CR> :Gbrowse<CR>
 " I've held off on this for a long time.  I dont' know why
 nnoremap <F5> :so ~/.vimrc<CR>
-
+" This relies on having unimpaired installed
 nmap <C-N> ]c
 nmap <C-P> [c
 
