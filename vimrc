@@ -91,7 +91,6 @@ set ignorecase smartcase
 
 " I just like this stuff
 set ruler
-set cursorline
 set textwidth=80
 set nowrap
 set scroll=5
@@ -309,7 +308,7 @@ augroup FileTypeOptions
   autocmd!
   autocmd BufReadPost fugitive://*
         \ setlocal bufhidden=wipe |
-        \ nnoremap <buffer> q :q<CR>:set cursorline<CR>
+        \ nnoremap <buffer> q :q<CR>
   autocmd FileType gitcommit setlocal spell
   autocmd FileType help nnoremap <silent> <buffer> q :q<CR>
   autocmd FileType vim nnoremap <silent> <buffer> <CR> :w \|
@@ -325,10 +324,10 @@ augroup END
 augroup CursorStatusLines
   autocmd!
   autocmd VimEnter,WinEnter,BufReadPost * if &ft !=# 'gitcommit'
-        \ | setlocal cursorline statusline=%!StatusLine()
+        \ | setlocal statusline=%!StatusLine()
         \ | endif
   " Just put an ASCII cat on inactive status bars why not
-  autocmd WinLeave * setlocal nocursorline statusline=\ \ \=^..^\=
+  autocmd WinLeave * setlocal statusline=\ \ \=^..^\=
 augroup END
 
 augroup AlwaysDoThisStuff
