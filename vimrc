@@ -407,7 +407,7 @@ function! s:goyo_leave()
 endfunction
 autocmd User GoyoLeave nested call <SID>goyo_leave()
 
-" Markdown
+" Markdown {{{1
 "
 let g:vim_markdown_folding_disabled=1
 
