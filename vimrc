@@ -269,6 +269,9 @@ vnoremap <CR> :Gbrowse<CR>
 " I've held off on this for a long time.  I dont' know why
 nnoremap <F5> :so ~/.vimrc<CR>
 
+nmap <C-N> ]c
+nmap <C-P> [c
+
 " Mappings Functions {{{2
 
 " Paste at end of the line
