@@ -38,6 +38,11 @@ dir ()
   mkdir -p "$@" && cd "$@";
 }
 
+g ()
+{
+  mkdir -p "$@" && cd "$@" && git init;
+}
+
 gcd()
 {
   cd $(bundle show $@)
