@@ -51,10 +51,10 @@ hi Title                     ctermfg=15
 hi Type                      ctermfg=167   cterm=NONE
 hi visual                    ctermfg=16    ctermbg=11
 
-hi! DiffAdd                   ctermfg=108   ctermbg=NONE cterm=bold
-hi! DiffDelete                ctermfg=95    ctermbg=NONE cterm=bold
-hi! DiffChange                ctermfg=190   ctermbg=NONE cterm=BOLD
-hi! DiffText                  ctermfg=114   ctermbg=NONE cterm=BOLD
+hi! DiffAdd                   ctermfg=108   ctermbg=bg cterm=bold
+hi! DiffDelete                ctermfg=95    ctermbg=bg cterm=bold
+hi! DiffChange                ctermfg=190   ctermbg=bg cterm=BOLD
+hi! DiffText                  ctermfg=114   ctermbg=bg cterm=BOLD
 
 " Gitv
 hi! diffAdded                 ctermfg=108    ctermbg=bg
@@ -95,9 +95,8 @@ hi WildMenu                  cterm=bold
 hi Directory                 none
 hi link Directory            String
 
-hi Folded                    ctermbg=236 ctermfg=244  cterm=NONE
-hi FoldColumn                none
-hi link FoldColumn           Normal
+hi Folded                    ctermbg=bg ctermfg=244  cterm=NONE
+hi! link FoldColumn           Normal
 
 hi Pmenu                     ctermbg=238 ctermfg=White cterm=NONE
 hi PmenuSel                  ctermbg=150 ctermfg=Black
