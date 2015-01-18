@@ -69,7 +69,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export MYSQL_PS1="\d> "
 
 # projects {{{1
-alias nuvango="cd $SRC/nuvango && clear"
+alias nuvango="cd $SRC/nuvango/retail && clear"
 alias dotfiles="cd ~/dotfiles"
 alias songs="$EDITOR ~/docs/band/songs.md"
 
@@ -151,7 +151,11 @@ dirty_tree()
 
 job_prompt_string()
 {
-  jobs | awk '{print "\(%{%F{192}%}"$4"%{%F{238}%}\)"}' | xargs
+  if [[ $(jobs 2> /dev/null) != "" ]]; then
+    echo "jobs:" $(jobs | awk '{print "%{%F{192}%}"$4"%{%F{238}%}"}' | xargs)
+  else
+    echo ""
+  fi
 }
 
 battery()
