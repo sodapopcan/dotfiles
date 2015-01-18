@@ -152,7 +152,7 @@ dirty_tree()
 job_prompt_string()
 {
   if [[ $(jobs 2> /dev/null) != "" ]]; then
-    echo $(jobs | grep -v "pwd now:" | awk 'BEGIN {FS="[-+ ]+"; ORS=""; print "\("} {print "%{%F{192}%}"$3"%{%F{238}%},"} END {print "\)"}' | sed 's/,)$/)/g')
+    echo $(jobs | grep -v "pwd now:" | awk 'BEGIN {FS="[-+ ]+"; ORS=""; print "\("} {print "%{%F{108}%}"$3"%{%F{238}%},"} END {print "\)"}' | sed 's/,)$/)/g')
   else
     echo ""
   fi
