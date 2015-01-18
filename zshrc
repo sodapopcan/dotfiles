@@ -212,3 +212,6 @@ bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 bindkey -M viins 'jk' vi-cmd-mode
+
+# t {{{1
+alias t='python ~/src/t/t.py --task-dir ~/tasks --list tasks'
