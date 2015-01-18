@@ -20,7 +20,8 @@ ln -s ~/dotfiles/zshrc ~/.zshenv && \
 ln -s ~/dotfiles/vimrc ~/.vimrc && \
 ln -s ~/dotfiles/vim ~/.vim && \
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf && \
-ln -s ~/dotfiles/bashrc ~/.bashrc
+ln -s ~/dotfiles/bashrc ~/.bashrc && \
+ln -s ~/dotfiles/cvsignore ~/.cvsignore
 ```
 
 ### Vundle
@@ -30,6 +31,10 @@ ln -s ~/dotfiles/bashrc ~/.bashrc
 `mkdir ~/Library/KeyBindings`
 `echo "{\n\t\"^w\" = \"deleteWordBackward:\";\n}" >> ~/Library/KeyBindings/DefaultKeyBinding.dict`
 Got this from [here](https://coderwall.com/p/rhiiba/ctrl-w-everywhere).
+
+### Configure Git
+
+`git config --global core.excludesfile ~/.cvsignore`
 
 ## Manual Set-up
 
