@@ -375,7 +375,6 @@ if !exists('*GitDiffPlus')
     tabnew %
     Gvdiff
     colorscheme diff
-    exec ":normal noh<CR>"
     windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
   endfunction
 
@@ -386,7 +385,6 @@ if !exists('*GitDiffPlus')
     SignifyToggle
     nnoremap <buffer> q q
     source ~/.vimrc
-    exec ":normal noh<CR>"
   endfunction
 endif
 
