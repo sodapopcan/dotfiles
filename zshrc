@@ -23,10 +23,13 @@ setopt inc_append_history
 setopt share_history # share command history data
 
 # system stuffs {{{1
+alias l="ls -lh"
+alias L="ls -lht"
 alias .="ls -lah"
-alias ..="cd .. && ls -l"
-alias ...="cd ../.. && ls -l"
-alias ....="cd ../../.. && ls -la"
+alias la="ls -laht"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias r="source $HOME/.zshrc"
 alias p="$EDITOR ~/dotfiles/zshrc"
 alias mkdir="mkdir -p"
