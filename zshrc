@@ -214,4 +214,4 @@ bindkey '^R' history-incremental-search-backward
 bindkey -M viins 'jk' vi-cmd-mode
 
 # t {{{1
-alias t='python ~/src/t/t.py --task-dir ~/tasks --list tasks'
+alias t='python ~/src/t/t.py --task-dir ~/private/tasks --list tasks'
