@@ -13,6 +13,9 @@ source $HOME/.env
 autoload -U promptinit && promptinit
 setopt PROMPT_SUBST
 
+autoload -U compinit
+compinit
+
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
