@@ -70,7 +70,10 @@ export CLICOLOR=1
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 export MYSQL_PS1="\d> "
 
@@ -89,7 +92,8 @@ alias gc="git commit"
 alias gC="git commit --amend --no-edit"
 alias gco="git checkout"
 alias gM="git checkout master"
-alias gl="git log"
+alias gL="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset' --abbrev-commit"
 alias gd="git diff"
 alias gD="git diff --name-only"
 alias gdm="git diff master"
@@ -217,6 +221,8 @@ alias -g ctags="/usr/local/bin/ctags -R -f tags --exclude=.git --exclude=log --e
 bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
+# bindkey "^p" history-beginning-search-backward-end
+# bindkey "^n" history-beginning-search-forward-end
 bindkey -M viins 'jk' vi-cmd-mode
 
 # t {{{1
