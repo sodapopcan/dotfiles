@@ -56,10 +56,10 @@ if exists('g:colors_name')
     colorscheme sodapopcan
   endif
 else
-    colorscheme sodapopcan
+  colorscheme sodapopcan
 endif
 
-hi User1 ctermfg=16  ctermbg=239   " git branch
+hi User1 ctermfg=255 ctermbg=239   " git branch
 hi User2 ctermfg=16  ctermbg=167   " warn
 hi User3 ctermfg=16  ctermbg=237   " filename
 
@@ -349,13 +349,13 @@ let g:ctrlp_prompt_mappings = {
       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
       \ }
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle)\/(.*)'
+  \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle|node_modules)\/(.*)'
   \ }
 
 " Git {{{1
 "
 nnoremap <silent> gs :Gstatus<CR>
-nnoremap <silent> gd :call GitDiffPlus()<CR>
+nnoremap <silent> gd :call GitDiffPlus() <Bar> :source ~/.vimrc<CR>
 nnoremap <silent> g? :Gblame<CR>
 nnoremap <silent> gw :Gwrite<CR>:w<CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
@@ -377,17 +377,16 @@ if !exists('*GitDiffPlus')
     SignifyToggle
     tabnew %
     Gvdiff
-    colorscheme diff
-    nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
+    " colorscheme diff
+    windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
   endfunction
 
   function! GitDiffPlusCleanUp()
     windo write
     tabclose
-    colorscheme sodapopcan
+    " colorscheme sodapopcan
     SignifyToggle
     nnoremap <buffer> q q
-    source ~/.vimrc
   endfunction
 endif
 
