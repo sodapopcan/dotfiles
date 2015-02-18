@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
 
 Plugin 'sjl/vitality.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'tpope/vim-dispatch'
 
@@ -227,12 +228,6 @@ nnoremap <C-C> <C-C>:redraw!<CR>
 nnoremap <CR> :w<CR>
 " Write everything and quit
 nnoremap Q :wall \| qall!<CR>
-" I give up.  It feels like such a waste since I usually only have two splits
-" open -- if any -- but I'm back to it
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
 " Undo an 'o'
 inoremap <C-O> <Esc>ddk
 " Only show this window
