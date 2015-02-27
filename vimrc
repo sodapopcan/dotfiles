@@ -222,8 +222,9 @@ augroup END
 " I've never grown out of using jk to escape insert mode
 inoremap jk <ESC>
 " I already know how to quit; no need to remind me
-" Redraw to reclaim <C-L> as I'm giving it up for friggin' split switching :\
-nnoremap <C-C> <C-C>:redraw!<CR>
+nnoremap <C-C> <silent> <C-C>
+" This is necessary otherwise vim-tmux-navigator remaps C-L
+nnoremap <C-L> :redraw!<CR>
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w<CR>
 " Write everything and quit
@@ -483,9 +484,11 @@ hi! TwiggyIconUnmerged      ctermfg=11  ctermbg=NONE
 " highlight TwiggyHeader ctermfg=195
 " highlight TwiggySort ctermfg=213
 
-" Unimpaired {{{1
-"
+" Vim-Tmux Navigator {{{1
+let g:tmux_navigator_no_mappings = 1
 
-" This is slightly more useful to me
-nnoremap ]q :keepjumps cnext<CR>
-nnoremap [q :keepjumps cprev<CR>
+nnoremap <silent>     :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+nnoremap <silent>     :TmuxNavigateUp<cr>
+nnoremap <silent>     :TmuxNavigateRight<cr>
+nnoremap <silent> <F1>  :TmuxNavigatePrevious<cr>
