@@ -74,6 +74,7 @@ export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+export PATH="./bin:$PATH"
 
 export MYSQL_PS1="\d> "
 
