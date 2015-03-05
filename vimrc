@@ -267,6 +267,10 @@ nnoremap <F5> :so ~/.vimrc<CR>
 nmap <C-N> ]c
 nmap <C-P> [c
 
+" Expand %% as current path, why not (from vim tips)
+nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+
+
 " Mappings Functions {{{2
 
 " Paste at end of the line
