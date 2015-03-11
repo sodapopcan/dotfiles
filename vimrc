@@ -30,6 +30,7 @@ Plugin 'tpope/vim-commentary'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
+Plugin 'int3/vim-extradite'
 Plugin 'mhinz/vim-signify'
 Plugin 'file:///' . expand('~') . '/src/vim/twiggy'
 
@@ -366,7 +367,7 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gya".t."<Space> ya".t.":Ggrep \"\"<Left><C-R><C-\">"
 endfor
 nnoremap          gh :Glog<CR>
-nnoremap <silent> gl :Gitv!<CR>
+nnoremap <silent> gl :Extradite<CR>
 nnoremap <silent> gL :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
