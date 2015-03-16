@@ -9,7 +9,7 @@ call vundle#begin()
 Plugin 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
 
 Plugin 'sjl/vitality.vim'
-Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'tpope/vim-dispatch'
 
@@ -224,8 +224,11 @@ augroup END
 inoremap jk <ESC>
 " I already know how to quit; no need to remind me
 nnoremap <C-C> <silent> <C-C>
-" This is necessary otherwise vim-tmux-navigator remaps C-L
-nnoremap <C-L> :redraw!<CR>
+" I'll get rid of this once I hack vim-tmux-navigator a bit
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w<CR>
 " Write everything and quit
@@ -311,7 +314,7 @@ augroup FileTypeOptions
         \ setlocal bufhidden=wipe |
         \ nnoremap <buffer> q :q<CR>
   autocmd FileType gitcommit setlocal spell
-  autocmd FileType help nnoremap <silent> <buffer> q :q<CR>
+  autocmd FileType help,qf nnoremap <silent> <buffer> q :q<CR>
   autocmd FileType vim nnoremap <silent> <buffer> <CR> :w \|
         \ so % \| noh<CR>
 
@@ -490,10 +493,10 @@ hi! TwiggyIconUnmerged      ctermfg=11  ctermbg=NONE
 " highlight TwiggySort ctermfg=213
 
 " Vim-Tmux Navigator {{{1
-let g:tmux_navigator_no_mappings = 1
+" let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent>     :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
-nnoremap <silent>     :TmuxNavigateUp<cr>
-nnoremap <silent>     :TmuxNavigateRight<cr>
-nnoremap <silent> <F1>  :TmuxNavigatePrevious<cr>
+" nnoremap <silent>     :TmuxNavigateLeft<cr>
+" nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+" nnoremap <silent>     :TmuxNavigateUp<cr>
+" nnoremap <silent>     :TmuxNavigateRight<cr>
+" nnoremap <silent> <F1>  :TmuxNavigatePrevious<cr>
