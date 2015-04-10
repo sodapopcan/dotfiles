@@ -318,6 +318,7 @@ augroup FileTypeOptions
         \ setlocal bufhidden=wipe |
         \ nnoremap <buffer> q :q<CR>
   autocmd FileType gitcommit setlocal spell
+  autocmd FileType gitcommit setlocal list listchars=tab:\ \ 
   autocmd FileType help,qf nnoremap <silent> <buffer> q :q<CR>
   autocmd FileType vim nnoremap <silent> <buffer> <CR> :w \|
         \ so % \| noh<CR>
