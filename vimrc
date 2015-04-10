@@ -96,7 +96,7 @@ set ruler
 set textwidth=80
 set nowrap
 set scroll=5
-set scrolloff=7
+set scrolloff=2
 set sidescrolloff=0
 set shortmess=at
 set pumheight=5
