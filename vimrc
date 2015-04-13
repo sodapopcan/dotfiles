@@ -230,7 +230,7 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 " One keypress -- instead of 4 -- to save
-nnoremap <CR> :w<CR>
+nnoremap <CR> :w \| redraw!<CR>
 " Write everything and quit
 nnoremap Q :wall \| qall!<CR>
 " Undo an 'o'
