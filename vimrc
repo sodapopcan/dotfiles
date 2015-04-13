@@ -466,6 +466,11 @@ let g:syntastic_enable_highlighting = 0
 let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_javascript_checkers = ['jshint']
 
+let g:syntastic_mode_map = {
+      \ 'mode': 'active',
+      \ 'passive_filetypes': ['erb']
+      \ }
+
 " Signify {{{1
 "
 let g:signify_sign_add                 = "\u258F"
