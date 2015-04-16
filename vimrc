@@ -140,11 +140,11 @@ function! s:git_branch_status_line()
   if status != ''
     return ' ' . status . ' '
   else
-    return ''
+    return ' [No Branch] '
   endif
 endfunction
 function! StatusLine()
-  let s =     ''
+  let s = ''
   let s.= "%2*"
   let s.= "%{&paste?'\ \ paste\ ':''}"
   let s.= "%{match(expand('%:p'), '^fugitive') >= 0?'\ \ fugitive \ ':''}"
