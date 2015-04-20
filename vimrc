@@ -256,8 +256,6 @@ cnoremap <C-P> <C-R><C-">
 " Increase scroll speed a little
 nnoremap <C-E> 2<C-E>
 nnoremap <C-Y> 2<C-Y>
-" Wipe buffer while maintaining its split
-nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 " Strip whitespace
 nnoremap <silent> da<Space> :%s/\s\+$//<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
@@ -275,8 +273,17 @@ nnoremap H :tabnew %<CR>
 nnoremap ]h :tabnext<CR>
 nnoremap [h :tabprev<CR>
 
-" Expand %% as current path, why not (from vim tips)
+
+" Leader Mappings
+"
+
+" Wipe buffer while maintaining its split
+nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
+" Edit a new file in the same directory
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+" Location mappings for rails
+autocmd BufEnter * call <SID>define_rails_mappings()
+
 
 
 " Mappings Functions {{{2
@@ -310,6 +317,18 @@ function! IfIOnly()
     only
   endif
 endfunction
+
+" Define location mappings for rails projects
+function! s:define_rails_mappings()
+  if exists('*RailsDetect')
+    nnoremap <buffer> <silent> <Leader>d :e db/migrate<CR>:keepjumps normal! G<CR>
+    nnoremap <buffer> <silent> <Leader>m :e db/schema.rb<CR>
+  endif
+
+  return 0
+endfunction
+
+
 
 " Autocommands {{{1
 augroup FileTypeOptions
