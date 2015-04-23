@@ -206,7 +206,6 @@ E()
 
 alias vid='e $(git diff master --name-only)'
 
-alias t='python ~/src/projects/t/t.py --task-dir ~/tasks --list tasks'
 alias carbon='python /opt/graphite/bin/carbon-cache.py'
 alias graphite-web='python /opt/graphite/bin/run-graphite-devel-server.py /opt/graphite'
 
@@ -225,4 +224,4 @@ bindkey '^R' history-incremental-search-backward
 bindkey -M viins 'jk' vi-cmd-mode
 
 # t {{{1
-alias t='python ~/src/t/t.py --task-dir ~/private/tasks --list tasks'
+alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
