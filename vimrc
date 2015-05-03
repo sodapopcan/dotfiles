@@ -222,8 +222,8 @@ augroup END
 "
 " I've never grown out of using jk to escape insert mode
 inoremap jk <ESC>
-" I already know how to quit; no need to remind me
-nnoremap <C-C> <silent> <C-C>
+" Since C-L is in use, C-C will just do everything
+nnoremap <C-C> <C-C>:noh<CR>:syntax sync fromstart<CR>:redraw!<CR>
 " I'll get rid of this once I hack vim-tmux-navigator a bit
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
