@@ -249,6 +249,8 @@ nnoremap <silent>  - :sp<CR>
 nnoremap <silent> \| :vsp<CR>
 " Paste at EOL
 nnoremap <silent> K :call PasteAtEOL()<CR>
+" Reformat entire file
+nnoremap + mzgg=G`z
 " Help on word under cursor
 " nnoremap <silent> <C-H> yiw :only \| vertical botright help <C-R><C-"><CR>
 " Paste into command line
