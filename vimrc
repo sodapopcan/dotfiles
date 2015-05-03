@@ -324,10 +324,9 @@ endfunction
 function! s:define_rails_mappings()
   if exists('*RailsDetect')
     nnoremap <buffer> <silent> <Leader>d :e db/migrate<CR>:keepjumps normal! G<CR>
+    nnoremap <buffer> <silent> <Leader>D :e db/migrate<CR>:keepjumps normal! G<CR>:keepjumps exec "normal <C-V><CR>"<CR>
     nnoremap <buffer> <silent> <Leader>m :e db/schema.rb<CR>
   endif
-
-  return 0
 endfunction
 
 
