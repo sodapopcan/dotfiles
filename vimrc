@@ -246,6 +246,7 @@ nnoremap j gj
 nnoremap k gk
 " Who doesn't prefer `'s functionality?  Well, I do
 nnoremap ` '
+nnoremap ' `
 " I always have to think for a second if I want :vsp or :sp
 nnoremap <silent>  - :sp<CR>
 nnoremap <silent> \| :vsp<CR>
