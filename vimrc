@@ -406,14 +406,15 @@ if !exists('*GitDiffPlus')
     SignifyToggle
     tabnew %
     Gvdiff
-    " colorscheme diff
+    colorscheme diff
     windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
   endfunction
 
   function! GitDiffPlusCleanUp()
     windo write
     tabclose
-    " colorscheme sodapopcan
+    source $MYVIMRC
+    colorscheme sodapopcan
     SignifyToggle
     nnoremap <buffer> q q
   endfunction

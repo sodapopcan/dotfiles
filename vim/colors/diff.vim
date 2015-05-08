@@ -8,7 +8,7 @@ endif
 
 let g:colors_name = "diff"
 
-hi Normal              ctermfg=240   ctermbg=236   cterm=NONE
+hi Normal              ctermfg=235 ctermbg=236   cterm=NONE
 hi Visual              ctermfg=NONE  ctermbg=192   cterm=NONE
 hi Comment             ctermfg=235   ctermbg=NONE  cterm=NONE
 hi Search              ctermfg=NONE  ctermbg=191   cterm=NONE
@@ -30,15 +30,10 @@ hi StatusLine          ctermfg=52    ctermbg=238   cterm=NONE
 hi StatusLineNC        ctermfg=238   ctermbg=238   cterm=NONE
 
 " Gitv
-hi! diffAdded                 ctermfg=108    ctermbg=bg
-hi! diffRemoved               ctermfg=95     ctermbg=bg
-hi! diffLine                  ctermfg=118    ctermbg=bg
-hi! diffSubname               ctermfg=113    ctermbg=bg
-
-hi! DiffAdd                   ctermfg=108    ctermbg=bg cterm=NONE
-hi! DiffDelete                ctermfg=95     ctermbg=bg cterm=NONE
-hi! DiffChange                ctermfg=152    ctermbg=bg cterm=NONE
-hi! DiffText                  ctermfg=144    ctermbg=bg cterm=NONE
+hi! DiffAdd            ctermfg=108    ctermbg=bg cterm=NONE
+hi! DiffDelete         ctermfg=233    ctermbg=bg cterm=NONE
+hi! DiffChange         ctermfg=145    ctermbg=bg cterm=NONE
+hi! DiffText           ctermfg=bg     ctermbg=95 cterm=NONE
 
 hi! Pmenu              ctermfg=242   ctermbg=254  cterm=NONE
 hi! PmenuSel           ctermfg=255   ctermbg=240  cterm=BOLD
