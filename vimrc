@@ -34,7 +34,9 @@ Plugin 'int3/vim-extradite'
 Plugin 'mhinz/vim-signify'
 Plugin 'file:///' . expand('~') . '/src/vim/twiggy'
 
-Plugin 'plasticboy/vim-markdown'
+" Plugin 'plasticboy/vim-markdown'
+
+Plugin 'tpope/vim-bundler'
 
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rake'
