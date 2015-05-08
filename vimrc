@@ -326,12 +326,19 @@ function! IfIOnly()
   endif
 endfunction
 
+function! s:isdir(dir)
+  return glob(a:dir) !=# ''
+endfunction
+
 " Define location mappings for rails projects
 function! s:define_rails_mappings()
   if exists('*RailsDetect')
+    nnoremap <buffer> <silent> <Leader>m :e db/schema.rb<CR>
+  endif
+
+  if s:isdir('db/migrate')
     nnoremap <buffer> <silent> <Leader>d :e db/migrate<CR>:keepjumps normal! G<CR>
     nnoremap <buffer> <silent> <Leader>D :e db/migrate<CR>:keepjumps normal! G<CR>:keepjumps exec "normal <C-V><CR>"<CR>
-    nnoremap <buffer> <silent> <Leader>m :e db/schema.rb<CR>
   endif
 endfunction
 
