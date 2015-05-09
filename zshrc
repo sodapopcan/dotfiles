@@ -216,12 +216,10 @@ alias ta="tmux attach-session -t "
 alias -g ctags="/usr/local/bin/ctags -R -f tags --exclude=.git --exclude=log --exclude=public --exclude=tmp --exclude=app/assets --exclude=vendor"
 
 # And so on {{{1
-bindkey -v
+bindkey -e
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
-# bindkey "^p" history-beginning-search-backward-end
-# bindkey "^n" history-beginning-search-forward-end
-bindkey -M viins 'jk' vi-cmd-mode
+# bindkey -M viins 'jk' vi-cmd-mode
 
 # t {{{1
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
