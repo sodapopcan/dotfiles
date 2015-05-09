@@ -178,6 +178,8 @@ function! TabLine()
   if tabpagenr('$') > 1
     let s.= '%=%#TabLine#'
   endif
+  let s.='%='
+  let s.=ObsessionStatus()
 
   return s
 endfunction
@@ -273,6 +275,9 @@ nmap <C-P> [c
 nnoremap H :tabnew %<CR>
 nnoremap ]h :tabnext<CR>
 nnoremap [h :tabprev<CR>
+" Obsession
+nnoremap go :Obsession<CR>:redraw!<CR>
+nnoremap gO :Obsession!<CR>:redraw!<CR>
 
 
 " Leader Mappings
@@ -474,6 +479,21 @@ func! MarkdownFold(lnum)
 endfunc
 
 autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmethod=expr
+
+
+" Obsession
+
+function! ObsessionStatus()
+  let session   = filereadable(v:this_session)
+  if exists('g:this_obsession') && session
+    return 'tracking'
+  elseif session
+    return 'paused'
+  else
+    return ''
+  endif
+endfunction
+
 
 " NERDTree {{{1
 "
