@@ -42,30 +42,11 @@ alias mkdir="mkdir -p"
 
 alias s="cd $HOME/src"
 
-dir ()
-{
-  mkdir -p "$@" && cd "$@";
-}
-
-g ()
-{
-  mkdir -p "$@" && cd "$@" && git init;
-}
-
-bcd ()
-{
-  cd $(bundle show $@)
-}
-
-vcd ()
-{
-  cd "$SRC/vim/$@"
-}
-
-gcd ()
-{
-  cd "$SRC/gems/$@"
-}
+dir () { mkdir -p "$@" && cd "$@"; }
+g   () { mkdir -p "$@" && cd "$@" && git init; }
+bcd () { cd $(bundle show $@) }
+vcd () { cd "$SRC/vim/$@" }
+gcd () { cd "$SRC/gems/$@" }
 
 colours()
 {
