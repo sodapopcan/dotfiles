@@ -52,9 +52,19 @@ g ()
   mkdir -p "$@" && cd "$@" && git init;
 }
 
-gcd()
+bcd ()
 {
   cd $(bundle show $@)
+}
+
+vcd ()
+{
+  cd "$SRC/vim/$@"
+}
+
+gcd ()
+{
+  cd "$SRC/gems/$@"
 }
 
 colours()
