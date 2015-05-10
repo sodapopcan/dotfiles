@@ -47,6 +47,15 @@ g   () { mkdir -p "$@" && cd "$@" && git init; }
 bcd () { cd $(bundle show $@) }
 vcd () { cd "$SRC/vim/$@" }
 gcd () { cd "$SRC/gems/$@" }
+scd ()
+{
+  if (( $# == 0 )); then
+    cd $SRC
+  else
+    cd "$SRC/$@"
+  fi
+
+}
 
 colours()
 {
