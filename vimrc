@@ -66,6 +66,10 @@ endif
 hi User1 ctermfg=255 ctermbg=239   " git branch
 hi User2 ctermfg=16  ctermbg=167   " warn
 hi User3 ctermfg=16  ctermbg=237   " filename
+hi User4 ctermfg=10  ctermbg=237   " Obsession - tracking
+hi User5 ctermfg=11  ctermbg=237   " Obsession - paused
+hi User6 ctermfg=1   ctermbg=237   " Obsession - not tracking
+hi User7 ctermfg=16  ctermbg=bg    " line
 
 " Settings {{{1
 
@@ -178,8 +182,6 @@ function! TabLine()
   if tabpagenr('$') > 1
     let s.= '%=%#TabLine#'
   endif
-  let s.='%='
-  let s.=ObsessionStatus()
 
   return s
 endfunction
@@ -487,11 +489,11 @@ autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmetho
 function! ObsessionStatus()
   let session   = filereadable(v:this_session)
   if exists('g:this_obsession') && session
-    return 'tracking'
+    return "%4* \u25B6"
   elseif session
-    return 'paused'
+    return "%5* \u25CF"
   else
-    return ''
+    return "%6* \u25FC"
   endif
 endfunction
 
