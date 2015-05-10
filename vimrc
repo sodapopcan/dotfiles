@@ -275,6 +275,7 @@ nmap <C-P> [c
 nnoremap H :tabnew %<CR>
 nnoremap ]h :tabnext<CR>
 nnoremap [h :tabprev<CR>
+nnoremap gH :tabclose<CR>
 " Obsession
 nnoremap go :Obsession<CR>:redraw!<CR>
 nnoremap gO :Obsession!<CR>:redraw!<CR>
