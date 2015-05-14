@@ -492,12 +492,12 @@ autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmetho
 
 function! ObsessionStatus()
   let session   = filereadable(v:this_session)
-  if exists('g:this_obsession') && session
-    return "%4* \u25B6"
-  elseif session
+  if exists('g:this_obsession') && session  " tracking
+    return "%4* \u25CF"
+  elseif session  " paused
     return "%5* \u25CF"
-  else
-    return "%6* \u25FC"
+  else  " not tracking
+    return "%6* \u25CF"
   endif
 endfunction
 
