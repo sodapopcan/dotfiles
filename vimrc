@@ -1,53 +1,56 @@
 if !&compatible | set nocompatible | endif
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+" set rtp+=~/.vim/bundle/Vundle.vim
 
 " Plugins {{{
+" call vundle#begin()
 
-call vundle#begin()
+" Plugin 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
 
-Plugin 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
-
-Plugin 'sjl/vitality.vim'
+" Plugin 'sjl/vitality.vim'
 " Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'file:///' . expand('~') .'/src/vim/vim-tmux-navigator'
+" Plugin 'tpope/vim-tbone'
 
-Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-dispatch'
 
-Plugin 'tpope/vim-obsession'
+" Plugin 'file:///' . expand('~') . '/src/vim/obsession'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/syntastic'
 
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-endwise'
-Plugin 'tommcdo/vim-exchange'
+" Plugin 'tpope/vim-eunuch'
+" Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-unimpaired'
+" Plugin 'tpope/vim-endwise'
+" Plugin 'tommcdo/vim-exchange'
 
-Plugin 'tpope/vim-commentary'
+" Plugin 'tpope/vim-commentary'
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'int3/vim-extradite'
-Plugin 'mhinz/vim-signify'
-Plugin 'file:///' . expand('~') . '/src/vim/twiggy'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'gregsexton/gitv'
+" Plugin 'int3/vim-extradite'
+" Plugin 'mhinz/vim-signify'
+" Plugin 'file:///' . expand('~') . '/src/vim/twiggy'
 
 " Plugin 'plasticboy/vim-markdown'
+" Plugin 'junegunn/vim-xmark'
 
-Plugin 'tpope/vim-bundler'
+" Plugin 'tpope/vim-bundler'
 
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-rails'
+" Plugin 'vim-ruby/vim-ruby'
+" Plugin 'tpope/vim-rake'
+" Plugin 'tpope/vim-rails'
 
-Plugin 'junegunn/limelight.vim'
-Plugin 'junegunn/goyo.vim'
+" Plugin 'junegunn/limelight.vim'
+" Plugin 'junegunn/goyo.vim'
 
-call vundle#end()
+" call vundle#end()
 " }}}
 
+execute pathogen#infect('bundle/{}', '~/src/vim/{}')
 filetype plugin indent on
 runtime! macros/matchit.vim
 let g:netrw_dirhistmax = 0
