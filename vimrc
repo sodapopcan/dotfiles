@@ -69,9 +69,9 @@ endif
 hi User1 ctermfg=255 ctermbg=239   " git branch
 hi User2 ctermfg=16  ctermbg=167   " warn
 hi User3 ctermfg=16  ctermbg=237   " filename
-hi User4 ctermfg=10  ctermbg=237   " Obsession - tracking
-hi User5 ctermfg=11  ctermbg=237   " Obsession - paused
-hi User6 ctermfg=1   ctermbg=237   " Obsession - not tracking
+hi User4 ctermfg=167 ctermbg=237   " Obsession - tracking
+hi User5 ctermfg=227 ctermbg=237   " Obsession - paused
+hi User6 ctermfg=238 ctermbg=237   " Obsession - not tracking
 hi User7 ctermfg=16  ctermbg=bg    " line
 
 " Settings {{{1
@@ -171,6 +171,7 @@ set statusline=%!StatusLine()
 function! TabLine()
   let s = "%1*"
   let s.= s:git_branch_status_line()
+  let s.= '%*'.ObsessionStatus().' '
   for i in range(tabpagenr('$'))
     " select the highlighting
     if i + 1 == tabpagenr()
@@ -282,8 +283,8 @@ nnoremap ]h :tabnext<CR>
 nnoremap [h :tabprev<CR>
 nnoremap gH :tabclose<CR>
 " Obsession
-nnoremap go :Obsession<CR>:redraw!<CR>
-nnoremap gO :Obsession!<CR>:redraw!<CR>
+" nnoremap go :Obsession<CR>:redraw!<CR>
+" nnoremap gO :Obsession!<CR>:redraw!<CR>
 
 
 " Leader Mappings
