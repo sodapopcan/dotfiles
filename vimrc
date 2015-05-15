@@ -325,8 +325,12 @@ endfunction
 
 function! IfIOnly()
   if !&modifiable
+    let winnr = winnr()
     while !&modifiable
       wincmd w
+      if winnr ==# winnr()
+        return
+      endif
     endwhile
     return
   endif
