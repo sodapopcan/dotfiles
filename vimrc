@@ -314,21 +314,41 @@ endfunction
 " Intended behaviour: If there are only modifiable splits present, make the
 " current split the only split (ie, run :only). If any unmodifable splits are
 " open (:Gstatus, quickfix window, NERDTree, etc...) close all of those.
+
+function! s:buffocus(bufnr)
+  let switchbuf_cached = &switchbuf
+  set switchbuf=useopen
+  exec 'sb ' . a:bufnr
+  exec 'set switchbuf=' . switchbuf_cached
+endfunction
+
 function! IfIOnly()
+  if !&modifiable
+    while !&modifiable
+      wincmd w
+    endwhile
+    return
+  endif
   let winnr = winnr()
-  let curwinnr = 0
-  let found_nomod = 0
+  let bufnr = bufnr('%')
+  let curwinnr = -1
+  let nomodbufs = []
   while winnr != curwinnr
     wincmd w
     if !&modifiable
-      q
-      let found_nomod = 1
+      call add(nomodbufs, bufnr('%'))
     endif
     let curwinnr = winnr()
   endwhile
-  if !found_nomod
+  if !len(nomodbufs)
     only
+  else
+    for i in nomodbufs
+      call s:buffocus(i)
+      quit
+    endfor
   endif
+  call s:buffocus(bufnr)
 endfunction
 
 function! s:isdir(dir)
