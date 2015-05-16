@@ -239,7 +239,7 @@ nnoremap Q :wall \| qall!<CR>
 " Undo an 'o'
 inoremap <C-O> <Esc>ddk
 " Only show this window
-nnoremap <silent> L :call IfIOnly()<CR>
+nnoremap <silent> L :IfIOnly<CR>
 " Make Y do what you think it would
 nnoremap Y y$
 " Keep your lines short, children
@@ -316,46 +316,6 @@ endfunction
 " split (ie, run :only). If any unmodifable splits are open (:Gstatus, quickfix
 " window, NERDTree, etc...) close all of those.  If the cursor is in an
 " unmodifiable split, jump to the first modifiable one.
-
-function! s:buffocus(bufnr)
-  let switchbuf_cached = &switchbuf
-  set switchbuf=useopen
-  exec 'sb ' . a:bufnr
-  exec 'set switchbuf=' . switchbuf_cached
-endfunction
-
-function! IfIOnly()
-  if !&modifiable
-    let winnr = winnr()
-    while !&modifiable
-      wincmd w
-      if winnr ==# winnr()
-        return
-      endif
-    endwhile
-    return
-  endif
-  let winnr = winnr()
-  let bufnr = bufnr('%')
-  let curwinnr = -1
-  let nomodbufs = []
-  while winnr != curwinnr
-    wincmd w
-    if !&modifiable
-      call add(nomodbufs, bufnr('%'))
-    endif
-    let curwinnr = winnr()
-  endwhile
-  if !len(nomodbufs)
-    only
-  else
-    for i in nomodbufs
-      call s:buffocus(i)
-      quit
-    endfor
-  endif
-  call s:buffocus(bufnr)
-endfunction
 
 function! s:isdir(dir)
   return glob(a:dir) !=# ''
