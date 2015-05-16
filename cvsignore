@@ -2,3 +2,4 @@ Session.vim
 tags
 node_modules
 .ruby-version
+.xmark.*
