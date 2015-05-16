@@ -124,6 +124,7 @@ set list listchars=tab:>\ ,eol:\ ,trail:·
 hi SpecialKey ctermfg=238
 
 set formatoptions=
+set formatoptions+=t     " Respect the wrap
 set formatoptions+=c     " Format comments
 set formatoptions+=r     " Continue comments by default
 set formatoptions+=q     " Format comments with gq
