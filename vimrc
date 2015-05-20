@@ -58,13 +58,7 @@ let g:netrw_dirhistmax = 0
 " Syntax {{{1
 
 syntax on
-if exists('g:colors_name')
-  if g:colors_name !=# 'diff'
-    colorscheme sodapopcan
-  endif
-else
-  colorscheme sodapopcan
-endif
+colorscheme sodapopcan
 
 hi User1 ctermfg=255 ctermbg=239   " git branch
 hi User2 ctermfg=16  ctermbg=167   " warn
@@ -388,7 +382,7 @@ let g:ctrlp_custom_ignore = {
 " Git {{{1
 "
 nnoremap <silent> gs :Gstatus<CR>
-nnoremap <silent> gd :call GitDiffPlus() <Bar> :source ~/.vimrc<CR>
+nnoremap <silent> gd :call GitDiffPlus()<CR>
 nnoremap <silent> g? :Gblame<CR>
 nnoremap <silent> gw :Gwrite<CR>:w<CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
@@ -407,20 +401,22 @@ nnoremap          gB :Twiggy<Space>
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
   function! GitDiffPlus()
+    let linenr = line('.')
     SignifyToggle
     tabnew %
     Gvdiff
     colorscheme diff
+    exec "normal! " . linenr . 'G'
     windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
   endfunction
 
   function! GitDiffPlusCleanUp()
     windo write
     tabclose
-    source $MYVIMRC
     colorscheme sodapopcan
     SignifyToggle
     nnoremap <buffer> q q
+    source $MYVIMRC
   endfunction
 endif
 
