@@ -229,7 +229,7 @@ nnoremap <C-L> <C-W>l
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w \| redraw!<CR>
 " Write everything and quit
-nnoremap qA :wall \| qall!<CR>
+nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
 " In any event, qq for recording, Q to playback (stolen from junegunn)
 nnoremap Q @q
