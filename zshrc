@@ -33,9 +33,10 @@ setopt share_history # share command history data
 
 # system stuffs {{{1
 alias l="ls -lh"
-alias L="ls -lht"
+alias L="clear && l"
 alias .="ls -lah"
 alias la="ls -laht"
+alias lA="clear && ls -laht"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -47,7 +48,13 @@ alias s="cd $HOME/src"
 
 dir () { mkdir -p "$@" && cd "$@"; }
 g   () { mkdir -p "$@" && cd "$@" && git init; }
+
 bcd () { cd $(bundle show $@) }
+
+__compl_srccd ()
+{
+  compctl -k ($(ls -F $SRC/$1/ | grep -v "/$" | tr "\n/" " ")) $2
+}
 vcd () { cd "$SRC/vim/$@" }
 gcd () { cd "$SRC/gems/$@" }
 scd ()
@@ -106,8 +113,8 @@ alias gus="git submodule foreach git pull origin master" # Leaving this for post
 alias gr="git reset"
 alias gS="git reset --soft HEAD\^"
 alias gR="git reset --hard"
-alias ga="git add"
-alias gA="git add -p"
+alias ga="clear && git add"
+alias gap="clear && git add -p"
 
 gitprune()
 {
