@@ -227,7 +227,7 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 " One keypress -- instead of 4 -- to save
-nnoremap <CR> :w \| redraw!<CR>
+nnoremap <CR> :w<CR>
 " Write everything and quit
 nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
