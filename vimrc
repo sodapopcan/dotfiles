@@ -371,8 +371,9 @@ let g:ctrlp_prompt_mappings = {
       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
       \ }
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle|node_modules)\/(.*)'
-  \ }
+      \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle|node_modules)\/(.*)',
+      \ 'file': '\vSession.vim'
+      \ }
 
 " Git {{{1
 "
