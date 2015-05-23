@@ -275,14 +275,6 @@ nnoremap <C-]> <C-]>z<CR>
 " This relies on having unimpaired installed
 nmap <C-N> ]c
 nmap <C-P> [c
-" Tabs
-nnoremap H :tabnew %<CR>
-nnoremap ]h :tabnext<CR>
-nnoremap [h :tabprev<CR>
-nnoremap gH :tabclose<CR>
-" Obsession
-" nnoremap go :Obsession<CR>:redraw!<CR>
-" nnoremap gO :Obsession!<CR>:redraw!<CR>
 
 
 " Leader Mappings
