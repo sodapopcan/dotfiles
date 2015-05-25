@@ -489,6 +489,10 @@ let NERDTreeHijackNetrw         = 0
 let NERDTreeHighlightCursorline = 1
 let NERDTreeMinimalUI           = 1
 
+" RSI  {{{1
+"
+let g:rsi_no_meta = 1
+
 " Syntastic {{{1
 "
 let g:syntastic_check_on_open = 0
