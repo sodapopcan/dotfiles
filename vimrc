@@ -1,51 +1,56 @@
 if !&compatible | set nocompatible | endif
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+" set rtp+=~/.vim/bundle/Vundle.vim
 
 " Plugins {{{
+" call vundle#begin()
 
-call vundle#begin()
+" Plugin 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
 
-Plugin 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
-
-Plugin 'sjl/vitality.vim'
+" Plugin 'sjl/vitality.vim'
 " Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'file:///' . expand('~') .'/src/vim/vim-tmux-navigator'
+" Plugin 'tpope/vim-tbone'
 
-Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-dispatch'
 
-Plugin 'tpope/vim-obsession'
+" Plugin 'file:///' . expand('~') . '/src/vim/obsession'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/syntastic'
 
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-endwise'
-Plugin 'tommcdo/vim-exchange'
+" Plugin 'tpope/vim-eunuch'
+" Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-surround'
+" Plugin 'tpope/vim-unimpaired'
+" Plugin 'tpope/vim-endwise'
+" Plugin 'tommcdo/vim-exchange'
 
-Plugin 'tpope/vim-commentary'
+" Plugin 'tpope/vim-commentary'
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'int3/vim-extradite'
-Plugin 'mhinz/vim-signify'
-Plugin 'file:///' . expand('~') . '/src/vim/twiggy'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'gregsexton/gitv'
+" Plugin 'int3/vim-extradite'
+" Plugin 'mhinz/vim-signify'
+" Plugin 'file:///' . expand('~') . '/src/vim/twiggy'
 
-Plugin 'plasticboy/vim-markdown'
+" Plugin 'plasticboy/vim-markdown'
+" Plugin 'junegunn/vim-xmark'
 
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-rails'
+" Plugin 'tpope/vim-bundler'
 
-Plugin 'junegunn/limelight.vim'
-Plugin 'junegunn/goyo.vim'
+" Plugin 'vim-ruby/vim-ruby'
+" Plugin 'tpope/vim-rake'
+" Plugin 'tpope/vim-rails'
 
-call vundle#end()
+" Plugin 'junegunn/limelight.vim'
+" Plugin 'junegunn/goyo.vim'
+
+" call vundle#end()
 " }}}
 
+execute pathogen#infect('bundle/{}', '~/src/vim/{}')
 filetype plugin indent on
 runtime! macros/matchit.vim
 let g:netrw_dirhistmax = 0
@@ -53,17 +58,15 @@ let g:netrw_dirhistmax = 0
 " Syntax {{{1
 
 syntax on
-if exists('g:colors_name')
-  if g:colors_name !=# 'diff'
-    colorscheme sodapopcan
-  endif
-else
-  colorscheme sodapopcan
-endif
+colorscheme sodapopcan
 
 hi User1 ctermfg=255 ctermbg=239   " git branch
 hi User2 ctermfg=16  ctermbg=167   " warn
 hi User3 ctermfg=16  ctermbg=237   " filename
+hi User4 ctermfg=167 ctermbg=237   " Obsession - tracking
+hi User5 ctermfg=227 ctermbg=237   " Obsession - paused
+hi User6 ctermfg=238 ctermbg=237   " Obsession - not tracking
+hi User7 ctermfg=16  ctermbg=bg    " line
 
 " Settings {{{1
 
@@ -96,7 +99,7 @@ set ruler
 set textwidth=80
 set nowrap
 set scroll=5
-set scrolloff=7
+set scrolloff=2
 set sidescrolloff=0
 set shortmess=at
 set pumheight=5
@@ -115,6 +118,7 @@ set list listchars=tab:>\ ,eol:\ ,trail:·
 hi SpecialKey ctermfg=238
 
 set formatoptions=
+set formatoptions+=t     " Respect the wrap
 set formatoptions+=c     " Format comments
 set formatoptions+=r     " Continue comments by default
 set formatoptions+=q     " Format comments with gq
@@ -140,11 +144,11 @@ function! s:git_branch_status_line()
   if status != ''
     return ' ' . status . ' '
   else
-    return ''
+    return ' [No Branch] '
   endif
 endfunction
 function! StatusLine()
-  let s =     ''
+  let s = ''
   let s.= "%2*"
   let s.= "%{&paste?'\ \ paste\ ':''}"
   let s.= "%{match(expand('%:p'), '^fugitive') >= 0?'\ \ fugitive \ ':''}"
@@ -162,6 +166,7 @@ set statusline=%!StatusLine()
 function! TabLine()
   let s = "%1*"
   let s.= s:git_branch_status_line()
+  let s.= '%*'.ObsessionStatus().' '
   for i in range(tabpagenr('$'))
     " select the highlighting
     if i + 1 == tabpagenr()
@@ -169,20 +174,12 @@ function! TabLine()
     else
       let s.= '%#TabLine#'
     endif
-
-    " set the tab page number (for mouse clicks)
-    let s .= '%' . (i + 1) . 'T'
-
-    " the label is made by TabLabel()
-    let s .= ' %{TabLabel(' . (i + 1) . ')} '
+    let s.= '%' . (i + 1) . 'T'
+    let s.= ' %{TabLabel(' . (i + 1) . ')} '
   endfor
-
-  " after the last tab fill with TabLineFill and reset tab page nr
-  let s .= '%#TabLineFill#%T'
-
-  " right-align the label to close the current tab page
+  let s.= '%#TabLineFill#%T'
   if tabpagenr('$') > 1
-    let s .= '%=%#TabLine#'
+    let s.= '%=%#TabLine#'
   endif
 
   return s
@@ -222,8 +219,8 @@ augroup END
 "
 " I've never grown out of using jk to escape insert mode
 inoremap jk <ESC>
-" I already know how to quit; no need to remind me
-nnoremap <C-C> <silent> <C-C>
+" Since C-L is in use, C-C will just do everything
+nnoremap <C-C> <C-C>:noh<CR>:syntax sync fromstart<CR>:redraw!<CR>
 " I'll get rid of this once I hack vim-tmux-navigator a bit
 nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
@@ -232,11 +229,14 @@ nnoremap <C-L> <C-W>l
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w<CR>
 " Write everything and quit
-nnoremap Q :wall \| qall!<CR>
+nnoremap zZ :wall \| qall!<CR>
+" I've never used more than one macro register before (though maybe I should?)
+" In any event, qq for recording, Q to playback (stolen from junegunn)
+nnoremap Q @q
 " Undo an 'o'
 inoremap <C-O> <Esc>ddk
 " Only show this window
-nnoremap <silent> L :call IfIOnly()<CR>
+nnoremap <silent> L :IfIOnly<CR>
 " Make Y do what you think it would
 nnoremap Y y$
 " Keep your lines short, children
@@ -244,11 +244,14 @@ nnoremap j gj
 nnoremap k gk
 " Who doesn't prefer `'s functionality?  Well, I do
 nnoremap ` '
+nnoremap ' `
 " I always have to think for a second if I want :vsp or :sp
 nnoremap <silent>  - :sp<CR>
 nnoremap <silent> \| :vsp<CR>
 " Paste at EOL
 nnoremap <silent> K :call PasteAtEOL()<CR>
+" Reformat entire file
+nnoremap + mzgg=G`z
 " Help on word under cursor
 " nnoremap <silent> <C-H> yiw :only \| vertical botright help <C-R><C-"><CR>
 " Paste into command line
@@ -256,8 +259,6 @@ cnoremap <C-P> <C-R><C-">
 " Increase scroll speed a little
 nnoremap <C-E> 2<C-E>
 nnoremap <C-Y> 2<C-Y>
-" Wipe buffer while maintaining its split
-nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 " Strip whitespace
 nnoremap <silent> da<Space> :%s/\s\+$//<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
@@ -267,12 +268,25 @@ inoremap <c-w> <c-g>u<c-w>
 vnoremap <CR> :Gbrowse<CR>
 " I've held off on this for a long time.  I dont' know why
 nnoremap <F5> :so ~/.vimrc<CR>
+
+" Navigation
+" Position func/meth definition at top of screen after jump
+nnoremap <C-]> <C-]>zt
 " This relies on having unimpaired installed
 nmap <C-N> ]c
 nmap <C-P> [c
 
-" Expand %% as current path, why not (from vim tips)
+
+" Leader Mappings
+"
+
+" Wipe buffer while maintaining its split
+nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
+" Edit a new file in the same directory
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+" Location mappings for rails
+autocmd BufEnter * call <SID>define_rails_mappings()
+
 
 
 " Mappings Functions {{{2
@@ -285,27 +299,30 @@ function! PasteAtEOL()
   exec "normal! A\<space>\<esc>mzp`z"
 endfunction
 
-" Make (custom) L mapping smarter (unfinished)
+" Make (custom) L mapping smarter
 "
-" Intended behaviour: If there are only modifiable splits present, make the
-" current split the only split (ie, run :only). If any unmodifable splits are
-" open (:Gstatus, quickfix window, NERDTree, etc...) close all of those.
-function! IfIOnly()
-  let winnr = winnr()
-  let curwinnr = 0
-  let found_nomod = 0
-  while winnr != curwinnr
-    wincmd w
-    if !&modifiable
-      q
-      let found_nomod = 1
-    endif
-    let curwinnr = winnr()
-  endwhile
-  if !found_nomod
-    only
+" If there are only modifiable splits present, make the current split the only
+" split (ie, run :only). If any unmodifable splits are open (:Gstatus, quickfix
+" window, NERDTree, etc...) close all of those.  If the cursor is in an
+" unmodifiable split, jump to the first modifiable one.
+
+function! s:isdir(dir)
+  return glob(a:dir) !=# ''
+endfunction
+
+" Define location mappings for rails projects
+function! s:define_rails_mappings()
+  if exists('*RailsDetect')
+    nnoremap <buffer> <silent> <Leader>m :e db/schema.rb<CR>
+  endif
+
+  if s:isdir('db/migrate')
+    nnoremap <buffer> <silent> <Leader>d :e db/migrate<CR>:keepjumps normal! G<CR>
+    nnoremap <buffer> <silent> <Leader>D :e db/migrate<CR>:keepjumps normal! G<CR>:keepjumps exec "normal <C-V><CR>"<CR>
   endif
 endfunction
+
+
 
 " Autocommands {{{1
 augroup FileTypeOptions
@@ -314,6 +331,7 @@ augroup FileTypeOptions
         \ setlocal bufhidden=wipe |
         \ nnoremap <buffer> q :q<CR>
   autocmd FileType gitcommit setlocal spell
+  autocmd FileType gitcommit setlocal list listchars=tab:\ \ 
   autocmd FileType help,qf nnoremap <silent> <buffer> q :q<CR>
   autocmd FileType vim nnoremap <silent> <buffer> <CR> :w \|
         \ so % \| noh<CR>
@@ -353,13 +371,14 @@ let g:ctrlp_prompt_mappings = {
       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
       \ }
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle|node_modules)\/(.*)'
-  \ }
+      \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle|node_modules)\/(.*)',
+      \ 'file': '\vSession.vim'
+      \ }
 
 " Git {{{1
 "
 nnoremap <silent> gs :Gstatus<CR>
-nnoremap <silent> gd :call GitDiffPlus() <Bar> :source ~/.vimrc<CR>
+nnoremap <silent> gd :call GitDiffPlus()<CR>
 nnoremap <silent> g? :Gblame<CR>
 nnoremap <silent> gw :Gwrite<CR>:w<CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
@@ -378,19 +397,22 @@ nnoremap          gB :Twiggy<Space>
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
   function! GitDiffPlus()
+    let linenr = line('.')
     SignifyToggle
     tabnew %
     Gvdiff
-    " colorscheme diff
+    colorscheme diff
+    exec "normal! " . linenr . 'G'
     windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
   endfunction
 
   function! GitDiffPlusCleanUp()
     windo write
     tabclose
-    " colorscheme sodapopcan
+    colorscheme sodapopcan
     SignifyToggle
     nnoremap <buffer> q q
+    source $MYVIMRC
   endfunction
 endif
 
@@ -443,6 +465,21 @@ endfunc
 
 autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmethod=expr
 
+
+" Obsession
+
+function! ObsessionStatus()
+  let session   = filereadable(v:this_session)
+  if exists('g:this_obsession') && session  " tracking
+    return "%4* \u25CF"
+  elseif session  " paused
+    return "%5* \u25CF"
+  else  " not tracking
+    return "%6* \u25CF"
+  endif
+endfunction
+
+
 " NERDTree {{{1
 "
 nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
@@ -460,6 +497,11 @@ let g:syntastic_enable_highlighting = 0
 
 let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_javascript_checkers = ['jshint']
+
+let g:syntastic_mode_map = {
+      \ 'mode': 'active',
+      \ 'passive_filetypes': ['erb']
+      \ }
 
 " Signify {{{1
 "

@@ -20,9 +20,12 @@ HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
+setopt auto_cd
 setopt extended_history
 setopt hist_expire_dups_first
-setopt hist_ignore_dups # ignore duplication command history list
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
@@ -30,9 +33,10 @@ setopt share_history # share command history data
 
 # system stuffs {{{1
 alias l="ls -lh"
-alias L="ls -lht"
+alias L="clear && l"
 alias .="ls -lah"
 alias la="ls -laht"
+alias lA="clear && ls -laht"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -42,19 +46,25 @@ alias mkdir="mkdir -p"
 
 alias s="cd $HOME/src"
 
-dir ()
-{
-  mkdir -p "$@" && cd "$@";
-}
+dir () { mkdir -p "$@" && cd "$@"; }
+g   () { mkdir -p "$@" && cd "$@" && git init; }
 
-g ()
-{
-  mkdir -p "$@" && cd "$@" && git init;
-}
+bcd () { cd $(bundle show $@) }
 
-gcd()
+__compl_srccd ()
 {
-  cd $(bundle show $@)
+  compctl -k ($(ls -F $SRC/$1/ | grep -v "/$" | tr "\n/" " ")) $2
+}
+vcd () { cd "$SRC/vim/$@" }
+gcd () { cd "$SRC/gems/$@" }
+scd ()
+{
+  if (( $# == 0 )); then
+    cd $SRC
+  else
+    cd "$SRC/$@"
+  fi
+
 }
 
 colours()
@@ -103,8 +113,8 @@ alias gus="git submodule foreach git pull origin master" # Leaving this for post
 alias gr="git reset"
 alias gS="git reset --soft HEAD\^"
 alias gR="git reset --hard"
-alias ga="git add"
-alias gA="git add -p"
+alias ga="clear && git add"
+alias gap="clear && git add -p"
 
 gitprune()
 {
@@ -177,8 +187,6 @@ battery()
 
 # Prompt {{{1
 
-# ㋡
-# ◔̯◔
 PS1='
    %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string)
 %(?.%{%F{108}%} *.%{%F{167}%} *)%{%F{232}%}%b '
@@ -208,7 +216,6 @@ E()
 
 alias vid='e $(git diff master --name-only)'
 
-alias t='python ~/src/projects/t/t.py --task-dir ~/tasks --list tasks'
 alias carbon='python /opt/graphite/bin/carbon-cache.py'
 alias graphite-web='python /opt/graphite/bin/run-graphite-devel-server.py /opt/graphite'
 
@@ -219,12 +226,10 @@ alias ta="tmux attach-session -t "
 alias -g ctags="/usr/local/bin/ctags -R -f tags --exclude=.git --exclude=log --exclude=public --exclude=tmp --exclude=app/assets --exclude=vendor"
 
 # And so on {{{1
-bindkey -v
+bindkey -e
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
-# bindkey "^p" history-beginning-search-backward-end
-# bindkey "^n" history-beginning-search-forward-end
-bindkey -M viins 'jk' vi-cmd-mode
+# bindkey -M viins 'jk' vi-cmd-mode
 
 # t {{{1
-alias t='python ~/src/t/t.py --task-dir ~/private/tasks --list tasks'
+alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
