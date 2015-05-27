@@ -166,7 +166,7 @@ set statusline=%!StatusLine()
 function! TabLine()
   let s = "%1*"
   let s.= s:git_branch_status_line()
-  let s.= '%*'.ObsessionStatus().' '
+  let s.= '%*'.ObsessionStatus("%4* \u25CF", "%5* \u25CF", "%6* \u25CF").' '
   for i in range(tabpagenr('$'))
     " select the highlighting
     if i + 1 == tabpagenr()
@@ -464,20 +464,6 @@ func! MarkdownFold(lnum)
 endfunc
 
 autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmethod=expr
-
-
-" Obsession
-
-function! ObsessionStatus()
-  let session   = filereadable(v:this_session)
-  if exists('g:this_obsession') && session  " tracking
-    return "%4* \u25CF"
-  elseif session  " paused
-    return "%5* \u25CF"
-  else  " not tracking
-    return "%6* \u25CF"
-  endif
-endfunction
 
 
 " NERDTree {{{1
