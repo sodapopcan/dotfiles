@@ -275,6 +275,8 @@ nnoremap <C-]> <C-]>zt
 " This relies on having unimpaired installed
 nmap <C-N> ]c
 nmap <C-P> [c
+" Sync zz with my eyes
+nnoremap zz zz2<C-E>
 
 
 " Leader Mappings
