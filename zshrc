@@ -110,7 +110,6 @@ alias gd="git diff"
 alias gD="git diff --name-only"
 alias gdm="git diff master"
 alias gdM="git diff master --name-only"
-alias gus="git submodule foreach git pull origin master" # Leaving this for posterity
 alias gr="git reset"
 alias gS="git reset --soft HEAD\^"
 alias gR="git reset --hard"
