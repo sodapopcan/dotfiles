@@ -221,11 +221,11 @@ augroup END
 inoremap jk <ESC>
 " Since C-L is in use, C-C will just do everything
 nnoremap <C-C> <C-C>:noh<CR>:syntax sync fromstart<CR>:redraw!<CR>
-" I'll get rid of this once I hack vim-tmux-navigator a bit
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
+" Meta-key for me is actually Apple's left Command key
+nnoremap <M-H> <C-W>h
+nnoremap <M-J> <C-W>j
+nnoremap <M-K> <C-W>k
+nnoremap <M-L> <C-W>l
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w<CR>
 " Write everything and quit
