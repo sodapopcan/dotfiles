@@ -114,8 +114,8 @@ alias gus="git submodule foreach git pull origin master" # Leaving this for post
 alias gr="git reset"
 alias gS="git reset --soft HEAD\^"
 alias gR="git reset --hard"
-alias ga="clear && git add"
-alias gap="clear && git add -p"
+alias ga="git add"
+alias gap="git add -p"
 
 gitprune()
 {
