@@ -228,6 +228,8 @@ nnoremap <M-K> <C-W>k
 nnoremap <M-L> <C-W>l
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w<CR>
+" Write and run tests
+nnoremap d<CR> :<CR>:Dispatch<CR>
 " Write everything and quit
 nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
