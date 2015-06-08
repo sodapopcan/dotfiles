@@ -476,7 +476,7 @@ nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
 
 let NERDTreeQuitOnOpen          = 1
 let NERDTreeHijackNetrw         = 0
-let NERDTreeHighlightCursorline = 1
+let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
 
 " RSI  {{{1
