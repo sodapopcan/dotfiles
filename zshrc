@@ -46,7 +46,7 @@ alias mkdir="mkdir -p"
 
 alias s="cd $HOME/src"
 
-dir () { mkdir -p "$@" && cd "$@"; }
+d   () { mkdir -p "$@" && cd "$@"; }
 g   () { mkdir -p "$@" && cd "$@" && git init; }
 
 bcd () { cd $(bundle show $@) }
