@@ -361,9 +361,8 @@ augroup AlwaysDoThisStuff
   " Always show the sign column
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-  " Well, this is a bad hack to fix colours getting all messed up after
-  " shelling-out.  There's gotta be a better way.
-  " autocmd BufEnter * redraw!
+  " I dunno anymore
+  autocmd ShellCmdPost * redraw!
 augroup END
 
 
