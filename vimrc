@@ -255,7 +255,9 @@ nnoremap <M-L> <C-W>l
 nnoremap  <CR> :call RunTests(0)<CR>
 nnoremap d<CR> :call RunTests(1)<CR>
 function! RunTests(type)
-  write
+  if &mod
+    silent write
+  endif
   let jumpback = 0
   if expand('%') !~ '\v_spec.rb$'
     try
