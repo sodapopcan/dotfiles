@@ -257,8 +257,7 @@ nnoremap d<CR> :call RunTests(1)<CR>
 function! RunTests(type)
   write
   let jumpback = 0
-  if expand('%') =~ '\v_spec.rb$'
-  else
+  if expand('%') !~ '\v_spec.rb$'
     try
       silent A
     catch
