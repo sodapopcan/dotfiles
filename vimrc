@@ -164,11 +164,10 @@ set statusline=%!StatusLine()
 
 " Largely ripped from :h setting-tabline
 function! TabLine()
-  let s = "%1*"
-  let s.= s:git_branch_status_line()
-  let s.= '%*'.ObsessionStatus("%4* \u25CF", "%5* \u25CF", "%6* \u25CF").' '
+  let s = ''
+  let ochar = " "
+  let s.= '%*'.ObsessionStatus("%4*".ochar, "%5*".ochar, "%6*".ochar)
   for i in range(tabpagenr('$'))
-    " select the highlighting
     if i + 1 == tabpagenr()
       let s.= '%#TabLineSel#'
     else
@@ -181,6 +180,9 @@ function! TabLine()
   if tabpagenr('$') > 1
     let s.= '%=%#TabLine#'
   endif
+  let s.= '%='
+  let s.= "%1*"
+  let s.= s:git_branch_status_line()
 
   return s
 endfunction
