@@ -77,6 +77,8 @@ set hidden				  " navigate away from  a buffer without saving it first
 set shell=/bin/bash " Necessary to run the correct versions of unix programs
 " when using zsh
 
+set notimeout nottimeout
+set ttyfast
 set lazyredraw
 
 set mouse=a
@@ -101,18 +103,16 @@ set nowrap
 set scroll=5
 set scrolloff=2
 set sidescrolloff=0
-set shortmess=at
+set shortmess=atWI
 set pumheight=5
 set linebreak
-set updatetime=1
+set updatetime=100
 set completeopt-=preview
 set diffopt=filler,foldcolumn:0,context:4
 
 set fillchars=fold:\ ,vert:▕
 
 set nobackup noswapfile
-
-set notimeout ttimeout ttimeoutlen=10
 
 set list listchars=tab:>\ ,eol:\ ,trail:·
 hi SpecialKey ctermfg=238
