@@ -224,7 +224,8 @@ inoremap jk <ESC>
 " Since C-L is in use, C-C will just do everything
 nnoremap <C-C> <C-C>:syntax sync fromstart<CR>:redraw!<CR>:noh<CR>
 " Undo an 'o' - Vim repurposes ^C so why shouldn't I?
-inoremap <C-C> <Esc>ddk
+" inoremap <C-C> <Esc>ddk
+" ...I see why I shouldn't... sorta
 " Meta-key for me is actually Apple's left Command key
 nnoremap <M-H> <C-W>h
 nnoremap <M-J> <C-W>j
@@ -233,7 +234,7 @@ nnoremap <M-L> <C-W>l
 " One keypress -- instead of 4 -- to save
 nnoremap <CR> :w<CR>
 " Write and run tests
-nnoremap d<CR> :<CR>:Dispatch<CR>
+nnoremap d<CR> :<CR>:Dispatch bundle exec rspec --fail-fast %<CR>
 " Write everything and quit
 nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
@@ -252,7 +253,7 @@ nnoremap k gk
 nnoremap ` '
 nnoremap ' `
 " I always have to think for a second if I want :vsp or :sp
-nnoremap <silent>  - :sp<CR>
+nnoremap <silent>  _ :sp<CR>
 nnoremap <silent> \| :vsp<CR>
 " Paste at EOL
 nnoremap <silent> K :call PasteAtEOL()<CR>
@@ -286,7 +287,6 @@ nmap <C-P> [c
 " Sync zz with my eyes
 nnoremap zz zz2<C-E>
 
-
 " Leader Mappings
 "
 
@@ -296,8 +296,6 @@ nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
 " Location mappings for rails
 autocmd BufEnter * call <SID>define_rails_mappings()
-
-
 
 " Mappings Functions {{{2
 
@@ -380,7 +378,7 @@ let g:ctrlp_prompt_mappings = {
       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
       \ }
 let g:ctrlp_custom_ignore = {
-      \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle|node_modules)\/(.*)',
+      \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle|node_modules|instructions)\/(.*)',
       \ 'file': '\vSession.vim'
       \ }
 
@@ -397,9 +395,9 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gyi".t."<Space> yi".t.":Ggrep \"\"<Left><C-R><C-\">"
   exec "nnoremap gya".t."<Space> ya".t.":Ggrep \"\"<Left><C-R><C-\">"
 endfor
-nnoremap          gh :Glog<CR>
-nnoremap <silent> gl :Extradite<CR>
-nnoremap <silent> gL :Gitv<CR>
+" nnoremap          gh :Glog<CR>
+nnoremap <silent> gH :Extradite<CR>
+nnoremap <silent> gh :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 
