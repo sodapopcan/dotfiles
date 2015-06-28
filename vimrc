@@ -219,22 +219,25 @@ augroup END
 
 " Mappings {{{1
 "
-" I'm trying to grow out of jk for escaping insert mode,
-" but I'm failing pretty hard
-inoremap <silent> jk <ESC>:call AfterEsc()<CR>
-inoremap <silent> <C-C> <ESC>:call AfterEsc()<CR>
-" jf is interesting if I don't like <C-C>
-" Since C-L is in use, C-C will just do everything
-" Also, don't do what I'm doing here
-nnoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
 
+" I'm trying to grow out of jk for escaping insert mode, but I'm failing pretty
+" hard
+inoremap jk <ESC>:call AfterEsc()<CR>
+inoremap <C-C> <ESC>:call AfterEsc()<CR>
+
+nnoremap o :let b:last_curpos = getcurpos()<CR>o
+nnoremap O :let b:last_curpos = getcurpos()<CR>O
 function! AfterEsc()
   if getline('.') =~ '\v^\s*$'
-    normal! ddk
+    normal! dd
+    call setpos('.', b:last_curpos)
   else
     write
   endif
 endfunction
+
+" Since C-L is in use, C-C will just do everything
+nnoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
 
 " Some Insert mode readline bindings
 inoremap <C-A> <C-O>^
@@ -244,10 +247,9 @@ nnoremap <M-H> <C-W>h
 nnoremap <M-J> <C-W>j
 nnoremap <M-K> <C-W>k
 nnoremap <M-L> <C-W>l
-" One keypress -- instead of 4 -- to save
-nnoremap <CR> :w<CR>
-" Write and run tests
-nnoremap d<CR> :<CR>:Dispatch bundle exec rspec --fail-fast %<CR>
+" Run tests
+" I'm going to need to flesh this out a bunch but, for now, assume rspec
+nnoremap <CR> :!clear && bundle exec rspec --fail-fast %<CR>
 " Write everything and quit
 nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
