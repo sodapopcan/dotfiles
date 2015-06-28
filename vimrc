@@ -220,7 +220,7 @@ augroup END
 " Mappings {{{1
 "
 " I'm trying to grow out of jk for escaping insert mode
-" inoremap jk <ESC>
+inoremap jk <ESC>
 " jf is interesting if I don't like <C-C>
 " Since C-L is in use, C-C will just do everything
 " Also, don't do what I'm doing here
