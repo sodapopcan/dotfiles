@@ -219,15 +219,26 @@ augroup END
 
 " Mappings {{{1
 "
-" I'm trying to grow out of jk for escaping insert mode
-inoremap jk <ESC>
+" I'm trying to grow out of jk for escaping insert mode,
+" but I'm failing pretty hard
+inoremap <silent> jk <ESC>:call AfterEsc()<CR>
+inoremap <silent> <C-C> <ESC>:call AfterEsc()<CR>
 " jf is interesting if I don't like <C-C>
 " Since C-L is in use, C-C will just do everything
 " Also, don't do what I'm doing here
-inoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
-" Undo an 'o' - Vim repurposes ^C so why shouldn't I?
-" inoremap <C-C> <Esc>ddk
-" ...I see why I shouldn't... sorta
+nnoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
+
+function! AfterEsc()
+  if getline('.') =~ '\v^\s*$'
+    normal! ddk
+  else
+    write
+  endif
+endfunction
+
+" Some Insert mode readline bindings
+inoremap <C-A> <C-O>^
+inoremap <C-E> <C-O>$
 " Meta-key for me is actually Apple's left Command key
 nnoremap <M-H> <C-W>h
 nnoremap <M-J> <C-W>j
@@ -242,8 +253,6 @@ nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
 " In any event, qq for recording, Q to playback (stolen from junegunn)
 nnoremap Q @q
-" Undo an 'o'
-inoremap <C-O> <Esc>ddk
 " Only show this window
 nnoremap <silent> L :IfIOnly<CR>
 " Make Y do what you think it would
