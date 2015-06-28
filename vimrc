@@ -232,6 +232,7 @@ function! AfterEsc()
     if exists('b:last_curpos')
       normal! dd
       call setpos('.', b:last_curpos)
+      unlet b:last_curpos
     endif
   else
     write
