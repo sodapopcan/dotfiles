@@ -229,8 +229,10 @@ nnoremap o :let b:last_curpos = getcurpos()<CR>o
 nnoremap O :let b:last_curpos = getcurpos()<CR>O
 function! AfterEsc()
   if getline('.') =~ '\v^\s*$'
-    normal! dd
-    call setpos('.', b:last_curpos)
+    if exists('b:last_cupos')
+      normal! dd
+      call setpos('.', b:last_curpos)
+    endif
   else
     write
   endif
