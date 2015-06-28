@@ -252,7 +252,34 @@ nnoremap <M-K> <C-W>k
 nnoremap <M-L> <C-W>l
 " Run tests
 " I'm going to need to flesh this out a bunch but, for now, assume rspec
-nnoremap <CR> :!clear && bundle exec rspec --fail-fast %<CR>
+nnoremap <CR> :call RunTestsOrWrite(0)<CR>
+nnoremap d<CR> :call RunTestsOrWrite(1)<CR>
+function! RunTestsOrWrite(type)
+  let jumpback = 0
+  if expand('%') =~ '\v_spec.rb$'
+  else
+    try
+      silent A
+    catch
+      echo "Not a test file"
+      return
+    endtry
+    let jumpback = 1
+  endif
+
+  if expand('%') =~ '\v_spec.rb$'
+    if a:type == 0
+      exe ":!clear && bundle exec rspec --fail-fast %"
+    else
+      exe ":!clear && bundle exec rspec --fail-fast %:".line('.')
+    endif
+  else
+    echo "Not a test file"
+  endif
+  if jumpback
+    silent A
+  endif
+endfunction
 " Write everything and quit
 nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
