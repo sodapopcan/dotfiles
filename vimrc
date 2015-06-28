@@ -275,6 +275,9 @@ vnoremap <CR> :Gbrowse<CR>
 nnoremap <F5> :so ~/.vimrc<CR>
 
 " Navigation
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <Space> :call SelectaCommand("find * -type f", "", ":e")<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
 " This relies on having unimpaired installed
@@ -372,7 +375,7 @@ augroup END
 " CTRLP {{{1
 "
 " Use space to invoke and quit
-let g:ctrlp_map = '<Space>'
+" let g:ctrlp_map = '<Space>'
 let g:ctrlp_prompt_mappings = {
       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
       \ }
@@ -484,6 +487,24 @@ let NERDTreeMinimalUI           = 1
 " RSI  {{{1
 "
 let g:rsi_no_meta = 1
+
+" Selecta  {{{1
+"
+
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command) abort
+  try
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
 
 " Syntastic {{{1
 "
