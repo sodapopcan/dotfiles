@@ -252,9 +252,10 @@ nnoremap <M-K> <C-W>k
 nnoremap <M-L> <C-W>l
 " Run tests
 " I'm going to need to flesh this out a bunch but, for now, assume rspec
-nnoremap <CR> :call RunTestsOrWrite(0)<CR>
-nnoremap d<CR> :call RunTestsOrWrite(1)<CR>
-function! RunTestsOrWrite(type)
+nnoremap <CR> :call RunTests(0)<CR>
+nnoremap d<CR> :call RunTests(1)<CR>
+function! RunTests(type)
+  write
   let jumpback = 0
   if expand('%') =~ '\v_spec.rb$'
   else
