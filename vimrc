@@ -219,10 +219,12 @@ augroup END
 
 " Mappings {{{1
 "
-" I've never grown out of using jk to escape insert mode
-inoremap jk <ESC>
+" I'm trying to grow out of jk for escaping insert mode
+" inoremap jk <ESC>
+" jf is interesting if I don't like <C-C>
 " Since C-L is in use, C-C will just do everything
-nnoremap <C-C> <C-C>:syntax sync fromstart<CR>:redraw!<CR>:noh<CR>
+" Also, don't do what I'm doing here
+inoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
 " Undo an 'o' - Vim repurposes ^C so why shouldn't I?
 " inoremap <C-C> <Esc>ddk
 " ...I see why I shouldn't... sorta
