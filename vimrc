@@ -5,47 +5,47 @@ filetype off
 " Plugins {{{
 " call vundle#begin()
 
-" Plugin 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
+" 'file:///' . expand('~') . '/.vim/bundle/Vundle.vim'
 
-" Plugin 'sjl/vitality.vim'
-" Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'file:///' . expand('~') .'/src/vim/vim-tmux-navigator'
-" Plugin 'tpope/vim-tbone'
+" plugin sjl/vitality.vim
+" plugin christoomey/vim-tmux-navigator
+" 'file:///' . expand('~') .'/src/vim/vim-tmux-navigator'
+" plugin tpope/vim-tbone'
 
-" Plugin 'tpope/vim-dispatch'
+" plugin tpope/vim-dispatch'
 
-" Plugin 'file:///' . expand('~') . '/src/vim/obsession'
+" 'file:///' . expand('~') . '/src/vim/obsession'
 
-" Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
+" plugin ctrlpvim/ctrlp.vim'
+" plugin scrooloose/nerdtree'
+" plugin scrooloose/syntastic'
 
-" Plugin 'tpope/vim-eunuch'
-" Plugin 'tpope/vim-repeat'
-" Plugin 'tpope/vim-surround'
-" Plugin 'tpope/vim-unimpaired'
-" Plugin 'tpope/vim-endwise'
-" Plugin 'tommcdo/vim-exchange'
+" plugin tpope/vim-eunuch'
+" plugin tpope/vim-repeat'
+" plugin tpope/vim-surround'
+" plugin tpope/vim-unimpaired'
+" plugin tpope/vim-endwise'
+" plugin tommcdo/vim-exchange'
 
-" Plugin 'tpope/vim-commentary'
+" plugin tpope/vim-commentary'
 
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'gregsexton/gitv'
-" Plugin 'int3/vim-extradite'
-" Plugin 'mhinz/vim-signify'
-" Plugin 'file:///' . expand('~') . '/src/vim/twiggy'
+" plugin tpope/vim-fugitive'
+" plugin gregsexton/gitv'
+" plugin int3/vim-extradite'
+" plugin mhinz/vim-signify'
+" 'file:///' . expand('~') . '/src/vim/twiggy'
 
-" Plugin 'plasticboy/vim-markdown'
-" Plugin 'junegunn/vim-xmark'
+" plugin plasticboy/vim-markdown'
+" plugin junegunn/vim-xmark'
 
-" Plugin 'tpope/vim-bundler'
+" plugin tpope/vim-bundler'
 
-" Plugin 'vim-ruby/vim-ruby'
-" Plugin 'tpope/vim-rake'
-" Plugin 'tpope/vim-rails'
+" plugin vim-ruby/vim-ruby'
+" plugin tpope/vim-rake'
+" plugin tpope/vim-rails'
 
-" Plugin 'junegunn/limelight.vim'
-" Plugin 'junegunn/goyo.vim'
+" plugin junegunn/limelight.vim'
+" plugin junegunn/goyo.vim'
 
 " call vundle#end()
 " }}}
