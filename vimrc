@@ -222,7 +222,9 @@ augroup END
 " I've never grown out of using jk to escape insert mode
 inoremap jk <ESC>
 " Since C-L is in use, C-C will just do everything
-nnoremap <C-C> <C-C>:noh<CR>:syntax sync fromstart<CR>:redraw!<CR>
+nnoremap <C-C> <C-C>:syntax sync fromstart<CR>:redraw!<CR>:noh<CR>
+" Undo an 'o' - Vim repurposes ^C so why shouldn't I?
+inoremap <C-C> <Esc>ddk
 " Meta-key for me is actually Apple's left Command key
 nnoremap <M-H> <C-W>h
 nnoremap <M-J> <C-W>j
