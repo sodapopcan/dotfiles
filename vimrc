@@ -75,7 +75,7 @@ hi User7 ctermfg=16  ctermbg=bg    " line
 
 set hidden				  " navigate away from  a buffer without saving it first
 set shell=/bin/bash " Necessary to run the correct versions of unix programs
-									  " when using zsh
+" when using zsh
 
 set lazyredraw
 
