@@ -242,6 +242,8 @@ endfunction
 " Since C-L is in use, C-C will just do everything
 nnoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
 
+" One keystroke--instead of 4--to save
+nnoremap <CR> :write<CR>
 " Some Insert mode readline bindings
 inoremap <C-A> <C-O>^
 inoremap <C-E> <C-O>$
@@ -252,31 +254,45 @@ nnoremap <M-K> <C-W>k
 nnoremap <M-L> <C-W>l
 " Run tests
 " I'm going to need to flesh this out a bunch but, for now, assume rspec
-nnoremap  <CR> :call RunTests(0)<CR>
-nnoremap d<CR> :call RunTests(1)<CR>
+nnoremap f<CR> :call RunTests(1)<CR>
+nnoremap t<CR> :call RunTests(2)<CR>
+nnoremap c<CR> :call RunTests(3)<CR>
 function! RunTests(type)
-  if &mod
-    silent write
-  endif
   let jumpback = 0
+
   if expand('%') !~ '\v_spec.rb$'
     try
       silent A
     catch
-      echo "Not a test file"
+      echo "No test file"
       return
     endtry
     let jumpback = 1
   endif
 
   if expand('%') =~ '\v_spec.rb$'
-    if a:type == 0
-      exe ":!clear && bundle exec rspec --fail-fast %"
-    else
-      exe ":!clear && bundle exec rspec --fail-fast %:".line('.')
+    normal! m'gg
+    let bundle = ''
+    if search("spec_helper") || search("rails_helper")
+      let bundle = 'bundle exec '
+    endif
+    normal! `'
+    let test_cmd = ":!clear && ".bundle."rspec --fail-fast %"
+    if a:type == 1
+      exe test_cmd
+    elseif a:type == 2
+      exe test_cmd.':'.line('.')
+    elseif a:type == 3
+      normal! m'
+      if getline('.') =~ '\vcontext(.*)do$' || search('context', 'bW') || search('context')
+        exe test_cmd.':'.line('.')
+        normal! `'
+      else
+        exe test_cmd
+      endif
     endif
   else
-    echo "Not a test file"
+    echo "No test file"
   endif
   if jumpback
     silent A
