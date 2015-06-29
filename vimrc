@@ -279,8 +279,8 @@ function! RunTests(type)
     if search("spec_helper") || search("rails_helper")
       let bundle = 'bundle exec '
     endif
-    normal! `'
-    let test_cmd = ":!clear && ".bundle."rspec --fail-fast %"
+    normal! `'
+    let test_cmd = ":!clear && ".bundle."rspec --fail-fast --no-profile %"
     if a:type == 1
       exe test_cmd
     elseif a:type == 2
@@ -289,7 +289,7 @@ function! RunTests(type)
       normal! m'
       if getline('.') =~ '\vcontext(.*)do$' || search('context', 'bW') || search('context')
         exe test_cmd.':'.line('.')
-        normal! `'
+        normal! `'
       else
         exe test_cmd
       endif
