@@ -6,7 +6,6 @@ call plug#begin('~/.vim/plugins')
 
 Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
-" 'file:///' . expand('~') .'/src/vim/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
 
 Plug 'tpope/vim-dispatch'
