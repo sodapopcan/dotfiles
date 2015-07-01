@@ -15,8 +15,7 @@ Plug 'tpope/vim-obsession'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-vinegar'
 
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
@@ -25,6 +24,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
 Plug 'tommcdo/vim-exchange'
 
+Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-fugitive'
@@ -531,12 +531,12 @@ autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmetho
 
 " NERDTree {{{1
 "
-nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
+" nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
 
-let NERDTreeQuitOnOpen          = 1
-let NERDTreeHijackNetrw         = 0
-let NERDTreeHighlightCursorline = 0
-let NERDTreeMinimalUI           = 1
+" let NERDTreeQuitOnOpen          = 1
+" let NERDTreeHijackNetrw         = 0
+" let NERDTreeHighlightCursorline = 0
+" let NERDTreeMinimalUI           = 1
 
 " RSI  {{{1
 "
