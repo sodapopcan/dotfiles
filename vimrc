@@ -16,6 +16,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 
 Plug 'tpope/vim-vinegar'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
@@ -330,11 +331,8 @@ inoremap <c-w> <c-g>u<c-w>
 vnoremap <CR> :Gbrowse<CR>
 " I've held off on this for a long time.  I dont' know why
 nnoremap <F5> :so ~/.vimrc<CR>
-
-" Navigation
-" Find all files in all non-dot directories starting in the working directory.
-" Fuzzy select one of those. Open the selected file with :e.
-nnoremap <Space> :call SelectaCommand("find * -type f", "", ":e")<CR>
+" Fuzzy finding
+nnoremap <Space> :FZF!<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
 " This relies on having unimpaired installed
@@ -401,8 +399,8 @@ augroup FileTypeOptions
         \ so % \| noh<CR>
 
 
-  autocmd BufReadPost * if !&modifiable |
-        \ nnoremap <buffer> q :q<CR> |
+  autocmd BufReadPost,BufEnter * if !&modifiable |
+        \ nnoremap <buffer> q :bwipe<CR> |
         \ endif
 augroup END
 
@@ -541,24 +539,6 @@ autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmetho
 " RSI  {{{1
 "
 let g:rsi_no_meta = 1
-
-" Selecta  {{{1
-"
-
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command) abort
-  try
-    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
 
 " Syntastic {{{1
 "

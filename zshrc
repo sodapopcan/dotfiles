@@ -233,3 +233,8 @@ bindkey '^R' history-incremental-search-backward
 
 # t {{{1
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# zfz
+export FZF_TMUX=0
+export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
