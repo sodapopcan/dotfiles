@@ -12,6 +12,9 @@ Plug 'tpope/vim-dispatch'
 
 Plug 'tpope/vim-obsession'
 
+Plug 'kana/vim-textobj-user'
+Plug 'rhysd/vim-textobj-ruby'
+
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 
