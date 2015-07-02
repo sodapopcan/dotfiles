@@ -270,6 +270,9 @@ bindkey '^R' history-incremental-search-backward
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# zfz
+# autojump
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
+
+# zfz {{{1
 export FZF_TMUX=0
-export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
+export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v fonts\/ | grep -v images\/ || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
