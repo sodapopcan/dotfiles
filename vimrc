@@ -250,11 +250,14 @@ nnoremap <CR> :write<CR>
 " Some Insert mode readline bindings
 inoremap <C-A> <C-O>^
 inoremap <C-E> <C-O>$
-" Meta-key for me is actually Apple's left Command key
-nnoremap <M-H> <C-W>h
-nnoremap <M-J> <C-W>j
-nnoremap <M-K> <C-W>k
-nnoremap <M-L> <C-W>l
+" Apparently I have to do this because of my iTerm key-remaps
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
+" nnoremap <silent> <M-H>:TmuxNavigatePrevious<cr>
+
 " Run tests
 " I'm going to need to flesh this out a bunch but, for now, assume rspec
 nnoremap f<CR> :call RunTests(1)<CR>
