@@ -440,7 +440,7 @@ let g:ctrlp_custom_ignore = {
 " Git {{{1
 "
 nnoremap <silent> gs :Gstatus<CR>
-nnoremap <silent> gd :call GitDiffPlus()<CR>
+nnoremap <silent> gi :call GitDiffPlus()<CR>
 nnoremap <silent> g? :Gblame -w<CR>
 nnoremap <silent> gw :Gwrite<CR>:w<CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
