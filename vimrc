@@ -95,6 +95,8 @@ set ignorecase smartcase
 " I just like this stuff
 set ruler
 set textwidth=80
+set winwidth=102
+set winminwidth=20
 set nowrap
 set scroll=5
 set scrolloff=2
@@ -416,7 +418,7 @@ augroup END
 
 augroup AlwaysDoThisStuff
   autocmd!
-  autocmd WinEnter * if &modifiable | setlocal winwidth=20 | else | setlocal winwidth=100 | endif
+  " autocmd WinEnter * if &modifiable | setlocal winwidth=20 | else | setlocal winwidth=100 | endif
   " Always show the sign column
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
