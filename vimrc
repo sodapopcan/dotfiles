@@ -33,7 +33,6 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-fugitive'
-Plug 'gregsexton/gitv'
 Plug 'int3/vim-extradite'
 Plug 'mhinz/vim-signify'
 Plug '~/src/vim/twiggy'
