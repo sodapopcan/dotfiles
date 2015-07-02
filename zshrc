@@ -8,7 +8,8 @@ export PROMPT_COMMAND="history -a; history -n"
 # seems to have done the trick.
 export LC_COLLATE=C
 
-source $HOME/.env
+source "$HOME/.env"
+source "$HOME/src/sh/z/z.sh"
 
 autoload -U promptinit && promptinit
 setopt PROMPT_SUBST
@@ -45,6 +46,7 @@ alias p="$EDITOR ~/dotfiles/zshrc"
 alias mkdir="mkdir -p"
 
 alias s="cd $HOME/src"
+
 
 d   () { mkdir -p "$@" && cd "$@"; }
 g   () { mkdir -p "$@" && cd "$@" && git init; }
