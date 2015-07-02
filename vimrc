@@ -34,6 +34,8 @@ Plug 'int3/vim-extradite'
 Plug 'mhinz/vim-signify'
 Plug '~/src/vim/twiggy'
 
+Plug 'tpope/vim-scriptease', { 'for': 'vim' }
+
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'junegunn/vim-xmark',      { 'for': 'markdown' }
 
