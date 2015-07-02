@@ -9,7 +9,6 @@ export PROMPT_COMMAND="history -a; history -n"
 export LC_COLLATE=C
 
 source "$HOME/.env"
-source "$HOME/src/sh/z/z.sh"
 
 autoload -U promptinit && promptinit
 setopt PROMPT_SUBST
