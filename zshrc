@@ -107,7 +107,7 @@ alias gco="git checkout"
 alias gcp="git cherry-pick"
 alias gM="git checkout master"
 alias gL="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset' --abbrev-commit"
+# alias gl="git log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset' --abbrev-commit"
 alias gd="git diff"
 alias gD="git diff --name-only"
 alias gdm="git diff master"
@@ -117,6 +117,27 @@ alias gS="git reset --soft HEAD\^"
 alias gR="git reset --hard"
 alias ga="git add"
 alias gap="git add -p"
+
+gl ()
+{
+  local out shas sha q k
+  while out=$(
+      git log --graph --color=always --format="%C(auto)%h %an %d %s %C(green)%cr" "$@" |
+      fzf --ansi --multi --no-sort --query="$q" --print-query --expect=ctrl-d --toggle-sort=\` \
+    ); do
+    q=$(head -1 <<< "$out")
+    k=$(head -2 <<< "$out" | tail -1)
+    shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+    [ -z "$shas" ] && continue
+    if [ "$k" = ctrl-d ]; then
+      git diff --color=always $shas | less -R
+    else
+      for sha in $shas; do
+        git show --color=always $sha | less -R
+      done
+    fi
+  done
+}
 
 gitprune()
 {
