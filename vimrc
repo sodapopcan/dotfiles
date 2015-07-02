@@ -18,6 +18,9 @@ Plug 'rhysd/vim-textobj-ruby'
 Plug 'tpope/vim-vinegar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
+Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/vim-oblique'
+
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
