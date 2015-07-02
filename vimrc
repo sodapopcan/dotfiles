@@ -225,8 +225,8 @@ augroup END
 
 " I'm trying to grow out of jk for escaping insert mode, but I'm failing pretty
 " hard
-inoremap jk <ESC>:call AfterEsc()<CR>
-inoremap <C-C> <ESC>:call AfterEsc()<CR>
+inoremap <silent> jk <ESC>:call AfterEsc()<CR>
+inoremap <silent> <C-C> <ESC>:call AfterEsc()<CR>
 
 nnoremap o :let b:last_curpos = getcurpos()<CR>o
 nnoremap O :let b:last_curpos = getcurpos()<CR>O
