@@ -27,6 +27,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
 Plug 'tommcdo/vim-exchange'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug '~/src/vim/ifionly'
 
 Plug 'scrooloose/syntastic'
