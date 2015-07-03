@@ -435,18 +435,6 @@ augroup AlwaysDoThisStuff
 augroup END
 
 
-" CTRLP {{{1
-"
-" Use space to invoke and quit
-" let g:ctrlp_map = '<Space>'
-let g:ctrlp_prompt_mappings = {
-      \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
-      \ }
-let g:ctrlp_custom_ignore = {
-      \ 'dir': '\v(doc|db|tmp|log|bin|vendor|vim\/bundle|node_modules|instructions)\/(.*)',
-      \ 'file': '\vSession.vim'
-      \ }
-
 " Git {{{1
 "
 nnoremap <silent> gs :Gstatus<CR>
