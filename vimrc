@@ -256,6 +256,8 @@ nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 " nnoremap <silent> <M-H>:TmuxNavigatePrevious<cr>
+cnoremap <C-N> <Down>
+cnoremap <C-P> <Up>
 
 " Run tests
 " I'm going to need to flesh this out a bunch but, for now, assume rspec
