@@ -35,7 +35,7 @@ Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-fugitive'
 Plug 'int3/vim-extradite'
-Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 Plug '~/src/vim/twiggy'
 
 Plug 'tpope/vim-scriptease',           { 'for': 'vim' }
@@ -468,7 +468,7 @@ nnoremap          gB :Twiggy<Space>
 if !exists('*GitDiffPlus')
   function! GitDiffPlus()
     let linenr = line('.')
-    SignifyToggle
+    GitGutterDisable
     tabnew %
     Gvdiff
     colorscheme diff
@@ -480,11 +480,33 @@ if !exists('*GitDiffPlus')
     windo write
     tabclose
     colorscheme sodapopcan
-    SignifyToggle
+    GitGutterEnable
     nnoremap <buffer> q q
     source $MYVIMRC
   endfunction
 endif
+
+" GitGutter {{{1
+"
+let g:gitgutter_sign_added = "\u258F"
+let g:gitgutter_sign_modified = g:gitgutter_sign_added
+let g:gitgutter_sign_removed = "\u2581"
+let g:gitgutter_sign_removed_first_line = "\u2594"
+let g:gitgutter_sign_modified_removed = g:gitgutter_sign_added
+
+" Pre-defined leader mappings in plugins fill me with rage.  Well, not that much
+" rage.  I love Git Gutter.
+let g:gitgutter_map_keys = 0
+nmap g+ <Plug>GitGutterStageHunk
+nmap g- <Plug>GitGutterRevertHunk
+nmap g_ <Plug>GitGutterPreviewHunk
+nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>GitGutterPrevHunk
+
+hi GitGutterAdd    ctermfg=28  ctermbg=bg cterm=NONE
+hi GitGutterChange ctermfg=24  ctermbg=bg cterm=NONE
+hi GitGutterDelete ctermfg=167 ctermbg=bg cterm=NONE
+
 
 " Gitv {{{1
 "
@@ -562,21 +584,6 @@ let g:syntastic_mode_map = {
       \ 'mode': 'active',
       \ 'passive_filetypes': ['erb']
       \ }
-
-" Signify {{{1
-"
-let g:signify_sign_add                 = "\u258F"
-let g:signify_sign_delete              = "\u2581"
-let g:signify_sign_delete_first_line   = "\u2594"
-let g:signify_sign_change              = g:signify_sign_add
-let g:signify_sign_changedelete        = g:signify_sign_add
-let g:signify_vcs_list                 = ['git']
-let g:signify_cursorhold_normal        = 1
-
-highlight SignifySignAdd    ctermfg=28  ctermbg=bg cterm=NONE
-highlight SignifySignChange ctermfg=24  ctermbg=bg cterm=NONE
-highlight SignifySignDelete ctermfg=167 ctermbg=bg cterm=NONE
-
 
 " Twiggy {{{1
 "
