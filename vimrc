@@ -510,15 +510,6 @@ hi GitGutterChange ctermfg=24  ctermbg=bg cterm=NONE
 hi GitGutterDelete ctermfg=167 ctermbg=bg cterm=NONE
 
 
-" Gitv {{{1
-"
-
-let g:Gitv_OpenHorizontal  = 1
-let g:Gitv_DoNotMapCtrlKey = 1
-highlight diffAdded   ctermbg=121
-highlight diffRemoved ctermbg=224
-
-
 " Goyo {{{1
 "
 function! s:goyo_leave()
