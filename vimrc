@@ -16,7 +16,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 
 Plug 'tpope/vim-vinegar'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
@@ -38,16 +38,16 @@ Plug 'int3/vim-extradite'
 Plug 'mhinz/vim-signify'
 Plug '~/src/vim/twiggy'
 
-Plug 'tpope/vim-scriptease', { 'for': 'vim' }
+Plug 'tpope/vim-scriptease',           { 'for': 'vim' }
 
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'junegunn/vim-xmark',      { 'for': 'markdown' }
+Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
+Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
 
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
 
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'tpope/vim-rake',    { 'for': 'ruby' }
-Plug 'tpope/vim-rails',   { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby',              { 'for': 'ruby' }
+Plug 'tpope/vim-rake',                 { 'for': 'ruby' }
+Plug 'tpope/vim-rails',                { 'for': 'ruby' }
 
 Plug 'junegunn/goyo.vim'
 
