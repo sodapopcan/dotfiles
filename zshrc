@@ -98,18 +98,6 @@ alias songs="$EDITOR ~/docs/band/songs.md"
 ide() { $HOME/ide.sh }
 
 # git {{{1
-GIT_HASH="%C(red)%h%C(reset)"
-GIT_RELATIVE_TIME="%C(green)%ar%C(reset)"
-GIT_AUTHOR="%C(blue)%an%C(reset)"
-GIT_REFS="%C(yellow)%d%C(reset)"
-GIT_SUBJECT="%s%"
-GIT_FORMAT="$GIT_HASH^^^$GIT_RELATIVE_TIME^^^$GIT_AUTHOR^^^$GIT_REFS $GIT_SUBJECT"
-function gl ()
-{
-  git log --pretty="tformat:$GIT_FORMAT" $* |
-  column -t -s "^^^" |
-  less -FXRS
-}
 alias gs="git status"
 alias gb="git branch"
 alias gc="git commit"
