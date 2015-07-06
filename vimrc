@@ -20,6 +20,7 @@ Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': 'yes \| ./instal
 
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
+Plug 'sjl/gundo.vim'
 
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
@@ -109,7 +110,7 @@ set sidescrolloff=0
 set shortmess=atWI
 set pumheight=5
 set linebreak
-set updatetime=100
+set updatetime=2000
 set completeopt-=preview
 set diffopt=filler,foldcolumn:0,context:4
 
@@ -410,10 +411,6 @@ augroup FileTypeOptions
   autocmd FileType vim nnoremap <silent> <buffer> <CR> :w \|
         \ so % \| noh<CR>
 
-
-  autocmd BufReadPost,BufEnter * if !&modifiable |
-        \ nnoremap <buffer> q :bwipe<CR> |
-        \ endif
 augroup END
 
 " Don't show cursorline and an empty statusline on inactive buffers
