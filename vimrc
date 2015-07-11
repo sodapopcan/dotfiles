@@ -15,12 +15,14 @@ Plug 'tpope/vim-obsession'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 
-Plug 'tpope/vim-vinegar'
+Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'sjl/gundo.vim'
+
+Plug 'scrooloose/syntastic'
 
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
@@ -31,7 +33,6 @@ Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug '~/src/vim/ifionly'
 
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-fugitive'
@@ -539,12 +540,12 @@ autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmetho
 
 " NERDTree {{{1
 "
-" nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
+nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
 
-" let NERDTreeQuitOnOpen          = 1
-" let NERDTreeHijackNetrw         = 0
-" let NERDTreeHighlightCursorline = 0
-" let NERDTreeMinimalUI           = 1
+let NERDTreeQuitOnOpen          = 1
+let NERDTreeHijackNetrw         = 0
+let NERDTreeHighlightCursorline = 0
+let NERDTreeMinimalUI           = 1
 
 " RSI  {{{1
 "
