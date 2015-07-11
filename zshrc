@@ -123,7 +123,7 @@ gl ()
   local out shas sha q k
   while out=$(
       git log --graph --color=always --format="%C(auto)%h %an %d %s %C(green)%cr" "$@" |
-      fzf --ansi --multi --no-sort --query="$q" --print-query --expect=ctrl-d --toggle-sort=\` \
+      fzf --ansi --multi --no-sort --reverse --query="$q" --print-query --expect=ctrl-d --toggle-sort=\` \
     ); do
     q=$(head -1 <<< "$out")
     k=$(head -2 <<< "$out" | tail -1)
