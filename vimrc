@@ -227,22 +227,8 @@ augroup END
 
 " I'm trying to grow out of jk for escaping insert mode, but I'm failing pretty
 " hard
-inoremap <silent> jk <ESC>:call AfterEsc()<CR>
-inoremap <silent> <C-C> <ESC>:call AfterEsc()<CR>
-
-nnoremap o :let b:last_curpos = getcurpos()<CR>o
-nnoremap O :let b:last_curpos = getcurpos()<CR>O
-function! AfterEsc()
-  if getline('.') =~ '\v^\s*$'
-    if exists('b:last_curpos')
-      normal! dd
-      call setpos('.', b:last_curpos)
-      unlet b:last_curpos
-    endif
-  else
-    write
-  endif
-endfunction
+inoremap <silent> jk <ESC>
+inoremap <silent> <C-C> <ESC>
 
 " Since C-L is in use, C-C will just do everything
 nnoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
