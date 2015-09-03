@@ -1,5 +1,7 @@
 Session.vim
 tags
 node_modules
+dump.rdb
 .ruby-version
 .xmark.*
+.DS_Store
