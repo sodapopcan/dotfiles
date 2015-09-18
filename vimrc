@@ -546,7 +546,7 @@ autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmetho
 nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
 
 let NERDTreeQuitOnOpen          = 1
-let NERDTreeHijackNetrw         = 0
+let NERDTreeHijackNetrw         = 1
 let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
 
