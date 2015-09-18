@@ -45,11 +45,11 @@ Plug 'tpope/vim-scriptease',           { 'for': 'vim' }
 Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
 Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
 
-Plug 'tpope/vim-bundler',              { 'for': 'ruby' }
+Plug 'tpope/vim-bundler'
 
-Plug 'vim-ruby/vim-ruby',              { 'for': 'ruby' }
-Plug 'tpope/vim-rake',                 { 'for': 'ruby' }
-Plug 'tpope/vim-rails',                { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-rails'
 
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
