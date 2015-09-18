@@ -17,6 +17,7 @@ Plug 'rhysd/vim-textobj-ruby'
 
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'vim-scripts/BufOnly.vim'
 
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
@@ -39,6 +40,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'int3/vim-extradite'
 Plug 'airblade/vim-gitgutter'
 Plug '~/src/vim/twiggy'
+
+Plug 'tpope/vim-projectionist'
 
 Plug 'tpope/vim-scriptease',           { 'for': 'vim' }
 
