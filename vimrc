@@ -380,7 +380,15 @@ endfunction
 " Define location mappings for rails projects
 function! s:define_rails_mappings()
   if exists('*RailsDetect')
-    nnoremap <buffer> <silent> <Leader>m :e db/schema.rb<CR>
+    nnoremap <buffer> <silent> <Leader>s :Eini<CR>
+    nnoremap <buffer> <silent> <Leader>S :Eini<Space>
+    nnoremap <buffer>          <Leader>C :Econtroller<Space>
+    nnoremap <buffer> <silent> <Leader>c :Econtroller<CR>
+    nnoremap <buffer>          <Leader>V :Eview<Space>
+    nnoremap <buffer> <silent> <Leader>v :Eview<CR>
+    nnoremap <buffer>          <Leader>M :Emodel<Space>
+    nnoremap <buffer>          <Leader>m :Emodel<CR>
+    nnoremap <buffer> <silent> d<CR>     :Dispatch bundle exec rspec<CR>
   endif
 
   if s:isdir('db/migrate')
