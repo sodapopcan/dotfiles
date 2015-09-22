@@ -550,6 +550,29 @@ let NERDTreeHijackNetrw         = 1
 let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
 
+" Rails
+"
+
+let g:rails_projections = {
+      \ "app/workers/*_worker.rb": {
+      \   "command": "worker",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Worker",
+      \      "  include Sidekiq::Worker", "", "  def perform(id)",
+      \      "  end", "end"]
+      \ },
+      \ "app/services/*.rb": {
+      \   "command": "service"
+      \ },
+      \ "spec/factories/*_factory.rb": {
+      \   "command": "factory",
+      \   "template":
+      \     ["FactoryGirl.define do",
+      \      "  factory :{} do",
+      \      "  end", "end"],
+      \   "affinity": "model"
+      \ }}
+
 " RSI  {{{1
 "
 let g:rsi_no_meta = 1
