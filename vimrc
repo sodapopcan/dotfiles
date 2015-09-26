@@ -22,6 +22,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'sjl/gundo.vim'
+Plug 'vim-scripts/TailMinusF'
 
 Plug 'scrooloose/syntastic'
 
@@ -35,6 +36,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug '~/src/vim/ifionly'
 
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-abolish'
 
 Plug 'tpope/vim-fugitive'
 Plug 'int3/vim-extradite'
@@ -47,6 +49,11 @@ Plug 'tpope/vim-scriptease',           { 'for': 'vim' }
 
 Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
 Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
+
+Plug 'alvan/vim-closetag'
+Plug 'othree/html5.vim'
+
+Plug 'pangloss/vim-javascript'
 
 Plug 'tpope/vim-bundler'
 
@@ -432,6 +439,11 @@ augroup AlwaysDoThisStuff
   autocmd ShellCmdPost * redraw!
 augroup END
 
+
+" Closetag
+"
+
+let g:closetag_filenames = "*.html,*.erb,*.xml"
 
 " Git {{{1
 "
