@@ -16,7 +16,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
-Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/BufOnly.vim'
 
 Plug 'junegunn/vim-pseudocl'
@@ -485,6 +485,13 @@ if !exists('*GitDiffPlus')
     source $MYVIMRC
   endfunction
 endif
+
+" CtrlP
+"
+let g:ctrlp_map = '<Space>'
+let g:ctrlp_prompt_mappings = {
+      \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
+      \ }
 
 " GitGutter {{{1
 "
