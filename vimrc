@@ -404,6 +404,10 @@ function! s:define_rails_mappings()
   endif
 endfunction
 
+function! InsertGlyphicon(name)
+  exec 'normal! i<span class="glyphicon glyphicon-' . a:name . '"></span>'
+endfunction
+command! -nargs=1 Glyph call InsertGlyphicon(<f-args>)
 
 
 " Autocommands {{{1
