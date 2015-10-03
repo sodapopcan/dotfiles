@@ -14,7 +14,7 @@ hi CursorLine                ctermfg=NONE  ctermbg=NONE  cterm=NONE
 hi CursorCol                 ctermfg=NONE
 hi TabLine                   ctermfg=242   ctermbg=237   cterm=NONE
 hi TabLineFill               ctermfg=254   ctermbg=237   cterm=NONE
-hi TabLineSel                ctermfg=244   ctermbg=bg    cterm=bold
+hi TabLineSel                ctermfg=bg   ctermbg=244    cterm=bold
 
 hi StatusLine                ctermfg=248   ctermbg=237   cterm=NONE
 hi StatusLineNC              ctermfg=237   ctermbg=237   cterm=NONE
@@ -105,8 +105,11 @@ hi WildMenu                  cterm=bold
 hi Directory                 none
 hi link Directory            String
 
-hi Folded                    ctermbg=bg ctermfg=244  cterm=NONE
-hi! link FoldColumn           Normal
+"{{{1
+"Fold
+"}}}
+hi Folded                    ctermbg=235 ctermfg=241  cterm=NONE
+hi! link FoldColumn          Normal
 
 hi Pmenu                     ctermbg=238 ctermfg=White cterm=NONE
 hi PmenuSel                  ctermbg=150 ctermfg=Black

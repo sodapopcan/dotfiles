@@ -112,6 +112,7 @@ set incsearch hlsearch
 set ignorecase smartcase
 
 " I just like this stuff
+set cursorline
 set ruler
 set textwidth=80
 set nowrap
@@ -148,89 +149,6 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
-
-" Status/Tab Lines {{{1
-"
-" 'Tab Line' is used as a 'global status' bar.
-"   * File name (basename of currently focused buffer)
-"     is always at the top of the screen
-function! s:git_branch_status_line()
-  let status = substitute(substitute(copy(fugitive#statusline()), '^[Git(', '', ''), ')]$', '', '')
-  if status != ''
-    return ' ' . status . ' '
-  else
-    return ' [No Branch] '
-  endif
-endfunction
-function! StatusLine()
-  let s = ''
-  let s.= "%2*"
-  let s.= "%{&paste?'\ \ paste\ ':''}"
-  let s.= "%{match(expand('%:p'), '^fugitive') >= 0?'\ \ fugitive \ ':''}"
-  let s.= "%*"
-  " let s.= "\ %(%f%)"
-  let s.= "%="
-  let s.= "%3*"
-  let s.= "\ %(%p%%\ \ %l/%L,%v\ \ %)"
-  let s.= "%*"
-  return s
-endfunction
-set statusline=%!StatusLine()
-
-" Largely ripped from :h setting-tabline
-function! TabLine()
-  let s = ''
-  let ochar = " "
-  let s.= '%*'.ObsessionStatus("%4*".ochar, "%5*".ochar, "%6*".ochar)
-  for i in range(tabpagenr('$'))
-    if i + 1 == tabpagenr()
-      let s.= '%#TabLineSel#'
-    else
-      let s.= '%#TabLine#'
-    endif
-    let s.= '%' . (i + 1) . 'T'
-    let s.= ' %{TabLabel(' . (i + 1) . ')} '
-  endfor
-  let s.= '%#TabLineFill#%T'
-  if tabpagenr('$') > 1
-    let s.= '%=%#TabLine#'
-  endif
-  let s.= '%='
-  let s.= "%1*"
-  let s.= s:git_branch_status_line()
-
-  return s
-endfunction
-function! TabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  let bufname = bufname(buflist[winnr - 1])
-  let filename = matchstr(
-        \ substitute(bufname, '\/$', '', ''),
-        \ '\v\/([^/]*)$')
-  if filename ==# ''
-    return bufname[:36]
-  endif
-  let filename = substitute(filename, '/', '', '')
-  if filename ==# ''
-    return '=^..^='
-  endif
-  return filename[:36]
-endfunction
-set tabline=%!TabLine()
-
-" Misc Auto {{{1
-augroup AutoMkdir
-  autocmd!
-  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
-  function! s:auto_mkdir(dir, force)
-    if !isdirectory(a:dir)
-          \   && (a:force
-          \       || input("'" . a:dir . "' does not exist. Create? [y/N]") =~? '^y\%[es]$')
-      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-    endif
-  endfunction
-augroup END
 
 " Mappings {{{1
 "
