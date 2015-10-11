@@ -66,11 +66,11 @@ Plug 'junegunn/goyo.vim'
 
 call plug#end()
 " }}}
+" Common {{{1
+"
 
 runtime! macros/matchit.vim
 let g:netrw_dirhistmax = 0
-
-" Syntax {{{1
 
 syntax on
 colorscheme sodapopcan
