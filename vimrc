@@ -250,7 +250,15 @@ nnoremap + mzgg=G`z
 nnoremap <C-E> 2<C-E>
 nnoremap <C-Y> 2<C-Y>
 " Strip whitespace
-nnoremap <silent> da<Space> :%s/\s\+$//<CR>
+nnoremap <silent> da<Space>
+      \ :let winstate = winsaveview()<bar>
+      \ try<bar>
+      \ %s/\s\+$//<bar>
+      \ catch<bar>
+      \ endtry<bar>
+      \ call winrestview(winstate)<bar>
+      \ unlet winstate<bar>
+      \ echo "All clean"<Cr>
 " Allow recovery from accidental c-w or c-u while in insert mode
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
