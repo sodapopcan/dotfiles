@@ -422,9 +422,9 @@ endif
 
 " CtrlP
 "
-let g:ctrlp_map = '<Space>'
+let g:ctrlp_map = '\'
 let g:ctrlp_prompt_mappings = {
-      \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
+      \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '\']
       \ }
 
 " GitGutter {{{1
