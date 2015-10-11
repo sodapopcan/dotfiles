@@ -5,3 +5,4 @@ endif
 
 Abolish yeild yield
 Abolish inculdes includes
+Abolish destory destroy
