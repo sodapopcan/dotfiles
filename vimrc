@@ -502,6 +502,7 @@ let NERDTreeQuitOnOpen          = 1
 let NERDTreeHijackNetrw         = 1
 let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
+let NERDTreeWinSize             = 45
 
 " Rails
 "
