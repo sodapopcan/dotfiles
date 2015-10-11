@@ -123,3 +123,5 @@ hi SignColumn ctermbg=bg
 
 hi link NERDTreeClosable String
 hi link NERDTreeOpenable String
+
+hi link VimIsCommand function
