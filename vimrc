@@ -163,9 +163,6 @@ nnoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
 
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
-" Some Insert mode readline bindings
-inoremap <C-A> <C-O>^
-inoremap <C-E> <C-O>$
 " Apparently I have to do this because of my iTerm key-remaps
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
