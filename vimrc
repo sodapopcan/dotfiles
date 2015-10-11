@@ -269,8 +269,8 @@ nnoremap <F5> :so ~/.vimrc<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
 " This relies on having unimpaired installed
-nmap <C-N> ]c
-nmap <C-P> [c
+nmap <C-N> ]m
+nmap <C-P> [m
 " Sync zz with my eyes
 nnoremap zz zz2<C-E>
 
