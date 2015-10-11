@@ -277,6 +277,7 @@ nnoremap zz zz2<C-E>
 " Leader Mappings
 "
 
+let mapleader = ' '
 " Wipe buffer while maintaining its split
 nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 " Edit a new file in the same directory
@@ -306,30 +307,39 @@ function! s:isdir(dir)
 endfunction
 
 " Define location mappings for rails projects
+
 function! s:define_rails_mappings()
   if exists('*RailsDetect')
-    nnoremap <buffer> <silent> <Leader>s :Eini<CR>
-    nnoremap <buffer> <silent> <Leader>S :Eini<Space>
-    nnoremap <buffer>          <Leader>C :Econtroller<Space>
-    nnoremap <buffer> <silent> <Leader>c :Econtroller<CR>
-    nnoremap <buffer>          <Leader>V :Eview<Space>
-    nnoremap <buffer> <silent> <Leader>v :Eview<CR>
-    nnoremap <buffer>          <Leader>M :Emodel<Space>
-    nnoremap <buffer>          <Leader>m :Emodel<CR>
-    nnoremap <buffer> <silent> d<CR>     :Dispatch bundle exec rspec<CR>
-  endif
+    nnoremap <buffer> <leader>a :A<cr>
+    nnoremap <buffer> <leader>r :R<cr>
 
-  if s:isdir('db/migrate')
-    nnoremap <buffer> <silent> <Leader>d :e db/migrate<CR>:keepjumps normal! G<CR>
-    nnoremap <buffer> <silent> <Leader>D :e db/migrate<CR>:keepjumps normal! G<CR>:keepjumps exec "normal <C-V><CR>"<CR>
+    nnoremap <buffer> <silent> <leader>m :Emo<cr>
+    nnoremap <buffer> <silent> <leader>v :Evi<cr>
+    nnoremap <buffer> <silent> <leader>c :Eco<cr>
+    nnoremap <buffer> <silent> <leader>h :Ehe<cr>
+    nnoremap <buffer> <silent> <leader>s :Est<cr>
+    nnoremap <buffer> <silent> <leader>j :Eja<cr>
+    nnoremap <buffer> <silent> <leader>l :Ela<cr>
+    nnoremap <buffer> <silent> <leader>d :Emi<cr>
+    nnoremap <buffer> <silent> <leader>i :Eini<cr>
+    nnoremap <buffer>          <leader>M :Emo<space>
+    nnoremap <buffer>          <leader>V :Evi<space>
+    nnoremap <buffer>          <leader>C :Eco<space>
+    nnoremap <buffer>          <leader>H :Ehe<space>
+    nnoremap <buffer>          <leader>S :Est<space>
+    nnoremap <buffer>          <leader>J :Eja<space>
+    nnoremap <buffer>          <leader>L :Ela<space>
+    nnoremap <buffer>          <leader>I :Eini<space>
+    nnoremap <buffer> <silent> d<cr>     :Dispatch bundle exec rspec<cr>
   endif
 endfunction
 
-function! InsertGlyphicon(name)
-  exec 'normal! i<span class="glyphicon glyphicon-' . a:name . '"></span>'
-endfunction
-command! -nargs=1 Glyph call InsertGlyphicon(<f-args>)
-
+augroup DebugStuff
+  au!
+  au FileType *     nnoremap         <leader>f :echo 'No debug for ' . &ft<cr>
+  au FileType eruby nnoremap <silent><leader>f :exec "call append(line('.'), '<% byebug %>')\<bar>normal j==\<bar>"<cr>:write<cr>
+  au FileType ruby  nnoremap <silent><leader>f :exec "call append(line('.'), 'byebug')\<bar>normal j=="<cr>:write<cr>
+augroup END
 
 " Autocommands {{{1
 augroup FileTypeOptions
