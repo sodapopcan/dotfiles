@@ -185,7 +185,7 @@ function! RunTests(type)
 
   if expand('%') !~ '\v_spec.rb$'
     try
-      silent A
+      silent keepjumps A
     catch
       echo "No test file"
       return
@@ -218,7 +218,7 @@ function! RunTests(type)
     echo "No test file"
   endif
   if jumpback
-    silent A
+    silent keepjumps A
   endif
 endfunction
 " Write everything and quit
