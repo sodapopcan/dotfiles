@@ -342,6 +342,8 @@ augroup DebugStuff
 augroup END
 
 " Autocommands {{{1
+"
+
 augroup FileTypeOptions
   autocmd!
   autocmd BufReadPost fugitive://*
@@ -350,9 +352,6 @@ augroup FileTypeOptions
   autocmd FileType gitcommit setlocal spell
   autocmd FileType gitcommit setlocal list listchars=tab:\ \ 
   autocmd FileType help,qf nnoremap <silent> <buffer> q :q<CR>
-  autocmd FileType vim nnoremap <silent> <buffer> <CR> :w \|
-        \ so % \| noh<CR>
-
 augroup END
 
 " Don't show cursorline and an empty statusline on inactive buffers
