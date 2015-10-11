@@ -425,9 +425,8 @@ endfunction
 
 augroup DebugStuff
   au!
-  au FileType *     nnoremap         <leader>f :echo 'No debug for ' . &ft<cr>
-  au FileType eruby nnoremap <silent><leader>f :exec "call append(line('.'), '<% byebug %>')\<bar>normal j==\<bar>"<cr>:write<cr>
-  au FileType ruby  nnoremap <silent><leader>f :exec "call append(line('.'), 'byebug')\<bar>normal j=="<cr>:write<cr>
+  au FileType eruby nnoremap <buffer><silent><leader>f :exec "call append(line('.'), '<% byebug %>')\<bar>normal j==\<bar>"<cr>:write<cr>
+  au FileType ruby  nnoremap <buffer><silent><leader>f :exec "call append(line('.'), 'byebug')\<bar>normal j=="<cr>:write<cr>
 augroup END
 
 " Autocommands {{{1
