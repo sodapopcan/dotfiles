@@ -266,8 +266,6 @@ inoremap <c-w> <c-g>u<c-w>
 vnoremap <CR> :Gbrowse<CR>
 " I've held off on this for a long time.  I dont' know why
 nnoremap <F5> :so ~/.vimrc<CR>
-" Fuzzy finding
-nnoremap <Space> :FZF!<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
 " This relies on having unimpaired installed
