@@ -11,7 +11,7 @@ let g:colors_name = "sodapopcan"
 hi Normal                            ctermbg=236    ctermfg=248    cterm=none
 
 hi Cursor                            ctermbg=15     ctermfg=0      cterm=none
-hi CursorLine                        ctermbg=232    ctermfg=none   cterm=none
+hi CursorLine                        ctermbg=235    ctermfg=none   cterm=none
 hi CursorCol                         ctermbg=none   ctermfg=none   cterm=none
 
 hi TabLine                           ctermbg=237    ctermfg=242   cterm=none
