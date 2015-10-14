@@ -44,7 +44,7 @@ Plug '~/src/vim/twiggy'
 
 Plug 'tpope/vim-projectionist'
 
-Plug 'tpope/vim-scriptease',           { 'for': 'vim' }
+Plug 'tpope/vim-scriptease'
 
 Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
 Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
