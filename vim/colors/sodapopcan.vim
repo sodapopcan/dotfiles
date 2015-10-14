@@ -123,4 +123,11 @@ hi SignColumn ctermbg=bg
 hi link NERDTreeClosable String
 hi link NERDTreeOpenable String
 
+" Vim
 hi link VimIsCommand function
+
+" CSS
+hi link scssSelectorName Function
+" hi cssCommonAttr ctermbg=none ctermfg=229 cterm=none
+" hi scssAttribute ctermbg=none ctermfg=229 cterm=none
+hi scssVariable     ctermbg=none ctermfg=208 cterm=none

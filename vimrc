@@ -52,6 +52,8 @@ Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 
+Plug 'cakebaker/scss-syntax.vim'
+
 Plug 'pangloss/vim-javascript'
 
 Plug 'tpope/vim-bundler'
