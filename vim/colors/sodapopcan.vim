@@ -107,9 +107,8 @@ hi SpellCap                             ctermbg=NONE ctermfg=189 cterm=underline
 hi MatchParen                           ctermbg=23 ctermfg=15
 
 hi Ignore                               ctermfg=Black
-hi WildMenu                             cterm=bold
-hi Directory                            none
-hi link Directory                       String
+hi WildMenu                             ctermbg=179  ctermfg=016 cterm=none
+hi! link Directory String
 
 hi Folded                               ctermfg=0 ctermbg=144    cterm=NONE
 hi link FoldColumn Normal
