@@ -386,13 +386,6 @@ function! PasteAtEOL()
   exec "normal! A\<space>\<esc>mzp`z"
 endfunction
 
-" Make (custom) L mapping smarter
-"
-" If there are only modifiable splits present, make the current split the only
-" split (ie, run :only). If any unmodifable splits are open (:Gstatus, quickfix
-" window, NERDTree, etc...) close all of those.  If the cursor is in an
-" unmodifiable split, jump to the first modifiable one.
-
 function! s:isdir(dir)
   return glob(a:dir) !=# ''
 endfunction
