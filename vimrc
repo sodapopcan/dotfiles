@@ -423,7 +423,6 @@ augroup END
 
 " Autocommands {{{1
 "
-
 augroup FileTypeOptions
   autocmd!
   autocmd BufReadPost fugitive://*
@@ -583,9 +582,8 @@ let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
 let NERDTreeWinSize             = 45
 
-" Rails
+" Rails {{{1
 "
-
 let g:rails_projections = {
       \ "app/workers/*_worker.rb": {
       \   "command": "worker",
