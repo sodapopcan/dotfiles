@@ -388,10 +388,6 @@ function! PasteAtEOL()
   exec "normal! A\<space>\<esc>mzp`z"
 endfunction
 
-function! s:isdir(dir)
-  return glob(a:dir) !=# ''
-endfunction
-
 " Define location mappings for rails projects
 
 function! s:define_rails_mappings()
