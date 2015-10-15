@@ -72,9 +72,9 @@ Plug 'junegunn/goyo.vim'
 
 call plug#end()
 " }}}
+
 " Common {{{1
 "
-
 runtime! macros/matchit.vim
 let g:netrw_dirhistmax = 0
 
@@ -462,9 +462,8 @@ augroup AlwaysDoThisStuff
 augroup END
 
 
-" Closetag
+" Closetag {{{1
 "
-
 let g:closetag_filenames = "*.html,*.erb,*.xml"
 
 " Git {{{1
