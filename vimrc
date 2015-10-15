@@ -389,7 +389,6 @@ function! PasteAtEOL()
 endfunction
 
 " Define location mappings for rails projects
-
 function! s:define_rails_mappings()
   if exists('*RailsDetect')
     nnoremap <buffer> <leader>a :A<cr>
