@@ -19,6 +19,8 @@ Plug 'tpope/vim-obsession'
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 
+Plug 'mbbill/undotree'
+
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/BufOnly.vim'
@@ -29,6 +31,7 @@ Plug 'sjl/gundo.vim'
 Plug 'vim-scripts/TailMinusF'
 
 Plug 'scrooloose/syntastic'
+Plug 'ngmy/vim-rubocop'
 
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
@@ -103,7 +106,9 @@ set lazyredraw
 
 set mouse=a
 
-set encoding=utf-8
+if &encoding !=# 'utf-8'
+  set encoding=utf-8
+endif
 
 set backspace=2     " Backspace over everything
 set laststatus=2    " Always show the status line
@@ -278,7 +283,6 @@ nnoremap zz zz2<C-E>
 
 " Leader Mappings
 "
-
 let mapleader = ' '
 " Wipe buffer while maintaining its split
 nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
@@ -449,7 +453,7 @@ augroup AlwaysDoThisStuff
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
   " I dunno anymore
-  autocmd ShellCmdPost * redraw!
+  " autocmd ShellCmdPost * redraw!
 augroup END
 
 
@@ -475,6 +479,8 @@ nnoremap <silent> gH :Extradite<CR>
 nnoremap <silent> gh :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
+
+command! Greset exec ":Start! git reset " . expand('%') . "<cr>:e!<cr>"
 
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
