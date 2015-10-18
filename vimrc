@@ -457,6 +457,8 @@ augroup AlwaysDoThisStuff
   " Always show the sign column
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
+  autocmd BufLeave * setlocal nocursorline
+  autocmd BufEnter * setlocal cursorline
   " I dunno anymore
   " autocmd ShellCmdPost * redraw!
 augroup END
