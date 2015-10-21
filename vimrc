@@ -84,9 +84,9 @@ let g:netrw_dirhistmax = 0
 syntax on
 colorscheme sodapopcan
 
-hi User1 ctermfg=124 ctermbg=186   " git branch
+hi User1 ctermfg=173 ctermbg=237   " git branch
 hi User2 ctermfg=16  ctermbg=167   " warn
-hi User3 ctermfg=16  ctermbg=237   " filename
+hi User3 ctermfg=248 ctermbg=236   " filename
 hi User4 ctermfg=bg  ctermbg=bg    " Obsession - tracking
 hi User5 ctermfg=bg  ctermbg=227   " Obsession - paused
 hi User6 ctermfg=bg  ctermbg=167   " Obsession - not tracking
@@ -304,9 +304,9 @@ autocmd BufEnter * call <SID>define_rails_mappings()
 function! s:git_branch_status_line()
   let status = substitute(substitute(copy(fugitive#statusline()), '^[Git(', '', ''), ')]$', '', '')
   if status != ''
-    return ' ' . status . ' '
+    return status
   else
-    return ' [No Branch] '
+    return 'No Branch'
   endif
 endfunction
 function! StatusLine()
@@ -315,10 +315,13 @@ function! StatusLine()
   let s.= "%{&paste?'\ \ paste\ ':''}"
   let s.= "%{match(expand('%:p'), '^fugitive') >= 0?'\ \ fugitive \ ':''}"
   let s.= "%*"
-  " let s.= "\ %(%f%)"
+  let s.= "%1*"
+  let s.= "\ " . s:git_branch_status_line() . "\ "
+  let s.= "%*"
+  let s.= "\ %(%t%)"
   let s.= "%="
   let s.= "%3*"
-  let s.= "\ %(%p%%\ \ %l/%L,%v\ \ %)"
+  let s.= "\ %(%p%%\ %l:%v/%L\ \ %)"
   let s.= "%*"
   return s
 endfunction
@@ -337,14 +340,13 @@ function! TabLine()
     endif
     let s.= '%' . (i + 1) . 'T'
     let s.= ' %{TabLabel(' . (i + 1) . ')} '
+    " let s.= ' %{split(getcwd(), "/")[-1]} '
   endfor
   let s.= '%#TabLineFill#%T'
   if tabpagenr('$') > 1
     let s.= '%=%#TabLine#'
   endif
   let s.= '%='
-  let s.= "%1*"
-  let s.= s:git_branch_status_line()
 
   return s
 endfunction
@@ -355,12 +357,14 @@ function! TabLabel(n)
   let filename = matchstr(
         \ substitute(bufname, '\/$', '', ''),
         \ '\v\/([^/]*)$')
-  if filename ==# ''
-    return bufname[:36]
+  let parts = split(bufname, '/')
+  if len(parts) > 1
+    let filename = parts[-2]
+  else
+    let filename = ''
   endif
-  let filename = substitute(filename, '/', '', '')
   if filename ==# ''
-    return '=^..^='
+    return '[No Name]'
   endif
   return filename[:36]
 endfunction
