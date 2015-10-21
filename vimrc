@@ -8,7 +8,7 @@ endif
 
 call plug#begin('~/.vim/plugins')
 
-Plug 'sjl/vitality.vim'
+Plug 'wincent/terminus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-rsi'
