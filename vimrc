@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-rsi'
 
 Plug 'tpope/vim-dispatch'
 
