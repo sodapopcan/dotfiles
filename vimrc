@@ -17,6 +17,8 @@ Plug 'tpope/vim-dispatch'
 
 Plug 'tpope/vim-obsession'
 
+" Plug 'tpope/vim-flagship'
+
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 
