@@ -125,7 +125,7 @@ set incsearch hlsearch
 set ignorecase smartcase
 
 " I just like this stuff
-set cursorline
+set nocursorline
 set ruler
 set textwidth=80
 set nowrap
@@ -518,12 +518,14 @@ if !exists('*GitDiffPlus')
   endfunction
 endif
 
-" CtrlP
+
+" CtrlP {{{1
 "
 let g:ctrlp_map = '\'
 let g:ctrlp_prompt_mappings = {
       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '\']
       \ }
+
 
 " GitGutter {{{1
 "
@@ -554,9 +556,11 @@ function! s:goyo_leave()
 endfunction
 autocmd User GoyoLeave nested call <SID>goyo_leave()
 
+
 " IfIOnly {{{1
 "
 let g:ifionly_filetypes = ['vim-plug']
+
 
 " Markdown {{{1
 "
@@ -602,6 +606,7 @@ let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
 let NERDTreeWinSize             = 45
 
+
 " Rails {{{1
 "
 let g:rails_projections = {
@@ -624,9 +629,16 @@ let g:rails_projections = {
       \   "affinity": "model"
       \ }}
 
+
+" RuboCop
+"
+let g:vimrubocop_keymap = 0
+
+
 " RSI  {{{1
 "
 let g:rsi_no_meta = 1
+
 
 " Syntastic {{{1
 "
@@ -641,6 +653,7 @@ let g:syntastic_mode_map = {
       \ 'mode': 'active',
       \ 'passive_filetypes': ['erb']
       \ }
+
 
 " Twiggy {{{1
 "
@@ -657,6 +670,7 @@ hi! TwiggyIconUnmerged      ctermfg=11  ctermbg=NONE
 
 " highlight TwiggyHeader ctermfg=195
 " highlight TwiggySort ctermfg=213
+
 
 " Vim-Tmux Navigator {{{1
 "
