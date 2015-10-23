@@ -74,6 +74,8 @@ hi rubyInterpolation                 ctermfg=107
 hi rubyLocalVariableOrMethod         ctermfg=189
 hi rubyPseudoVariable                ctermfg=74
 hi link rubyStringDelimiter          String
+hi rubyAccess                        ctermbg=none  ctermfg=167  cterm=none
+hi link rubyRailsMethod rubyDefine
 
 " hi! clear rubyIdentifier
 " hi! clear rubyInstanceVaria           ble
