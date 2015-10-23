@@ -389,6 +389,8 @@ augroup END
 " Commands {{{1
 "
 
+" General
+command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
 " HTML
 command! -nargs=1 Glyph exec 'normal! i<span class="glyphicon glyphicon-' . <f-args>. '"></span>'
 " Global Locations
