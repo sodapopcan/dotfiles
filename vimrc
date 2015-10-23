@@ -95,13 +95,13 @@ let g:netrw_dirhistmax = 0
 syntax on
 colorscheme sodapopcan
 
-hi User1 ctermfg=173 ctermbg=237   " git branch
-hi User2 ctermfg=16  ctermbg=167   " warn
-hi User3 ctermfg=248 ctermbg=236   " filename
-hi User4 ctermfg=bg  ctermbg=bg    " Obsession - tracking
-hi User5 ctermfg=bg  ctermbg=227   " Obsession - paused
-hi User6 ctermfg=bg  ctermbg=167   " Obsession - not tracking
-hi User7 ctermfg=16  ctermbg=bg    " line
+hi User1 ctermfg=16  ctermbg=179 cterm=none   " git branch
+hi User2 ctermfg=16  ctermbg=167 cterm=none   " warn
+hi User3 ctermfg=179 ctermbg=237 cterm=none   " filename
+hi User4 ctermfg=bg  ctermbg=bg  cterm=none   " Obsession - tracking
+hi User5 ctermfg=bg  ctermbg=227 cterm=none   " Obsession - paused
+hi User6 ctermfg=bg  ctermbg=167 cterm=none   " Obsession - not tracking
+hi User7 ctermfg=16  ctermbg=bg  cterm=none   " line
 
 " Settings {{{1
 
@@ -332,7 +332,7 @@ function! StatusLine()
   let s.= "%1*"
   let s.= "\ " . s:git_branch_status_line() . "\ "
   let s.= "%*"
-  let s.= "\ %(%t%)"
+  let s.= "\ %3*%(%t%)%*"
   let s.= "%="
   let s.= "%3*"
   let s.= "\ %(%p%%\ %l:%v/%L\ \ %)"
