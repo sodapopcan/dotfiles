@@ -521,7 +521,10 @@ nnoremap <silent> gh :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 
-command! Greset exec ":Start! git reset " . expand('%') . "<cr>:e!<cr>"
+command! Reset exec ":Start! git reset " . expand('%') . "<cr>:e!<cr>"
+command! Revert Gread
+command! Migrate Rake db:migrate
+command! Rollback Rake db:rollback
 
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
