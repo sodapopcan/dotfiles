@@ -125,7 +125,7 @@ set incsearch hlsearch
 set ignorecase smartcase
 
 " I just like this stuff
-set nocursorline
+set cursorline
 set ruler
 set textwidth=80
 set nowrap
