@@ -108,9 +108,9 @@ hi User7 ctermfg=16  ctermbg=bg  cterm=none   " line
 " The following defaults are requires to maintain my sanity
 " More, and file-type overrides, can be found in vim/ftplugins
 
-set hidden	        " navigate away from  a buffer without saving it first
+set hidden          " navigate away from  a buffer without saving it first
 set shell=/bin/bash " Necessary to run the correct versions of unix programs
-" when using zsh
+                    " when using zsh
 
 set ttyfast
 set lazyredraw
@@ -124,7 +124,7 @@ endif
 set backspace=2     " Backspace over everything
 set laststatus=2    " Always show the status line
 set showtabline=2   " I don't really use tabs, but the tabline works decently
-" as a global status line
+                    " as a global status line
 
 set autoindent
 set tabstop=2 softtabstop=2 expandtab
