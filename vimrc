@@ -8,34 +8,41 @@ endif
 
 call plug#begin('~/.vim/plugins')
 
+" Usability
 Plug 'wincent/terminus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
-Plug 'tpope/vim-rsi'
 
+" Utility
 Plug 'tpope/vim-dispatch'
-
 Plug 'tpope/vim-obsession'
+Plug 'mbbill/undotree'
+Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/vim-oblique'
+Plug 'vim-scripts/TailMinusF'
+
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-abolish'
 
 " Plug 'tpope/vim-flagship'
 
+" Text Objects
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
 
-Plug 'mbbill/undotree'
-
+" Navigation
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
 Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-scriptease'
 
-Plug 'junegunn/vim-pseudocl'
-Plug 'junegunn/vim-oblique'
-Plug 'sjl/gundo.vim'
-Plug 'vim-scripts/TailMinusF'
-
+" Lint
 Plug 'scrooloose/syntastic'
-Plug 'ngmy/vim-rubocop'
+Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
 
+" Extend
+Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -44,35 +51,36 @@ Plug 'tpope/vim-endwise'
 Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug '~/src/vim/ifionly'
+Plug 'tpope/vim-ragtag'
 
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-abolish'
-
+" Git
 Plug 'tpope/vim-fugitive'
 Plug 'int3/vim-extradite'
 Plug 'airblade/vim-gitgutter'
 Plug '~/src/vim/twiggy'
 
-Plug 'tpope/vim-projectionist'
-
-Plug 'tpope/vim-scriptease'
-
+" Markdown
 Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
 Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
 
+" Html
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 
+" CSS
 Plug 'cakebaker/scss-syntax.vim'
 
+" Javascript
 Plug 'pangloss/vim-javascript'
 
+" Ruby
 Plug 'tpope/vim-bundler'
-
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
+Plug 'vim-scripts/IndentAnything'
 
+" Other
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 
@@ -394,10 +402,24 @@ augroup END
 
 " General
 command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
+" Vim
+command! -nargs=* P call s:LazyInsertPlugin(<f-args>)
 " HTML
 command! -nargs=1 Glyph exec 'normal! i<span class="glyphicon glyphicon-' . <f-args>. '"></span>'
 " Global Locations
-command! -nargs=1 ENote exec ":e ~/src/notes/" . <f-args> . ".txt"
+command! -nargs=1 Note exec ":e ~/src/notes/" . <f-args> . ".txt"
+
+if !exists('*s:LazyInsertPlugin')
+  function! s:LazyInsertPlugin(section, name)
+    normal! gg
+    call search('^call plug#begin')
+    call search('" '.a:section)
+    exec "normal! }OPlug '".a:name."'"
+    normal! zz
+    write
+    source %
+  endfunction
+endif
 
 " Mappings Functions {{{2
 
