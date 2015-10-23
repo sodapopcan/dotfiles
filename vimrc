@@ -255,7 +255,10 @@ nnoremap <silent> \| :vsp<CR>
 " Paste at EOL
 nnoremap <silent> K :call PasteAtEOL()<CR>
 " Reformat entire file
-nnoremap + mzgg=G`z
+nnoremap + :let winstate = winsaveview()<bar>
+      \ exec "normal! mzgg=G`z"<bar>
+      \ call winrestview(winstate)<bar>
+      \ unlet winstate<cr>
 " Increase scroll speed a little
 nnoremap <C-E> 2<C-E>
 nnoremap <C-Y> 2<C-Y>
