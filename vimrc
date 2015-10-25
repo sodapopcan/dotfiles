@@ -453,15 +453,15 @@ augroup CursorStatusLines
   autocmd WinLeave * setlocal statusline=\ \ \=^..^\=
   autocmd InsertEnter * set nocursorline
   autocmd InsertLeave * set cursorline
+  autocmd WinLeave * setlocal nocursorline
+  autocmd WinEnter * setlocal cursorline
 augroup END
 
-augroup AlwaysDoThisStuff
+augroup SignColumn
   autocmd!
   " Always show the sign column
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-  autocmd WinLeave * setlocal nocursorline
-  autocmd WinEnter * setlocal cursorline
   " I dunno anymore
   " autocmd ShellCmdPost * redraw!
 augroup END
