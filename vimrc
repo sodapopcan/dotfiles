@@ -411,6 +411,7 @@ command! -nargs=1 Glyph exec 'normal! i<span class="glyphicon glyphicon-' . <f-a
 " Global Locations
 command! -nargs=1 Note exec ":e ~/src/notes/" . <f-args> . ".txt"
 
+" +++ Command Functions {{{2
 if !exists('*s:LazyInsertPlugin')
   function! s:LazyInsertPlugin(section, name)
     normal! gg
