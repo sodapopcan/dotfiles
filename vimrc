@@ -431,12 +431,6 @@ function! PasteAtEOL()
   exec "normal! A\<space>\<esc>mzp`z"
 endfunction
 
-augroup DebugStuff
-  au!
-  au FileType eruby nnoremap <buffer><silent><leader>f :exec "call append(line('.'), '<% byebug %>')\<bar>normal j==\<bar>"<cr>:write<cr>
-  au FileType ruby  nnoremap <buffer><silent><leader>f :exec "call append(line('.'), 'byebug')\<bar>normal j=="<cr>:write<cr>
-augroup END
-
 " Autocommands {{{1
 "
 augroup FileTypeOptions
@@ -468,6 +462,12 @@ augroup AlwaysDoThisStuff
   autocmd WinEnter * setlocal cursorline
   " I dunno anymore
   " autocmd ShellCmdPost * redraw!
+augroup END
+
+augroup Debugging
+  au!
+  au FileType eruby nnoremap <buffer><silent><leader>f :exec "call append(line('.'), '<% byebug %>')\<bar>normal j==\<bar>"<cr>:write<cr>
+  au FileType ruby  nnoremap <buffer><silent><leader>f :exec "call append(line('.'), 'byebug')\<bar>normal j=="<cr>:write<cr>
 augroup END
 
 
