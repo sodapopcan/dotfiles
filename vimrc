@@ -112,7 +112,9 @@ set hidden          " navigate away from  a buffer without saving it first
 set shell=/bin/bash " Necessary to run the correct versions of unix programs
                     " when using zsh
 
-set ttyfast
+if !has('nvim')
+  set ttyfast
+endif
 set lazyredraw
 
 set mouse=a
