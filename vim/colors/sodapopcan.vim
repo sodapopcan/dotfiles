@@ -11,14 +11,14 @@ let g:colors_name = "sodapopcan"
 hi Normal                            ctermbg=236    ctermfg=248    cterm=none
 
 hi Cursor                            ctermbg=15     ctermfg=0      cterm=none
-hi CursorLine                        ctermbg=235    ctermfg=none   cterm=none
+hi CursorLine                        ctermbg=237    ctermfg=none   cterm=none
 hi CursorCol                         ctermbg=none   ctermfg=none   cterm=none
 
 hi TabLine                           ctermbg=237    ctermfg=242   cterm=none
 hi TabLineFill                       ctermbg=237    ctermfg=254   cterm=none
 hi TabLineSel                        ctermbg=244    ctermfg=bg    cterm=bold
 
-hi StatusLine                        ctermbg=237    ctermfg=248   cterm=none
+hi StatusLine                        ctermbg=235    ctermfg=248   cterm=none
 hi StatusLineNC                      ctermbg=237    ctermfg=237   cterm=none
 hi VertSplit                         ctermbg=bg     ctermfg=235    cterm=none
 
@@ -26,11 +26,11 @@ hi VimVar                            ctermfg=208
 
 hi Comment                           ctermfg=240
 hi Constant                          ctermfg=74
-hi link Identifier Constant
-hi Label                             ctermfg=74
-hi TypeDef                           ctermfg=74
-hi StorageClass                      ctermfg=74
-hi Structure                         ctermfg=74
+hi! link Identifier Constant
+hi! link Label Constant
+hi! link TypeDef Constant
+hi! link StorageClass Constant
+hi! link Define Constant
 hi Define                            cterm=none   ctermfg=173
 hi Statement                         cterm=none   ctermfg=137
 hi Error                             ctermbg=167    ctermfg=16
@@ -47,6 +47,7 @@ hi String                            ctermfg=107
 hi link Number String
 hi PreProc                           ctermfg=103
 hi Search                            ctermbg=186    ctermfg=16
+" hi link Search Normal
 hi IncSearch                         ctermbg=186    ctermfg=16
 hi Title                             ctermfg=250
 hi Type                              cterm=none   ctermfg=167
@@ -127,9 +128,30 @@ hi link NERDTreeOpenable String
 
 " Vim
 hi link VimIsCommand function
+hi link VimFuncKey function
+hi! link vimVar Normal
+hi vimLet                               ctermbg=none  ctermfg=180 cterm=none
+hi! link vimFuncBody vimLet
+hi! link vimNotFunc vimLet
+hi! link vimCommand vimLet
 
 " CSS
 hi link scssSelectorName Function
 " hi cssCommonAttr ctermbg=none ctermfg=229 cterm=none
 " hi scssAttribute ctermbg=none ctermfg=229 cterm=none
 hi scssVariable     ctermbg=none ctermfg=208 cterm=none
+
+" Javascript
+hi jsParens                             ctermbg=none ctermfg=067 cterm=none
+hi jsParen                              ctermbg=none ctermfg=111 cterm=none
+
+hi jsFunction                           ctermbg=none ctermfg=098 cterm=none
+hi jsFuncName                           ctermbg=none ctermfg=104 cterm=none
+hi jsFuncCall                           ctermbg=none ctermfg=062 cterm=none
+hi jsBlock                              ctermbg=none ctermfg=167 cterm=none
+hi jsFuncBlock                          ctermbg=none ctermfg=167 cterm=none
+hi jsFuncBraces                         ctermbg=none ctermfg=062 cterm=none
+" 62 deepish lightish blue
+hi jsStorageClass                       ctermbg=none ctermfg=067 cterm=none
+hi link jsOperator jsStorageClass
+

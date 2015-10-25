@@ -97,7 +97,7 @@ colorscheme sodapopcan
 
 hi User1 ctermfg=16  ctermbg=179 cterm=none   " git branch
 hi User2 ctermfg=16  ctermbg=167 cterm=none   " warn
-hi User3 ctermfg=179 ctermbg=237 cterm=none   " filename
+hi User3 ctermfg=179 ctermbg=235 cterm=none   " filename
 hi User4 ctermfg=bg  ctermbg=bg  cterm=none   " Obsession - tracking
 hi User5 ctermfg=bg  ctermbg=227 cterm=none   " Obsession - paused
 hi User6 ctermfg=bg  ctermbg=167 cterm=none   " Obsession - not tracking
