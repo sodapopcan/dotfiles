@@ -9,7 +9,7 @@ endif
 call plug#begin('~/.vim/plugins')
 
 " Usability
-Plug 'wincent/terminus'
+Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
 
