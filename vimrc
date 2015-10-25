@@ -95,13 +95,13 @@ let g:netrw_dirhistmax = 0
 syntax on
 colorscheme sodapopcan
 
-hi User1 ctermfg=16  ctermbg=179 cterm=none   " git branch
-hi User2 ctermfg=16  ctermbg=167 cterm=none   " warn
-hi User3 ctermfg=179 ctermbg=235 cterm=none   " filename
-hi User4 ctermfg=bg  ctermbg=bg  cterm=none   " Obsession - tracking
-hi User5 ctermfg=bg  ctermbg=227 cterm=none   " Obsession - paused
-hi User6 ctermfg=bg  ctermbg=167 cterm=none   " Obsession - not tracking
-hi User7 ctermfg=16  ctermbg=bg  cterm=none   " line
+hi User1 ctermbg=179  ctermfg=16   cterm=none   " git branch
+hi User2 ctermbg=167  ctermfg=16   cterm=none   " warn
+hi User3 ctermbg=237  ctermfg=179  cterm=none   " filename
+hi User4 ctermbg=bg   ctermfg=bg   cterm=none   " Obsession - tracking
+hi User5 ctermbg=227  ctermfg=bg   cterm=none   " Obsession - paused
+hi User6 ctermbg=167  ctermfg=bg   cterm=none   " Obsession - not tracking
+hi User7 ctermbg=bg   ctermfg=16   cterm=none   " line
 
 " Settings {{{1
 
