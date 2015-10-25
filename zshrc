@@ -1,7 +1,7 @@
 # export DISABLE_AUTO_UPDATE=true
 export DISABLE_AUTO_TITLE=true
 export SRC="$HOME/src"
-export EDITOR=vim
+export EDITOR=nvim
 export PROMPT_COMMAND="history -a; history -n"
 
 # This supposedly fixes vim the "tags file not sorted" error in vim.  So far, it
