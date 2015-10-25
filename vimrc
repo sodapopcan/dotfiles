@@ -182,6 +182,9 @@ set wildignore+=*.png,*.jpg,*.gif
 " hard
 inoremap <silent> jk <ESC>
 inoremap <silent> <C-C> <ESC>
+if has('nvim')
+  tnoremap <silent> jk <C-\><C-N>
+endif
 
 " Since C-L is in use, C-C will just do everything
 nnoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
