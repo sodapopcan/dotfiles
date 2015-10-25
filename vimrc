@@ -304,13 +304,10 @@ nnoremap cU cf_
 
 " Leader Mappings
 "
-let mapleader = ' '
 " Wipe buffer while maintaining its split
 nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 " Edit a new file in the same directory
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
-" Location mappings for rails
-autocmd BufEnter * call <SID>define_rails_mappings()
 
 " Status/Tab Lines {{{1
 "
@@ -434,33 +431,6 @@ function! PasteAtEOL()
   exec "normal! A\<space>\<esc>mzp`z"
 endfunction
 
-" Define location mappings for rails projects
-function! s:define_rails_mappings()
-  if exists('*RailsDetect')
-    nnoremap <buffer> <leader>a :A<cr>
-    nnoremap <buffer> <leader>r :R<cr>
-
-    nnoremap <buffer> <silent> <leader>m :Emo<cr>
-    nnoremap <buffer> <silent> <leader>v :Evi<cr>
-    nnoremap <buffer> <silent> <leader>c :Eco<cr>
-    nnoremap <buffer> <silent> <leader>h :Ehe<cr>
-    nnoremap <buffer> <silent> <leader>s :Est<cr>
-    nnoremap <buffer> <silent> <leader>j :Eja<cr>
-    nnoremap <buffer> <silent> <leader>l :Ela<cr>
-    nnoremap <buffer> <silent> <leader>d :Emi<cr>
-    nnoremap <buffer> <silent> <leader>i :Eini<cr>
-    nnoremap <buffer>          <leader>M :Emo<space>
-    nnoremap <buffer>          <leader>V :Evi<space>
-    nnoremap <buffer>          <leader>C :Eco<space>
-    nnoremap <buffer>          <leader>H :Ehe<space>
-    nnoremap <buffer>          <leader>S :Est<space>
-    nnoremap <buffer>          <leader>J :Eja<space>
-    nnoremap <buffer>          <leader>L :Ela<space>
-    nnoremap <buffer>          <leader>I :Eini<space>
-    nnoremap <buffer> <silent> d<cr>     :Dispatch bundle exec rspec<cr>
-  endif
-endfunction
-
 augroup DebugStuff
   au!
   au FileType eruby nnoremap <buffer><silent><leader>f :exec "call append(line('.'), '<% byebug %>')\<bar>normal j==\<bar>"<cr>:write<cr>
@@ -554,9 +524,9 @@ endif
 
 " CtrlP {{{1
 "
-let g:ctrlp_map = '\'
+let g:ctrlp_map = '<space>'
 let g:ctrlp_prompt_mappings = {
-      \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '\']
+      \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
       \ }
 
 
