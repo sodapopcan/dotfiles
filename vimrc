@@ -451,6 +451,8 @@ augroup CursorStatusLines
         \ | endif
   " Just put an ASCII cat on inactive status bars why not
   autocmd WinLeave * setlocal statusline=\ \ \=^..^\=
+  autocmd InsertEnter * set nocursorline
+  autocmd InsertLeave * set cursorline
 augroup END
 
 augroup AlwaysDoThisStuff
