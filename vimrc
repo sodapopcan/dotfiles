@@ -141,8 +141,8 @@ set ignorecase smartcase
 set cursorline
 set nostartofline
 set ruler
-set textwidth=80
-set nowrap
+set textwidth=100
+set wrap
 set scroll=5
 set scrolloff=2
 set sidescrolloff=0
