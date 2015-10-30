@@ -139,6 +139,7 @@ set ignorecase smartcase
 
 " I just like this stuff
 set cursorline
+set nostartofline
 set ruler
 set textwidth=80
 set nowrap
