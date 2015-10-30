@@ -20,6 +20,7 @@ Plug 'mbbill/undotree'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'vim-scripts/TailMinusF'
+Plug 'janko-m/vim-test'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
@@ -203,52 +204,11 @@ nnoremap <silent> H :vertical resize 102<CR>
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
-" Run tests
-" I'm going to need to flesh this out a bunch but, for now, assume rspec
-nnoremap f<CR> :call RunTests(1)<CR>
-nnoremap t<CR> :call RunTests(2)<CR>
-nnoremap c<CR> :call RunTests(3)<CR>
-function! RunTests(type)
-  let jumpback = 0
-
-  if expand('%') !~ '\v_spec.rb$'
-    try
-      silent keepjumps A
-    catch
-      echo "No test file"
-      return
-    endtry
-    let jumpback = 1
-  endif
-
-  if expand('%') =~ '\v_spec.rb$'
-    normal! m'gg
-    let bundle = ''
-    if search("spec_helper") || search("rails_helper")
-      let bundle = 'bundle exec '
-    endif
-    normal! `'
-    let test_cmd = ":!clear && ".bundle."rspec --fail-fast --no-profile %"
-    if a:type == 1
-      exe test_cmd
-    elseif a:type == 2
-      exe test_cmd.':'.line('.')
-    elseif a:type == 3
-      normal! m'
-      if getline('.') =~ '\vcontext(.*)do$' || search('context', 'bW') || search('context')
-        exe test_cmd.':'.line('.')
-        normal! `'
-      else
-        exe test_cmd
-      endif
-    endif
-  else
-    echo "No test file"
-  endif
-  if jumpback
-    silent keepjumps A
-  endif
-endfunction
+" Tests (Vim-Test)
+nnoremap <silent> f<CR> TestFile<CR>
+nnoremap <silent> t<CR> TestNearest<CR>
+nnoremap <silent> d<CR> TestSuite<CR>
+nnoremap <silent> F<CR> TestVisit<CR>
 " Write everything and quit
 nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
