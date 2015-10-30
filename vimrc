@@ -263,10 +263,6 @@ nmap <C-P> [m
 " Sync zz with my eyes
 nnoremap zz zz2<C-E>
 " Underscore is hard to reach
-nnoremap du dt_
-nnoremap dU df_
-nnoremap cu ct_
-nnoremap cU cf_
 
 " Leader Mappings
 "
