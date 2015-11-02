@@ -639,6 +639,10 @@ hi! TwiggyIconUnmerged      ctermfg=11  ctermbg=NONE
 " highlight TwiggySort ctermfg=213
 
 
+" Vim-Test
+"
+let g:test#strategy = 'dispatch'
+
 " Vim-Tmux Navigator {{{1
 "
 let g:tmux_navigator_no_mappings = 1
