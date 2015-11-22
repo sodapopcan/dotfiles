@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
+Plug 'ludovicchabant/vim-gutentags'
 
 " Utility
 Plug 'tpope/vim-dispatch'
@@ -33,7 +34,7 @@ Plug 'rhysd/vim-textobj-ruby'
 
 " Navigation
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-scriptease'
@@ -206,10 +207,10 @@ cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
 " Tests (Vim-Test)
-nnoremap <silent> f<CR> TestFile<CR>
-nnoremap <silent> t<CR> TestNearest<CR>
-nnoremap <silent> d<CR> TestSuite<CR>
-nnoremap <silent> F<CR> TestVisit<CR>
+nnoremap <silent> f<CR> :TestFile<CR>
+nnoremap <silent> t<CR> :TestNearest<CR>
+nnoremap <silent> d<CR> :TestSuite<CR>
+nnoremap <silent> F<CR> :TestVisit<CR>
 " Write everything and quit
 nnoremap zZ :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
