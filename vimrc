@@ -19,7 +19,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-obsession'
 Plug 'mbbill/undotree'
 Plug 'junegunn/vim-pseudocl'
-Plug 'junegunn/vim-oblique'
+" Plug 'junegunn/vim-oblique'
 Plug 'vim-scripts/TailMinusF'
 Plug 'janko-m/vim-test'
 
