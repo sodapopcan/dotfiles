@@ -74,6 +74,12 @@ Plug 'cakebaker/scss-syntax.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
+Plug 'gavocanov/vim-js-indent'
+
+" CoffeeScript
+Plug 'kchmck/vim-coffee-script'
 
 " Ruby
 Plug 'tpope/vim-bundler'
