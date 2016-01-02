@@ -537,6 +537,10 @@ autocmd User GoyoLeave nested call <SID>goyo_leave()
 let g:ifionly_filetypes = ['vim-plug']
 
 
+" JavaScript
+"
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
 " Markdown {{{1
 "
 let g:vim_markdown_folding_disabled=1
@@ -622,7 +626,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_highlighting = 0
 
 let g:syntastic_ruby_checkers = ['mri']
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 
 let g:syntastic_mode_map = {
       \ 'mode': 'active',
