@@ -68,6 +68,7 @@ Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
 " Html
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
+Plug 'mustache/vim-mustache-handlebars'
 
 " CSS
 Plug 'cakebaker/scss-syntax.vim'
@@ -445,7 +446,7 @@ augroup END
 
 " Closetag {{{1
 "
-let g:closetag_filenames = "*.html,*.erb,*.xml"
+let g:closetag_filenames = "*.html,*.erb,*.xml,*.mustache"
 
 " Git {{{1
 "
