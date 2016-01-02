@@ -5,3 +5,5 @@ dump.rdb
 .ruby-version
 .xmark.*
 .DS_Store
+tags.lock
+tags.temp
