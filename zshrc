@@ -90,14 +90,15 @@ alias songs="$EDITOR ~/docs/band/songs.md"
 ide() { $HOME/ide.sh }
 
 # git {{{1
-alias gs="git status"
+alias gs="git status -s"
 alias gb="git branch"
 alias gc="git commit"
 alias gC="git commit --amend --no-edit"
 alias gco="git checkout"
 alias gcp="git cherry-pick"
 alias gM="git checkout master"
-alias gL="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl="git log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias l="gL master.."
 # alias gl="git log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset' --abbrev-commit"
 # alias gL="git log --graph --pretty=format:'%C(red)%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gd="git diff"
@@ -110,11 +111,11 @@ alias gR="git reset --hard"
 alias ga="git add"
 alias gap="git add -p"
 
-gl ()
+L ()
 {
   local out shas sha q k
   while out=$(
-      git log --graph --color=always --format="%C(auto)%h %an %d %s %C(green)%cr" "$@" |
+      l "$@" |
       fzf --ansi --multi --no-sort --reverse --query="$q" --print-query --expect=ctrl-d --toggle-sort=\` \
     ); do
     q=$(head -1 <<< "$out")
