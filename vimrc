@@ -598,8 +598,12 @@ let g:rails_projections = {
       \      "  include Sidekiq::Worker", "", "  def perform(id)",
       \      "  end", "end"]
       \ },
-      \ "app/services/*.rb": {
-      \   "command": "service"
+      \ "app/managers/*_manager.rb": {
+      \   "command": "manager",
+      \   "template":
+      \     ["module {camelcase|capitalize|colons}Manager",
+      \      "  extend self", "", "end"],
+      \   "affinity": "model"
       \ },
       \ "spec/factories/*_factory.rb": {
       \   "command": "factory",
