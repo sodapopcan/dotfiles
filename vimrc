@@ -502,7 +502,7 @@ endif
 "       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
 "       \ }
 
-nnoremap <Space> :FZF<CR>
+nnoremap <silent> <Space> :FZF<CR>
 
 " GitGutter {{{1
 "
