@@ -105,7 +105,7 @@ syntax on
 colorscheme sodapopcan
 
 hi User1 ctermbg=179  ctermfg=16   cterm=none   " git branch
-hi User2 ctermbg=167  ctermfg=16   cterm=none   " warn
+hi User2 ctermbg=237  ctermfg=16   cterm=none   " warn
 hi User3 ctermbg=237  ctermfg=179  cterm=none   " filename
 hi User4 ctermbg=bg   ctermfg=bg   cterm=none   " Obsession - tracking
 hi User5 ctermbg=227  ctermfg=bg   cterm=none   " Obsession - paused
