@@ -22,6 +22,8 @@ Plug 'junegunn/vim-pseudocl'
 " Plug 'junegunn/vim-oblique'
 Plug 'vim-scripts/TailMinusF'
 Plug 'janko-m/vim-test'
+Plug 'heavenshell/vim-slack'
+Plug 'mattn/webapi-vim'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
@@ -40,7 +42,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-scriptease'
 
 " Lint
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
 
 " Extend
@@ -89,6 +91,9 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
 Plug 'vim-scripts/IndentAnything'
 
+" Elixir
+Plug 'elixir-lang/vim-elixir'
+
 " Other
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
@@ -118,10 +123,10 @@ hi User7 ctermbg=bg   ctermfg=16   cterm=none   " line
 " More, and file-type overrides, can be found in vim/ftplugins
 
 set hidden " navigate away from  a buffer without saving it first
-if !has('nvim')
- " Necessary to run the correct versions of unix programs when using zsh
-  set shell=/bin/bash
-endif
+" if !has('nvim')
+" Necessary to run the correct versions of unix programs when using zsh
+set shell=/bin/bash
+" endif
 
 if !has('nvim')
   set ttyfast
@@ -137,7 +142,7 @@ endif
 set backspace=2     " Backspace over everything
 set laststatus=2    " Always show the status line
 set showtabline=2   " I don't really use tabs, but the tabline works decently
-                    " as a global status line
+" as a global status line
 
 set autoindent
 set tabstop=2 softtabstop=2 expandtab
@@ -197,7 +202,7 @@ if has('nvim')
 endif
 
 " Since C-L is in use, C-C will just do everything
-nnoremap <C-C> <Esc>:w<CR><C-C>:syntax sync fromstart<CR>:redraw!<CR>
+nnoremap <C-C> <Esc>:w<CR>
 
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
@@ -273,6 +278,8 @@ nnoremap zz zz2<C-E>
 " Underscore is hard to reach
 
 " Leader Mappings
+
+" Location
 "
 " Wipe buffer while maintaining its split
 nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
@@ -403,6 +410,8 @@ endfunction
 
 " Autocommands {{{1
 "
+autocmd! BufWritePost,BufEnter * Neomake
+
 augroup FileTypeOptions
   autocmd!
   autocmd BufReadPost fugitive://*
@@ -466,11 +475,6 @@ nnoremap <silent> gH :Extradite<CR>
 nnoremap <silent> gh :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
-
-command! Reset exec ":Start! git reset " . expand('%') . "<cr>:e!<cr>"
-command! Revert Gread
-command! Migrate Rake db:migrate
-command! Rollback Rake db:rollback
 
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
@@ -577,6 +581,13 @@ endfunc
 autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmethod=expr
 
 
+" Neomake
+"
+let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg', }
+let g:neomake_warning_sign = { 'text': '>>', 'texthl': 'WarningMsg', }
+
 " NERDTree {{{1
 "
 nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
@@ -627,17 +638,17 @@ let g:rsi_no_meta = 1
 
 " Syntastic {{{1
 "
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_highlighting = 0
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_enable_highlighting = 0
 
-let g:syntastic_ruby_checkers = ['mri']
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_ruby_checkers = ['mri']
+" let g:syntastic_javascript_checkers = ['eslint']
 
-let g:syntastic_mode_map = {
-      \ 'mode': 'active',
-      \ 'passive_filetypes': ['erb']
-      \ }
+" let g:syntastic_mode_map = {
+"       \ 'mode': 'active',
+"       \ 'passive_filetypes': ['erb']
+"       \ }
 
 
 " Twiggy {{{1
