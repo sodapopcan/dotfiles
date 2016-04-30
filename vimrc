@@ -42,7 +42,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-scriptease'
 
 " Lint
-Plug 'benekastah/neomake'
+Plug 'blueyed/neomake',                { 'branch': 'process-by-tabwin' }
 Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
 
 " Extend
@@ -410,8 +410,6 @@ endfunction
 
 " Autocommands {{{1
 "
-autocmd! BufWritePost,BufEnter * Neomake
-
 augroup FileTypeOptions
   autocmd!
   autocmd BufReadPost fugitive://*
@@ -583,6 +581,9 @@ autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmetho
 
 " Neomake
 "
+autocmd! BufWritePost,BufEnter * if &modifiable | Neomake | endif
+
+let g:neomake_verbose = 0
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg', }
