@@ -165,6 +165,7 @@ set linebreak
 set updatetime=2000
 set completeopt-=preview
 set diffopt=filler,foldcolumn:0,context:4
+set autoread
 
 set fillchars=fold:\ ,vert:▕
 
