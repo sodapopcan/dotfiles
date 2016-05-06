@@ -7,3 +7,4 @@ dump.rdb
 .DS_Store
 tags.lock
 tags.temp
+npm-debug.log
