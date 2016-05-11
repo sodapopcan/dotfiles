@@ -8,3 +8,4 @@ dump.rdb
 tags.lock
 tags.temp
 npm-debug.log
+.irb_history
