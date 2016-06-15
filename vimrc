@@ -618,6 +618,12 @@ let g:rails_projections = {
       \      "  extend self", "", "end"],
       \   "affinity": "model"
       \ },
+      \ "app/serializers/*_serializer.rb": {
+      \   "command": "serializer",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer",
+      \       "end"]
+      \ },
       \ "spec/factories/*_factory.rb": {
       \   "command": "factory",
       \   "template":
