@@ -1,7 +1,7 @@
 # D-D-Dot Files #
 
 These are my personal config files that I have only ever used on OS X.  This
-README serves as a place to keep frack of any manual config I would have to do
+README serves as a place to keep track of any manual config I would have to do
 in setting up a brand new system (as opposed to setting up some extended
 automated fanciness).
 
