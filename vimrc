@@ -142,7 +142,7 @@ endif
 set backspace=2     " Backspace over everything
 set laststatus=2    " Always show the status line
 set showtabline=2   " I don't really use tabs, but the tabline works decently
-" as a global status line
+                    " as a global status line
 
 set autoindent
 set tabstop=2 softtabstop=2 expandtab
