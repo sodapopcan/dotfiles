@@ -231,6 +231,8 @@ nnoremap Q @q
 nnoremap <silent> L :IfIOnly<CR>
 " Make Y do what you think it would
 nnoremap Y y$
+" I never use & but it drives me nuts when I hit due to the error it throws
+nnoremap <silent> & :try <Bar> exec "normal! &" <Bar> catch <Bar> endtry<CR>
 " Keep your lines short, children
 nnoremap j gj
 nnoremap k gk
