@@ -90,14 +90,20 @@ alias songs="$EDITOR ~/docs/band/songs.md"
 # tmux
 ide() { $HOME/ide.sh }
 
+# stuff
+alias rs="bundle exec foreman start -f Procfile.dev"
+
 # git {{{1
 alias gs="git status -s"
 alias gb="git branch"
 alias gc="git commit"
 alias gC="git commit --amend --no-edit"
+alias grim="git rebase -i master"
 alias gco="git checkout"
 alias gcp="git cherry-pick"
 alias gM="git checkout master"
+alias gf="git fetch"
+alias gfm="git fetch master"
 alias gl="git log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias l="gL master.."
 # alias gl="git log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset' --abbrev-commit"
