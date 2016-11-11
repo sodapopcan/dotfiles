@@ -1,0 +1,28 @@
+[user]
+	email = andrewwhhaust@gmail.com
+	name = Andrew Haust
+[alias]
+	co = checkout
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = ~/.cvsignore
+	autocrlf = input
+	editor = /usr/bin/vim
+[apply]
+	whitespace = nowarn
+[format]
+	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[github]
+	user = sodapopcan
+	token = 
+[mergetool]
+	keepBackup = true
+[push]
+	default = simple
+[rerere]
+	enabled = true
+[pull]
+	rebase = true
