@@ -10,7 +10,7 @@ These are my personal config files that I have only ever used on OS X.
 
 `cd ~/dotfiles`
 
-`./install.sh`
+`./install`
 
 ## Manual Steps
 
