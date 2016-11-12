@@ -13,23 +13,8 @@ automated fanciness).
 ### Clone my dotfiles repo which will mostly configure my terminal
 `git clone git@github.com:sodapopcan/dotfiles.git ~/dotfiles`
 
-### Link-up the appropriate files
-```shell
-ln -s ~/dotfiles/zshrc ~/.zshrc && \
-ln -s ~/dotfiles/zshrc ~/.zshenv && \
-ln -s ~/dotfiles/zlogin ~/.zlogin && \
-ln -s ~/dotfiles/vimrc ~/.vimrc && \
-ln -s ~/dotfiles/vim ~/.vim && \
-ln -s ~/dotfiles/tmux.conf ~/.tmux.conf && \
-ln -s ~/dotfiles/bashrc ~/.bashrc && \
-ln -s ~/dotfiles/gitconfig ~/.gitconfig && \
-ln -s ~/dotfiles/cvsignore ~/.cvsignore
-```
-
-### Use C-W everywhere (including OS X apps)
-`mkdir ~/Library/KeyBindings`
-`echo "{\n\t\"^w\" = \"deleteWordBackward:\";\n}" >> ~/Library/KeyBindings/DefaultKeyBinding.dict`
-Got this from [here](https://coderwall.com/p/rhiiba/ctrl-w-everywhere).
+### Install
+`./install.sh`
 
 ## Manual Set-up
 
