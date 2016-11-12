@@ -5,8 +5,11 @@ These are my personal config files that I have only ever used on OS X.
 ## Cut and Paste Shell Commands
 
 `chsh -s /bin/zsh`
+
 `git clone git@github.com:sodapopcan/dotfiles.git ~/dotfiles`
+
 `cd ~/dotfiles`
+
 `./install.sh`
 
 ## Manual Steps
