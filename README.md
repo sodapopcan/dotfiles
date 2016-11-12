@@ -26,9 +26,6 @@ ln -s ~/dotfiles/gitconfig ~/.gitconfig && \
 ln -s ~/dotfiles/cvsignore ~/.cvsignore
 ```
 
-### Vundle
-`git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-
 ### Use C-W everywhere (including OS X apps)
 `mkdir ~/Library/KeyBindings`
 `echo "{\n\t\"^w\" = \"deleteWordBackward:\";\n}" >> ~/Library/KeyBindings/DefaultKeyBinding.dict`
