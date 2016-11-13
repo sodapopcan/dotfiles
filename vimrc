@@ -254,15 +254,7 @@ nnoremap + :let winstate = winsaveview()<bar>
 nnoremap <C-E> 2<C-E>
 nnoremap <C-Y> 2<C-Y>
 " Strip whitespace
-nnoremap <silent> da<Space>
-      \ :let winstate = winsaveview()<bar>
-      \ try<bar>
-      \ %s/\s\+$//<bar>
-      \ catch<bar>
-      \ endtry<bar>
-      \ call winrestview(winstate)<bar>
-      \ unlet winstate<bar>
-      \ echo "All clean"<Cr>
+nnoremap <silent> da<Space> :call StripWhitespace()<bar>echo "All clean"<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
@@ -410,6 +402,16 @@ function! PasteAtEOL()
   exec "normal! A\<space>\<esc>mzp`z"
 endfunction
 
+function! StripWhitespace()
+      let winstate = winsaveview()
+      try
+        %s/\s\+$//
+      catch
+        " Don't care if it fails
+      endtry
+      call winrestview(winstate)
+      unlet winstate
+endfunction
 " Autocommands {{{1
 "
 augroup FileTypeOptions
@@ -417,6 +419,7 @@ augroup FileTypeOptions
   autocmd BufReadPost fugitive://*
         \ setlocal bufhidden=wipe |
         \ nnoremap <buffer> q :q<CR>
+  autocmd FileType ruby,javascript,coffee autocmd BufWritePre <buffer> call StripWhitespace()
   autocmd FileType gitcommit setlocal spell
   autocmd FileType gitcommit setlocal list listchars=tab:\ \ 
   autocmd FileType help,qf nnoremap <silent> <buffer> q :q<CR>
