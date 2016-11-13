@@ -42,7 +42,7 @@ hi link PreProc                      Statement
 hi link PreCondit                    Statement
 
 hi LineNr                            ctermbg=bg   ctermfg=235
-hi CursorLineNr                      ctermbg=bg   ctermfg=208 cterm=NONE
+hi CursorLineNr                      ctermbg=bg   ctermfg=234 cterm=NONE
 hi String                            ctermfg=107
 hi link Number String
 hi PreProc                           ctermfg=103
