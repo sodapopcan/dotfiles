@@ -18,6 +18,8 @@ echo "  * vimrc"
 ln -s ~/dotfiles/bashrc ~/.bashrc
 echo "  * bashrc"
 ln -s ~/dotfiles/vim ~/.vim
+echo "  * irbrc"
+ln -s ~/dotfiles/irbrc ~/.irbrc
 echo "  * vim/"
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 echo "  * tmux.conf"
