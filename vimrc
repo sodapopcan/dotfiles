@@ -412,6 +412,7 @@ function! StripWhitespace()
       call winrestview(winstate)
       unlet winstate
 endfunction
+
 " Autocommands {{{1
 "
 augroup FileTypeOptions
