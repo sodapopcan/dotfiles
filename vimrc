@@ -13,6 +13,7 @@ Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'editorconfig/editorconfig-vim'
 
 " Utility
 Plug 'tpope/vim-dispatch'
@@ -461,6 +462,11 @@ augroup END
 "
 let g:closetag_filenames = "*.html,*.erb,*.xml,*.mustache"
 
+" Edtiorconfig {{{1
+"
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 " Git {{{1
 "
 nnoremap <silent> gs :Gstatus<CR>
@@ -630,6 +636,12 @@ let g:rsi_no_meta = 1
 "       \ 'passive_filetypes': ['erb']
 "       \ }
 
+
+" Test {{{1
+"
+
+let test#ruby#minitest#executable = 'ruby'
+" let g:test#runner_commands = ['Minitest']
 
 " Twiggy {{{1
 "
