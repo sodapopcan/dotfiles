@@ -34,3 +34,18 @@ let g:rails_projections = {
       \      "  end", "end"],
       \   "affinity": "model"
       \ }}
+
+" RuboCop
+"
+if !exists('*FormatRuby()')
+  function! FormatRuby()
+    silent write!
+    echo "Formatting..."
+    call system("rubocop --auto-correct " . expand('%'))
+    silent edit!
+    write
+    redraw!
+  endfunction
+
+  nnoremap <buffer> + :call FormatRuby()<CR>
+endif
