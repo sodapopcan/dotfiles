@@ -1,3 +1,14 @@
+command! -nargs=0 UpdateRubyHashSyntax %s/:\([^ ]*\)\(\s*\)=>/\1:/g
+
+" RuboCop
+nnoremap <silent> <buffer> + :write! <Bar>
+      \ redraw <Bar>
+      \ echo "Formatting..." <Bar>
+      \ call system("rubocop --auto-correct " . expand('%')) <Bar>
+      \ silent edit! <Bar>
+      \ write <Bar>
+      \ redraw!<CR>
+
 " Rails
 let g:rails_projections = {
       \ "app/workers/*_worker.rb": {
@@ -35,17 +46,4 @@ let g:rails_projections = {
       \   "affinity": "model"
       \ }}
 
-" RuboCop
-"
-if !exists('*FormatRuby()')
-  function! FormatRuby()
-    silent write!
-    echo "Formatting..."
-    call system("rubocop --auto-correct " . expand('%'))
-    silent edit!
-    write
-    redraw!
-  endfunction
 
-  nnoremap <buffer> + :call FormatRuby()<CR>
-endif
