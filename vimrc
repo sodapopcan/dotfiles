@@ -153,6 +153,7 @@ set ignorecase smartcase
 " I just like this stuff
 set cursorline
 set nostartofline
+set breakindent
 set ruler
 set textwidth=100
 set wrap
