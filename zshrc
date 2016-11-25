@@ -2,7 +2,7 @@
 export DISABLE_AUTO_TITLE=true
 export SRC="$HOME/src"
 export EDITOR=vim
-export GIT_EDITOR=vim
+export GIT_EDITOR="$EDITOR"
 export PROMPT_COMMAND="history -a; history -n"
 
 # This supposedly fixes vim the "tags file not sorted" error in vim.  So far, it
@@ -74,11 +74,6 @@ export CLICOLOR=1
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
-
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="./bin:$PATH"
 
 export MYSQL_PS1="\d> "
 

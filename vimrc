@@ -37,7 +37,10 @@ Plug 'rhysd/vim-textobj-ruby'
 
 " Navigation
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
-Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
+" I don't know what's up with FZF and I don't care right now
+Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-scriptease'
@@ -154,10 +157,11 @@ set ignorecase smartcase
 set cursorline
 set nostartofline
 set breakindent
+set breakindentopt=shift:2
 set ruler
 set textwidth=100
 set wrap
-set scroll=5
+" set scroll=5
 set scrolloff=2
 set sidescrolloff=0
 set shortmess=atWI
@@ -198,7 +202,7 @@ set wildignore+=*.png,*.jpg,*.gif
 " I'm trying to grow out of jk for escaping insert mode, but I'm failing pretty
 " hard
 inoremap <silent> jk <ESC>
-inoremap <silent> <C-C> <ESC>
+inoremap <silent> <C-C> <Esc>:redraw!<CR>
 if has('nvim')
   tnoremap <silent> jk <C-\><C-N>
 endif
@@ -248,7 +252,7 @@ nnoremap <silent> \| :102vsp<CR>
 " Paste at EOL
 nnoremap <silent> K :call PasteAtEOL()<CR>
 " Reformat entire file
-nnoremap + :let winstate = winsaveview()<bar>
+nnoremap <silent> + :let winstate = winsaveview()<bar>
       \ exec "normal! mzgg=G`z"<bar>
       \ call winrestview(winstate)<bar>
       \ unlet winstate<cr>
@@ -272,6 +276,8 @@ nmap <C-P> [m
 " Sync zz with my eyes
 nnoremap zz zz2<C-E>
 " Underscore is hard to reach
+cnoreabbrev copen botright copen
+" Open quickfix list across bottom
 
 " Leader Mappings
 
@@ -473,7 +479,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 nnoremap <silent> gs :Gstatus<CR>
 nnoremap <silent> gi :call GitDiffPlus()<CR>
 nnoremap <silent> g? :Gblame -w<CR>
-nnoremap <silent> gw :Gwrite<CR>:w<CR>
+nnoremap <silent> gw :Gwrite<CR><CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
 nnoremap          g<Space>  :Ggrep ""<Left>
 for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
@@ -512,10 +518,10 @@ endif
 
 " CtrlP {{{1
 "
-" let g:ctrlp_map = '<space>'
-" let g:ctrlp_prompt_mappings = {
-"       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
-"       \ }
+let g:ctrlp_map = '<space>'
+let g:ctrlp_prompt_mappings = {
+      \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
+      \ }
 
 nnoremap <silent> <Space> :FZF<CR>
 
