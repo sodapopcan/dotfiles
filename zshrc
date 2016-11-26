@@ -10,8 +10,6 @@ export PROMPT_COMMAND="history -a; history -n"
 # seems to have done the trick.
 export LC_COLLATE=C
 
-source "$HOME/.env"
-
 autoload -U promptinit && promptinit
 setopt PROMPT_SUBST
 
