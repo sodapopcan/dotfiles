@@ -37,6 +37,8 @@ alias p="$EDITOR ~/dotfiles/zshrc"
 alias mkdir="mkdir -p"
 
 alias s="cd $HOME/src"
+alias pg-start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg-stop="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop"
 
 
 d   () { mkdir -p "$@" && cd "$@"; }
