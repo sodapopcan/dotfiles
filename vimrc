@@ -35,8 +35,8 @@ Plug 'rhysd/vim-textobj-ruby'
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
 " I don't know what's up with FZF and I don't care right now
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-scriptease'
@@ -514,12 +514,12 @@ endif
 
 " CtrlP {{{1
 "
-let g:ctrlp_map = '<space>'
-let g:ctrlp_prompt_mappings = {
-      \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
-      \ }
+" let g:ctrlp_map = '<space>'
+" let g:ctrlp_prompt_mappings = {
+"       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
+"       \ }
 
-" nnoremap <silent> <Space> :FZF<CR>
+nnoremap <silent> <Space> :FZF<CR>
 
 " GitGutter {{{1
 "
