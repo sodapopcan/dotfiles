@@ -2,10 +2,6 @@ if !&compatible | set nocompatible | endif
 
 " Plugins {{{1
 "
-if !has('nvim')
-  let g:plug_threads = 1
-endif
-
 call plug#begin('~/.vim/plugins')
 
 " Usability
