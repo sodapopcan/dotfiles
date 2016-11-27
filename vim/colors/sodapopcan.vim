@@ -33,8 +33,8 @@ hi! link StorageClass Constant
 hi! link Define Constant
 hi Define                            cterm=none   ctermfg=173
 hi Statement                         cterm=none   ctermfg=137
-hi Error                             ctermbg=167    ctermfg=16
-hi link ErrorMsg Error
+hi Error                             ctermbg=167   ctermfg=16
+hi ErrorMsg                          ctermbg=none   ctermfg=167
 hi Function                          cterm=none   ctermfg=215
 hi Keyword                           cterm=none   ctermfg=173
 hi link Include                      Statement
