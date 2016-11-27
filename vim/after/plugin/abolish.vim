@@ -4,6 +4,8 @@ if !exists(':Abolish')
   finish
 endif
 
-Abolish yeild                            yield
-Abolish inculdes                         includes
-Abolish destory                          destroy
+Abolish absolish{,es}                    abolish{,es}
+Abolish damange{,s}                      damange{,s}
+Abolish destory{,s}                      destroy{,s}
+Abolish inculde{,s}                      include{,s}
+Abolish yeild{,s}                        yield{,s}
