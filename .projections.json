@@ -1,0 +1,26 @@
+{
+  "vimrc": {
+    "alternate": "zshrc",
+    "related": "vim/colors/sodapopcan.vim",
+    "type": "vim"
+  },
+  "zshrc": {
+    "alternate": "vimrc",
+    "related": "tmux.conf",
+    "type": "zsh"
+  },
+  "tmux.conf": {
+    "related": "zshrc",
+    "type": "tmux"
+  },
+  "vim/colors/sodapopcan.vim": {
+    "related": "vimrc",
+    "type": "soda"
+  },
+  "vim/colors/*.vim": {
+    "type": "color"
+  },
+  "vim/plugins/*/": {
+    "type": "plugin"
+  }
+}
