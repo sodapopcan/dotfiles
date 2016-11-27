@@ -523,7 +523,7 @@ let g:ctrlp_prompt_mappings = {
       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
       \ }
 
-nnoremap <silent> <Space> :FZF<CR>
+" nnoremap <silent> <Space> :FZF<CR>
 
 " GitGutter {{{1
 "
