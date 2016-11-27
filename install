@@ -28,6 +28,6 @@ echo "  * gitconfig"
 ln -s ~/dotfiles/cvsignore ~/.cvsignore
 echo "  * gitignore (actually cvsignore)"
 
-echo "Use ctrl-w everywhere on macOS"
-mkdir ~/Library/KeyBindings
-echo "{\n\t\"^w\" = \"deleteWordBackward:\";\n}" >> ~/Library/KeyBindings/DefaultKeyBinding.dict
+echo "Use ctrl-w and ctrl-u everywhere on macOS"
+mkdir "$HOME/Library/KeyBindings"
+cp "$DOTFILES/macos_DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
