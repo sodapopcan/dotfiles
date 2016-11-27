@@ -549,9 +549,14 @@ hi GitGutterDelete ctermfg=167 ctermbg=bg cterm=NONE
 
 " Goyo {{{1
 "
+
+function! s:goyo_enter()
+  set laststatus=0
+endfunction
 function! s:goyo_leave()
   source ~/.vimrc
 endfunction
+autocmd User GoyoEnter nested call <SID>goyo_enter()
 autocmd User GoyoLeave nested call <SID>goyo_leave()
 
 
