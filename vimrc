@@ -284,6 +284,8 @@ cnoreabbrev copen botright copen
 nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 " Edit a new file in the same directory
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+" Read a file in the same directory
+nnoremap <Leader>r :r <C-R>=expand('%:p:h') . '/'<CR>
 
 " Status/Tab Lines {{{1
 "
