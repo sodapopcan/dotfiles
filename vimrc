@@ -16,7 +16,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-obsession'
 Plug 'mbbill/undotree'
 Plug 'junegunn/vim-pseudocl'
-" Plug 'junegunn/vim-oblique'
+Plug 'junegunn/vim-oblique'
 Plug 'vim-scripts/TailMinusF'
 Plug 'janko-m/vim-test'
 Plug 'heavenshell/vim-slack'
@@ -129,6 +129,7 @@ set shell=/bin/bash
 
 if !has('nvim')
   set ttyfast
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 set lazyredraw
 
@@ -520,6 +521,7 @@ endif
 "       \ }
 
 nnoremap <silent> <Space> :FZF<CR>
+let g:fzf_layout = { 'down': '~20%' }
 
 " GitGutter {{{1
 "
