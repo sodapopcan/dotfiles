@@ -127,9 +127,10 @@ set hidden " navigate away from  a buffer without saving it first
 set shell=/bin/bash
 " endif
 
-if !has('nvim')
-  set ttyfast
+if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+else
+  set ttyfast
 endif
 set lazyredraw
 
