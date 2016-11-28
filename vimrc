@@ -492,6 +492,10 @@ nnoremap <silent> gh :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 
+" Wrap some commands
+command! -nargs=0 Log Commits
+command! -nargs=0 Flog BCommits
+
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
   function! GitDiffPlus()
