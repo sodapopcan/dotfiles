@@ -131,14 +131,13 @@ if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 else
   set ttyfast
+  if &encoding !=# 'utf-8'
+    set encoding=utf-8
+  endif
 endif
 set lazyredraw
 
 set mouse=a
-
-if &encoding !=# 'utf-8'
-  set encoding=utf-8
-endif
 
 set backspace=2     " Backspace over everything
 set laststatus=2    " Always show the status line
