@@ -156,7 +156,7 @@ set nostartofline
 set breakindent
 set breakindentopt=shift:2
 set ruler
-set textwidth=100
+set textwidth=80
 set wrap
 " set scroll=5
 set scrolloff=2
