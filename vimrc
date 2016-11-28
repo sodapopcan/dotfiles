@@ -549,7 +549,7 @@ hi GitGutterDelete ctermfg=167 ctermbg=bg cterm=NONE
 "
 
 function! s:goyo_enter()
-  set laststatus=0
+  set statusline=0
 endfunction
 function! s:goyo_leave()
   source ~/.vimrc
