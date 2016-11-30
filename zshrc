@@ -2,7 +2,7 @@
 export DISABLE_AUTO_TITLE=true
 export SRC="$HOME/src"
 export DOTFILES="$HOME/dotfiles"
-export EDITOR=nvim
+export EDITOR=vim
 export GIT_EDITOR="$EDITOR"
 export PROMPT_COMMAND="history -a; history -n"
 
