@@ -155,3 +155,9 @@ hi jsFuncBraces                         ctermbg=none ctermfg=062 cterm=none
 hi jsStorageClass                       ctermbg=none ctermfg=067 cterm=none
 hi link jsOperator jsStorageClass
 
+" JSON
+hi JsonKeyword                          ctermbg=none  ctermfg=214
+hi JsonNoise                            ctermbg=none  ctermfg=238
+hi link JsonKeywordMatch JsonNoise
+hi link JsonQuote JsonNoise
+hi link JsonBraces JsonNoise
