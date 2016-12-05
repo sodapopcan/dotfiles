@@ -384,6 +384,8 @@ command! -nargs=* E silent edit <f-args>
 command! -nargs=1 Glyph exec 'normal! i<span class="glyphicon glyphicon-' . <f-args>. '"></span>'
 " Global Locations
 command! -nargs=1 Note exec ":e ~/src/notes/" . <f-args> . ".txt"
+" Shruggie
+command! -nargs=0 Shrug exec "normal! a ¯\\_(ツ)_/¯\<Esc>"
 
 " +++ Command Functions {{{2
 if !exists('*s:LazyInsertPlugin')
