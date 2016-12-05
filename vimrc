@@ -379,6 +379,7 @@ augroup END
 command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
 " Vim
 command! -nargs=* P call s:LazyInsertPlugin(<f-args>)
+command! -nargs=* E silent edit <f-args>
 " HTML
 command! -nargs=1 Glyph exec 'normal! i<span class="glyphicon glyphicon-' . <f-args>. '"></span>'
 " Global Locations
