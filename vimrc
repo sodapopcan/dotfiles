@@ -489,10 +489,8 @@ nnoremap <silent> gH :Extradite<CR>
 nnoremap <silent> gh :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
-
-" Wrap some commands
-command! -nargs=0 Log Commits
-command! -nargs=0 Flog BCommits
+nnoremap <silent> gl :Commits<CR>
+nnoremap <silent> gL :BCommits<CR>
 
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
@@ -517,15 +515,11 @@ if !exists('*GitDiffPlus')
 endif
 
 
-" CtrlP {{{1
+" FZF {{{1
 "
-" let g:ctrlp_map = '<space>'
-" let g:ctrlp_prompt_mappings = {
-"       \ 'PrtExit()': ['<esc>', '<c-c>', '<c-g>', '<space>']
-"       \ }
-
 nnoremap <silent> <Space> :FZF<CR>
 let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_commits_log_options = "--pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 " GitGutter {{{1
 "
