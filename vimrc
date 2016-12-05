@@ -20,7 +20,6 @@ Plug 'junegunn/vim-oblique'
 Plug 'vim-scripts/TailMinusF'
 Plug 'janko-m/vim-test'
 Plug 'heavenshell/vim-slack'
-Plug 'mattn/webapi-vim'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
