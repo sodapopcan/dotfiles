@@ -484,9 +484,6 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gyi".t."<Space> yi".t.":Ggrep \"\"<Left><C-R><C-\">"
   exec "nnoremap gya".t."<Space> ya".t.":Ggrep \"\"<Left><C-R><C-\">"
 endfor
-" nnoremap          gh :Glog<CR>
-nnoremap <silent> gH :Extradite<CR>
-nnoremap <silent> gh :Gitv<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 nnoremap <silent> gl :Commits<CR>
