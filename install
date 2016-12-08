@@ -27,6 +27,8 @@ ln -s ~/dotfiles/gitconfig ~/.gitconfig
 echo "  * gitconfig"
 ln -s ~/dotfiles/cvsignore ~/.cvsignore
 echo "  * gitignore (actually cvsignore)"
+ln -s ~/dotfiles/psqlrz ~/.psqlrz
+echo "  * psqlrc"
 
 echo "Use ctrl-w and ctrl-u everywhere on macOS"
 mkdir "$HOME/Library/KeyBindings"
