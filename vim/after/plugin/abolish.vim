@@ -9,3 +9,4 @@ Abolish damange{,s}                      damange{,s}
 Abolish destory{,s}                      destroy{,s}
 Abolish inculde{,s}                      include{,s}
 Abolish yeild{,s}                        yield{,s}
+Abolish for{e}cas{e,t}{,s}               for{e}cas{t}{,s}
