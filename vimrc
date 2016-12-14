@@ -388,19 +388,8 @@ command! -nargs=1 Glyph exec 'normal! i<span class="glyphicon glyphicon-' . <f-a
 command! -nargs=1 Note exec ":e ~/notes/" . <f-args> . ".txt"
 " Shruggie
 command! -nargs=0 Shrug exec "normal! a ¯\\_(ツ)_/¯\<Esc>"
-
-" +++ Command Functions {{{2
-if !exists('*s:LazyInsertPlugin')
-  function! s:LazyInsertPlugin(section, name)
-    normal! gg
-    call search('^call plug#begin')
-    call search('" '.a:section)
-    exec "normal! }OPlug '".a:name."'"
-    normal! zz
-    write
-    source %
-  endfunction
-endif
+" Source
+command! -nargs=0 So so %
 
 " Mappings Functions {{{2
 
