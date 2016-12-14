@@ -91,6 +91,9 @@ Plug 'vim-scripts/IndentAnything'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 
+" Postgres
+Plug 'exu/pgsql.vim'
+
 " Other
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
