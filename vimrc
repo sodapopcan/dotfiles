@@ -222,10 +222,11 @@ nnoremap <silent> H :vertical resize 102<CR>
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 
+" Dispatch
+nnoremap <silent> d<CR> :Dispatch<CR>
 " Tests (Vim-Test)
 nnoremap <silent> f<CR> :TestFile<CR>
 nnoremap <silent> t<CR> :TestNearest<CR>
-nnoremap <silent> d<CR> :TestSuite<CR>
 nnoremap <silent> F<CR> :TestVisit<CR>
 " Write everything and quit
 nnoremap ZX :wall \| qall!<CR>
