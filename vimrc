@@ -385,8 +385,6 @@ command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
 " Vim
 command! -nargs=* E silent edit <f-args>
 " HTML
-command! -nargs=1 Glyph exec 'normal! i<span class="glyphicon glyphicon-' . <f-args>. '"></span>'
-" Global Locations
 command! -nargs=1 Note exec ":e ~/notes/" . <f-args> . ".txt"
 " Shruggie
 command! -nargs=0 Shrug exec "normal! a ¯\\_(ツ)_/¯\<Esc>"
