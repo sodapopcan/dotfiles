@@ -485,6 +485,16 @@ nnoremap          gB :Twiggy<Space>
 nnoremap <silent> gl :Commits<CR>
 nnoremap <silent> gL :BCommits<CR>
 
+command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
+command! -nargs=0 Rollback Dispatch rake db:rollback && RAILS_ENV=test rake db:rollback
+
+function! s:migrate_rails(...)
+  if a:0 > 0
+    exec ":Dispatch rails g migration " . a:1
+  else
+    Dispatch rake db:migrate && RAILS_ENV=test rake db:migrate
+  endif
+endfunction
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
   function! GitDiffPlus()
