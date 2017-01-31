@@ -152,6 +152,7 @@ set incsearch hlsearch
 set ignorecase smartcase
 
 " I just like this stuff
+set cmdheight=2
 set cursorline
 set nostartofline
 set breakindent
