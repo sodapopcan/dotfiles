@@ -218,7 +218,7 @@ nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 " Control when you want to see more
-nnoremap <silent> H :vertical resize 102<CR>
+exec "nnoremap \<silent> H :vertical resize " . string(&columns * 0.6) "\<CR>"
 " nnoremap <silent> <M-H>:TmuxNavigatePrevious<cr>
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
