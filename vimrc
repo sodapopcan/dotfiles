@@ -16,15 +16,11 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-obsession'
 Plug 'mbbill/undotree'
 Plug 'junegunn/vim-pseudocl'
-Plug 'junegunn/vim-oblique'
-Plug 'vim-scripts/TailMinusF'
 Plug 'janko-m/vim-test'
 Plug 'heavenshell/vim-slack'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
-
-" Plug 'tpope/vim-flagship'
 
 " Text Objects
 Plug 'kana/vim-textobj-user'
@@ -56,7 +52,6 @@ Plug 'tpope/vim-ragtag'
 
 " Git
 Plug 'tpope/vim-fugitive'
-Plug 'int3/vim-extradite'
 Plug 'airblade/vim-gitgutter'
 Plug '~/src/vim/twiggy'
 
@@ -67,16 +62,13 @@ Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
 " Html
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'slim-template/vim-slim'
 
 " CSS
 Plug 'cakebaker/scss-syntax.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'othree/yajs.vim'
-Plug 'gavocanov/vim-js-indent'
 
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script'
@@ -86,16 +78,11 @@ Plug 'tpope/vim-bundler'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
-Plug 'vim-scripts/IndentAnything'
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 
-" Postgres
-Plug 'exu/pgsql.vim'
-
 " Other
-Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 
 call plug#end()
