@@ -28,13 +28,41 @@ else
   tmux bind -r M-f switch-client -t home
 fi
 
+# inkcling
+if tmux ls | grep -q inkcling; then
+  echo "inkcling session already exists."
+else
+  cd ~/src/inkcling
+  do_web_dev_session inkcling
+  tmux bind -r M-a switch-client -t inkcling
+  tmux send-keys "(pgrep postgres > /dev/null || pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start) && \
+    clear && \
+    e" C-m
+
+  tmux select-pane -D
+  # tmux send-keys "rails c" C-m
+  tmux select-pane -R
+  # tmux send-keys "rails s" C-m
+  tmux select-window -t 2
+  tmux send-keys  "sleep 5 && clear && psql inkcling_development" C-m
+  tmux new-window
+  tmux rename-window ssh
+  tmux new-window
+  tmux rename-window notes
+  tmux send-keys "cd ~/notes && vim -c 'Goyo' inkcling.md" C-m
+  tmux select-window -t 1
+  # tmux select-pane -t 0
+
+  # tmux -2 attach-session -t inkcling
+fi
+
 # OMX
 if tmux ls | grep -q omx; then
   echo "OMX session already exists."
 else
   cd ~/src/omx
   do_web_dev_session omx
-  tmux bind -r M-a switch-client -t omx
+  tmux bind -r M-s switch-client -t omx
   tmux send-keys "(pgrep postgres > /dev/null || pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start) && \
     (pgrep searchd > /dev/null || searchd --config $HOME/src/omx/config/development.sphinx.conf) && \
     clear && \
