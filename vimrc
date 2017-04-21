@@ -262,9 +262,13 @@ nmap <C-N> ]m
 nmap <C-P> [m
 " Sync zz with my eyes
 nnoremap zz zz2<C-E>
-" Underscore is hard to reach
-cnoreabbrev copen botright copen
 " Open quickfix list across bottom
+cnoreabbrev copen botright copen
+" Maximize current vertical split
+nnoremap <silent> gZ :wincmd \|<CR>
+" Even up the current vertical split
+nnoremap <silent> g\| :wincmd =<CR>
+
 
 " Leader Mappings
 
