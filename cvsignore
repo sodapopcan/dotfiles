@@ -1,6 +1,5 @@
 .DS_Store
 .irb_history
-.ruby-version
 .xmark.*
 Session.vim
 dump.rdb
