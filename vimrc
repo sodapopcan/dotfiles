@@ -280,6 +280,8 @@ nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
 " Read a file in the same directory
 nnoremap <Leader>r :r <C-R>=expand('%:p:h') . '/'<CR>
+" Rails specific
+nnoremap <Leader>c :e config/settings.local.yml<CR>
 
 " Status/Tab Lines {{{1
 "
