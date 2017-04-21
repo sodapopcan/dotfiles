@@ -623,7 +623,72 @@ let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
 let NERDTreeWinSize             = 45
 
+" Rails
+"
+let g:rails_projections = {
+      \ "app/workers/*_worker.rb": {
+      \   "command": "worker",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Worker",
+      \      "  include Sidekiq::Worker", "", "  def perform(id)",
+      \      "  end", "end"]
+      \ },
+      \ "app/services/*_service.rb": {
+      \   "command": "service",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Service", "end"],
+      \   "affinity": "model"
+      \ },
+      \ "app/managers/*_manager.rb": {
+      \   "command": "manager",
+      \   "template":
+      \     ["module {camelcase|capitalize|colons}Manager",
+      \      "  extend self", "", "end"],
+      \   "affinity": "model"
+      \ },
+      \ "app/serializers/*_serializer.rb": {
+      \   "command": "serializer",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Serializer < ActiveModel::Serializer",
+      \       "end"]
+      \ },
+      \ "app/queries/*_query.rb": {
+      \   "command": "query",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Query",
+      \       "end"],
+      \   "affinity": "model"
+      \ },
+      \ "test/unit/*_test.rb": {
+      \   "command": "unittest",
+      \   "alternate": "app/models/{}.rb",
+      \   "related": "test/fixtures/{pluarlize}.yml"
+      \ },
+      \ "app/api/*.rb": {
+      \   "command": "api",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons} < Grape::API", "end"],
+      \ },
+      \ "Gemfile": {
+      \   "dispatch": "bundle"
+      \ },
+      \ "app/decorators/*_decorator.rb": {
+      \   "command": "decorator",
+      \   "related": "app/models/{}.rb",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Decorator < Draper::Decorator",
+      \       "  delegate_all", "end"],
+      \  "affinity": "model"
+      \ },
+      \ "app/factories/*_factory.rb": {
+      \   "command": "factory",
+      \   "template":
+      \     ["module {camelcase|capitalize|colons}Factory", "end"],
+      \   "affinity": "model"
+      \ }}
 
+
+nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
 " RuboCop {{{1
 "
 let g:vimrubocop_keymap = 0
