@@ -389,14 +389,19 @@ function! PasteAtEOL()
 endfunction
 
 function! StripWhitespace()
-      let winstate = winsaveview()
-      try
-        %s/\s\+$//
-      catch
-        " Don't care if it fails
-      endtry
-      call winrestview(winstate)
-      unlet winstate
+  let winstate = winsaveview()
+  try
+    %s/\s\+$//
+  catch
+    " Don't care if it fails
+  endtry
+  try
+    %s#\($\n\s*\)\+\%$##
+  catch
+    " Again, don't care
+  endtry
+  call winrestview(winstate)
+  unlet winstate
 endfunction
 
 " Autocommands {{{1
