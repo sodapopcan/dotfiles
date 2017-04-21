@@ -265,8 +265,8 @@ alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
 
 # zfz {{{1
 export FZF_TMUX=1
-# export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v fonts\/ | grep -v images\/ || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
-export FZF_DEFAULT_COMMAND='ag -g ""'
+# export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v "fonts\/*" | grep -v "images\/*" | grep -v "db\/*" | grep -v "public\/*" || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
+export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public --ignore-dir test'
 
 export NVM_DIR="/Users/andrwe/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
