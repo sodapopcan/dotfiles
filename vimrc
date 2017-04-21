@@ -377,6 +377,8 @@ command! -nargs=1 Note exec ":e ~/notes/" . <f-args> . ".txt"
 command! -nargs=0 Shrug exec "normal! a ¯\\_(ツ)_/¯\<Esc>"
 " Source
 command! -nargs=0 So so %
+" :redraw!
+command! -nargs=0 Redraw redraw!
 
 " Mappings Functions {{{2
 
