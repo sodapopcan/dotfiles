@@ -371,6 +371,8 @@ augroup END
 command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
 " Vim
 command! -nargs=* E silent edit <f-args>
+" Dispatch
+command! -nargs=* D Dispatch <f-args>
 " HTML
 command! -nargs=1 Note exec ":e ~/notes/" . <f-args> . ".txt"
 " Shruggie
