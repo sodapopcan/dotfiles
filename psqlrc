@@ -1,5 +1,5 @@
 \set QUIET on
-\pset null '👻'
+\pset null '(null)'
 
 \timing
 
