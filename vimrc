@@ -86,6 +86,7 @@ Plug 'elixir-lang/vim-elixir'
 
 " Other
 Plug 'junegunn/goyo.vim'
+Plug 'nginx.vim'
 
 call plug#end()
 " }}}
