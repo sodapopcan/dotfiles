@@ -49,6 +49,8 @@ Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug '~/src/vim/ifionly'
 Plug 'tpope/vim-ragtag'
+Plug 'a.vim'
+Plug 'justinmk/vim-syntax-extra'
 
 " Git
 Plug 'tpope/vim-fugitive'
