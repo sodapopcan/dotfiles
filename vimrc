@@ -134,9 +134,12 @@ set backspace=2     " Backspace over everything
 set laststatus=2    " Always show the status line
 set showtabline=2   " I don't really use tabs, but the tabline works decently
                     " as a global status line
+set expandtab
+set shiftround
+set tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8
+autocmd FileType cpp setlocal tabstop=8 softtabstop=8 shiftwidth=8
 
-set tabstop=2 softtabstop=2 expandtab
-set shiftwidth=2 shiftround
 set autoindent
 set incsearch hlsearch
 set ignorecase smartcase
