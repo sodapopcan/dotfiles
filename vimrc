@@ -231,6 +231,8 @@ nnoremap Q @q
 nnoremap <silent> L :IfIOnly<CR>
 " Make Y do what you think it would
 nnoremap Y y$
+" I'm a S over cc kinda guy so may as well use cc for a corner case
+nnoremap cc S<esc>
 " I never use & but it drives me nuts when I hit due to the error it throws
 nnoremap <silent> & :try <Bar> exec "normal! &" <Bar> catch <Bar> endtry<CR>
 " Keep your lines short, children
