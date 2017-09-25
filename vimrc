@@ -496,6 +496,7 @@ nnoremap <silent> gL :BCommits<CR>
 
 command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
 command! -nargs=0 Rollback Dispatch rake db:rollback && RAILS_ENV=test rake db:rollback
+command! -nargs=0 Eform Eview _form
 
 function! s:migrate_rails(...)
   if a:0 > 0
