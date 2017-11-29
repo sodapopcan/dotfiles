@@ -200,7 +200,7 @@ if has('nvim')
 endif
 
 " Since C-L is in use, C-C will just do everything
-nnoremap <C-C> <Esc>:w<CR>
+nnoremap <C-C> <Esc>:redraw!<CR>
 
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
