@@ -1,5 +1,6 @@
 .DS_Store
 .irb_history
+.byebug_history
 .xmark.*
 Session.vim
 dump.rdb
