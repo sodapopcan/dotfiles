@@ -25,6 +25,7 @@ Plug 'tpope/vim-abolish'
 " Text Objects
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
+Plug 'andyl/vim-textobj-elixir'
 
 " Navigation
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
