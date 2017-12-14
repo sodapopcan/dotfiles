@@ -54,6 +54,7 @@ Plug 'justinmk/vim-syntax-extra'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 Plug '~/src/vim/twiggy'
 
