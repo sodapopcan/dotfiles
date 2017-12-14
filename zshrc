@@ -89,6 +89,8 @@ ide() { "$DOTFILES/ide.sh" }
 # stuff
 alias rs="bundle exec foreman start -f Procfile.dev"
 
+alias lsl="ls -l"
+alias lsla="ls -la"
 # git {{{1
 alias gs="git status -s"
 alias gb="git branch"
@@ -266,7 +268,7 @@ alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
 # zfz {{{1
 export FZF_TMUX=1
 # export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v "fonts\/*" | grep -v "images\/*" | grep -v "db\/*" | grep -v "public\/*" || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
-export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public --ignore-dir test'
+export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public'
 
 export NVM_DIR="/Users/andrwe/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
