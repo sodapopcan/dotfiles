@@ -197,6 +197,7 @@ set wildignore+=*.png,*.jpg,*.gif
 " hard
 inoremap <silent> jk <ESC>
 inoremap <silent> <C-C> <Esc>:redraw!<CR>
+nnoremap <silent> <C-C> :redraw!<CR>
 if has('nvim')
   tnoremap <silent> jk <C-\><C-N>
 endif
