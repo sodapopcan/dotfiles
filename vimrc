@@ -486,7 +486,7 @@ nnoremap <silent> gi :call GitDiffPlus()<CR>
 nnoremap <silent> g? :Gblame -w<CR>
 nnoremap <silent> gw :Gwrite<CR><CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
-nnoremap          g<Space>  :Ggrep ""<Left>
+nnoremap          g<Space>  mA:Ggrep ""<Left>
 for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
   exec "nnoremap gy".t."<Space> y".t.":Ggrep \"\"<Left><C-R><C-\">"
   exec "nnoremap gyi".t."<Space> yi".t.":Ggrep \"\"<Left><C-R><C-\">"
