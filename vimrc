@@ -279,7 +279,8 @@ cnoreabbrev copen botright copen
 nnoremap <silent> gZ :wincmd \|<CR>
 " Even up the current vertical split
 nnoremap <silent> g\| :wincmd =<CR>
-
+" Running
+nnoremap g<cr> :exec "Dispatch " . &ft . " %"<cr>
 
 " Leader Mappings
 
