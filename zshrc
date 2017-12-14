@@ -5,6 +5,8 @@ export DOTFILES="$HOME/dotfiles"
 export EDITOR=vim
 export GIT_EDITOR="$EDITOR"
 export PROMPT_COMMAND="history -a; history -n"
+export PATH=LOCAL_PATH:$PATH
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 # This supposedly fixes vim the "tags file not sorted" error in vim.  So far, it
 # seems to have done the trick.
