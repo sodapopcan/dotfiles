@@ -12,7 +12,8 @@ hi Normal                            ctermbg=236    ctermfg=248    cterm=none
 
 hi Cursor                            ctermbg=15     ctermfg=0      cterm=none
 hi CursorLine                        ctermbg=235    ctermfg=none   cterm=none
-hi CursorCol                         ctermbg=none   ctermfg=none   cterm=none
+hi CursorColumn                      ctermbg=235    ctermfg=none   cterm=none
+hi ColorColumn                       ctermbg=235    ctermfg=none   cterm=none
 
 hi TabLine                           ctermbg=237    ctermfg=242   cterm=none
 hi TabLineFill                       ctermbg=237    ctermfg=254   cterm=none
@@ -41,12 +42,12 @@ hi link Include                      Statement
 hi link PreProc                      Statement
 hi link PreCondit                    Statement
 
-hi LineNr                            ctermbg=bg   ctermfg=235
-hi CursorLineNr                      ctermbg=bg   ctermfg=234 cterm=NONE
+hi LineNr                            ctermbg=bg   ctermfg=232 cterm=none
+hi CursorLineNr                      ctermbg=235  ctermfg=248 cterm=none
 hi String                            ctermfg=107
 hi link Number String
 hi PreProc                           ctermfg=103
-hi Search                            ctermbg=186    ctermfg=16
+hi Search                            ctermbg=none  ctermfg=186
 " hi link Search Normal
 hi IncSearch                         ctermbg=186    ctermfg=16
 hi Title                             ctermfg=250
@@ -57,6 +58,7 @@ hi DiffAdd                           ctermbg=bg   ctermfg=108 cterm=bold
 hi DiffDelete                        ctermbg=bg    ctermfg=95 cterm=bold
 hi DiffChange                        ctermbg=143    ctermfg=16  cterm=none
 hi DiffText                          ctermbg=bg   ctermfg=114 cterm=bold
+hi HelpExample                       ctermbg=none ctermfg=137
 
 " Gitv
 hi diffAdded                         ctermbg=bg    ctermfg=108
@@ -66,27 +68,45 @@ hi diffSubname                       ctermbg=bg    ctermfg=114
 
 hi Special                           ctermbg=bg   ctermfg=167  cterm=none
 
-hi pythonBuiltin                     cterm=none ctermfg=73
+hi qfLineNr ctermfg=214
+hi! link qfError Error
+
+" Ruby
 hi link rubyBlockParameter           Function
+hi link rubyCapitalizedMethod        Function
 hi link rubyConstant                 Type
 hi link rubyPredefinedConstant       Type
 hi rubyInstanceVariable              ctermfg=110
-hi rubyInterpolation                 ctermfg=107
+hi rubyInterpolation                 ctermfg=fg
+hi rubyInterpolationDelimiter        ctermfg=28
 hi rubyLocalVariableOrMethod         ctermfg=189
+" hi rubyBlockParameterList            ctermfg=167
 hi rubyPseudoVariable                ctermfg=74
 hi link rubyStringDelimiter          String
 hi rubyAccess                        ctermbg=none  ctermfg=167  cterm=none
 hi link rubyRailsMethod rubyDefine
+hi link rubyCallback rubyDefine
+hi link rubyMacro rubyDefine
 
 " hi! clear rubyIdentifier
 " hi! clear rubyInstanceVaria           ble
-
 hi erubyBlock                           ctermfg=167 cterm=none
-
 hi link erubyExpression erubyBlock
 hi link erubyOneLiner erubyBlock
-
 hi erubyDelimiter ctermfg=131
+
+" Python
+hi pythonBuiltin                     cterm=none ctermfg=73
+
+" CSS
+" hi! cssBackgroundProp                cterm=none ctermfg=111
+" hi! cssDimenionProp                  cterm=none ctermfg=111
+" hi! cssPositioningProp               cterm=none ctermfg=111
+" hi! cssListProp                      cterm=none ctermfg=111
+hi! link sassClass cssTagName
+hi! link sassChar sassClass
+hi! link sassMixing cssSelectorOp
+hi! link sassMixinName sassProperty
 
 hi NonText                              ctermfg=8
 hi SpecialKey                           ctermfg=8
@@ -113,7 +133,7 @@ hi Ignore                               ctermfg=Black
 hi WildMenu                             ctermbg=179  ctermfg=016 cterm=none
 hi! link Directory String
 
-hi Folded                               ctermfg=0 ctermbg=144    cterm=NONE
+hi Folded                               ctermfg=144 ctermbg=NONE    cterm=NONE
 hi link FoldColumn Normal
 
 hi Pmenu                                ctermfg=White ctermbg=238 cterm=NONE
@@ -154,10 +174,18 @@ hi jsFuncBraces                         ctermbg=none ctermfg=062 cterm=none
 " 62 deepish lightish blue
 hi jsStorageClass                       ctermbg=none ctermfg=067 cterm=none
 hi link jsOperator jsStorageClass
+hi link jsObjKey Constant
+
+
+hi link coffeeInterpDelim rubyInterpolationDelimiter
 
 " JSON
 hi JsonKeyword                          ctermbg=none  ctermfg=214
-hi JsonNoise                            ctermbg=none  ctermfg=238
+hi JsonNoise                            ctermbg=none  ctermfg=243
 hi link JsonKeywordMatch JsonNoise
 hi link JsonQuote JsonNoise
 hi link JsonBraces JsonNoise
+hi link JsonBraces JsonNoise
+
+" Plug
+hi link PlugDeleted String
