@@ -73,6 +73,7 @@ Plug 'cakebaker/scss-syntax.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script'
