@@ -39,8 +39,6 @@ alias p="$EDITOR ~/dotfiles/zshrc"
 alias mkdir="mkdir -p"
 
 alias s="cd $HOME/src"
-alias pg-start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pg-stop="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop"
 
 
 d   () { mkdir -p "$@" && cd "$@"; }
@@ -246,9 +244,6 @@ E()
 
 alias vid='e $(git diff master --name-only)'
 
-alias carbon='python /opt/graphite/bin/carbon-cache.py'
-alias graphite-web='python /opt/graphite/bin/run-graphite-devel-server.py /opt/graphite'
-
 # tmux
 alias ta="tmux attach-session -t "
 
@@ -263,12 +258,12 @@ bindkey '^R' history-incremental-search-backward
 
 # t {{{1
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # autojump
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
 
 # zfz {{{1
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_TMUX=1
 # export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v "fonts\/*" | grep -v "images\/*" | grep -v "db\/*" | grep -v "public\/*" || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
 export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public'
