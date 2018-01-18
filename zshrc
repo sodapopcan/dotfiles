@@ -77,6 +77,7 @@ export CLICOLOR=1
 export PATH="/usr/local/bin:$PATH"
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
+export PATH="$PATH:/opt/yarn-[version]/bin"
 
 export MYSQL_PS1="\d> "
 
