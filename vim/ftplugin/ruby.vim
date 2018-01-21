@@ -1,4 +1,4 @@
-command! -nargs=0 UpdateRubyHashSyntax %s/:\([^ ]*\)\(\s*\)=>/\1:/g
+command! -buffer -nargs=0 UpdateRubyHashSyntax %s/:\([^ ]*\)\(\s*\)=>/\1:/g
 
 augroup Sinatra
   autocmd!

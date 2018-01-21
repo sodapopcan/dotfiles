@@ -1,4 +1,4 @@
-set foldmethod=marker
+au! FileType vim setlocal foldmethod=marker
 
 if exists('g:loaded_plug')
   if expand('%:t') == 'vimrc'
