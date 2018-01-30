@@ -738,7 +738,7 @@ let test#ruby#minitest#executable = 'ruby'
 "
 let g:twiggy_local_branch_sort = 'mru'
 let g:twiggy_group_locals_by_slash = 0
-let g:twiggy_use_dispatch = 0
+let g:twiggy_use_dispatch = 1
 let g:twiggy_enable_remote_delete = 1
 
 hi! TwiggyIconTracking      ctermfg=2   ctermbg=NONE
