@@ -87,6 +87,9 @@ Plug 'tpope/vim-rails'
 " Elixir
 Plug 'elixir-lang/vim-elixir'
 
+" Haskell
+Plug 'itchyny/vim-haskell-indent'
+
 " Other
 Plug 'junegunn/goyo.vim'
 Plug 'nginx.vim'
