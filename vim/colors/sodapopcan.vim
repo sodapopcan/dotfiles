@@ -25,6 +25,7 @@ hi VertSplit                         ctermbg=bg     ctermfg=235    cterm=none
 
 hi VimVar                            ctermfg=208
 
+hi! link Conceal Normal
 hi Comment                           ctermfg=242
 hi Constant                          ctermfg=74
 hi! link Identifier Constant
