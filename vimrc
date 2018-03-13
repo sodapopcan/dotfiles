@@ -58,6 +58,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 Plug '~/src/vim/twiggy'
+Plug 'junegunn/gv.vim'
 
 " Markdown
 Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
@@ -499,8 +500,8 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
 endfor
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
-nnoremap <silent> gl :Commits<CR>
-nnoremap <silent> gL :BCommits<CR>
+nnoremap <silent> gl :GV<CR>
+nnoremap <silent> gL :GV!<CR>
 
 command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
 command! -nargs=0 Rollback Dispatch rake db:rollback && RAILS_ENV=test rake db:rollback
