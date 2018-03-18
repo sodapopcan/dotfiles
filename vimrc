@@ -29,7 +29,6 @@ Plug 'andyl/vim-textobj-elixir'
 
 " Navigation
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
-" I don't know what's up with FZF and I don't care right now
 Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/BufOnly.vim'
