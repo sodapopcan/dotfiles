@@ -299,6 +299,8 @@ nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>r :r <C-R>=expand('%:p:h') . '/'<CR>
 " Rails specific
 nnoremap <Leader>c :e config/settings.local.yml<CR>
+" Add bash shebang
+nnoremap <Leader># :normal! ggi#!/usr/bin/env bash<CR>
 
 " Status/Tab Lines {{{1
 "
