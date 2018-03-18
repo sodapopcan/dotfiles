@@ -166,7 +166,7 @@ set sidescrolloff=0
 set shortmess=atWI
 set pumheight=5
 set linebreak
-set updatetime=2000
+set updatetime=250  " pretty much just so gittgutter will update quickly
 set completeopt-=preview
 set diffopt=filler,foldcolumn:0,context:4
 set autoread
@@ -742,14 +742,15 @@ let test#ruby#minitest#executable = 'ruby'
 "
 let g:twiggy_local_branch_sort = 'mru'
 let g:twiggy_group_locals_by_slash = 0
-let g:twiggy_use_dispatch = 1
+let g:twiggy_use_dispatch = 0
 let g:twiggy_enable_remote_delete = 1
+let g:twiggy_show_full_ui = 1
 
-hi! TwiggyIconTracking      ctermfg=2   ctermbg=NONE
-hi! TwiggyIconAhead         ctermfg=9   ctermbg=NONE
-hi! TwiggyIconAheadBehind   ctermfg=9   ctermbg=NONE
-hi! TwiggyIconDetached      ctermfg=5   ctermbg=NONE
-hi! TwiggyIconUnmerged      ctermfg=11  ctermbg=NONE
+" hi link TwiggyTracking String
+" hi link TwiggyAhead Type
+" hi link TwiggyAheadBehind Type
+" hi link TwiggyDetached Type
+" hi link TwiggyUnmerged Identifier
 
 " highlight TwiggyHeader ctermfg=195
 " highlight TwiggySort ctermfg=213
