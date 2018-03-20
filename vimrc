@@ -198,6 +198,8 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
+au FileType GV nnoremap go :normal o<cr><bar>:wincmd w<cr><bar>:normal! zR<cr>
+
 " Mappings {{{1
 "
 
