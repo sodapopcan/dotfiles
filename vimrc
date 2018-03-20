@@ -150,8 +150,8 @@ set autoindent
 set incsearch hlsearch
 set ignorecase smartcase
 
-" I'm start a new job where I pair all day, every day,
-" so I have to get used to line numbers
+" I'm starting a new job where I pair all day,
+" every day, so I have to get used to line numbers
 set number
 
 " I just like this stuff
