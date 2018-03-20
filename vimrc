@@ -150,6 +150,10 @@ set autoindent
 set incsearch hlsearch
 set ignorecase smartcase
 
+" I'm start a new job where I pair all day, every day,
+" so I have to get used to line numbers
+set number
+
 " I just like this stuff
 set cmdheight=2
 set cursorline
