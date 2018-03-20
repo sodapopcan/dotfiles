@@ -204,14 +204,13 @@ set wildignore+=*.png,*.jpg,*.gif
 " I'm trying to grow out of jk for escaping insert mode, but I'm failing pretty
 " hard.  j/k!  jk4lyfe!
 inoremap <silent> jk <ESC>
-inoremap <silent> <C-C> <Esc>:redraw!<CR>
-nnoremap <silent> <C-C> :redraw!<CR>
 if has('nvim')
   tnoremap <silent> jk <C-\><C-N>
 endif
 
 " Since C-L is in use, C-C will just do everything
-nnoremap <C-C> <Esc>:redraw!<CR>
+inoremap <silent> <C-C> <Esc>:redraw!<CR>
+nnoremap <silent> <C-C> :redraw!<CR>
 
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
