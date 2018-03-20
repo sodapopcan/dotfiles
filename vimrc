@@ -202,7 +202,7 @@ set wildignore+=*.png,*.jpg,*.gif
 "
 
 " I'm trying to grow out of jk for escaping insert mode, but I'm failing pretty
-" hard
+" hard.  j/k!  jk4lyfe!
 inoremap <silent> jk <ESC>
 inoremap <silent> <C-C> <Esc>:redraw!<CR>
 nnoremap <silent> <C-C> :redraw!<CR>
