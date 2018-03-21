@@ -37,6 +37,7 @@ Plug 'tpope/vim-scriptease'
 
 " Lint
 Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
+Plug 'w0rp/ale'
 
 " Extend
 Plug 'tpope/vim-rsi'
@@ -543,6 +544,24 @@ if !exists('*GitDiffPlus')
   endfunction
 endif
 
+
+" Ale {{{1
+"
+
+let g:ale_fixers = {
+\   'ruby': ['mri', 'rubocop'],
+\   'javascript': ['eslint'],
+\   'haskell': ['ghc']
+\}
+
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '>>'
+
+highlight ALEErrorSign term=bold ctermfg=160
+highlight ALEWarningSign term=bold ctermfg=178
+" ^ I can't decide v ¯\_(ツ)_/¯
+" highlight ALEErrorSign ctermfg=167
+" highlight ALEWarningSign ctermfg=187
 
 " FZF {{{1
 "
