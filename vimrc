@@ -50,7 +50,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug '~/src/vim/ifionly'
 Plug 'tpope/vim-ragtag'
-Plug 'a.vim'
+Plug 'vim-scripts/a.vim'
 Plug 'justinmk/vim-syntax-extra'
 
 " Git
@@ -93,7 +93,7 @@ Plug 'itchyny/vim-haskell-indent'
 
 " Other
 Plug 'junegunn/goyo.vim'
-Plug 'nginx.vim'
+Plug 'chr4/nginx.vim'
 
 call plug#end()
 " }}}
