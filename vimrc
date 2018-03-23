@@ -545,17 +545,18 @@ if !exists('*GitDiffPlus')
 endif
 
 
-" Ale {{{1
+" ALE {{{1
 "
 
-let g:ale_fixers = {
-\   'ruby': ['mri', 'rubocop'],
+let g:ale_linters = {
+\   'ruby': ['ruby'],
 \   'javascript': ['eslint'],
 \   'haskell': ['ghc']
 \}
 
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
+let g:ale_link_on_text_changed = 'never'
 
 highlight ALEErrorSign term=bold ctermfg=160
 highlight ALEWarningSign term=bold ctermfg=178
