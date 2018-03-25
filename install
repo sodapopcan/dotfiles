@@ -29,6 +29,8 @@ ln -s ~/dotfiles/cvsignore ~/.cvsignore
 echo "  * gitignore (actually cvsignore)"
 ln -s ~/dotfiles/psqlrz ~/.psqlrz
 echo "  * psqlrc"
+ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim/init.vim
+echo "  * nvim"
 
 echo "Use ctrl-w and ctrl-u everywhere on macOS"
 mkdir "$HOME/Library/KeyBindings"
