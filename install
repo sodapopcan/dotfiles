@@ -9,8 +9,8 @@ fi
 echo "Symlinking:"
 ln -s ~/dotfiles/zshrc ~/.zshrc
 echo "  * zshrc"
-ln -s ~/dotfiles/zshrc ~/.zshenv
-echo "  * zsenv"
+ln -s ~/dotfiles/zshenv ~/.zshenv
+echo "  * zshenv"
 ln -s ~/dotfiles/zlogin ~/.zlogin
 echo "  * zlogin"
 ln -s ~/dotfiles/vimrc ~/.vimrc
@@ -27,7 +27,7 @@ ln -s ~/dotfiles/gitconfig ~/.gitconfig
 echo "  * gitconfig"
 ln -s ~/dotfiles/cvsignore ~/.cvsignore
 echo "  * gitignore (actually cvsignore)"
-ln -s ~/dotfiles/psqlrz ~/.psqlrz
+ln -s ~/dotfiles/psqlrc ~/.psqlrc
 echo "  * psqlrc"
 ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim/init.vim
 echo "  * nvim"
