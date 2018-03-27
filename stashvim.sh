@@ -8,7 +8,7 @@ if [ -d vim.bak -a -f vimrc.bak -a -f "$nvim_init.bak" ]; then
   rm "$nvim_init.bak"
   mv vim.bak vim
   mv vimrc.bak vimrc
-elif [ -d vim -a -f vimrc  -a -f "$nvim_init" ]; then
+elif [ -d vim -a -f vimrc -a -f "$nvim_init" ]; then
   mv vim vim.bak
   mv vimrc vimrc.bak
   mv "$nvim_init" "$nvim_init.bak"
