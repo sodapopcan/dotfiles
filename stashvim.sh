@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
+nvim_init="config/nvim/init.vim"
 # Backup vimfiles and create clean versions
-if [ -d vim.bak -a -f vimrc.bak ]; then
+if [ -d vim.bak -a -f vimrc.bak -a -f "$nvim_init.bak" ]; then
   rm vimrc
   rm -rf vim
+  rm "$nvim_init.bak"
   mv vim.bak vim
   mv vimrc.bak vimrc
-else
+elif [ -d vim -a -f vimrc  -a -f "$nvim_init" ]; then
   mv vim vim.bak
   mv vimrc vimrc.bak
+  mv "$nvim_init" "$nvim_init.bak"
   mkdir -p vim/autoload
   mkdir vim/plugins
   cat <<VIMRC > vimrc
@@ -19,10 +22,16 @@ nnoremap <cr> :w<cr>
 
 call plug#begin('~/.vim/plugins')
   Plug 'tpope/vim-fugitive' 
-  Plug 'sodapopcan/vim-twiggy'
+  Plug '~/src/vim/twiggy'
 call plug#end()
 VIMRC
-
+  cat <<INIT > "$nvim_init"
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+INIT
   ln -s vimrc vim/init.vim
   cp vim.bak/autoload/plug.vim vim/autoload
+else
+  echo rekt
 fi
