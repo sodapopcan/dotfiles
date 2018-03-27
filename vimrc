@@ -95,6 +95,7 @@ Plug 'itchyny/vim-haskell-indent'
 Plug 'junegunn/goyo.vim'
 Plug 'chr4/nginx.vim'
 
+Plug 'majutsushi/tagbar'
 call plug#end()
 " }}}
 
@@ -289,6 +290,8 @@ nnoremap <silent> gZ :wincmd \|<CR>
 nnoremap <silent> g\| :wincmd =<CR>
 " Running
 nnoremap g<cr> :exec "Dispatch " . &ft . " %"<cr>
+" Tagbar
+nnoremap zt :Tagbar<cr>
 
 " Leader Mappings
 
