@@ -152,10 +152,10 @@ set autoindent
 set incsearch hlsearch
 set ignorecase smartcase
 
-" I'm starting a new job where I pair all day,
-" every day, so I have to get used to line numbers
-set number
-
+if $WORK_COMPUTER
+  " I don't need numbers when I work alone but they are useful when pairing
+  set number
+endif
 " I just like this stuff
 set cmdheight=2
 set cursorline
