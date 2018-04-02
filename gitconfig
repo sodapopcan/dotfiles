@@ -11,6 +11,7 @@
 	excludesfile = ~/.cvsignore
 	autocrlf = input
 	editor = /usr/bin/vim
+	commentchar = $
 [apply]
 	whitespace = nowarn
 [format]
@@ -28,3 +29,9 @@
 	rebase = true
 [rebase]
 	instructionFormat = %s [%an]
+[remote "origin"]
+	push = HEAD
+[branch]
+	autosetupmerge = true
+[fetch]
+	prune = true
