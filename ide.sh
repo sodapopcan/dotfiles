@@ -40,9 +40,9 @@ else
     e" C-m
 
   tmux select-pane -D
-  # tmux send-keys "rails c" C-m
+  tmux send-keys "rails c" C-m
   tmux select-pane -R
-  # tmux send-keys "rails s" C-m
+  tmux send-keys "rails s" C-m
   tmux select-window -t 2
   tmux send-keys  "sleep 5 && clear && psql andrwe_development" C-m
   tmux new-window
