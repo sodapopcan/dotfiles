@@ -28,13 +28,13 @@ else
   tmux bind -r M-f switch-client -t home
 fi
 
-# inkcling
-if tmux ls | grep -q inkcling; then
-  echo "inkcling session already exists."
+# andrwe
+if tmux ls | grep -q andrwe; then
+  echo "andrwe session already exists."
 else
-  cd ~/src/inkcling
-  do_web_dev_session inkcling
-  tmux bind -r M-a switch-client -t inkcling
+  cd ~/src/andrwe
+  do_web_dev_session andrwe
+  tmux bind -r M-a switch-client -t andrwe
   tmux send-keys "(pgrep postgres > /dev/null || pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start) && \
     clear && \
     e" C-m
@@ -44,43 +44,14 @@ else
   tmux select-pane -R
   # tmux send-keys "rails s" C-m
   tmux select-window -t 2
-  tmux send-keys  "sleep 5 && clear && psql inkcling_development" C-m
+  tmux send-keys  "sleep 5 && clear && psql andrwe_development" C-m
   tmux new-window
   tmux rename-window ssh
   tmux new-window
   tmux rename-window notes
-  tmux send-keys "cd ~/notes && vim -c 'Goyo' inkcling.md" C-m
+  tmux send-keys "cd ~/notes && vim -c 'Goyo' andrwe.md" C-m
   tmux select-window -t 1
   # tmux select-pane -t 0
 
-  # tmux -2 attach-session -t inkcling
-fi
-
-# OMX
-if tmux ls | grep -q omx; then
-  echo "OMX session already exists."
-else
-  cd ~/src/omx
-  do_web_dev_session omx
-  tmux bind -r M-s switch-client -t omx
-  tmux send-keys "(pgrep postgres > /dev/null || pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start) && \
-    (pgrep searchd > /dev/null || searchd --config $HOME/src/omx/config/development.sphinx.conf) && \
-    clear && \
-    e" C-m
-
-  tmux select-pane -D
-  # tmux send-keys "rails c" C-m
-  tmux select-pane -R
-  # tmux send-keys "rails s" C-m
-  tmux select-window -t 2
-  tmux send-keys  "sleep 5 && clear && psql omx_development" C-m
-  tmux new-window
-  tmux rename-window ssh
-  tmux new-window
-  tmux rename-window notes
-  tmux send-keys "cd ~/notes && vim -c 'Goyo' notes.md" C-m
-  tmux select-window -t 1
-  # tmux select-pane -t 0
-
-  tmux -2 attach-session -t omx
+  tmux -2 attach-session -t andrwe
 fi

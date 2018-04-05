@@ -45,10 +45,6 @@ g () { mkdir -p "$@" && cd "$@" && git init; }
 
 bcd () { cd $(bundle show $@) }
 
-__compl_srccd ()
-{
-  compctl -k ($(ls -F $SRC/$1/ | grep -v "/$" | tr "\n/" " ")) $2
-}
 vcd () { cd "$SRC/vim/$@" }
 gcd () { cd "$SRC/gems/$@" }
 scd ()
