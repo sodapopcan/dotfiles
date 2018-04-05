@@ -227,6 +227,8 @@ exec "nnoremap \<silent> H :vertical resize " . string(&columns * 0.6) "\<CR>"
 " nnoremap <silent> <M-H>:TmuxNavigatePrevious<cr>
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
+" Thanks a lot, touchbar
+nnoremap <F1> <nop>
 
 " Dispatch
 nnoremap <silent> d<CR> :Dispatch<CR>
@@ -555,7 +557,7 @@ endif
 "
 
 let g:ale_linters = {
-\   'ruby': ['ruby'],
+\   'ruby': ['mri', 'rubocop'],
 \   'javascript': ['eslint'],
 \   'haskell': ['ghc']
 \}

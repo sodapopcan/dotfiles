@@ -262,6 +262,8 @@ bindkey '^R' history-incremental-search-backward
 # t {{{1
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
 
+plugins=(nulogy richard docker-osx)
+
 # zfz {{{1
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
@@ -287,4 +289,6 @@ if which brew > /dev/null; then
 fi
 
 # rbenv
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi

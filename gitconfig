@@ -11,7 +11,6 @@
 	excludesfile = ~/.cvsignore
 	autocrlf = input
 	editor = /usr/bin/vim
-	commentchar = $
 [apply]
 	whitespace = nowarn
 [format]

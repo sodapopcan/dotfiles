@@ -88,6 +88,7 @@ hi rubyAccess                        ctermbg=none  ctermfg=167  cterm=none
 hi link rubyRailsMethod rubyDefine
 hi link rubyCallback rubyDefine
 hi link rubyMacro rubyDefine
+hi rubyTodo ctermbg=bg ctermfg=166
 
 " hi! clear rubyIdentifier
 " hi! clear rubyInstanceVaria           ble
