@@ -253,7 +253,9 @@ bindkey '^R' history-incremental-search-backward
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
 
 # autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
+if [ $(which brew > /dev/null) ]; then
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
+fi
 
 # zfz {{{1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -270,5 +272,9 @@ export NVM_DIR="/Users/andrwe/.nvm"
 
 # Fish-like {{{1
 # 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
