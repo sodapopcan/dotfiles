@@ -253,9 +253,7 @@ bindkey '^R' history-incremental-search-backward
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
 
 # autojump
-if [ $(which brew > /dev/null) ]; then
-  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && source $(brew --prefix)/etc/profile.d/autojump.sh
-fi
+which brew > /dev/null && [ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && source $(brew --prefix)/etc/profile.d/autojump.sh
 
 # zfz {{{1
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
