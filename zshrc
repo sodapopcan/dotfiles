@@ -45,6 +45,10 @@ g () { mkdir -p "$@" && cd "$@" && git init; }
 
 bcd () { cd $(bundle show $@) }
 
+__compl_srccd ()
+{
+  compctl -k ($(ls -F $SRC/$1/ | grep -v "/$" | tr "\n/" " ")) $2
+}
 vcd () { cd "$SRC/vim/$@" }
 gcd () { cd "$SRC/gems/$@" }
 scd ()
@@ -252,27 +256,30 @@ bindkey '^R' history-incremental-search-backward
 # t {{{1
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
 
-# autojump
-which brew > /dev/null && [ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && source $(brew --prefix)/etc/profile.d/autojump.sh
-
 # zfz {{{1
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_TMUX=1
-# export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v "fonts\/*" | grep -v "images\/*" | grep -v "db\/*" | grep -v "public\/*" || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
-export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public'
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+  export FZF_TMUX=1
+  # export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v "fonts\/*" | grep -v "images\/*" | grep -v "db\/*" | grep -v "public\/*" || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
+  export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public'
+fi
 
-export NVM_DIR="/Users/andrwe/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # RVM {{{1
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-# Fish-like {{{1
-# 
-if [ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-  source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Shell tools {{{1
+#
+if which brew > /dev/null; then
+  autojump_path="$(brew --prefix)/etc/profile.d/autojump.sh"
+  [ -f "$autojump_path" ] && . "$autojump_path"
+
+  zsh_auto_suggest_path="$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  [ -f "$zsh_auto_suggest_path" ] && . "$zsh_auto_suggest_path"
+
+  zsh_syntax_hilite_path="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  [ -f "$zsh_syntax_hilite_path" ] && . "$zsh_syntax_hilite_path"
 fi
