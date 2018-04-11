@@ -1,0 +1,6 @@
+brew "tmux"
+brew "vim"
+brew "git"
+brew "autojump"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
