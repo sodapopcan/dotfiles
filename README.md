@@ -1,6 +1,6 @@
-# D-D-Dot Files #
+# D-D-Dotfiles
 
-These are my personal config files that I have only ever used on OS X.
+These are my personal config files that I have only ever used on macOS.
 
 ## Cut and Paste Shell Commands
 
@@ -20,10 +20,9 @@ Preferences -> Profiles -> Keys
 
 Preferences -> Keys
   - `Left command key: Left Option`
-  (The left command key gets used for the tmux prefix)
-  - Need to download Karabiner (https://pqrs.org/osx/karabiner/index.html.en)
-    and remap the right-hand option key to control.
+  - `Right command key: Right Option`
+  - `Left option key: Left Command`
 
-### OS X
-System Preferences -> Keyboard -> Modifier Keys...
-  - `Option Key: Control`
+### Karbiner Elements
+  - Download [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
+  - Remap the right-hand option key to control
