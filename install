@@ -29,6 +29,8 @@ ln -s ~/dotfiles/cvsignore ~/.cvsignore
 echo "  * gitignore (actually cvsignore)"
 ln -s ~/dotfiles/psqlrc ~/.psqlrc
 echo "  * psqlrc"
+ln -s ~/dotfiles/gemrc ~/.gemrc
+echo "  * gemrc"
 ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim/init.vim
 echo "  * nvim"
 
