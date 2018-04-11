@@ -7,6 +7,7 @@ export GIT_EDITOR="$EDITOR"
 export PROMPT_COMMAND="history -a; history -n"
 export PATH=LOCAL_PATH:$PATH
 export ERL_AFLAGS="-kernel shell_history enabled"
+export PATH="$HOME/.rbenv/bin:$PATH" # rbenv
 
 # This supposedly fixes vim the "tags file not sorted" error in vim.  So far, it
 # seems to have done the trick.
@@ -267,10 +268,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# RVM {{{1
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 # Shell tools {{{1
 #
 if which brew > /dev/null; then
@@ -283,3 +280,6 @@ if which brew > /dev/null; then
   zsh_syntax_hilite_path="$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
   [ -f "$zsh_syntax_hilite_path" ] && . "$zsh_syntax_hilite_path"
 fi
+
+# rbenv
+eval "$(rbenv init -)"
