@@ -1,6 +1,8 @@
 brew "tmux"
 brew "vim"
 brew "git"
+brew "ag"
+brew "universal-ctags"
 brew "autojump"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
