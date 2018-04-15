@@ -8,6 +8,11 @@ export PROMPT_COMMAND="history -a; history -n"
 export PATH=LOCAL_PATH:$PATH
 export ERL_AFLAGS="-kernel shell_history enabled"
 export PATH="$HOME/.rbenv/bin:$PATH" # rbenv
+# Haskell stuff
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.stack/snapshots/x86_64-osx/lts-11.5/8.2.2/bin:$PATH"
+export PATH="$HOME/.stack/compiler-tools/x86_64-osx/ghc-8.2.2/bin:$PATH"
+export PATH="$HOME/.stack/programs/x86_64-osx/ghc-8.2.2/bin:$PATH"
 
 # This supposedly fixes vim the "tags file not sorted" error in vim.  So far, it
 # seems to have done the trick.
