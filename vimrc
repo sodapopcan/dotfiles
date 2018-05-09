@@ -793,3 +793,9 @@ let g:test#strategy = 'dispatch'
 " Vim-Tmux Navigator {{{1
 "
 let g:tmux_navigator_no_mappings = 1
+
+" Unimpaired {{{1
+"
+let g:nremap = {"=": "c"}
+let g:xremap = {"=": "c"}
+let g:oremap = {"=": "c"}
