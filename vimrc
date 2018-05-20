@@ -513,6 +513,8 @@ nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 nnoremap <silent> gl :GV<CR>
 nnoremap <silent> gL :GV!<CR>
+nnoremap          g^ :Gpush<CR>
+nnoremap          gV :Gpull<CR>
 
 command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
 command! -nargs=0 Rollback Dispatch rake db:rollback && RAILS_ENV=test rake db:rollback
@@ -796,6 +798,4 @@ let g:tmux_navigator_no_mappings = 1
 
 " Unimpaired {{{1
 "
-let g:nremap = {"=": "c"}
-let g:xremap = {"=": "c"}
-let g:oremap = {"=": "c"}
+nmap co yo
