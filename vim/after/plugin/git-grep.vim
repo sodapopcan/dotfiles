@@ -12,10 +12,10 @@ function! s:grep(arg) abort
   if len(output)
     cgetexpr output
     silent botright copen
-    nnoremap <buffer> o :call <SID>edit_file()<CR>
-    nnoremap <buffer> go :call <SID>preview_file()<CR>
-    nnoremap <buffer> q :cclose<CR>
-    nnoremap <buffer> <c-c> <c-c>:cclose<CR>:call <SID>edit_return_file()<CR>
+    nnoremap          <buffer> o :call <SID>edit_file()<CR>
+    nnoremap          <buffer> go :call <SID>preview_file()<CR>
+    nnoremap <silent> <buffer> q :cclose<CR>
+    nnoremap <silent> <buffer> <c-c> <c-c>:cclose<CR>:call <SID>edit_return_file()<CR>
   else
     call s:warn("No results for " . a:arg)
   endif
