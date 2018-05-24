@@ -47,5 +47,5 @@ function! s:warn(str) abort
   let v:warningmsg = a:str
 endfunction
 
-command! -nargs=? -complete=file -bar Grep call s:grep(<q-args>)
+command! -nargs=? -complete=file Grep call s:grep(<q-args>)
 command! -nargs=0 GrepClear call s:edit_return_file()
