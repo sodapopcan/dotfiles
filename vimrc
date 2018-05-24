@@ -222,8 +222,6 @@ nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
-" Grep
-nnoremap g<Space> :Grep<Space>
 " Control when you want to see more
 exec "nnoremap \<silent> H :vertical resize " . string(&columns * 0.6) "\<CR>"
 " nnoremap <silent> <M-H>:TmuxNavigatePrevious<cr>
@@ -505,10 +503,12 @@ nnoremap <silent> gi :call GitDiffPlus()<CR>
 nnoremap <silent> g? :Gblame -w<CR>
 nnoremap <silent> gw :Gwrite<CR>:write<CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
+" Grep
+nnoremap g<Space> :Grep ""<Left>
 for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
-  exec "nnoremap gy".t."<Space> y".t.":Ggrep \"\"<Left><C-R><C-\">"
-  exec "nnoremap gyi".t."<Space> yi".t.":Ggrep \"\"<Left><C-R><C-\">"
-  exec "nnoremap gya".t."<Space> ya".t.":Ggrep \"\"<Left><C-R><C-\">"
+  exec "nnoremap gy".t."<Space> y".t.":Grep \"\"<Left><C-R><C-\">"
+  exec "nnoremap gyi".t."<Space> yi".t.":Grep \"\"<Left><C-R><C-\">"
+  exec "nnoremap gya".t."<Space> ya".t.":Grep \"\"<Left><C-R><C-\">"
 endfor
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
