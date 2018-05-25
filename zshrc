@@ -161,7 +161,7 @@ is_git_repo()
 # If it's a git repository, show only the name of the containing directory
 current_project()
 {
-  ref=$(is_git_repo HEAD 2> /dev/null)
+  ref=$(is_git_repo 2> /dev/null)
   if [ -z $ref ]; then
     echo "${PWD/#$HOME/~}"
   else
