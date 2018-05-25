@@ -155,7 +155,7 @@ gitprune()
 
 is_git_repo()
 {
-  git symbolic-ref HEAD 2> /dev/null
+  git rev-parse --is-inside-work-tree
 }
 
 # If it's a git repository, show only the name of the containing directory
