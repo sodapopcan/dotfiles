@@ -294,6 +294,13 @@ nnoremap <silent> g\| :wincmd =<CR>
 nnoremap g<cr> :exec "Dispatch " . &ft . " %"<cr>
 " Tagbar
 nnoremap zt :Tagbar<cr>
+" a.vim-like
+nnoremap ga :A<CR>
+nnoremap gr :R<CR>
+nnoremap gA :only<Bar>AV<CR>
+nnoremap gR :only<Bar>RV<CR>
+nnoremap <leader>ga ga
+nnoremap <leader>gl gr
 
 " Leader Mappings
 
