@@ -17,7 +17,7 @@ elif [ -d vim -a -f vimrc -a -f "$nvim_init" ]; then
   cat <<VIMRC > vimrc
 set nocompatible
 
-nnoremap jk <esc>
+inoremap jk <esc>
 nnoremap <cr> :w<cr>
 
 call plug#begin('~/.vim/plugins')
