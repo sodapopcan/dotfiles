@@ -439,16 +439,8 @@ endfunction
 
 function! StripWhitespace()
   let winstate = winsaveview()
-  try
-    %s/\s\+$//
-  catch
-    " Don't care if it fails
-  endtry
-  try
-    %s#\($\n\s*\)\+\%$##
-  catch
-    " Again, don't care
-  endtry
+  %s/\s\+$//e
+  %s#\($\n\s*\)\+\%$##e
   call winrestview(winstate)
   unlet winstate
 endfunction
