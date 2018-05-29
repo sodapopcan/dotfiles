@@ -18,6 +18,7 @@ Plug 'mbbill/undotree'
 Plug 'junegunn/vim-pseudocl'
 Plug 'janko-m/vim-test'
 Plug 'heavenshell/vim-slack'
+Plug 'majutsushi/tagbar'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
