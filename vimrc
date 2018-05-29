@@ -122,7 +122,7 @@ hi User7 ctermbg=bg   ctermfg=16   cterm=none   " line
 
 " Settings {{{1
 
-" The following defaults are requires to maintain my sanity
+" The following defaults are required to maintain my sanity
 " More, and file-type overrides, can be found in vim/ftplugins
 
 set hidden " navigate away from  a buffer without saving it first
