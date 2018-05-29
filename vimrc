@@ -628,6 +628,7 @@ autocmd User GoyoLeave nested call <SID>goyo_leave()
 " IfIOnly {{{1
 "
 let g:ifionly_filetypes = ['vim-plug']
+let g:ifionly_destructive_jump = 0
 
 
 " JavaScript
