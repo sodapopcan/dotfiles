@@ -1,6 +1,5 @@
 function! s:refactor_private(name, first, last) abort
   let method = ["def " . a:name] + getline(a:first, a:last) + ["end"]
-  " let range = (a:last - a:first) + 1
   exec "delete_" (a:last - a:first) + 1
   let privlnr = search('^\s\+private', 'nw')
   call append(line('.') - 1, a:name)
