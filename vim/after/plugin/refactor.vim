@@ -16,4 +16,3 @@ function! s:refactor_private(name, first, last) abort
 endfunction
 
 command! -nargs=1 -range Private call s:refactor_private(<f-args>, <line1>, <line2>)
-
