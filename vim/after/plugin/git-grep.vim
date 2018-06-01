@@ -1,3 +1,4 @@
+" Plugin {{{1
 let s:return_file = ''
 
 function! s:grep(arg) abort
@@ -47,5 +48,17 @@ function! s:warn(str) abort
   let v:warningmsg = a:str
 endfunction
 
+" Commands {{{1
 command! -nargs=? -complete=file Grep call s:grep(<q-args>)
 command! -nargs=0 GrepClear call s:edit_return_file()
+
+" Mappings {{{1
+for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
+  exec "nnoremap gy".t."<Space> y".t.":Grep \"\"<Left><C-R><C-\">"
+  exec "nnoremap gyi".t."<Space> yi".t.":Grep \"\"<Left><C-R><C-\">"
+  exec "nnoremap gya".t."<Space> ya".t.":Grep \"\"<Left><C-R><C-\">"
+endfor
+
+nnoremap g<Space> :Grep "" '*.rb' '*.rake'<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap t<Space> :Grep "" '*.js' '*.jsx'<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap y<Space> :Grep "" '*.yml' '*.yaml'<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
