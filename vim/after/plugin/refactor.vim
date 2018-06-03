@@ -1,16 +1,15 @@
 function! s:refactor_private(name, first, last) abort
   let method = ["def " . a:name] + getline(a:first, a:last) + ["end"]
-  exec "delete_" (a:last - a:first) + 1
-  call append(line('.') - 1, a:name)
+  exec "keepjumps delete_" (a:last - a:first) + 1
+  let fromline = line('.')
+  call append(fromline - 1, a:name)
+  redraw
   normal k==
 
-  let cmline = search('\v\s?(module|class)', 'nb')
-  if cmline
-    exec "normal!" cmline."gg^"
-    let startline = line('.')
-    keepjumps normal %
-    let stopline = line('.')
-    keepjumps normal %
+  let startline = search('\v\s?(module|class)', 'nb')
+  if startline
+    let indentlvl = matchstr('\v^\s+', getline(startline))
+    let stopline = search('\v^' . indentlvl . 'end$', 'n')
 
     let privline = search('\v\s?private', 'n', stopline)
     if !privline
@@ -18,17 +17,20 @@ function! s:refactor_private(name, first, last) abort
     endif
 
     if privline
-      exec "keepjumps normal!" privline."gg"
-      call append(privline, [''] + method)
+      let output = [''] + method
+      call append(privline, output)
+      let jumpline = privline
     else
-      exec "keepjumps normal!" stopline."gg"
-      keepjumps normal! Oprivate
-      call append(line('.'), [''] + method)
+      let output = ['', 'private', ''] + method
+      let jumpline = stopline - 1
+      call append(jumpline, output)
     endif
+    redraw
 
-    keepjumps normal! jj^V
-    normal %
-    keepjumps normal! =^
+    keepjumps exec jumpline
+    exec "normal! =".len(output)."\<cr>"
+    keepjumps exec fromline
+    exec "normal! ".(jumpline + 2)."ggzz"
   endif
 endfunction
 
