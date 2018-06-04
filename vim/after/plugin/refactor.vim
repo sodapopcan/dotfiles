@@ -1,3 +1,12 @@
+function! s:refactor(args, first, last) abort
+  let parts = split(a:args, ' ')
+  let type = parts[0]
+  let method = join(parts[1:], ' ')
+  if match(type, '\v^pri') >= 0
+    call s:refactor_private(method, a:first, a:last)
+  endif
+endfunction
+
 function! s:refactor_private(name, first, last) abort
   let method = ["def " . a:name] + getline(a:first, a:last) + ["end"]
   exec "keepjumps delete_" (a:last - a:first) + 1
@@ -35,3 +44,4 @@ function! s:refactor_private(name, first, last) abort
 endfunction
 
 command! -nargs=1 -range Private call s:refactor_private(<f-args>, <line1>, <line2>)
+command! -nargs=1 -range Refactor call s:refactor(<f-args>, <line1>, <line2>)
