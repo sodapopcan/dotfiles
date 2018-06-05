@@ -74,4 +74,5 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gya".t."<Space> ya".t.":Grep \"\"<Left><C-R><C-\">"
 endfor
 
-nnoremap g<Space> :Grep "" rb,rake<Left><Left><Left><Left><Left><Left><Left><Left><Left>
+let s:cmd = 'Grep "" rb,rake -- '
+exec "nnoremap g<Space> :".s:cmd.repeat("<Left>", len(s:cmd) - 6)
