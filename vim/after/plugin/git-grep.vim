@@ -9,7 +9,13 @@ function! s:grep(arg) abort
 
   let s:return_file = expand('%')
 
-  let output = system("git --no-pager grep --no-color -n " . a:arg)
+  if exists('g:loaded_fugitive')
+    let git_cmd = fugitive#buffer().repo().git_command()
+  else
+    let git_cmd = "git"
+  endif
+
+  let output = system(git_cmd . " --no-pager grep --no-color -n " . a:arg)
   if len(output)
     cgetexpr output
     silent botright copen
