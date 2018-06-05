@@ -2,9 +2,17 @@
 let s:return_file = ''
 
 function! s:grep(arg) abort
-  if a:arg ==# ''
+  let cmd = matchstr(a:arg, '\v"(.*)"\Z')
+
+  if cmd ==# ''
     call s:warn("No pattern given")
     return
+  endif
+
+  let args = substitute(a:arg, cmd.' ', '', '')
+  if len(args)
+    let filetypes = "'*.".join(split(args, ','), "' '*.")."'"
+    let cmd = cmd.' '.filetypes
   endif
 
   let s:return_file = expand('%')
@@ -15,7 +23,8 @@ function! s:grep(arg) abort
     let git_cmd = "git"
   endif
 
-  let output = system(git_cmd . " --no-pager grep --no-color -n " . a:arg)
+  let output = system(git_cmd . " --no-pager grep --no-color -n " . cmd)
+
   if len(output)
     cgetexpr output
     silent botright copen
@@ -65,6 +74,4 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gya".t."<Space> ya".t.":Grep \"\"<Left><C-R><C-\">"
 endfor
 
-nnoremap g<Space> :Grep "" '*.rb' '*.rake'<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-nnoremap t<Space> :Grep "" '*.js' '*.jsx'<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-nnoremap y<Space> :Grep "" '*.yml' '*.yaml'<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap g<Space> :Grep "" rb,rake<Left><Left><Left><Left><Left><Left><Left><Left><Left>
