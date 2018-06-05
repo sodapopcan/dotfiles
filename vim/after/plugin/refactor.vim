@@ -1,4 +1,5 @@
 function! s:refactor(args, first, last) abort
+  " Get selection type
   let parts = split(a:args, ' ')
   let type = parts[0]
   let method = join(parts[1:], ' ')
@@ -41,6 +42,19 @@ function! s:refactor_private(name, first, last) abort
     keepjumps exec fromline
     exec "normal! ".(jumpline + 2)."ggzz"
   endif
+endfunction
+
+" https://stackoverflow.com/a/6271254/1181571
+function! s:get_visual_selection()
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return lines
 endfunction
 
 command! -nargs=1 -range Private call s:refactor_private(<f-args>, <line1>, <line2>)
