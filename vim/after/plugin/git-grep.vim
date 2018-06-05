@@ -1,3 +1,10 @@
+" git-grep.vim -- A git grep interface
+" 
+" Maintainer: Andrew Haust <andrewwhhaust@gmail.com>
+" Website:    https://github.com/sodapopcan/dotfiles/vim/after/plugin/git-grep.vim
+" License:    Same terms as Vim itself (see :help license)
+" Version:    0.1
+ 
 " Plugin {{{1
 let s:return_file = ''
 
