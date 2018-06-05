@@ -2,14 +2,15 @@
 let s:return_file = ''
 
 function! s:grep(arg) abort
-  let cmd = matchstr(a:arg, '\v"(.*)"\Z')
+  let pattern = matchstr(a:arg, '\v"(.*)"\Z')
 
-  if cmd ==# ''
+  if pattern ==# ''
     call s:warn("No pattern given")
     return
   endif
 
-  let args = substitute(a:arg, cmd.' ', '', '')
+  let cmd = pattern
+  let args = substitute(a:arg, pattern.' ', '', '')
   if len(args)
     let filetypes = "'*.".join(split(args, ','), "' '*.")."'"
     let cmd = cmd.' '.filetypes
@@ -33,7 +34,7 @@ function! s:grep(arg) abort
     nnoremap <silent> <buffer> q :cclose<CR>
     nnoremap <silent> <buffer> <c-c> <c-c>:cclose<CR>:call <SID>edit_return_file()<CR>
   else
-    call s:warn("No results for " . a:arg)
+    call s:warn("No results for " . pattern)
   endif
 endfunction
 
