@@ -17,7 +17,7 @@ function! s:grep(arg) abort
   endif
 
   let cmd = pattern
-  let args = substitute(a:arg, pattern.' ', '', '')
+  let args = substitute(a:arg, '\v'.pattern.' ?', '', '')
   if len(args)
     let parts = split(args, '\v\s+--\s+')
     let filetypes = split(parts[0], ',')
