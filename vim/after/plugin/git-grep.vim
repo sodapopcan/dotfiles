@@ -19,8 +19,21 @@ function! s:grep(arg) abort
   let cmd = pattern
   let args = substitute(a:arg, pattern.' ', '', '')
   if len(args)
-    let filetypes = "'*.".join(split(args, ','), "' '*.")."'"
-    let cmd = cmd.' '.filetypes
+    let parts = split(args, '\v\s+--\s+')
+    let filetypes = split(parts[0], ',')
+    if len(parts) > 1
+      let dirs = split(parts[1], '\v\s+')
+      if len(dirs) > 1
+        let cmd.= " --"
+        for dir in map(dirs, 'substitute(v:val, ''\v/$'', '''', '''')')
+          for filetype in filetypes
+            let cmd.= " '".dir."/*.".filetype."'"
+          endfor
+        endfor
+      endif
+    else
+      let cmd = cmd." -- '*.".join(filetypes, "' '*.")."'"
+    endif
   endif
 
   let s:return_file = expand('%')
@@ -72,7 +85,7 @@ function! s:warn(str) abort
 endfunction
 
 " Commands {{{1
-command! -nargs=? -complete=file Grep call s:grep(<q-args>)
+command! -nargs=+ -complete=dir Grep call s:grep(<q-args>)
 command! -nargs=0 GrepClear call s:edit_return_file()
 
 " Mappings {{{1
