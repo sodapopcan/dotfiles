@@ -18,7 +18,7 @@ function! s:refactor_private(name, first, last) abort
 
   let startline = search('\v\s?(module|class)', 'nb')
   if startline
-    let indentlvl = matchstr('\v^\s+', getline(startline))
+    let indentlvl = matchstr(getline(startline), '\v^\s+')
     let stopline = search('\v^' . indentlvl . 'end$', 'n')
 
     let privline = search('\v\s?private', 'n', stopline)
