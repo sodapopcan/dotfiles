@@ -12,8 +12,11 @@ function! s:grep(arg) abort
   let pattern = matchstr(a:arg, '\v"(.*)"\Z')
 
   if pattern ==# ''
-    call s:warn("No pattern given")
-    return
+    let pattern = matchstr(a:arg, '\v[a-zA-Z0-9]+')
+    if pattern ==# ''
+      call s:warn("No pattern given")
+      return
+    endif
   endif
 
   let cmd = pattern
