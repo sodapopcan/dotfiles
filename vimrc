@@ -131,6 +131,7 @@ set hidden " navigate away from  a buffer without saving it first
 " Necessary to run the correct versions of unix programs when using zsh
 set shell=/bin/bash
 " endif
+set clipboard=unnamed
 
 if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
