@@ -178,7 +178,7 @@ set sidescrolloff=0
 set shortmess=atWI
 set pumheight=5
 set linebreak
-set updatetime=250  " pretty much just so gittgutter will update quickly
+set updatetime=100  " Update gitgutter and ale quickly
 set completeopt-=preview
 set diffopt=filler,foldcolumn:0,context:4
 set autoread
