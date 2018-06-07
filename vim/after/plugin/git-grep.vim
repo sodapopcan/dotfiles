@@ -9,20 +9,22 @@
 let s:return_file = ''
 
 function! s:grep(arg) abort
-  let pattern = matchstr(a:arg, '\v"(.*)"\Z')
+  let search_pattern = matchstr(a:arg, '\v"(.*)"\Z')
 
-  if pattern ==# ''
-    let pattern = matchstr(a:arg, '\v[a-zA-Z0-9]+')
-    if pattern ==# ''
+  if search_pattern ==# ''
+    let search_pattern = matchstr(a:arg, '\v[a-zA-Z0-9]+')
+    if search_pattern ==# ''
       call s:warn("No pattern given")
       return
     endif
   endif
 
-  let cmd = pattern
-  let args = substitute(a:arg, '\v'.pattern.'(\s+)?', '', '')
-  if len(args)
-    let parts = split(args, '\v\s+--\s+')
+  let cmd = search_pattern
+
+  let filter_pattern = substitute(a:arg, '\v'.search_pattern.'(\s+)?', '', '')
+
+  if len(filter_pattern)
+    let parts = split(filter_pattern, '\v\s+--\s+')
     let filetypes = split(parts[0], ',')
     if len(parts) > 1
       let dirs = split(parts[1], '\v\s+')
@@ -57,7 +59,7 @@ function! s:grep(arg) abort
     nnoremap <silent> <buffer> q :cclose<CR>
     nnoremap <silent> <buffer> <c-c> <c-c>:cclose<CR>:call <SID>edit_return_file()<CR>
   else
-    call s:warn("No results for " . pattern)
+    call s:warn("No results for " . search_pattern)
   endif
 endfunction
 
