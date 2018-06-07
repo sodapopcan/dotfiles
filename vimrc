@@ -478,8 +478,6 @@ augroup SignColumn
   " Always show the sign column
   autocmd BufEnter * sign define dummy
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-  " I dunno anymore
-  " autocmd ShellCmdPost * redraw!
 augroup END
 
 augroup Debugging
