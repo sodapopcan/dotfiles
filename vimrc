@@ -455,8 +455,6 @@ augroup FileTypeOptions
         \ setlocal bufhidden=wipe |
         \ nnoremap <buffer> q :q<CR>
   autocmd FileType ruby,javascript,coffee autocmd BufWritePre <buffer> call StripWhitespace()
-  autocmd FileType gitcommit setlocal spell
-  autocmd FileType gitcommit setlocal list listchars=tab:\ \ 
   autocmd FileType help,qf nnoremap <silent> <buffer> q :q<CR>
   autocmd FileType qf set wrap
 augroup END
