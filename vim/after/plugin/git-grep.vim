@@ -22,7 +22,7 @@ function! s:grep(arg) abort
 
   let cmd = search_pattern
 
-  let filter_pattern = substitute(a:arg, '\v'.search_pattern.'(\s+)?', '', '')
+  let filter_pattern = substitute(a:arg, '\v'.escape(search_pattern, '<>$!?@{}()').'(\s+)?', '', '')
 
   if len(filter_pattern)
     let parts = split(filter_pattern, '\v\s+')
