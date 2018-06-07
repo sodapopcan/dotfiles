@@ -24,21 +24,20 @@ function! s:grep(arg) abort
   let filter_pattern = substitute(a:arg, '\v'.search_pattern.'(\s+)?', '', '')
 
   if len(filter_pattern)
-    let parts = split(filter_pattern, '\v\s+--\s+')
+    let parts = split(filter_pattern, '\v\s+')
     let filetypes = split(parts[0], ',')
-    if len(parts) > 1
-      let dirs = split(parts[1], '\v\s+')
-      if len(dirs) > 1
-        let cmd.= " --"
-        for dir in map(dirs, 'substitute(v:val, ''\v/$'', '''', '''')')
-          for filetype in filetypes
-            let cmd.= " '".dir."/*.".filetype."'"
-          endfor
+    let dirs = map(parts[1:], 'substitute(v:val, ''\v[/]+$'', '''', '''')')
+    let cmd.= " --"
+    for filetype in filetypes
+      let pattern = filetype ==# '*' ? '*' : '*.'.filetype
+      if len(dirs)
+        for dir in dirs
+          let cmd.= " '".dir."/".pattern."'"
         endfor
+      else
+        let cmd.= " '".pattern."'"
       endif
-    else
-      let cmd = cmd." -- '*.".join(filetypes, "' '*.")."'"
-    endif
+    endfor
   endif
 
   let s:return_file = expand('%')
