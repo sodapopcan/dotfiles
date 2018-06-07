@@ -100,5 +100,5 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gya".t."<Space> ya".t.":Grep \"\"<Left><C-R><C-\">"
 endfor
 
-let s:cmd = 'Grep "" rb,rake '
+let s:cmd = 'Grep "" '
 exec "nnoremap g<Space> :".s:cmd.repeat("<Left>", len(s:cmd) - 6)
