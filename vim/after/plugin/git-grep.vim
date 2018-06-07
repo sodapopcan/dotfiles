@@ -11,11 +11,12 @@ let s:return_file = ''
 function! s:grep(arg) abort
   let search_pattern = matchstr(a:arg, '\v"(.*)"\Z')
 
-  if search_pattern ==# ''
+  if search_pattern ==# '""'
+    return s:warn("No pattern given")
+  elseif search_pattern ==# ''
     let search_pattern = matchstr(a:arg, '\v[a-zA-Z0-9]+')
-    if search_pattern ==# ''
-      call s:warn("No pattern given")
-      return
+    if search_pattern ==# '' || search_pattern ==# '""'
+      return s:warn("No pattern given")
     endif
   endif
 
@@ -99,5 +100,5 @@ for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', 
   exec "nnoremap gya".t."<Space> ya".t.":Grep \"\"<Left><C-R><C-\">"
 endfor
 
-let s:cmd = 'Grep "" rb,rake -- '
+let s:cmd = 'Grep "" rb,rake '
 exec "nnoremap g<Space> :".s:cmd.repeat("<Left>", len(s:cmd) - 6)
