@@ -165,6 +165,7 @@ if $WORK_COMPUTER
 endif
 " I just like this stuff
 set cmdheight=2
+set showcmd
 set cursorline
 set nostartofline
 set breakindent
