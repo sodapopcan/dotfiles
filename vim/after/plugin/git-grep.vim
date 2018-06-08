@@ -9,20 +9,19 @@
 let s:return_file = ''
 
 function! s:grep(arg) abort
-  let search_pattern = matchstr(a:arg, '\v"(.*)"\Z')
+  let search_pattern = matchstr(a:arg, '\v("|'')\zs(.*)+\ze("|'')')
 
-  if search_pattern ==# '""'
-    return s:warn("No pattern given")
-  elseif search_pattern ==# ''
-    let search_pattern = matchstr(a:arg, '\v[a-zA-Z0-9]+')
-    if search_pattern ==# '' || search_pattern ==# '""'
+  if search_pattern ==# ''
+    let search_pattern = matchstr(a:arg, '\v[^ ]+')
+
+    if search_pattern ==# ''
       return s:warn("No pattern given")
     endif
   endif
 
-  let cmd = search_pattern
+  let filter_pattern = substitute(a:arg, '\v("|'')?'.escape(search_pattern, '(){}<>$?@~|').'("|'')?(\s+)?', '', '')
 
-  let filter_pattern = substitute(a:arg, '\v'.escape(search_pattern, '<>$!?@{}()').'(\s+)?', '', '')
+  let cmd = shellescape(search_pattern)
 
   if len(filter_pattern)
     let parts = split(filter_pattern, '\v\s+')
