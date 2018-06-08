@@ -380,22 +380,15 @@ function! TabLine()
   return s
 endfunction
 function! TabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  let bufname = bufname(buflist[winnr - 1])
-  let filename = matchstr(
-        \ substitute(bufname, '\/$', '', ''),
-        \ '\v\/([^/]*)$')
-  let parts = split(bufname, '/')
-  if len(parts) > 1
-    let filename = parts[-2]
+  if !&modifiable
+    return &filetype
   else
-    let filename = ''
+    let filename = expand('%')
+    if filename ==# ''
+      return '[No Name]'
+    endif
+    return filename
   endif
-  if filename ==# ''
-    return '[No Name]'
-  endif
-  return filename[:36]
 endfunction
 set tabline=%!TabLine()
 
