@@ -331,7 +331,12 @@ nnoremap <Leader># :normal! ggi#!/usr/bin/env bash<CR>
 "   * File name (basename of currently focused buffer)
 "     is always at the top of the screen
 function! s:git_branch_status_line()
-  let status = substitute(substitute(copy(fugitive#statusline()), '^[Git(', '', ''), ')]$', '', '')
+  if exists('*fugitive#statusline()')
+    let fstatus = fugitive#statusline()
+  else
+    let fstatus = ''
+  endif
+  let status = substitute(substitute(copy(fstatus), '^[Git(', '', ''), ')]$', '', '')
   if status != ''
     let jira_ticket = matchstr(status, '\v^[A-Z]+\-[0-9]+')
     if jira_ticket !=# ''
