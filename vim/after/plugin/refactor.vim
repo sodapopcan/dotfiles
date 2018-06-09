@@ -1,17 +1,65 @@
 function! s:refactor(first, last, ...) abort
+  let iname = a:1
+  let itype = 0
+  let ipath = 0
+
+  if exists('a:2')
+    if match(a:2, '\v^:') >= 0
+      let ipath = substitute(a:2, '\v^:', '', '')
+    elseif match(a:2, '\v:') >= 0
+      let [itype, ipath] = split(a:2, ':')
+    else
+      let itype = a:2
+    endif
+  endif
+
+  if !itype
+    if match(iname, '\v\(\)$') >= 0
+      let itype = 'method'
+    elseif match(iname, '\v\=$') >= 0
+      let itype = 'variable'
+    elseif match(iname, '\v^[A-Z][a-zA-Z]') >= 0
+      let itype = 'module'
+    elseif match(iname, '\v^[A-Z][A-Z_]+') >= 0
+      let itype = 'constant'
+    elseif visualmode() ==# 'v'
+      let itype = 'variable'
+    else
+      let itype = 'method'
+    endif
+  endif
+
   if visualmode() ==# 'v'
-    let z = @z
-    normal! gv"zd
-    exec "normal! a".a:1."\<esc>O".a:1." = ".@z."\<esc>"
-    let @z = z
+    let selection = s:get_charwise_selection()
   else
-    call s:refactor_private(a:1, a:first, a:last)
+    let selection = s:get_linewise_selection(a:first, a:last)
+  endif
+
+  if itype == 'variable'
+    exec "normal! a".iname."\<esc>O".iname." = ".join(selection, "\n")."\<esc>"
+  else
+    call s:refactor_private(iname, selection)
   endif
 endfunction
 
-function! s:refactor_private(name, first, last) abort
-  let method = ["def " . a:name] + getline(a:first, a:last) + ["end"]
+function! s:get_charwise_selection() abort
+  let z = copy(@z)
+  normal! gv"zd
+  let selection = copy(@z)
+  let @z = z
+
+  return split(selection, "\n")
+endfunction
+
+function! s:get_linewise_selection(first, last) abort
+  let selection = getline(a:first, a:last)
   exec "keepjumps delete_" (a:last - a:first) + 1
+
+  return selection
+endfunction
+
+function! s:refactor_private(name, selection) abort
+  let method = ["def " . a:name] + a:selection + ["end"]
   let fromline = line('.')
   call append(fromline - 1, a:name)
   redraw
@@ -59,4 +107,4 @@ function! s:get_visual_selection()
 endfunction
 
 command! -nargs=1 -range Private call s:refactor_private(<f-args>, <line1>, <line2>)
-command! -nargs=1 -range Refactor call s:refactor(<line1>, <line2>, <f-args>)
+command! -nargs=+ -range Refactor call s:refactor(<line1>, <line2>, <f-args>)
