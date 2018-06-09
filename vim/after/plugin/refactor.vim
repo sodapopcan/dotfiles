@@ -1,11 +1,6 @@
-function! s:refactor(args, first, last) abort
+function! s:refactor(first, last, ...) abort
   " Get selection type
-  let parts = split(a:args, ' ')
-  let type = parts[0]
-  let method = join(parts[1:], ' ')
-  if match(type, '\v^pri') >= 0
-    call s:refactor_private(method, a:first, a:last)
-  endif
+  call s:refactor_private(a:1, a:first, a:last)
 endfunction
 
 function! s:refactor_private(name, first, last) abort
@@ -58,4 +53,4 @@ function! s:get_visual_selection()
 endfunction
 
 command! -nargs=1 -range Private call s:refactor_private(<f-args>, <line1>, <line2>)
-command! -nargs=1 -range Refactor call s:refactor(<f-args>, <line1>, <line2>)
+command! -nargs=1 -range Refactor call s:refactor(<line1>, <line2>, <f-args>)
