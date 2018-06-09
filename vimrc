@@ -397,7 +397,7 @@ function! TabLabel(n)
     if filename ==# ''
       return '[No Name]'
     endif
-    return filename
+    return join(split(filename, '/'), ' ▶ ')
   endif
 endfunction
 set tabline=%!TabLine()
