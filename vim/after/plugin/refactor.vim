@@ -1,6 +1,12 @@
 function! s:refactor(first, last, ...) abort
-  " Get selection type
-  call s:refactor_private(a:1, a:first, a:last)
+  if visualmode() ==# 'v'
+    let z = @z
+    normal! gv"zd
+    exec "normal! a".a:1."\<esc>O".a:1." = ".@z."\<esc>"
+    let @z = z
+  else
+    call s:refactor_private(a:1, a:first, a:last)
+  endif
 endfunction
 
 function! s:refactor_private(name, first, last) abort
