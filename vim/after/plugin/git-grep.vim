@@ -7,6 +7,7 @@
  
 " Plugin {{{1
 let s:return_file = ''
+let s:edit_winnr = 1
 
 function! s:grep(arg) abort
   let search_pattern = matchstr(a:arg, '\v("|'')\zs(.*)+\ze("|'')')
@@ -41,6 +42,7 @@ function! s:grep(arg) abort
   endif
 
   let s:return_file = expand('%')
+  let s:edit_winnr = winnr()
 
   if exists('g:loaded_fugitive')
     let git_cmd = fugitive#buffer().repo().git_command()
@@ -53,8 +55,9 @@ function! s:grep(arg) abort
   if len(output)
     cgetexpr output
     silent botright copen
-    nnoremap          <buffer> o :call <SID>edit_file()<CR>
+    nnoremap          <buffer> o :call <SID>open_file()<CR>
     nnoremap          <buffer> go :call <SID>preview_file()<CR>
+    nnoremap <silent> <buffer> O :call <SID>open_file_and_close_qf()<CR>
     nnoremap <silent> <buffer> q :cclose<CR>
     nnoremap <silent> <buffer> <c-c> <c-c>:cclose<CR>:call <SID>edit_return_file()<CR>
   else
@@ -62,16 +65,27 @@ function! s:grep(arg) abort
   endif
 endfunction
 
-function! s:edit_file()
-  let [filename, linenr] = split(getline('.'), '|')[0:1]
-  keepjumps wincmd p
-  exec "edit " . filename
-  exec "keepjumps " . linenr
+function! s:get_filename_and_linenr() abort
+  return split(getline('.'), '|')[0:1]
+endfunction
+
+function! s:open_file()
+  let [filename, linenr] = s:get_filename_and_linenr()
+  let qfheight = winheight(winnr())
+  pclose
+  exec "resize" qfheight
+  exec "keepjumps" s:edit_winnr."wincmd w"
+  exec "edit +".linenr filename
+endfunction
+
+function! s:open_file_and_close_qf() abort
+  call s:open_file()
+  cclose
 endfunction
 
 function! s:preview_file() abort
-  call s:edit_file()
-  keepjumps wincmd p
+  let [filename, linenr] = s:get_filename_and_linenr()
+  exec "pedit +".linenr filename
 endfunction
 
 function! s:edit_return_file()
