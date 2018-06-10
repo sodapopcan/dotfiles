@@ -25,9 +25,9 @@ function! s:refactor(first, last, ...) abort
   let itype = s:resolve_itype(iname, itype)
 
   if visualmode() ==# 'v'
-    let selection = s:get_charwise_selection()
+    let selection = s:exact_charwise_selection()
   else
-    let selection = s:get_linewise_selection(a:first, a:last)
+    let selection = s:exact_linewise_selection(a:first, a:last)
   endif
 
   if itype ==# 'variable'
@@ -37,7 +37,7 @@ function! s:refactor(first, last, ...) abort
   endif
 endfunction
 
-function! s:get_charwise_selection() abort
+function! s:exact_charwise_selection() abort
   let z = copy(@z)
   normal! gv"zd
   let selection = copy(@z)
@@ -46,7 +46,7 @@ function! s:get_charwise_selection() abort
   return split(selection, "\n")
 endfunction
 
-function! s:get_linewise_selection(first, last) abort
+function! s:exact_linewise_selection(first, last) abort
   let selection = getline(a:first, a:last)
   exec "keepjumps delete_" (a:last - a:first) + 1
 
