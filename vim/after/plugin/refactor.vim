@@ -23,6 +23,7 @@ function! s:refactor(first, last, ...) abort
   endif
 
   let itype = s:resolve_itype(iname, itype)
+  let iname = s:resolve_iname(iname)
 
   if visualmode() ==# 'v'
     let selection = s:exact_charwise_selection()
@@ -148,7 +149,9 @@ function! s:resolve_itype(iname, itype) abort
       echom "Unrecognized type ".itype
     endif
   else
-    if match(a:iname, '\v\(\)$') >= 0
+    if match(a:iname, '\v^_') >= 0
+      return 'private'
+    elseif match(a:iname, '\v\(\)$') >= 0
       return 'method'
     elseif match(a:iname, '\v\=$') >= 0
       return 'variable'
@@ -164,6 +167,10 @@ function! s:resolve_itype(iname, itype) abort
       return 'public'
     endif
   endif
+endfunction
+
+function! s:resolve_iname(iname) abort
+  return substitute(a:iname, '\v(^_|\(\)$|\=$)', '', 'g')
 endfunction
 
 command! -nargs=+ -range Refactor call s:refactor(<line1>, <line2>, <f-args>)
