@@ -108,15 +108,25 @@ function! s:extract_method(name, selection, type) abort
     let indentlvl = matchstr(getline(modulelinenr), '\v^\s+')
     let stopline = search('\v^'.indentlvl.'end$', 'nW')
 
-    let accesslinenr = search('\v\s?'.a:type.'$', 'nW', stopline)
-    if !accesslinenr
-      let accesslinenr = search('\v\s?'.a:type.'$', 'nbW', modulelinenr)
+    let accesslinenr = search('\v\C\s?'.a:type.'$', 'nW', stopline)
+    if accesslinenr
+      let accessor_below_cursor = 1
+    else
+      let accesslinenr = search('\v\C\s?'.a:type.'$', 'nbW', modulelinenr)
+      if accesslinenr
+        let accessor_below_cursor = 0
+      endif
     endif
 
     if accesslinenr
       let output = [''] + method
-      call append(accesslinenr, output)
-      let jumpline = accesslinenr + 2
+      if accessor_below_cursor
+        call append(accesslinenr, output)
+        let jumpline = accesslinenr + 2
+      else
+        call append(defendlinenr, output)
+        let jumpline = defendlinenr + 2
+      endif
     else
       let output = ['', a:type, ''] + method
       let appendlinenr = stopline - 1
