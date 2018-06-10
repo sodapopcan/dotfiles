@@ -82,7 +82,7 @@ function! s:get_linewise_selection(first, last) abort
 endfunction
 
 function! s:extract_variable(name, selection) abort
-  exec "normal! a".iname."\<esc>O".iname." = ".join(selection, "\n")."\<esc>"
+  exec "normal! a".a:name."\<esc>O".a:name." = ".join(a:selection, "\n")."\<esc>"
 endfunction
 
 function! s:extract_method(name, selection, type) abort
@@ -111,8 +111,10 @@ function! s:extract_method(name, selection, type) abort
     endif
 
     call append(fromline, output)
+    redraw
+    normal m'
     +2
-    exec 'normal! ='.len(output).'='
+    keepjumps exec 'normal! ='.len(output).'='
 
     return
   endif
@@ -131,29 +133,29 @@ function! s:extract_method(name, selection, type) abort
     let indentlvl = matchstr(getline(modulelinenr), '\v^\s+')
     let stopline = search('\v^'.indentlvl.'end$', 'nW')
 
-    let accessline = search('\v\s?'.a:type.'$', 'nW', stopline)
-    if !accessline
-      let accessline = search('\v\s?'.a:type.'$', 'nbW', modulelinenr)
+    let accesslinenr = search('\v\s?'.a:type.'$', 'nW', stopline)
+    if !accesslinenr
+      let accesslinenr = search('\v\s?'.a:type.'$', 'nbW', modulelinenr)
     endif
 
-    if accessline
+    if accesslinenr
       let output = [''] + method
-      call append(accessline, output)
-      let jumpline = accessline
+      call append(accesslinenr, output)
+      let jumpline = accesslinenr + 2
     else
       let output = ['', a:type, ''] + method
-      let jumpline = stopline - 1
-      call append(jumpline, output)
+      let appendlinenr = stopline - 1
+      call append(appendlinenr, output)
+      let jumpline = appendlinenr + 2
     endif
   endif
 
   redraw
 
-  return "hi"
   keepjumps exec jumpline
-  exec "normal! =".(len(output) + 4)."\<cr>"
-  " keepjumps exec fromline
-  " exec "normal! ".(jumpline + 2)."ggzz"
+  keepjumps exec "normal! =".(len(output) + 4)."\<cr>"
+  exec fromline
+  exec "normal! ".(jumpline + 2)."ggzz"
 endfunction
 
 command! -nargs=+ -range Refactor call s:refactor(<line1>, <line2>, <f-args>)
