@@ -63,6 +63,8 @@ function! s:extract_variable(name, selection) abort
 endfunction
 
 function! s:extract_constant(name, selection) abort
+  let cmd = (col(".") == col("$")-1) ? 'a' : 'i'
+  exec "normal!" cmd.a:name."\<esc>"
   let originallinenr = line('.')
   normal! m'
   let modulelinenr = s:get_container_linenr()
@@ -72,7 +74,10 @@ function! s:extract_constant(name, selection) abort
       " I need a better way of finding the last occurance of a match
     endwhile
     if line('.') !=# modulelinenr
-      if match(getline('.'), '\v(\[|\(|\{)') >= 0
+      let heredoc_marker = matchstr(getline('.'), '\v(\<\<(-|\~)?)@<=[A-Za-z_]+')
+      if len(heredoc_marker)
+        exec s:get_match_heredoc_linenr(heredoc_marker)
+      elseif match(getline('.'), '\v(\[|\(|\{)') >= 0
         keepjumps normal! $%
       elseif match(getline('.'), '\v(''|")') >= 0
         exec s:get_match_quote_linenr()
@@ -235,6 +240,15 @@ function! s:get_match_quote_linenr() abort
       return lnr
     endif
   endwhile
+  return lnr
+endfunction
+
+function! s:get_match_heredoc_linenr(marker) abort
+  let lnr = line('.')
+  let l = getline(lnr)
+  if len(a:marker)
+    return search('\v\C^(\s+)?'.a:marker, 'nW')
+  endif
   return lnr
 endfunction
 
