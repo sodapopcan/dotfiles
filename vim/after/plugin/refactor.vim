@@ -97,7 +97,7 @@ function! s:extract_method(name, selection, type) abort
   let deflinenr = 0
   while !deflinenr && len(indentlvl)
     let indentlvl = substitute(indentlvl, repeat(' ', shiftwidth()), '', '')
-    let deflinenr = search('\v^'.indentlvl.'def', 'nb')
+    let deflinenr = search('\v^'.indentlvl.'def', 'nbW')
   endwhile
 
   let modulelinenr = search('\v\s?(module|class)', 'nbW')
@@ -121,7 +121,7 @@ function! s:extract_method(name, selection, type) abort
 
   let line = line('.')
   exec deflinenr
-  let defendlinenr = search('\v^'.indentlvl.'end$', 'n')
+  let defendlinenr = search('\v^'.indentlvl.'end$', 'nW')
   exec line
 
   if !modulelinenr || a:type ==# 'public'
@@ -129,11 +129,11 @@ function! s:extract_method(name, selection, type) abort
     let jumpline = defendlinenr + 2
   elseif a:type ==# 'private' || a:type ==# 'protected'
     let indentlvl = matchstr(getline(modulelinenr), '\v^\s+')
-    let stopline = search('\v^'.indentlvl.'end$', 'n')
+    let stopline = search('\v^'.indentlvl.'end$', 'nW')
 
-    let accessline = search('\v\s?'.a:type.'$', 'n', stopline)
+    let accessline = search('\v\s?'.a:type.'$', 'nW', stopline)
     if !accessline
-      let accessline = search('\v\s?'.a:type.'$', 'nb', modulelinenr)
+      let accessline = search('\v\s?'.a:type.'$', 'nbW', modulelinenr)
     endif
 
     if accessline
