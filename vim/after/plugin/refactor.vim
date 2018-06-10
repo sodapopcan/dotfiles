@@ -62,7 +62,7 @@ function! s:extract_method(name, selection, type) abort
   let fromline = line('.')
   call append(fromline - 1, a:name)
   redraw
-  normal k==
+  normal! k==
 
   " Are we inside a method?
   let indentlvl = matchstr(getline(fromline), '\v^\s+')
@@ -84,7 +84,7 @@ function! s:extract_method(name, selection, type) abort
 
     call append(fromline, output)
     redraw
-    normal m'
+    normal! m'
     +2
     keepjumps exec 'normal! ='.len(output).'='
 
