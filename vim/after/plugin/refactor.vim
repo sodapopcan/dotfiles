@@ -54,7 +54,9 @@ function! s:exact_linewise_selection(first, last) abort
 endfunction
 
 function! s:extract_variable(name, selection) abort
-  exec "normal! a".a:name."\<esc>O".a:name." = ".join(a:selection, "\n")."\<esc>"
+  let cmd = (col(".") == col("$")-1) ? 'a' : 'i'
+  exec "normal!" cmd.a:name."\<esc>"
+  exec "normal! O".a:name." = ".join(a:selection, "\n")."\<esc>"
 endfunction
 
 function! s:extract_method(name, selection, type) abort
