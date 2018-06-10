@@ -41,10 +41,10 @@ function! s:refactor(first, last, ...) abort
 endfunction
 
 function! s:exact_charwise_selection() abort
-  let z = copy(@z)
+  let mark_cache = @@
   normal! gv"zd
-  let selection = copy(@z)
-  let @z = z
+  let selection = copy(@@)
+  let @@ = mark_cache
 
   return split(selection, "\n")
 endfunction
