@@ -33,6 +33,8 @@ function! s:refactor(first, last, ...) abort
 
   if itype ==# 'variable'
     call s:extract_variable(iname, selection)
+  elseif itype ==# 'constant'
+    call s:extract_constant(iname, selection)
   else
     call s:extract_method(iname, selection, itype)
   endif
@@ -60,6 +62,35 @@ function! s:extract_variable(name, selection) abort
   exec "normal! O".a:name." = ".join(a:selection, "\n")."\<esc>"
 endfunction
 
+function! s:extract_constant(name, selection) abort
+  let originallinenr = line('.')
+  normal! m'
+  let modulelinenr = s:get_container_linenr()
+  if modulelinenr
+    exec modulelinenr
+    while search('\v^(\s+)?[A-Z][A-Z0-9_]+(\s+)?\=', 'W')
+      " I need a better way of finding the last occurance of a match
+    endwhile
+    if line('.') !=# modulelinenr
+      if match(getline('.'), '\v(\[|\(|\{)') >= 0
+        keepjumps normal! $%
+      elseif match(getline('.'), '\v(''|")') >= 0
+        exec s:get_match_quote_linenr()
+      endif
+    endif
+    let a:selection[0] = a:name.' = '.a:selection[0]
+    if getline(line('.') - 1) ==# '' && a:selection[-1] !=# ''
+      let output = extend([''], a:selection)
+      let jumpdown = 'jj'
+    else
+      let output = a:selection
+      let jumpdown = 'j'
+    endif
+    call append(line('.'), output)
+    exec "keepjumps normal! ".jumpdown."=="
+  endif
+endfunction
+
 function! s:extract_method(name, selection, type) abort
   let method = ["def " . a:name] + a:selection + ["end"]
   let originallinenr = line('.')
@@ -75,7 +106,7 @@ function! s:extract_method(name, selection, type) abort
     let deflinenr = search('\v^'.indentlvl.'def', 'nbW')
   endwhile
 
-  let modulelinenr = search('\v\C\s?(module|class)', 'nbW')
+  let modulelinenr = s:get_container_linenr()
 
   " If we aren't, append a new method below
   if !deflinenr
@@ -165,10 +196,10 @@ function! s:resolve_itype(iname, itype) abort
       return 'method'
     elseif match(a:iname, '\v\=$') >= 0
       return 'variable'
-    elseif match(a:iname, '\v\C^[A-Z][a-zA-Z]+') >= 0
-      return 'module'
     elseif match(a:iname, '\v\C^[A-Z][A-Z_]+') >= 0
       return 'constant'
+    elseif match(a:iname, '\v\C^[A-Z][a-zA-Z]+') >= 0
+      return 'module'
     elseif visualmode() ==# 'v'
       return 'variable'
     elseif visualmode() ==# 'V'
@@ -181,6 +212,30 @@ endfunction
 
 function! s:resolve_iname(iname) abort
   return substitute(a:iname, '\v(^_|\(\)$|\=$)', '', 'g')
+endfunction
+
+function! s:get_container_linenr() abort
+  return search('\v\C\s?(module|class)', 'nbW')
+endfunction
+
+function! s:get_match_quote_linenr() abort
+  let lnr = line('.')
+  let l = getline(lnr)
+  let style = matchstr(l, '\v(''|")')
+  if style ==# ''
+    return
+  endif
+  if match(l, '\v'.style.'([^\\'.style.']+)?'.style) >= 0
+    return lnr
+  endif
+  while line('.') <=# line('$')
+    let lnr = lnr + 1
+    let l = getline(lnr)
+    if match(l, '\v[^\\]'.style) >= 0
+      return lnr
+    endif
+  endwhile
+  return lnr
 endfunction
 
 command! -nargs=+ -range Refactor call s:refactor(<line1>, <line2>, <f-args>)
