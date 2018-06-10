@@ -75,7 +75,7 @@ function! s:extract_method(name, selection, type) abort
     let deflinenr = search('\v^'.indentlvl.'def', 'nbW')
   endwhile
 
-  let modulelinenr = search('\v\s?(module|class)', 'nbW')
+  let modulelinenr = search('\v\C\s?(module|class)', 'nbW')
 
   " If we aren't, append a new method below
   if !deflinenr
