@@ -62,13 +62,13 @@ endfunction
 
 function! s:extract_method(name, selection, type) abort
   let method = ["def " . a:name] + a:selection + ["end"]
-  let fromline = line('.')
-  call append(fromline - 1, a:name)
+  let originallinenr = line('.')
+  call append(originallinenr - 1, a:name)
   redraw
   normal! k==
 
   " Are we inside a method?
-  let indentlvl = matchstr(getline(fromline), '\v^\s+')
+  let indentlvl = matchstr(getline(originallinenr), '\v^\s+')
   let deflinenr = 0
   while !deflinenr && len(indentlvl)
     let indentlvl = substitute(indentlvl, repeat(' ', shiftwidth()), '', '')
@@ -85,7 +85,7 @@ function! s:extract_method(name, selection, type) abort
       let output = [''] + method
     endif
 
-    call append(fromline, output)
+    call append(originallinenr, output)
     redraw
     normal! m'
     +2
@@ -139,7 +139,7 @@ function! s:extract_method(name, selection, type) abort
 
   keepjumps exec jumpline
   keepjumps exec "normal! =".(len(output) + 4)."\<cr>"
-  exec fromline
+  exec originallinenr
   exec "normal! ".(jumpline + 2)."ggzz"
 endfunction
 
