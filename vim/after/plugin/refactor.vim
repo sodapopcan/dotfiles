@@ -22,35 +22,7 @@ function! s:refactor(first, last, ...) abort
     endif
   endif
 
-  if len(itype)
-    for type in s:valid_types
-      if match(type, '\v^'.itype) >= 0
-        let itype = type
-        break
-      endif
-    endfor
-    if index(s:valid_types, itype) < 0
-      echom "Unrecognized type ".itype
-
-      return
-    endif
-  else
-    if match(iname, '\v\(\)$') >= 0
-      let itype = 'method'
-    elseif match(iname, '\v\=$') >= 0
-      let itype = 'variable'
-    elseif match(iname, '\v\C^[A-Z][a-zA-Z]+') >= 0
-      let itype = 'module'
-    elseif match(iname, '\v\C^[A-Z][A-Z_]+') >= 0
-      let itype = 'constant'
-    elseif visualmode() ==# 'v'
-      let itype = 'variable'
-    elseif visualmode() ==# 'V'
-      let itype = 'public'
-    else
-      let itype = 'public'
-    endif
-  endif
+  let itype = s:resolve_itype(iname, itype)
 
   if visualmode() ==# 'v'
     let selection = s:get_charwise_selection()
@@ -156,6 +128,40 @@ function! s:extract_method(name, selection, type) abort
   keepjumps exec "normal! =".(len(output) + 4)."\<cr>"
   exec fromline
   exec "normal! ".(jumpline + 2)."ggzz"
+endfunction
+
+function! s:resolve_itype(iname, itype) abort
+  if len(a:itype)
+    let itype = a:itype
+    for type in s:valid_types
+      if match(type, '\v^'.itype) >= 0
+        let itype = type
+        break
+      endif
+    endfor
+
+    if index(s:valid_types, itype) >= 0
+      return itype
+    else
+      echom "Unrecognized type ".itype
+    endif
+  else
+    if match(a:iname, '\v\(\)$') >= 0
+      return 'method'
+    elseif match(a:iname, '\v\=$') >= 0
+      return 'variable'
+    elseif match(a:iname, '\v\C^[A-Z][a-zA-Z]+') >= 0
+      return 'module'
+    elseif match(a:iname, '\v\C^[A-Z][A-Z_]+') >= 0
+      return 'constant'
+    elseif visualmode() ==# 'v'
+      return 'variable'
+    elseif visualmode() ==# 'V'
+      return 'public'
+    else
+      return 'public'
+    endif
+  endif
 endfunction
 
 command! -nargs=+ -range Refactor call s:refactor(<line1>, <line2>, <f-args>)
