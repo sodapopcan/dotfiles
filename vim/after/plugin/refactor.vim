@@ -1,7 +1,16 @@
+let s:valid_types = [
+      \ 'private',
+      \ 'protected',
+      \ 'public',
+      \ 'module',
+      \ 'class',
+      \ 'variable'
+      \ ]
+
 function! s:refactor(first, last, ...) abort
   let iname = a:1
-  let itype = 0
-  let ipath = 0
+  let itype = ''
+  let ipath = ''
 
   if exists('a:2')
     if match(a:2, '\v^:') >= 0
@@ -13,19 +22,33 @@ function! s:refactor(first, last, ...) abort
     endif
   endif
 
-  if !itype
+  if len(itype)
+    for type in s:valid_types
+      if match(type, '\v^'.itype) >= 0
+        let itype = type
+        break
+      endif
+    endfor
+    if index(s:valid_types, itype) < 0
+      echom "Unrecognized type ".itype
+
+      return
+    endif
+  else
     if match(iname, '\v\(\)$') >= 0
       let itype = 'method'
     elseif match(iname, '\v\=$') >= 0
       let itype = 'variable'
-    elseif match(iname, '\v^[A-Z][a-zA-Z]') >= 0
+    elseif match(iname, '\v\C^[A-Z][a-zA-Z]+') >= 0
       let itype = 'module'
-    elseif match(iname, '\v^[A-Z][A-Z_]+') >= 0
+    elseif match(iname, '\v\C^[A-Z][A-Z_]+') >= 0
       let itype = 'constant'
     elseif visualmode() ==# 'v'
       let itype = 'variable'
+    elseif visualmode() ==# 'V'
+      let itype = 'public'
     else
-      let itype = 'method'
+      let itype = 'public'
     endif
   endif
 
@@ -35,10 +58,10 @@ function! s:refactor(first, last, ...) abort
     let selection = s:get_linewise_selection(a:first, a:last)
   endif
 
-  if itype == 'variable'
-    exec "normal! a".iname."\<esc>O".iname." = ".join(selection, "\n")."\<esc>"
+  if itype ==# 'variable'
+    call s:extract_variable(iname, selection)
   else
-    call s:refactor_private(iname, selection)
+    call s:extract_method(iname, selection, itype)
   endif
 endfunction
 
@@ -58,39 +81,70 @@ function! s:get_linewise_selection(first, last) abort
   return selection
 endfunction
 
-function! s:refactor_private(name, selection) abort
+function! s:extract_variable(name, selection) abort
+  exec "normal! a".iname."\<esc>O".iname." = ".join(selection, "\n")."\<esc>"
+endfunction
+
+function! s:extract_method(name, selection, type) abort
   let method = ["def " . a:name] + a:selection + ["end"]
   let fromline = line('.')
   call append(fromline - 1, a:name)
   redraw
   normal k==
 
-  let startline = search('\v\s?(module|class)', 'nb')
-  if startline
-    let indentlvl = matchstr(getline(startline), '\v^\s+')
-    let stopline = search('\v^' . indentlvl . 'end$', 'n')
+  " Are we inside a method?
+  let indentlvl = matchstr(getline(fromline), '\v^\s+')
+  let deflinenr = 0
+  while !deflinenr && len(indentlvl)
+    let indentlvl = substitute(indentlvl, repeat(' ', shiftwidth()), '', '')
+    let deflinenr = search('\v^'.indentlvl.'def', 'nb')
+  endwhile
 
-    let privline = search('\v\s?private', 'n', stopline)
-    if !privline
-      let privline = search('\v\s?private', 'nb', startline)
+  let output = [''] + method
+
+  " If we aren't, append a new method below
+  if !deflinenr
+    call append(fromline, output)
+    exec 'normal! ='.len(output).'='
+
+    return
+  endif
+
+  let line = line('.')
+  exec deflinenr
+  let defendlinenr = search('\v^'.indentlvl.'end$', 'n')
+  exec line
+
+  let startline = search('\v\s?(module|class)', 'nb')
+
+  if !startline || a:type ==# 'public'
+    call append(defendlinenr, output)
+    let jumpline = search('\v^\s+def', 'n')
+  elseif a:type ==# 'private' || a:type ==# 'protected'
+    let indentlvl = matchstr(getline(startline), '\v^\s+')
+    let stopline = search('\v^'.indentlvl.'end$', 'n')
+
+    let accessline = search('\v\s?'.a:type.'$', 'n', stopline)
+    if !accessline
+      let accessline = search('\v\s?'.a:type.'$', 'nb', startline)
     endif
 
-    if privline
+    if accessline
       let output = [''] + method
-      call append(privline, output)
-      let jumpline = privline
+      call append(accessline, output)
+      let jumpline = accessline
     else
-      let output = ['', 'private', ''] + method
+      let output = ['', a:type, ''] + method
       let jumpline = stopline - 1
       call append(jumpline, output)
     endif
     redraw
-
-    keepjumps exec jumpline
-    exec "normal! =".len(output)."\<cr>"
-    keepjumps exec fromline
-    exec "normal! ".(jumpline + 2)."ggzz"
   endif
+
+  keepjumps exec jumpline
+  exec "normal! =".(len(output) + 2)."\<cr>"
+  keepjumps exec fromline
+  exec "normal! ".(jumpline + 2)."ggzz"
 endfunction
 
 " https://stackoverflow.com/a/6271254/1181571
