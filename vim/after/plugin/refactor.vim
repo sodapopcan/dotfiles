@@ -100,33 +100,40 @@ function! s:extract_method(name, selection, type) abort
     let deflinenr = search('\v^'.indentlvl.'def', 'nb')
   endwhile
 
-  let output = [''] + method
+  let modulelinenr = search('\v\s?(module|class)', 'nbW')
 
   " If we aren't, append a new method below
   if !deflinenr
+    if modulelinenr " Inside a module so make it a class method
+      let output = [''] + [substitute(method[0], 'def ', 'def self.', '')] + method[1:]
+    else " Just in a classless script, make it a regular method
+      let output = [''] + method
+    endif
+
     call append(fromline, output)
+    +2
     exec 'normal! ='.len(output).'='
 
     return
   endif
+
+  let output = [''] + method
 
   let line = line('.')
   exec deflinenr
   let defendlinenr = search('\v^'.indentlvl.'end$', 'n')
   exec line
 
-  let startline = search('\v\s?(module|class)', 'nb')
-
-  if !startline || a:type ==# 'public'
+  if !modulelinenr || a:type ==# 'public'
     call append(defendlinenr, output)
-    let jumpline = search('\v^\s+def', 'n')
+    let jumpline = defendlinenr + 2
   elseif a:type ==# 'private' || a:type ==# 'protected'
-    let indentlvl = matchstr(getline(startline), '\v^\s+')
+    let indentlvl = matchstr(getline(modulelinenr), '\v^\s+')
     let stopline = search('\v^'.indentlvl.'end$', 'n')
 
     let accessline = search('\v\s?'.a:type.'$', 'n', stopline)
     if !accessline
-      let accessline = search('\v\s?'.a:type.'$', 'nb', startline)
+      let accessline = search('\v\s?'.a:type.'$', 'nb', modulelinenr)
     endif
 
     if accessline
@@ -138,13 +145,15 @@ function! s:extract_method(name, selection, type) abort
       let jumpline = stopline - 1
       call append(jumpline, output)
     endif
-    redraw
   endif
 
+  redraw
+
+  return "hi"
   keepjumps exec jumpline
-  exec "normal! =".(len(output) + 2)."\<cr>"
-  keepjumps exec fromline
-  exec "normal! ".(jumpline + 2)."ggzz"
+  exec "normal! =".(len(output) + 4)."\<cr>"
+  " keepjumps exec fromline
+  " exec "normal! ".(jumpline + 2)."ggzz"
 endfunction
 
 command! -nargs=+ -range Refactor call s:refactor(<line1>, <line2>, <f-args>)
