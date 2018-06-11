@@ -61,7 +61,7 @@ function! s:grep(arg) abort
     nnoremap <silent> <buffer> q :cclose<CR>
     nnoremap <silent> <buffer> <c-c> <c-c>:cclose<CR>:call <SID>edit_return_file()<CR>
   else
-    call s:warn("No results for " . search_pattern)
+    call s:warn(' ¯\_(ツ)_/¯  No results for "' . search_pattern . '"')
   endif
 endfunction
 
