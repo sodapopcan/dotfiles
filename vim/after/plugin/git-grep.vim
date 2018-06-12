@@ -20,7 +20,7 @@ function! s:grep(arg) abort
     endif
   endif
 
-  let filter_pattern = substitute(a:arg, '\v("|'')?'.escape(search_pattern, '(){}<>$?@~|').'("|'')?(\s+)?', '', '')
+  let filter_pattern = substitute(a:arg, '\v("|'')?'.escape(search_pattern, '(){}<>$?@~|\').'("|'')?(\s+)?', '', '')
 
   let cmd = shellescape(search_pattern)
 
