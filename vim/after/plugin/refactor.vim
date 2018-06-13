@@ -142,13 +142,13 @@ function! s:extract_method(name, selection, type) abort
     let jumpline = defendlinenr + 2
   elseif a:type ==# 'private' || a:type ==# 'protected'
     let indentlvl = matchstr(getline(modulelinenr), '\v^\s+')
-    let stopline = search('\v^'.indentlvl.'end$', 'nW')
+    let stopline = search('\v^'.(indentlvl - shiftwidth()).'end$', 'nW')
 
-    let accesslinenr = search('\v\C\s?'.a:type.'$', 'nW', stopline)
+    let accesslinenr = search('\v\C%(\s+)?'.a:type.'$', 'nW', stopline)
     if accesslinenr
       let accessor_below_cursor = 1
     else
-      let accesslinenr = search('\v\C\s?'.a:type.'$', 'nbW', modulelinenr)
+      let accesslinenr = search('\v\C%(\s+)?'.a:type.'$', 'nbW', modulelinenr)
       if accesslinenr
         let accessor_below_cursor = 0
       endif
