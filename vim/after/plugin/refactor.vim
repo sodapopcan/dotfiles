@@ -9,19 +9,7 @@ let s:valid_types = [
 
 function! s:refactor(first, last, ...) abort
   let iname = a:1
-  let itype = ''
-  let ipath = ''
-
-  if exists('a:2')
-    if match(a:2, '\v^:') >= 0
-      let ipath = substitute(a:2, '\v^:', '', '')
-    elseif match(a:2, '\v:') >= 0
-      let [itype, ipath] = split(a:2, ':')
-    else
-      let itype = a:2
-    endif
-  endif
-
+  let [itype, ipath] = s:parse_extra_args(get(a:, 2, ''))
   let itype = s:resolve_itype(iname, itype)
   let iname = s:resolve_iname(iname)
 
@@ -177,6 +165,19 @@ function! s:extract_method(name, selection, type) abort
   keepjumps exec "normal! =".(len(output) + 4)."\<cr>"
   exec originallinenr
   exec "normal! ".(jumpline + 2)."ggzz"
+endfunction
+
+function! s:parse_extra_args(args) abort
+  let itype = ''
+  let ipath = ''
+  if match(a:args, '\v^:') >= 0
+    let ipath = substitute(a:args, '\v^:', '', '')
+  elseif match(a:args, '\v:') >= 0
+    let [itype, ipath] = split(a:args, ':')
+  else
+    let itype = a:args
+  endif
+  return [itype, ipath]
 endfunction
 
 function! s:resolve_itype(iname, itype) abort
