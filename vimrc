@@ -267,7 +267,7 @@ nnoremap ` '
 nnoremap ' `
 " I always have to think for a second if I want :vsp or :sp
 nnoremap <silent>  _ :sp<CR>
-nnoremap <silent> \| :102vsp<CR>
+nnoremap <silent> \| :vsp<CR>
 " Paste at EOL
 nnoremap <silent> K :call PasteAtEOL()<CR>
 " Reformat entire file
