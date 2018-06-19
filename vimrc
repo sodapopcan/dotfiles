@@ -23,6 +23,8 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
 
+Plug '~/src/vim/refactor'
+
 " Text Objects
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
