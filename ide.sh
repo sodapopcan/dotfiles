@@ -28,13 +28,19 @@ else
   tmux bind -r M-f switch-client -t home
 fi
 
-# andrwe
-if tmux ls | grep -q andrwe; then
-  echo "andrwe session already exists."
+if [ -z "$WORK_COMPUTER" ]; then
+  main_session=andrwe
 else
-  cd ~/src/andrwe
-  do_web_dev_session andrwe
-  tmux bind -r M-a switch-client -t andrwe
+  main_session=nulogy
+fi
+
+# main session
+if tmux ls | grep -q "$main_session"; then
+  echo ""${main_session}" session already exists."
+else
+  cd "~/src/$main_session"
+  do_web_dev_session "$main_session"
+  tmux bind -r M-a switch-client -t "$main_session"
   tmux send-keys "(pgrep postgres > /dev/null || pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start) && \
     clear && \
     e" C-m
@@ -44,14 +50,14 @@ else
   tmux select-pane -R
   tmux send-keys "rails s" C-m
   tmux select-window -t 2
-  tmux send-keys  "sleep 5 && clear && psql andrwe_development" C-m
+  tmux send-keys  "sleep 5 && clear && psql ${main_session}_development" C-m
   tmux new-window
   tmux rename-window ssh
   tmux new-window
   tmux rename-window notes
-  tmux send-keys "cd ~/notes && vim -c 'Goyo' andrwe.md" C-m
+  tmux send-keys "cd ~/notes && vim -c 'Goyo' ${main_session}.md" C-m
   tmux select-window -t 1
   # tmux select-pane -t 0
 
-  tmux -2 attach-session -t andrwe
+  tmux -2 attach-session -t "$main_session"
 fi
