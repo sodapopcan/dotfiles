@@ -1,4 +1,4 @@
-" git-grep.vim -- A git grep interface
+" git-grep.vim -- A git gep interface
 " 
 " Maintainer: Andrew Haust <andrewwhhaust@gmail.com>
 " Website:    https://github.com/sodapopcan/dotfiles/vim/after/plugin/git-grep.vim
@@ -14,11 +14,12 @@ let s:ag_cmd = "ag --noheading --nocolor nnoremap"
 let s:ack_cmd = "ack --no-color"
 
 function! s:rummage(bang, ...) abort
-  if a:bang && !len(a:000)
-    s:edit_return_file()
+  if a:bang && !len(a:1)
+    call s:edit_return_file()
+    return
   endif
 
-  let arg = a:000
+  let arg = join(a:000, ' ')
 
   let search_pattern = matchstr(arg, '\v("|'')\zs(.*)+\ze("|'')')
 
@@ -138,7 +139,7 @@ function! s:custom_dirs(A,L,P) abort
 endfunction
 
 " Commands {{{1
-command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>, <q-args>)
+command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>0, <q-args>)
 
 " Mappings (to be removed)
 
