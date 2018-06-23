@@ -1,4 +1,4 @@
-" git-grep.vim -- A git gep interface
+" rummage.vim -- A git gep interface
 " 
 " Maintainer: Andrew Haust <andrewwhhaust@gmail.com>
 " Website:    https://github.com/sodapopcan/dotfiles/vim/after/plugin/git-grep.vim
