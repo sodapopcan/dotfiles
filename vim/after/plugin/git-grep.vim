@@ -9,6 +9,10 @@
 let s:return_file = ''
 let s:edit_winnr = 1
 
+let s:git_grep_cmd = "git --no-pager grep --no-color -n"
+let s:ag_cmd = "ag --noheading --nocolor nnoremap"
+let s:ack_cmd = "ack --no-color"
+
 function! s:rummage(bang, ...) abort
   if a:bang && !len(a:000)
     s:edit_return_file()
@@ -135,3 +139,12 @@ endfunction
 
 " Commands {{{1
 command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>, <q-args>)
+
+" Mappings (to be removed)
+
+nnoremap g<Space> :Rummage "" <Left><Left>
+for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
+  exec "nnoremap gy".t."<Space> y".t.":Rummage \"\"<Left><C-R><C-\">"
+  exec "nnoremap gyi".t."<Space> yi".t.":Rummage \"\"<Left><C-R><C-\">"
+  exec "nnoremap gya".t."<Space> ya".t.":Rummage \"\"<Left><C-R><C-\">"
+endfor

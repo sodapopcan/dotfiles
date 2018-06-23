@@ -751,16 +751,6 @@ nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
 "
 let g:vimrubocop_keymap = 0
 
-
-" Rummage
-
-nnoremap g<Space> :Rummage "" <Left><Left>
-for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
-  exec "nnoremap gy".t."<Space> y".t.":Rummage \"\"<Left><C-R><C-\">"
-  exec "nnoremap gyi".t."<Space> yi".t.":Rummage \"\"<Left><C-R><C-\">"
-  exec "nnoremap gya".t."<Space> ya".t.":Rummage \"\"<Left><C-R><C-\">"
-endfor
-
 " RSI  {{{1
 "
 let g:rsi_no_meta = 1
