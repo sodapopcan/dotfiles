@@ -1,5 +1,7 @@
 au! FileType vim setlocal foldmethod=marker
 
+nnoremap <buffer> $ :source %<cr>:mess clear<cr>
+
 if exists('g:loaded_plug')
   if expand('%:t') == 'vimrc'
     command! -nargs=* -bang P call s:add_plugin(<bang>0, <f-args>)
