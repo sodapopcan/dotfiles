@@ -135,13 +135,3 @@ endfunction
 
 " Commands {{{1
 command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>, <q-args>)
-
-" Mappings {{{1
-for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
-  exec "nnoremap gy".t."<Space> y".t.":Rummage \"\"<Left><C-R><C-\">"
-  exec "nnoremap gyi".t."<Space> yi".t.":Rummage \"\"<Left><C-R><C-\">"
-  exec "nnoremap gya".t."<Space> ya".t.":Rummage \"\"<Left><C-R><C-\">"
-endfor
-
-let s:cmd = 'Rummage "" '
-exec "nnoremap g<Space> :".s:cmd.repeat("<Left>", len(s:cmd) - 9)
