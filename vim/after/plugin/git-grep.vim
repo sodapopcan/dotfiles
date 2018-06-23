@@ -9,10 +9,6 @@
 let s:return_file = ''
 let s:edit_winnr = 1
 
-let s:git_grep_cmd = "git --no-pager grep --no-color -n"
-let s:ag_cmd = "ag --noheading --nocolor nnoremap"
-let s:ack_cmd = "ack --no-color"
-
 function! s:rummage(bang, ...) abort
   if a:bang && !len(a:1)
     call s:edit_return_file()
