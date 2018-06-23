@@ -4,23 +4,29 @@
 " Website:    https://github.com/sodapopcan/dotfiles/vim/after/plugin/git-grep.vim
 " License:    Same terms as Vim itself (see :help license)
 " Version:    0.1
- 
+
 " Plugin {{{1
 let s:return_file = ''
 let s:edit_winnr = 1
 
-function! s:grep(arg) abort
-  let search_pattern = matchstr(a:arg, '\v("|'')\zs(.*)+\ze("|'')')
+function! s:rummage(bang, ...) abort
+  if a:bang && !len(a:000)
+    s:edit_return_file()
+  endif
+
+  let arg = a:000
+
+  let search_pattern = matchstr(arg, '\v("|'')\zs(.*)+\ze("|'')')
 
   if search_pattern ==# ''
-    let search_pattern = matchstr(a:arg, '\v[^ ]+')
+    let search_pattern = matchstr(arg, '\v[^ ]+')
 
     if search_pattern ==# ''
       return s:warn("No pattern given")
     endif
   endif
 
-  let filter_pattern = substitute(a:arg, '\v("|'')?'.escape(search_pattern, '(){}<>$?@~|\').'("|'')?(\s+)?', '', '')
+  let filter_pattern = substitute(arg, '\v("|'')?'.escape(search_pattern, '(){}<>$?@~|\').'("|'')?(\s+)?', '', '')
 
   let cmd = shellescape(search_pattern)
 
@@ -102,16 +108,40 @@ function! s:warn(str) abort
   let v:warningmsg = a:str
 endfunction
 
+function! s:custom_dirs(A,L,P) abort
+  let args = substitute(a:L, '\v\C^%(\s+)?R%(ummage)?%(\s+)%(%(("|'')%(.*)%("|'')|\w)\s+)?', '', '')
+  let file_types = matchstr(args, '\v%(\*(\s)?|[a-zA-Z,]+(\s+)?)')
+  if len(file_types) && file_types[-1:] ==# ' '
+    let dirstr = split(args, '\v\s+')[-1]
+    if match(dirstr, '\v,') >= 0
+      if dirstr[-1:] !=# ','
+        let dirstr = matchstr(dirstr, '\v%(.*),')
+      endif
+      let currdirs = map(split(dirstr, ','), "v:val[-1:] !=# '/' ? v:val.'/' : v:val")
+      let dirs = systemlist('ls -1 -d */')
+      let dirs = filter(dirs, "index(currdirs, v:val) < 0")
+      let dirs = map(dirs, 'dirstr.v:val')
+    elseif match(dirstr, '\v/$') >= 0
+      let dirs = systemlist('ls -1 -d '.dirstr.'*')
+    else
+      let dirs = systemlist('ls -1 -d */')
+    endif
+
+    return join(dirs, "\n")
+  endif
+
+  return ''
+endfunction
+
 " Commands {{{1
-command! -nargs=+ -complete=dir Grep call s:grep(<q-args>)
-command! -nargs=0 GrepClear call s:edit_return_file()
+command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>, <q-args>)
 
 " Mappings {{{1
 for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
-  exec "nnoremap gy".t."<Space> y".t.":Grep \"\"<Left><C-R><C-\">"
-  exec "nnoremap gyi".t."<Space> yi".t.":Grep \"\"<Left><C-R><C-\">"
-  exec "nnoremap gya".t."<Space> ya".t.":Grep \"\"<Left><C-R><C-\">"
+  exec "nnoremap gy".t."<Space> y".t.":Rummage \"\"<Left><C-R><C-\">"
+  exec "nnoremap gyi".t."<Space> yi".t.":Rummage \"\"<Left><C-R><C-\">"
+  exec "nnoremap gya".t."<Space> ya".t.":Rummage \"\"<Left><C-R><C-\">"
 endfor
 
-let s:cmd = 'Grep "" '
-exec "nnoremap g<Space> :".s:cmd.repeat("<Left>", len(s:cmd) - 6)
+let s:cmd = 'Rummage "" '
+exec "nnoremap g<Space> :".s:cmd.repeat("<Left>", len(s:cmd) - 9)
