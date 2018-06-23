@@ -746,6 +746,7 @@ let g:rails_projections = {
 
 
 nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
+
 " RuboCop {{{1
 "
 let g:vimrubocop_keymap = 0
