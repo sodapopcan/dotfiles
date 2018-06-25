@@ -24,8 +24,6 @@
 	default = simple
 [rerere]
 	enabled = true
-[pull]
-	rebase = true
 [rebase]
 	instructionFormat = %s [%an]
 [remote "origin"]
