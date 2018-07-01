@@ -311,7 +311,13 @@ nnoremap gA :only<Bar>AV<CR>
 nnoremap gR :only<Bar>RV<CR>
 nnoremap <leader>ga ga
 nnoremap <leader>gl gr
-
+" Grepping
+nnoremap g<Space> :Rummage "" <Left><Left>
+for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
+  exec "nnoremap gy".t."<Space> y".t.":Rummage \"\"<Left><C-R><C-\">"
+  exec "nnoremap gyi".t."<Space> yi".t.":Rummage \"\"<Left><C-R><C-\">"
+  exec "nnoremap gya".t."<Space> ya".t.":Rummage \"\"<Left><C-R><C-\">"
+endfor
 " Leader Mappings
 
 " Location
