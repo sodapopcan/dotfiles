@@ -462,8 +462,7 @@ augroup FileTypeOptions
         \ setlocal bufhidden=wipe |
         \ nnoremap <buffer> q :q<CR>
   autocmd FileType ruby,javascript,coffee autocmd BufWritePre <buffer> call StripWhitespace()
-  autocmd FileType help,qf nnoremap <silent> <buffer> q :q<CR>
-  autocmd FileType qf set wrap
+  autocmd FileType help nnoremap <silent> <buffer> q :q<CR>
 augroup END
 
 " Don't show cursorline and an empty statusline on inactive buffers
