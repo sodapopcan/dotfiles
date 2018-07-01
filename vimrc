@@ -580,6 +580,10 @@ highlight ALEWarningSign term=bold ctermfg=178
 " highlight ALEErrorSign ctermfg=167
 " highlight ALEWarningSign ctermfg=187
 
+" Dispatch
+"
+let g:nremap = {"m":"","`":"","'":"","g":""}
+
 " FZF {{{1
 "
 nnoremap <silent> <Space> :FZF<CR>
