@@ -19,6 +19,7 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'janko-m/vim-test'
 Plug 'heavenshell/vim-slack'
 Plug 'majutsushi/tagbar'
+Plug 'junegunn/vim-slash'
 Plug '~/src/vim/rummage'
 
 Plug 'tpope/vim-commentary'
