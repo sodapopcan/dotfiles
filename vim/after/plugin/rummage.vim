@@ -10,6 +10,7 @@ if exists('g:loaded_rummage') || &cp
 endif
 let g:loaded_rummage = 1
 
+
 " Helpers {{{1
 
 function! s:warn(str) abort
@@ -32,12 +33,15 @@ endfunction
 " Plugin {{{1
 
 let s:return_file = ''
-let s:output = ''
+let s:last_output = ''
+let s:last_linenr = 1
 
 function! s:populate_qf(output, errmsg) abort
   if len(a:output)
     cgetexpr a:output
     silent botright copen
+    call setqflist([], 'r', {"title":"Rummage"})
+    exec s:last_linenr
   else
     return s:warn(a:errmsg)
   endif
@@ -50,7 +54,7 @@ function! s:rummage(bang, ...) abort
     endif
     return
   elseif !len(a:1)
-    return s:populate_qf(s:output, "No recent searches")
+    return s:populate_qf(s:last_output, "No recent searches")
   endif
 
   let arg = join(a:000, ' ')
@@ -101,11 +105,11 @@ function! s:rummage(bang, ...) abort
 
   let output = system(git_cmd . " --no-pager grep" . flags . " --no-color -n -I " . cmd)
 
-  return s:populate_qf(output, "¯\\_(ツ)_/¯  No results for '" . search_pattern . "'")
-
   if len(output)
-    let s:output = output
+    let s:last_output = output
   endif
+
+  return s:populate_qf(output, "¯\\_(ツ)_/¯  No results for '" . search_pattern . "'")
 endfunction
 
 
@@ -137,3 +141,5 @@ function! s:custom_dirs(A,L,P) abort
 endfunction
 
 command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>0, <q-args>)
+
+au! FileType qf au! CursorMoved <buffer> if getqflist({"title":0}).title ==# "Rummage" | let s:last_linenr = line('.') | endif
