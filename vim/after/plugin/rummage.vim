@@ -108,7 +108,7 @@ function! s:rummage(bang, ...) abort
     let flags.= ' --ignore-case'  " ignore case
   endif
 
-  let output = system(git_cmd . " --no-pager grep" . flags . " --no-color --line-number -I " . cmd)
+  let output = system(git_cmd . " --no-pager grep" . flags . " --no-color --line-number --full-name -I " . cmd)
 
   if len(output)
     let s:last_output = output
