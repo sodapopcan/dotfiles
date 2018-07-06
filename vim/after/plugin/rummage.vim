@@ -70,6 +70,9 @@ function! s:rummage(bang, ...) abort
     endif
   endif
 
+  let use_regex = matches[1] ==# '/'
+  let ignore_case = use_regex && matches[4] ==# 'i'
+
   let filter_pattern = substitute(arg, '\v%("|''|/)?'.escape(search_pattern, '(){}<>$?@~|\').'%("|''|/)?%(i)?%(\s+)?', '', '')
 
   let cmd = shellescape(search_pattern)
@@ -104,7 +107,7 @@ function! s:rummage(bang, ...) abort
     let flags.= ' --no-index'
   endif
 
-  if matches[1] ==# '/' && matches[4] ==# 'i'
+  if ignore_case
     let flags.= ' --ignore-case'  " ignore case
   endif
 
@@ -121,8 +124,8 @@ endfunction
 " Command {{{1
 
 function! s:custom_dirs(A,L,P) abort
-  let args = substitute(a:L, '\v\C^%(\s+)?R%(ummage)?%(\s+)%(%(("|'')%(.*)%("|'')|\w)\s+)?', '', '')
-  let file_types = matchstr(args, '\v%(\*(\s)?|[a-zA-Z,]+(\s+)?)')
+  let args = substitute(a:L, '\v\C^%(\s+)?Rum%(mage)? %(\s+)?%(%(%("|''|/)%(.*)%("|''|/)%(i)?|\w)\s+)?', '', '')
+  let file_types = matchstr(args, '\v%(\*(\s+)?|[a-zA-Z,]+(\s+)?)')
   if len(file_types) && file_types[-1:] ==# ' '
     let dirstr = split(args, '\v\s+')[-1]
     if match(dirstr, '\v,') >= 0
