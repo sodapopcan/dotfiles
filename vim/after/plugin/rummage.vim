@@ -59,17 +59,18 @@ function! s:rummage(bang, ...) abort
 
   let arg = join(a:000, ' ')
 
-  let search_pattern = matchstr(arg, '\v("|'')\zs(.*)+\ze("|'')')
+  let matches = matchlist(arg, '\v("|''|/)\zs(.*)+\ze("|''|/)(i)?')
+  let search_pattern = matches[0]
 
   if search_pattern ==# ''
     let search_pattern = matchstr(arg, '\v[^ ]+')
 
-    if search_pattern ==# '' || search_pattern ==# '""' || search_pattern ==# "''"
+    if search_pattern ==# '' || search_pattern ==# '""' || search_pattern ==# "''" || search_pattern ==# '//'
       return s:warn("No pattern given")
     endif
   endif
 
-  let filter_pattern = substitute(arg, '\v("|'')?'.escape(search_pattern, '(){}<>$?@~|\').'("|'')?(\s+)?', '', '')
+  let filter_pattern = substitute(arg, '\v%("|''|/)?'.escape(search_pattern, '(){}<>$?@~|\').'%("|''|/)?%(i)?%(\s+)?', '', '')
 
   let cmd = shellescape(search_pattern)
 
@@ -103,7 +104,11 @@ function! s:rummage(bang, ...) abort
     let flags.= ' --no-index'
   endif
 
-  let output = system(git_cmd . " --no-pager grep" . flags . " --no-color -n -I " . cmd)
+  if matches[1] ==# '/' && matches[4] ==# 'i'
+    let flags.= ' --ignore-case'  " ignore case
+  endif
+
+  let output = system(git_cmd . " --no-pager grep" . flags . " --no-color --line-number -I " . cmd)
 
   if len(output)
     let s:last_output = output
