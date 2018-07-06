@@ -150,4 +150,7 @@ endfunction
 
 command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>0, <q-args>)
 
-au! FileType qf au! CursorMoved <buffer> if getqflist({"title":0}).title ==# "Rummage" | let s:last_linenr = line('.') | endif
+au! FileType qf au! CursorMoved <buffer> 
+      \ | if getqflist({"title":0}).title ==# "Rummage"
+      \ |   let s:last_linenr = line('.')
+      \ | endif
