@@ -19,8 +19,7 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'janko-m/vim-test'
 Plug 'heavenshell/vim-slack'
 Plug 'majutsushi/tagbar'
-Plug 'junegunn/vim-slash'
-Plug '~/src/vim/rummage'
+" Plug '~/src/vim/rummage'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
@@ -761,6 +760,12 @@ nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
 " RuboCop {{{1
 "
 let g:vimrubocop_keymap = 0
+
+
+" Rummage {{{1
+"
+let g:rummage_default_program = 'git'
+
 
 " RSI  {{{1
 "

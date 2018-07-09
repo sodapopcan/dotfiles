@@ -11,6 +11,55 @@
 " let g:loaded_rummage = 1
 
 
+" Setup {{{1
+
+let s:has_git = executable('git')
+let s:program_names = ['rg', 'ag', 'ack', 'git', 'grep']
+let s:programs = {
+      \   "git": {
+      \     "template": "%s --no-pager grep --no-color --line-number --full-name -I %s %s",
+      \     "i": "--ignore-case",
+      \     "w": "--word-regexp"
+      \   },
+      \   "ack": {
+      \     "template": "%s --nocolor --with-filename %s %s",
+      \     "i": "--ignore-case",
+      \     "w": "--word-regexp"
+      \   },
+      \   "ag": {
+      \     "template": "%s --vimgrep %s %s",
+      \     "i": "--ignore-case",
+      \     "w": "--word-regexp"
+      \   },
+      \   "rg": {
+      \     "template": "%s --vimgrep --no-text %s %s",
+      \     "i": "--ignore-case",
+      \     "w": "--word-regexp"
+      \   },
+      \   "grep": {
+      \     "template": "%s --color=never --line-number -I -r %s %s .",
+      \     "i": "--ignore-case",
+      \     "w": "--word-regexp"
+      \   }
+      \ }
+
+if !exists('g:rummage_default_program')
+  for p in s:program_names
+    if executable(p)
+      let g:rummage_default_program = p
+      break
+    endif
+  endfor
+
+  if !exists('g:rummage_default_program') && g:rummage_default_program ==# 'grep' && s:has_git
+    let g:rummage_default_program = 'git grep'
+  else
+    finish
+  endif
+endif
+
+let s:smart_case = get(g:, 'rummage_use_smartcase', &smartcase)
+
 " Plugin {{{1
 
 let s:return_file = ''
@@ -37,11 +86,11 @@ function! s:rummage(bang, ...) abort
   endif
 
   let cmd = shellescape(command.search_pattern)
+  " let cmd = command.search_pattern
 
   if len(command.file_pattern)
-    let parts = split(command.file_pattern)
-    let filetypes = split(parts[0], ',')
-    let dirs = map(command.directory_pattern, 'substitute(v:val, ''\v[/]+$'', '''', '''')')
+    let filetypes = split(command.file_pattern, ',')
+    let dirs = map(split(command.directory_pattern, ','), 'substitute(v:val, ''\v[/]+$'', '''', '''')')
     let cmd.= " --"
     for filetype in filetypes
       let pattern = filetype ==# '*' ? '*' : '*.'.filetype
@@ -57,22 +106,29 @@ function! s:rummage(bang, ...) abort
 
   let s:return_file = expand('%')
 
-  if exists('g:loaded_fugitive') && exists('b:git_dir')
-    let git_cmd = fugitive#buffer().repo().git_command()
-  else
-    let git_cmd = "git"
+  let program_name = g:rummage_default_program
+  let program = s:programs[program_name]
+  if program_name ==# 'git' && exists('g:loaded_fugitive') && exists('b:git_dir')
+    let program_name = fugitive#buffer().repo().git_command()
   endif
 
   let flags = ''
-  if !s:in_git_repo()
+  if program_name ==# 'git' && !s:in_git_repo()
     let flags.= ' --no-index'
   endif
 
-  if command.options['ignore_case']
-    let flags.= ' --ignore-case'  " ignore case
+  for option in command.options
+    let flags.= ' '.program[option]
+  endfor
+
+  if command.type ==# 'fixed' && program_name !=# 'ack'
+    let flags.= ' --fixed-strings'
   endif
 
-  let output = system(git_cmd . " --no-pager grep" . flags . " --no-color --line-number --full-name -I " . cmd)
+  " let output = system(git_cmd . " --no-pager grep" . flags . " --no-color --line-number --full-name -I " . cmd)
+  let cmd = printf(program.template, program_name, flags, cmd)
+  echom cmd
+  let output = system(cmd)
 
   if len(output)
     let s:last_output = output
@@ -87,9 +143,7 @@ function! s:parse_command(cmd) abort
         \   "search_pattern": '',
         \   "file_pattern": '',
         \   "directory_pattern": '',
-        \   "options": {
-        \     "ignore_case": 0
-        \   },
+        \   "options": [],
         \   "error": ''
         \ }
 
@@ -135,7 +189,7 @@ function! s:parse_command(cmd) abort
   else
     let command.type = "fixed"
   endif
-  let command.options['ignore_case'] = matches[2] ==# 'i'
+  let command.options = split(matches[2], '\zs')
   let command.file_pattern = matches[3]
   let command.directory_pattern = matches[4]
 
@@ -202,6 +256,6 @@ endfunction
 command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>0, <q-args>)
 
 au! FileType qf au! CursorMoved <buffer> 
-      \ | if getqflist({"title":0}).title ==# "Rummage"
-        \ |   let s:last_linenr = line('.')
-        \ | endif
+      \   if getqflist({"title":0}).title ==# "Rummage"
+      \ |   let s:last_linenr = line('.')
+      \ | endif
