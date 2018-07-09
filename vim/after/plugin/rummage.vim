@@ -18,13 +18,16 @@ let s:last_output = ''
 let s:last_linenr = 1
 
 function! s:rummage(bang, ...) abort
-  if a:bang && !len(a:1)
-    if len(s:return_file)
-      exec "edit" s:return_file
+  if !len(a:1) " No arguments supplied
+    if a:bang
+      if len(s:return_file)
+        exec "edit" s:return_file
+      endif
+    else
+      call s:populate_qf(s:last_output, "No recent searches")
     endif
+
     return
-  elseif !len(a:1)
-    return s:populate_qf(s:last_output, "No recent searches")
   endif
 
   let command = s:parse_command(join(a:000, ' '))
