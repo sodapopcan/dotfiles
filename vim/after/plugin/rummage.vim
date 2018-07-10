@@ -50,12 +50,6 @@ if !exists('g:rummage_default_program')
       break
     endif
   endfor
-
-  if !exists('g:rummage_default_program') && g:rummage_default_program ==# 'grep' && s:has_git
-    let g:rummage_default_program = 'git grep'
-  else
-    finish
-  endif
 endif
 
 let s:smart_case = get(g:, 'rummage_use_smartcase', &smartcase)
@@ -86,7 +80,6 @@ function! s:rummage(bang, ...) abort
   endif
 
   let cmd = shellescape(command.search_pattern)
-  " let cmd = command.search_pattern
 
   if len(command.file_pattern)
     let filetypes = split(command.file_pattern, ',')
