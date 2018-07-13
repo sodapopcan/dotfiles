@@ -13,7 +13,6 @@
 
 " Setup {{{1
 
-let s:has_git = executable('git')
 let s:program_names = ['rg', 'ag', 'ack', 'git', 'grep']
 let s:programs = {
       \   "git": {
