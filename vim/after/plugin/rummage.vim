@@ -15,28 +15,33 @@
 
 let s:program_names = ['rg', 'ag', 'ack', 'git', 'grep']
 let s:programs = {
-      \   "git": {
-      \     "template": "%s --no-pager grep --no-color --line-number --full-name -I %s %s",
-      \     "i": "--ignore-case",
-      \     "w": "--word-regexp"
-      \   },
       \   "ack": {
       \     "template": "%s --nocolor --with-filename %s %s",
+      \     "a": "",
       \     "i": "--ignore-case",
       \     "w": "--word-regexp"
       \   },
       \   "ag": {
       \     "template": "%s --vimgrep %s %s",
+      \     "a": "--all-types",
       \     "i": "--ignore-case",
       \     "w": "--word-regexp"
       \   },
-      \   "rg": {
-      \     "template": "%s --vimgrep --no-text %s %s",
+      \   "git": {
+      \     "template": "%s --no-pager grep --no-color --line-number --full-name -I %s %s",
+      \     "a": "--no-index",
       \     "i": "--ignore-case",
       \     "w": "--word-regexp"
       \   },
       \   "grep": {
       \     "template": "%s --color=never --line-number -I -r %s %s .",
+      \     "a": "",
+      \     "i": "--ignore-case",
+      \     "w": "--word-regexp"
+      \   },
+      \   "rg": {
+      \     "template": "%s --vimgrep --no-text %s %s",
+      \     "a": "",
       \     "i": "--ignore-case",
       \     "w": "--word-regexp"
       \   }
