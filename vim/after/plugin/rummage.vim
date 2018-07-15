@@ -117,9 +117,7 @@ function! s:rummage(bang, ...) abort
     let flags.= ' --fixed-strings'
   endif
 
-  " let output = system(git_cmd . " --no-pager grep" . flags . " --no-color --line-number --full-name -I " . cmd)
   let cmd = printf(program.template, program_name, flags, cmd)
-  echom cmd
   let output = system(cmd)
 
   if len(output)
