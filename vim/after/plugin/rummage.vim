@@ -204,6 +204,7 @@ function! s:populate_qf(output, errmsg) abort
   endif
 endfunction
 
+
 " Helpers {{{1
 
 function! s:warn(str) abort
