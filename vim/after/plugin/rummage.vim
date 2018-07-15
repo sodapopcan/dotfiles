@@ -41,7 +41,7 @@ let s:programs = {
       \   },
       \   "rg": {
       \     "template": "%s --vimgrep --no-text %s %s",
-      \     "a": "",
+      \     "a": "-uu",
       \     "i": "--ignore-case",
       \     "w": "--word-regexp"
       \   }
