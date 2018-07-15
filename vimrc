@@ -226,7 +226,7 @@ inoremap <silent> <C-C> <Esc>:redraw!<CR>
 nnoremap <silent> <C-C> :redraw!<CR>
 
 " One keystroke--instead of 4--to save
-nnoremap <CR> :write<CR>
+au! BufReadPost * if &buftype ==# '' && &modifiable | exec "nnoremap \<buffer> \<CR> :write\<CR>" | endif
 " Apparently I have to do this because of my iTerm key-remaps
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
