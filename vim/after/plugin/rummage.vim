@@ -181,9 +181,11 @@ function! s:parse_command(cmd) abort
   else
     let command.type = "fixed"
   endif
-  let command.options = split(matches[2], '\zs')
-  let command.file_pattern = matches[3]
-  let command.directory_pattern = matches[4]
+  if len(matches) > 2
+    let command.options = split(matches[2], '\zs')
+    let command.file_pattern = matches[3]
+    let command.directory_pattern = matches[4]
+  endif
 
   return command
 endfunction
