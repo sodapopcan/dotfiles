@@ -5,7 +5,7 @@ nnoremap <silent> <buffer> <C-N> :call search('\v^function', 'W')<CR>
 nnoremap <silent> <buffer> <C-P> :call search('\v^function', 'bW')<CR>
 
 " Plugin dev
-nnoremap <buffer> $ :source %<cr>:mess clear<cr>
+nnoremap <buffer> & :source %<cr>:mess clear<cr>
 
 if exists('g:loaded_plug')
   if expand('%:t') == 'vimrc'
