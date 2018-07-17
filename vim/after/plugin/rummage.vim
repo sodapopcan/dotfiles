@@ -11,8 +11,8 @@
 " let g:loaded_rummage = 1
 
 
-" Setup {{{1
-
+" Programs {{{1
+"
 let s:program_names = ['rg', 'ag', 'ack', 'git', 'grep']
 let s:programs = {
       \   "ack": {
@@ -47,6 +47,137 @@ let s:programs = {
       \   }
       \ }
 
+" File Types {{{1
+"
+let s:filetypes = {
+      \   "agda": ["*.agda", "*.lagda"],
+      \   "asciidoc": ["*.adoc", "*.asc", "*.asciidoc"],
+      \   "asm": ["*.S", "*.asm", "*.s"],
+      \   "avro": ["*.avdl", "*.avpr", "*.avsc"],
+      \   "awk": ["*.awk"],
+      \   "bitbake": ["*.bb", "*.bbappend", "*.bbclass", "*.conf", "*.inc"],
+      \   "bzip2": ["*.bz2"],
+      \   "c": ["*.H", "*.c", "*.h"],
+      \   "cabal": ["*.cabal"],
+      \   "cbor": ["*.cbor"],
+      \   "ceylon": ["*.ceylon"],
+      \   "clojure": ["*.clj", "*.cljc", "*.cljs", "*.cljx"],
+      \   "cmake": ["*.cmake", "CMakeLists.txt"],
+      \   "coffeescript": ["*.coffee"],
+      \   "config": ["*.cfg", "*.conf", "*.config", "*.ini"],
+      \   "cpp": ["*.C", "*.H", "*.cc", "*.cpp", "*.cxx", "*.h", "*.hh", "*.hpp", "*.hxx", "*.inl"],
+      \   "creole": ["*.creole"],
+      \   "crystal": ["*.cr", "Projectfile"],
+      \   "cs": ["*.cs"],
+      \   "csharp": ["*.cs"],
+      \   "cshtml": ["*.cshtml"],
+      \   "css": ["*.css", "*.scss"],
+      \   "csv": ["*.csv"],
+      \   "cython": ["*.pyx"],
+      \   "d": ["*.d"],
+      \   "dart": ["*.dart"],
+      \   "docker": ["*Dockerfile*"],
+      \   "elisp": ["*.el"],
+      \   "elixir": ["*.eex", "*.ex", "*.exs"],
+      \   "elm": ["*.elm"],
+      \   "erlang": ["*.erl", "*.hrl"],
+      \   "fish": ["*.fish"],
+      \   "fortran": ["*.F", "*.F77", "*.F90", "*.F95", "*.f", "*.f77", "*.f90", "*.f95", "*.pfo"],
+      \   "fsharp": ["*.fs", "*.fsi", "*.fsx"],
+      \   "gn": ["*.gn", "*.gni"],
+      \   "go": ["*.go"],
+      \   "groovy": ["*.gradle", "*.groovy"],
+      \   "gzip": ["*.gz"],
+      \   "h": ["*.h", "*.hpp"],
+      \   "haskell": ["*.hs", "*.lhs"],
+      \   "hbs": ["*.hbs"],
+      \   "html": ["*.ejs", "*.htm", "*.html"],
+      \   "java": ["*.java"],
+      \   "jinja": ["*.j2", "*.jinja", "*.jinja2"],
+      \   "jl": ["*.jl"],
+      \   "js": ["*.js", "*.jsx", "*.vue"],
+      \   "json": ["*.json", "composer.lock"],
+      \   "jsonl": ["*.jsonl"],
+      \   "julia": ["*.jl"],
+      \   "jupyter": ["*.ipynb", "*.jpynb"],
+      \   "kotlin": ["*.kt", "*.kts"],
+      \   "less": ["*.less"],
+      \   "license": ["*[.-]LICEN[CS]E*", "AGPL-*[0-9]*", "APACHE-*[0-9]*", "BSD-*[0-9]*", "CC-BY-*", "COPYING", "COPYING[.-]*", "COPYRIGHT", "COPYRIGHT[.-]*", "EULA", "EULA[.-]*", "GFDL-*[0-9]*", "GNU-*[0-9]*", "GPL-*[0-9]*", "LGPL-*[0-9]*", "LICEN[CS]E", "LICEN[CS]E[.-]*", "MIT-*[0-9]*", "MPL-*[0-9]*", "NOTICE", "NOTICE[.-]*", "OFL-*[0-9]*", "PATENTS", "PATENTS[.-]*", "UNLICEN[CS]E", "UNLICEN[CS]E[.-]*", "agpl[.-]*", "gpl[.-]*", "lgpl[.-]*", "licen[cs]e", "licen[cs]e.*"],
+      \   "lisp": ["*.el", "*.jl", "*.lisp", "*.lsp", "*.sc", "*.scm"],
+      \   "log": ["*.log"],
+      \   "lua": ["*.lua"],
+      \   "lzma": ["*.lzma"],
+      \   "m4": ["*.ac", "*.m4"],
+      \   "make": ["*.mak", "*.mk", "GNUmakefile", "Gnumakefile", "Makefile", "gnumakefile", "makefile"],
+      \   "man": ["*.[0-9][cEFMmpSx]", "*.[0-9lnpx]"],
+      \   "markdown": ["*.markdown", "*.md", "*.mdown", "*.mkdn"],
+      \   "matlab": ["*.m"],
+      \   "md": ["*.markdown", "*.md", "*.mdown", "*.mkdn"],
+      \   "mk": ["mkfile"],
+      \   "ml": ["*.ml"],
+      \   "msbuild": ["*.csproj", "*.fsproj", "*.proj", "*.props", "*.targets", "*.vcxproj"],
+      \   "mustache": ["*.mustache"],
+      \   "nim": ["*.nim"],
+      \   "nix": ["*.nix"],
+      \   "objc": ["*.h", "*.m"],
+      \   "objcpp": ["*.h", "*.mm"],
+      \   "ocaml": ["*.ml", "*.mli", "*.mll", "*.mly"],
+      \   "org": ["*.org"],
+      \   "pdf": ["*.pdf"],
+      \   "perl": ["*.PL", "*.perl", "*.pl", "*.plh", "*.plx", "*.pm", "*.t"],
+      \   "php": ["*.php", "*.php3", "*.php4", "*.php5", "*.phtml"],
+      \   "pod": ["*.pod"],
+      \   "protobuf": ["*.proto"],
+      \   "ps": ["*.cdxml", "*.ps1", "*.ps1xml", "*.psd1", "*.psm1"],
+      \   "purs": ["*.purs"],
+      \   "py": ["*.py"],
+      \   "qmake": ["*.prf", "*.pri", "*.pro"],
+      \   "r": ["*.R", "*.Rmd", "*.Rnw", "*.r"],
+      \   "rdoc": ["*.rdoc"],
+      \   "readme": ["*README", "README*"],
+      \   "rst": ["*.rst"],
+      \   "ruby": ["*.gemspec", "*.rb", ".irbrc", "Gemfile", "Rakefile"],
+      \   "rust": ["*.rs"],
+      \   "sass": ["*.sass", "*.scss"],
+      \   "scala": ["*.scala"],
+      \   "sh": ["*.bash", "*.bashrc", "*.csh", "*.cshrc", "*.ksh", "*.kshrc", "*.sh", "*.tcsh", "*.zsh", ".bash_login", ".bash_logout", ".bash_profile", ".bashrc", ".cshrc", ".kshrc", ".login", ".logout", ".profile", ".tcshrc", ".zlogin", ".zlogout", ".zprofile", ".zshenv", ".zshrc", "bash_login", "bash_logout", "bash_profile", "bashrc", "profile", "zlogin", "zlogout", "zprofile", "zshenv", "zshrc"],
+      \   "smarty": ["*.tpl"],
+      \   "sml": ["*.sig", "*.sml"],
+      \   "soy": ["*.soy"],
+      \   "spark": ["*.spark"],
+      \   "sql": ["*.psql", "*.sql"],
+      \   "stylus": ["*.styl"],
+      \   "sv": ["*.h", "*.sv", "*.svh", "*.v", "*.vg"],
+      \   "svg": ["*.svg"],
+      \   "swift": ["*.swift"],
+      \   "swig": ["*.def", "*.i"],
+      \   "systemd": ["*.automount", "*.conf", "*.device", "*.link", "*.mount", "*.path", "*.scope", "*.service", "*.slice", "*.socket", "*.swap", "*.target", "*.timer"],
+      \   "taskpaper": ["*.taskpaper"],
+      \   "tcl": ["*.tcl"],
+      \   "tex": ["*.bib", "*.cls", "*.ltx", "*.sty", "*.tex"],
+      \   "textile": ["*.textile"],
+      \   "tf": ["*.tf"],
+      \   "toml": ["*.toml", "Cargo.lock"],
+      \   "ts": ["*.ts", "*.tsx"],
+      \   "twig": ["*.twig"],
+      \   "txt": ["*.txt"],
+      \   "vala": ["*.vala"],
+      \   "vb": ["*.vb"],
+      \   "vhdl": ["*.vhd", "*.vhdl"],
+      \   "vim": ["*.vim"],
+      \   "viml": ["*.vim"],
+      \   "vimscript": ["*.vim"],
+      \   "webidl": ["*.idl", "*.webidl", "*.widl"],
+      \   "wiki": ["*.mediawiki", "*.wiki"],
+      \   "xml": ["*.xml", "*.xml.dist"],
+      \   "xz": ["*.xz"],
+      \   "yacc": ["*.y"],
+      \   "yaml": ["*.yaml", "*.yml"],
+      \   "zsh": ["*.zsh", ".zlogin", ".zlogout", ".zprofile", ".zshenv", ".zshrc", "zlogin", "zlogout", "zprofile", "zshenv", "zshrc"]
+      \ }
+
+" Globals {{{1
+"
 if !exists('g:rummage_default_program')
   for p in s:program_names
     if executable(p)
@@ -58,8 +189,27 @@ endif
 
 let s:smart_case = get(g:, 'rummage_use_smartcase', &smartcase)
 
-" Plugin {{{1
+" Helpers {{{1
+"
+function! s:warn(str) abort
+  echohl WarningMsg
+  echomsg a:str
+  echohl None
+  let v:warningmsg = a:str
+endfunction
 
+function! s:in_git_repo() abort
+  if exists('g:loaded_fugitive') && exists('b:git_dir')
+    return 1
+  else
+    call system('git rev-parse --is-inside-work-tree 2> /dev/null')
+    return !v:shell_error
+  endif
+endfunction
+
+
+" Main {{{1
+"
 let s:return_file = ''
 let s:last_output = ''
 let s:last_linenr = 1
@@ -132,6 +282,9 @@ function! s:rummage(bang, ...) abort
   return s:populate(output, "¯\\_(ツ)_/¯  No results for '" . command.search_pattern . "'")
 endfunction
 
+
+" Command Parser {{{1
+"
 function! s:parse_command(cmd) abort
   let command = {
         \   "type": '',
@@ -205,27 +358,8 @@ function! s:populate(output, errmsg) abort
 endfunction
 
 
-" Helpers {{{1
-
-function! s:warn(str) abort
-  echohl WarningMsg
-  echomsg a:str
-  echohl None
-  let v:warningmsg = a:str
-endfunction
-
-function! s:in_git_repo() abort
-  if exists('g:loaded_fugitive') && exists('b:git_dir')
-    return 1
-  else
-    call system('git rev-parse --is-inside-work-tree 2> /dev/null')
-    return !v:shell_error
-  endif
-endfunction
-
-
 " Command {{{1
-
+"
 function! s:custom_dirs(A,L,P) abort
   let args = substitute(a:L, '\v\C^%(\s+)?Rum%(mage)? %(\s+)?%(%(%("|''|/)%(.*)%("|''|/)%(i)?|\w)\s+)?', '', '')
   let file_types = matchstr(args, '\v%(\*(\s+)?|[a-zA-Z,]+(\s+)?)')
