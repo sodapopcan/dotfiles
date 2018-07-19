@@ -71,7 +71,7 @@ function! s:rummage(bang, ...) abort
         exec "edit" s:return_file
       endif
     else
-      call s:populate_qf(s:last_output, "No recent searches")
+      call s:populate(s:last_output, "No recent searches")
     endif
 
     return
@@ -129,7 +129,7 @@ function! s:rummage(bang, ...) abort
     let s:last_output = output
   endif
 
-  return s:populate_qf(output, "¯\\_(ツ)_/¯  No results for '" . command.search_pattern . "'")
+  return s:populate(output, "¯\\_(ツ)_/¯  No results for '" . command.search_pattern . "'")
 endfunction
 
 function! s:parse_command(cmd) abort
@@ -193,7 +193,7 @@ function! s:parse_command(cmd) abort
   return command
 endfunction
 
-function! s:populate_qf(output, errmsg) abort
+function! s:populate(output, errmsg) abort
   if len(a:output)
     cgetexpr a:output
     silent botright copen
