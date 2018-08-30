@@ -305,6 +305,13 @@ nnoremap <silent> g\| :wincmd =<CR>
 nnoremap g<cr> :exec "Dispatch " . &ft . " %"<cr>
 " Tagbar
 nnoremap zt :Tagbar<cr>
+" Folding
+nnoremap cfm :set fdm=marker<CR>
+nnoremap cfc :set fdm=manual<CR>
+nnoremap cfi :set fdm=indent<CR>
+nnoremap cfs :set fdm=syntax<CR>
+nnoremap cfe :set fdm=expr<CR>
+nnoremap cfd :set fdm=diff<CR>
 " a.vim-like
 nnoremap ga :A<CR>
 nnoremap gr :R<CR>
