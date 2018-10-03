@@ -779,6 +779,10 @@ let g:rummage_default_program = 'git'
 let g:rsi_no_meta = 1
 
 
+" SplitJoin  {{{1
+"
+let g:splitjoin_ruby_curly_braces = 0
+
 " Syntastic {{{1
 "
 " let g:syntastic_check_on_open = 0
