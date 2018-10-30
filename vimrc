@@ -236,6 +236,7 @@ nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
 " Control when you want to see more
 exec "nnoremap \<silent> H :vertical resize " . string(&columns * 0.6) "\<CR>"
 " nnoremap <silent> <M-H>:TmuxNavigatePrevious<cr>
+" Up/Down in command line
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 " Thanks a lot, touchbar
