@@ -776,20 +776,6 @@ let g:rsi_no_meta = 1
 "
 let g:splitjoin_ruby_curly_braces = 0
 
-" Syntastic {{{1
-"
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_enable_highlighting = 0
-
-" let g:syntastic_ruby_checkers = ['mri']
-" let g:syntastic_javascript_checkers = ['eslint']
-
-" let g:syntastic_mode_map = {
-"       \ 'mode': 'active',
-"       \ 'passive_filetypes': ['erb']
-"       \ }
-
 
 " Test {{{1
 "
