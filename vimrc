@@ -680,16 +680,6 @@ endfunc
 autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmethod=expr
 
 
-" Neomake
-"
-" autocmd! BufWritePost,BufEnter * if &modifiable | Neomake | endif
-
-" let g:neomake_verbose = 0
-" let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
-" let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_error_sign = { 'text': '>>', 'texthl': 'ErrorMsg', }
-" let g:neomake_warning_sign = { 'text': '>>', 'texthl': 'WarningMsg', }
-
 " NERDTree {{{1
 "
 nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
