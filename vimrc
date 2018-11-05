@@ -791,15 +791,6 @@ let g:twiggy_use_dispatch = 0
 let g:twiggy_enable_remote_delete = 1
 let g:twiggy_show_full_ui = 1
 
-" hi link TwiggyTracking String
-" hi link TwiggyAhead Type
-" hi link TwiggyAheadBehind Type
-" hi link TwiggyDetached Type
-" hi link TwiggyUnmerged Identifier
-
-" highlight TwiggyHeader ctermfg=195
-" highlight TwiggySort ctermfg=213
-
 
 " Vim-Test
 "
