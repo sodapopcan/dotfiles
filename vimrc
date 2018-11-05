@@ -613,7 +613,7 @@ let g:gitgutter_sign_modified_removed = g:gitgutter_sign_added
 " rage.  I love Git Gutter.
 let g:gitgutter_map_keys = 0
 nmap g+ <Plug>GitGutterStageHunk
-nmap g- <Plug>GitGutterRevertHunk
+nmap g- <Plug>GitGutterUndoHunk
 nmap g_ <Plug>GitGutterPreviewHunk
 nmap ]c <Plug>GitGutterNextHunk
 nmap [c <Plug>GitGutterPrevHunk
