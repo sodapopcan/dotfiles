@@ -411,15 +411,14 @@ function! TabLine()
   return s
 endfunction
 function! TabLabel(n)
-  if !&modifiable
-    return &filetype
-  else
-    let filename = expand('%')
-    if filename ==# ''
-      return '[No Name]'
-    endif
-    return join(split(filename, '/'), ' ▶ ')
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let filename = bufname(buflist[winnr - 1])
+  if filename ==# ''
+    return '[No Name]'
   endif
+  " return join(split(filename, '/'), ' ▶ ')
+  return fnamemodify(filename, ':t')
 endfunction
 set tabline=%!TabLine()
 
