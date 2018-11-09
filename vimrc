@@ -792,7 +792,7 @@ let g:twiggy_enable_remote_delete = 1
 let g:twiggy_show_full_ui = 1
 
 
-" Vim-Test
+" Vim-Test {{{1
 "
 let g:test#strategy = 'dispatch'
 
