@@ -40,7 +40,7 @@ let s:programs = {
       \     "w": "--word-regexp"
       \   },
       \   "rg": {
-      \     "template": "%s --vimgrep --no-text %s %s",
+      \     "template": "%s --type-add 'mustache:*.mustache' --vimgrep --no-text %s %s",
       \     "a": "-uu",
       \     "i": "--ignore-case",
       \     "w": "--word-regexp"
@@ -49,6 +49,12 @@ let s:programs = {
 
 " File Types {{{1
 "
+" These are copied from rg.
+"
+" This is copied here so that the same functionality can be provided for
+" git-grep.
+"
+
 let s:filetypes = {
       \   "agda": ["*.agda", "*.lagda"],
       \   "asciidoc": ["*.adoc", "*.asc", "*.asciidoc"],
