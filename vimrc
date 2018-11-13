@@ -581,7 +581,9 @@ let g:ale_linters = {
 \   'haskell': ['ghc']
 \ }
 
-let g:ale_ruby_rubocop_executable = 'bundle'
+if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
+  let g:ale_ruby_rubocop_executable = 'bundle'
+endif
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
 
