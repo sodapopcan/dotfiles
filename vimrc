@@ -579,11 +579,11 @@ let g:ale_linters = {
 \   'ruby': ['mri', 'rubocop'],
 \   'javascript': ['eslint'],
 \   'haskell': ['ghc']
-\}
+\ }
 
+let g:ale_ruby_rubocop_executable = 'bundle'
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
-let g:ale_link_on_text_changed = 'never'
 
 highlight ALEErrorSign term=bold ctermfg=160
 highlight ALEWarningSign term=bold ctermfg=178
