@@ -61,11 +61,16 @@ hi DiffChange                        ctermbg=143    ctermfg=16  cterm=none
 hi DiffText                          ctermbg=bg   ctermfg=114 cterm=bold
 hi HelpExample                       ctermbg=none ctermfg=137
 
-" Gitv
+" Diff
+" hi diffFile                          ctermbg=bg    ctermfg=214
+hi! link diffFile diffIndexLine
+hi! link diffSubname diffIndexLine
 hi diffAdded                         ctermbg=bg    ctermfg=108
-hi diffRemoved                       ctermbg=bg     ctermfg=95
-hi diffLine                          ctermbg=bg    ctermfg=190
-hi diffSubname                       ctermbg=bg    ctermfg=114
+" hi diffRemoved                       ctermbg=bg     ctermfg=196
+hi! link diffRemoved gitEmail
+hi diffLine                          ctermbg=bg    ctermfg=242
+" hi diffSubname                       ctermbg=bg    ctermfg=114
+hi gitDiff                           ctermbg=bg    ctermfg=243
 
 hi Special                           ctermbg=bg   ctermfg=167  cterm=none
 
