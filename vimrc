@@ -788,6 +788,7 @@ let g:rsi_no_meta = 1
 " SplitJoin  {{{1
 "
 let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
 
 
 " Test {{{1
