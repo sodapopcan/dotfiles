@@ -486,6 +486,7 @@ augroup FileTypeOptions
         \ nnoremap <buffer> q :q<CR>
   autocmd FileType ruby,javascript,coffee autocmd BufWritePre <buffer> call StripWhitespace()
   autocmd FileType help nnoremap <silent> <buffer> q :q<CR>
+  autocmd FileType git setlocal foldlevel=1
 augroup END
 
 " Don't show cursorline and an empty statusline on inactive buffers
