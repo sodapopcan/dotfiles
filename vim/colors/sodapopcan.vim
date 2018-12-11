@@ -90,6 +90,8 @@ hi rubyLocalVariableOrMethod         ctermfg=189
 hi rubyPseudoVariable                ctermfg=74
 hi link rubyStringDelimiter          String
 hi rubyAccess                        ctermbg=none  ctermfg=167  cterm=none
+hi link rubyClass Type
+hi link rubyModule Type
 hi link rubyRailsMethod rubyDefine
 hi link rubyCallback rubyDefine
 hi link rubyMacro rubyDefine
