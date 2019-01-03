@@ -262,7 +262,7 @@ function! s:rummage(bang, ...) abort
   let program_name = g:rummage_default_program
   let program = s:programs[program_name]
   if program_name ==# 'git' && exists('g:loaded_fugitive') && exists('b:git_dir')
-    let program_name = fugitive#buffer().repo().git_command()
+    let program_name = fugitive#repo().git_command()
   endif
 
   let flags = ''
