@@ -214,7 +214,7 @@ work_computer_string()
   local strang=()
   [[ "$RAILS_NEXT" = "true" ]] && strang+=("%{%F{3}%}RN")
   [[ "$DISABLE_SPRING" = "1" ]] && strang+=("%{%F{130}%}xSpringx")
-  [[ ${#strang[@]} > 0 ]] && echo -n "${strang[@]}"
+  [[ ${#strang[@]} > 0 ]] && echo -n " ${strang[@]}"
 }
 
 battery()
