@@ -548,6 +548,7 @@ nnoremap          gV :Gpull<CR>
 command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
 command! -nargs=0 Rollback Dispatch rake db:rollback && RAILS_ENV=test rake db:rollback
 command! -nargs=0 Eform Eview _form
+command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
 
 function! s:migrate_rails(...)
   if a:0 > 0
@@ -556,6 +557,15 @@ function! s:migrate_rails(...)
     Dispatch rake db:migrate && RAILS_ENV=test rake db:migrate
   endif
 endfunction
+
+function! s:git_push(bang) abort
+  if a:bang
+    Gpush -f
+  else
+    Gpush
+  endif
+endfunction
+
 " +++ Git Functions {{{2
 if !exists('*GitDiffPlus')
   function! GitDiffPlus()
