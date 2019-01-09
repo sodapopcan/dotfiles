@@ -113,7 +113,9 @@ call plug#end()
 runtime! macros/matchit.vim
 let g:netrw_dirhistmax = 0
 
-syntax on
+if !exists('g:syntax_on')
+  syntax on
+endif
 colorscheme sodapopcan
 
 hi User1 ctermbg=179  ctermfg=16   cterm=none   " git branch
