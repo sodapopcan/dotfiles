@@ -114,10 +114,10 @@ alias gf="git fetch"
 alias gfm="git fetch master"
 alias gl="git log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias l="gl master.."
-alias gd="git diff --color=always | less -R"
-alias gdc="git diff --cached --color=always | less -R"
+alias gd="git_diff"
+alias gdc="git_diff --cached"
 alias gD="git diff --name-only"
-alias gdm="git diff master --color=always | less -R"
+alias gdm="git_diff master"
 alias gdM="git diff master --name-only"
 alias gr="git reset"
 alias gS="git reset --soft HEAD\^"
@@ -155,6 +155,11 @@ gitprune()
 is_git_repo()
 {
   git rev-parse --is-inside-work-tree 2> /dev/null
+}
+
+git_diff()
+{
+  git diff --color=always "$@" | less -R
 }
 
 # If it's a git repository, show only the name of the containing directory
