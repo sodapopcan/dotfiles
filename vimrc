@@ -533,7 +533,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " Git {{{1
 "
-nnoremap <silent> gs :Gstatus<CR>
+nnoremap <silent> gs :keepalt Gstatus<CR>
 nnoremap <silent> gC :Gcommit -v<CR>
 nnoremap <silent> gd :! clear && git diff<CR>
 nnoremap <silent> gD :! clear && git diff --cached<CR>
