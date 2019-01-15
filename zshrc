@@ -56,15 +56,7 @@ __compl_srccd ()
 }
 vcd () { cd "$SRC/vim/$@" }
 gcd () { cd "$SRC/gems/$@" }
-scd ()
-{
-  if (( $# == 0 )); then
-    cd $SRC
-  else
-    cd "$SRC/$@"
-  fi
-
-}
+scd () { cd "$SRC/$@" }
 
 colours()
 {
