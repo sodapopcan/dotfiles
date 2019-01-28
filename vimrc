@@ -564,7 +564,7 @@ function! s:git_push(bang) abort
   if a:bang
     Gpush -f
   else
-    Gpush
+    Gpush -u
   endif
 endfunction
 
