@@ -77,6 +77,8 @@ hi Special                           ctermbg=bg   ctermfg=167  cterm=none
 hi qfLineNr ctermfg=214
 hi! link qfError Error
 
+autocmd Syntax ruby syn match rubyOperator "&"
+
 " Ruby
 hi link rubyBlockParameter           Function
 hi link rubyCapitalizedMethod        Function
