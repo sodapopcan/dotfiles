@@ -816,6 +816,9 @@ let g:twiggy_group_locals_by_slash = 0
 let g:twiggy_use_dispatch = 0
 let g:twiggy_enable_remote_delete = 1
 let g:twiggy_show_full_ui = 1
+if $WORK_COMPUTER
+  let g:twiggy_adapt_columns = 1
+endif
 
 
 " Vim-Test {{{1
