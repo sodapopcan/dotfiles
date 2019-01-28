@@ -20,6 +20,7 @@ Plug 'janko-m/vim-test'
 Plug 'heavenshell/vim-slack'
 Plug 'majutsushi/tagbar'
 " Plug '~/src/vim/rummage'
+Plug 'RRethy/vim-illuminate'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
