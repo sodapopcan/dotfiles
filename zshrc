@@ -45,18 +45,18 @@ alias mkdir="mkdir -p"
 
 alias s="cd $HOME/src"
 
-d () { mkdir -p "$@" && cd "$@"; }
-g () { mkdir -p "$@" && cd "$@" && git init; }
+d () { mkdir -p "$1" && cd "$1"; }
+g () { mkdir -p "$1" && cd "$1" && git init; }
 
-bcd () { cd $(bundle show $@) }
+bcd () { cd $(bundle show $1) }
 
 __compl_srccd ()
 {
   compctl -k ($(ls -F $SRC/$1/ | grep -v "/$" | tr "\n/" " ")) $2
 }
-vcd () { cd "$SRC/vim/$@" }
-gcd () { cd "$SRC/gems/$@" }
-scd () { cd "$SRC/$@" }
+vcd () { cd "$SRC/vim/$1" }
+gcd () { cd "$SRC/gems/$1" }
+scd () { cd "$SRC/$1" }
 
 colours()
 {
