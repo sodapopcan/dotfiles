@@ -84,8 +84,6 @@ alias songs="$EDITOR ~/docs/band/songs.md"
 ide() { "$DOTFILES/ide.sh" }
 
 # stuff
-alias rs="bundle exec foreman start -f Procfile.dev"
-
 alias lsl="ls -l"
 alias lsla="ls -la"
 # git {{{1
