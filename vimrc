@@ -462,6 +462,8 @@ command! -nargs=0 Shrug exec "normal! a ¯\\_(ツ)_/¯\<Esc>"
 command! -nargs=0 So so %
 " :redraw!
 command! -nargs=0 Redraw redraw!
+" Branj
+command! -nargs=+ Branj exec ":Dispatch branj " . <f-args>
 
 " Mappings Functions {{{2
 
