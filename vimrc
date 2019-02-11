@@ -578,6 +578,26 @@ nnoremap <silent> gL :GV!<CR>
 nnoremap          g^ :Gpush<CR>
 nnoremap          gV :Gpull<CR>
 
+" GV
+
+function! s:scroll_commits(down) abort
+  wincmd p
+  execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
+  wincmd p
+endfunction
+
+function! s:init_gv_scroll_mappings() abort
+  nnoremap <silent> <buffer> J :call s:scroll_commits(1)<CR>
+  nnoremap <silent> <buffer> K :call s:scroll_commits(0)<CR>
+endfunction
+
+augroup ScrollGV
+  autocmd!
+  autocmd FileType GV call s:init_gv_scroll_mappings()
+augroup END
+
+
+" Rails
 command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
 command! -nargs=0 Rollback Dispatch rake db:rollback && RAILS_ENV=test rake db:rollback
 command! -nargs=0 Eform Eview _form
