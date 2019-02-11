@@ -100,8 +100,6 @@ Plug 'itchyny/vim-haskell-indent'
 Plug 'junegunn/goyo.vim'
 Plug 'chr4/nginx.vim'
 
-Plug 'majutsushi/tagbar'
-
 " Work
 if $WORK_COMPUTER
   Plug '~/src/vim/packman'
