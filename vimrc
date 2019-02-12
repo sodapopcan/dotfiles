@@ -378,14 +378,19 @@ function! s:git_branch_status_line()
 endfunction
 
 function! StatusLine()
+  let is_fugitive_buffer = match(expand('%:p'), '^fugitive') >= 0
   let s = ''
   let s.= "%2*"
   let s.= "%{&paste?'\ \ paste\ ':''}"
-  let s.= "%{match(expand('%:p'), '^fugitive') >= 0?'\ \ fugitive \ ':''}"
+  if is_fugitive_buffer
+    let s.= "%6*\ \ git \ %*"
+  endif
   let s.= "%*"
-  let s.= "%1*"
-  let s.= "\ " . s:git_branch_status_line() . "\ "
-  let s.= "%*"
+  if !is_fugitive_buffer
+    let s.= "%1*"
+    let s.= "\ " . s:git_branch_status_line() . "\ "
+    let s.= "%*"
+  endif
   let s.= "\ %3*%(%t%)%*"
   let s.= "%="
   let s.= "%3*"
