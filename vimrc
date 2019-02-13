@@ -33,6 +33,8 @@ Plug 'kana/vim-textobj-entire'
 Plug 'rhysd/vim-textobj-ruby'
 Plug 'andyl/vim-textobj-elixir'
 
+Plug 'kana/vim-smartinput'
+
 " Navigation
 Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
 Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
