@@ -21,6 +21,7 @@ Plug 'heavenshell/vim-slack'
 Plug 'majutsushi/tagbar'
 " Plug '~/src/vim/rummage'
 Plug 'RRethy/vim-illuminate'
+Plug 'google/vim-searchindex'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
