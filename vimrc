@@ -29,6 +29,7 @@ Plug '~/src/vim/refactor'
 
 " Text Objects
 Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
 Plug 'rhysd/vim-textobj-ruby'
 Plug 'andyl/vim-textobj-elixir'
 
