@@ -688,6 +688,7 @@ endfunction
 augroup GV
   autocmd!
   autocmd FileType GV :call s:init_gv_scroll()
+  autocmd FileType GV set buftype=nowrite
 augroup END
 " IfIOnly {{{1
 "
