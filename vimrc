@@ -410,7 +410,7 @@ function! TabLine()
   let ochar = " "
   let s.= '%*'.ObsessionStatus("%4*".ochar, "%5*".ochar, "%6*".ochar)
   if exists('*FugitiveWorkTree')
-    let s.= "%7* " . split(FugitiveWorkTree(), '/')[-1] . " %* "
+    let s.= "%7* " . substitute(split(FugitiveWorkTree(), '/')[-1], '\v[_-]', ' ', 'g') . " %* "
   endif
   for i in range(tabpagenr('$'))
     if i + 1 == tabpagenr()
