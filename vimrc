@@ -127,7 +127,7 @@ hi User3 ctermbg=237  ctermfg=179  cterm=none   " filename
 hi User4 ctermbg=bg   ctermfg=bg   cterm=none   " Obsession - tracking
 hi User5 ctermbg=227  ctermfg=bg   cterm=none   " Obsession - paused
 hi User6 ctermbg=167  ctermfg=bg   cterm=none   " Obsession - not tracking
-hi User7 ctermbg=bg   ctermfg=16   cterm=none   " line
+hi User7 ctermbg=130  ctermfg=0    cterm=none   " line
 
 " Settings {{{1
 
@@ -409,6 +409,9 @@ function! TabLine()
   let s = ''
   let ochar = " "
   let s.= '%*'.ObsessionStatus("%4*".ochar, "%5*".ochar, "%6*".ochar)
+  if exists('*FugitiveWorkTree')
+    let s.= "%7* " . split(FugitiveWorkTree(), '/')[-1] . " %* "
+  endif
   for i in range(tabpagenr('$'))
     if i + 1 == tabpagenr()
       let s.= '%#TabLineSel#'
@@ -417,7 +420,6 @@ function! TabLine()
     endif
     let s.= '%' . (i + 1) . 'T'
     let s.= ' %{TabLabel(' . (i + 1) . ')} '
-    " let s.= ' %{split(getcwd(), "/")[-1]} '
   endfor
   let s.= '%#TabLineFill#%T'
   if tabpagenr('$') > 1
@@ -431,11 +433,11 @@ function! TabLabel(n)
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
   let filename = bufname(buflist[winnr - 1])
+  let directory = split(getcwd(1, a:n), "/")[-1]
   if filename ==# ''
     return '[No Name]'
   endif
-  " return join(split(filename, '/'), ' ▶ ')
-  return fnamemodify(filename, ':t')
+  return directory
 endfunction
 set tabline=%!TabLine()
 
