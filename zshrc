@@ -13,6 +13,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.stack/snapshots/x86_64-osx/lts-11.5/8.2.2/bin:$PATH"
 export PATH="$HOME/.stack/compiler-tools/x86_64-osx/ghc-8.2.2/bin:$PATH"
 export PATH="$HOME/.stack/programs/x86_64-osx/ghc-8.2.2/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 
 # This supposedly fixes vim the "tags file not sorted" error in vim.  So far, it
 # seems to have done the trick.
@@ -275,7 +277,8 @@ if [ -f ~/.fzf.zsh ]; then
 fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Shell tools {{{1
 #
