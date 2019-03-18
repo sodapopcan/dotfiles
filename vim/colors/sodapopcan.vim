@@ -77,10 +77,11 @@ hi Special                           ctermbg=bg   ctermfg=167  cterm=none
 hi qfLineNr ctermfg=214
 hi! link qfError Error
 
-autocmd Syntax ruby syn match rubyOperator "&"
+autocmd Syntax ruby syn match rubyDefine "&"
 
 " Ruby
-hi link rubyBlockParameter           Function
+hi link rubyBlockParameter           Normal
+hi link rubyBlockParameterList       rubyControl
 hi link rubyCapitalizedMethod        Function
 hi link rubyConstant                 Type
 hi link rubyPredefinedConstant       Type
@@ -97,6 +98,7 @@ hi link rubyModule Type
 hi link rubyRailsMethod rubyDefine
 hi link rubyCallback rubyDefine
 hi link rubyMacro rubyDefine
+hi link rubyMagicComment rubySymbol
 hi rubyTodo ctermbg=bg ctermfg=166
 
 " hi! clear rubyIdentifier
@@ -173,19 +175,38 @@ hi link scssSelectorName Function
 hi scssVariable     ctermbg=none ctermfg=208 cterm=none
 
 " Javascript
-hi jsParens                             ctermbg=none ctermfg=067 cterm=none
-hi jsParen                              ctermbg=none ctermfg=111 cterm=none
+" hi jsParens                             ctermbg=none ctermfg=067 cterm=none
+" hi jsParen                              ctermbg=none ctermfg=111 cterm=none
 
-hi jsFunction                           ctermbg=none ctermfg=098 cterm=none
-hi jsFuncName                           ctermbg=none ctermfg=104 cterm=none
-hi jsFuncCall                           ctermbg=none ctermfg=062 cterm=none
+hi jsFunction                           ctermbg=none ctermfg=096 cterm=none
+" hi jsFuncCall                           ctermbg=none ctermfg=062 cterm=none
+hi link jsFuncCall Normal
 hi jsBlock                              ctermbg=none ctermfg=167 cterm=none
-hi jsFuncBlock                          ctermbg=none ctermfg=167 cterm=none
-hi jsFuncBraces                         ctermbg=none ctermfg=062 cterm=none
+" hi jsFuncBlock                          ctermbg=none ctermfg=104 cterm=none
+" hi jsFuncBraces                         ctermbg=none ctermfg=062 cterm=none
+hi link jsFuncBraces Normal
+hi link jsArrowFunction Normal
 " 62 deepish lightish blue
 hi jsStorageClass                       ctermbg=none ctermfg=067 cterm=none
-hi link jsOperator jsStorageClass
-hi link jsObjKey Constant
+hi link jsReturn            jsStorageClass
+hi link jsFuncName jsReturn
+hi link jsImport jsReturn
+hi link jsExport jsReturn
+hi link jsFrom jsReturn
+hi jsGlobalNodeObjects ctermbg=none ctermfg=060 cterm=none
+hi link jsOperator Normal
+hi! link jsObjectKey jsExportDefault
+hi link jsTemplateBraces String
+
+
+
+hi link graphqlVariable String
+hi link graphqlName Function
+hi link graphqlFold graphqlName
+hi graphqlTemplateString ctermfg=137
+hi graphqlTaggedTemplate ctermfg=137
+hi graphqlBraces ctermfg=137
+hi link graphqlStructure graphqlKeyword
 
 
 hi link coffeeInterpDelim rubyInterpolationDelimiter
