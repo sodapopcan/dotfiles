@@ -22,6 +22,7 @@ Plug 'majutsushi/tagbar'
 " Plug '~/src/vim/rummage'
 Plug 'RRethy/vim-illuminate'
 Plug 'google/vim-searchindex'
+Plug 'svermeulen/vim-yoink'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
@@ -85,7 +86,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jparise/vim-graphql'
-Plug 'prettier/vim-prettier'
+" Plug 'prettier/vim-prettier'
 
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script'
@@ -309,8 +310,15 @@ nnoremap <F5> :so ~/.vimrc<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
 " This relies on having unimpaired installed
-nmap <C-N> ]m
-nmap <C-P> [m
+" nmap <C-N> ]m
+" nmap <C-P> [m
+" Yoink
+    nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+    nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+" nmap <C-N> ]m
+
+    nmap p <plug>(YoinkPaste_p)
+    nmap P <plug>(YoinkPaste_P)
 " Sync zz with my eyes
 nnoremap zz zz2<C-E>
 " Open quickfix list across bottom
@@ -557,7 +565,11 @@ nnoremap <silent> gw :Gwrite<CR>:write<CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
-nnoremap <silent> gl :GV<CR>
+if $WORK_COMPUTER == 1
+  nnoremap <silent> gl :GV --since=1year<CR>
+else
+  nnoremap <silent> gl :GV<CR>
+endif
 nnoremap <silent> gL :GV!<CR>
 nnoremap          g^ :Gpush<CR>
 nnoremap          gV :Gpull<CR>
@@ -566,6 +578,9 @@ command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
 command! -nargs=0 Rollback Dispatch rake db:rollback && RAILS_ENV=test rake db:rollback
 command! -nargs=0 Eform Eview _form
 command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
+command! -nargs=0 -bang Pull Dispatch git pull
+command! -nargs=* -bang Reset Dispatch git reset <args>
+command! -nargs=* Revert Gread
 
 function! s:migrate_rails(...)
   if a:0 > 0
@@ -612,12 +627,13 @@ endif
 let g:ale_linters = {
 \   'ruby': ['mri', 'rubocop'],
 \   'javascript': ['eslint'],
+\   'javascript.jsx': ['eslint'],
 \   'haskell': ['ghc']
 \ }
 
-if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
+" if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
   let g:ale_ruby_rubocop_executable = 'bundle'
-endif
+" endif
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
 
@@ -699,6 +715,11 @@ augroup END
 let g:ifionly_filetypes = ['vim-plug']
 let g:ifionly_destructive_jump = 0
 
+" Illuminate {{{1
+"
+let g:Illuminate_ftHighlightGroups = {
+      \ 'ruby': ['rubyBlock']
+      \ }
 
 " JavaScript
 "
@@ -747,6 +768,7 @@ let NERDTreeHijackNetrw         = 1
 let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
 let NERDTreeWinSize             = 45
+let NERDTreeIgnore=['node_modules']
 
 " Rails
 "
@@ -818,6 +840,9 @@ nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
 " RuboCop {{{1
 "
 let g:vimrubocop_keymap = 0
+" if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
+  let g:vimrubocop_rubocop_cmd = 'bundle exec rubocop '
+" endif
 
 
 " Rummage {{{1
@@ -865,3 +890,5 @@ let g:tmux_navigator_no_mappings = 1
 " Unimpaired {{{1
 "
 nmap co yo
+
+nmap c<CR> mm'o:TestNearest<CR>'m
