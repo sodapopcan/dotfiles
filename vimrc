@@ -23,6 +23,7 @@ Plug 'majutsushi/tagbar'
 Plug 'RRethy/vim-illuminate'
 Plug 'google/vim-searchindex'
 Plug 'svermeulen/vim-yoink'
+Plug 'markonm/traces.vim'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
