@@ -87,7 +87,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jparise/vim-graphql'
-" Plug 'prettier/vim-prettier'
+Plug 'prettier/vim-prettier'
 
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script'
