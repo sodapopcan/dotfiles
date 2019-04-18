@@ -264,8 +264,7 @@ nnoremap <silent> f<CR> :TestFile<CR>
 nnoremap <silent> t<CR> :TestNearest<CR>
 nnoremap <silent> F<CR> :TestVisit<CR>
 " Write everything and quit
-nnoremap ZX :wall \| qall!<CR>
-nnoremap zx :wall \| qall!<CR>
+nnoremap z; :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
 " In any event, qq for recording, Q to playback (stolen from junegunn)
 nnoremap Q @q
