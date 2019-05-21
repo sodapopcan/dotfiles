@@ -9,5 +9,6 @@ npm-debug.log
 tags
 tags.lock
 tags.temp
+tags.temp.tmp
 vim/.netrwhist
 vim/plugins
