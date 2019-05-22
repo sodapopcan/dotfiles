@@ -806,7 +806,20 @@ let g:rails_projections = {
       \ "app/services/*_service.rb": {
       \   "command": "service",
       \   "template":
-      \     ["class {camelcase|capitalize|colons}Service", "end"],
+      \     [
+      \       "class {camelcase|capitalize|colons}",
+      \       "  def self.call()",
+      \       "  end",
+      \       "",
+      \       "  def call",
+      \       "  end",
+      \       "",
+      \       "  private",
+      \       "",
+      \       "  def initialize()",
+      \       "  end",
+      \       "end"
+      \   ],
       \   "affinity": "model"
       \ },
       \ "app/managers/*_manager.rb": {
@@ -855,6 +868,11 @@ let g:rails_projections = {
       \   "template":
       \     ["module {camelcase|capitalize|colons}Factory", "end"],
       \   "affinity": "model"
+      \ },
+      \ "lib/utils/*.rb": {
+      \   "command": "util",
+      \   "template":
+      \     ["module Utils", "  module {camelcase|capitalize|colons}", "    module_function", "  end", "end"]
       \ }}
 
 
