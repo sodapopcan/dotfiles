@@ -916,3 +916,81 @@ let g:tmux_navigator_no_mappings = 1
 nmap co yo
 
 nmap c<CR> mm'o:TestNearest<CR>'m
+
+" Work {{{1
+"
+
+if $WORK_COMPUTER
+  autocmd BufEnter * call s:lcd()
+
+  function! s:lcd() abort
+    let path = expand('%:p')
+
+    if match(path, '\v\/capacity_planning\/') < 0
+      return
+    endif
+
+    let cd_base_path = matchstr(path, '\v.+capacity_planning\/')
+
+    if match(path, '\v\/backend\/') >= 0
+      exec "lcd ".cd_base_path."backend"
+    endif
+
+    if match(path, '\v\/frontend\/') >= 0
+      exec "lcd ".cd_base_path."frontend"
+    endif
+  endfunction
+endif
+
+
+
+function! s:git_cmd(cmd) abort
+  return systemlist(fugitive#repo().git_command() . ' ' . a:cmd)
+endfunction
+
+function! s:get_current_branch_name() abort
+  return s:git_cmd('rev-parse --abbrev-ref HEAD')[0]
+endfunction
+
+let s:ticket_regex = '\v^CP-[0-9]+'
+
+function! s:add_ticket_number() abort
+  let branch = s:get_current_branch_name()
+  let ticket_number = matchstr(branch, s:ticket_regex)
+  if ticket_number !=# ''
+    if match(getline(1), s:ticket_regex) == -1
+      exec "normal! i" . ticket_number . ":  \<esc>$"
+      let v:char = "¯\_(ツ)_/¯" " See :help InsertEnter--Vim's weird, man
+    endif
+  endif
+endfunction
+
+function! s:remove_ticket_number() abort
+  let branch = s:get_current_branch_name()
+  let ticket_number = matchstr(branch, s:ticket_regex)
+  if ticket_number !=# ''
+    if match(getline(1), s:ticket_regex . ':\s+$') >= 0
+      " If the ticket number is the only thing in the commit message, remove it
+      " when exiting insert mode.
+      call setline(1, '')
+      for i in range(2, line('$'))
+        if getline(i) !=# ''
+          break
+        endif
+        delete_
+      endfor
+    else
+      " Strip trailing whitespace.  This isn't really necessary but I'm pretty
+      " OCD about this stuff.
+      let pos = getpos('.')
+      s/\s\+$//e
+      call cursor(pos[1:])
+    endif
+  endif
+endfunction
+
+augroup Jira
+  autocmd!
+  autocmd FileType gitcommit :autocmd! InsertEnter <buffer=abuf> call <SID>add_ticket_number()
+  autocmd FileType gitcommit :autocmd! InsertLeave <buffer=abuf> call <SID>remove_ticket_number()
+augroup END
