@@ -28,7 +28,7 @@ let s:programs = {
       \     "w": "--word-regexp"
       \   },
       \   "git": {
-      \     "template": "%s --no-pager grep --no-color --line-number --full-name -I %s %s",
+      \     "template": "%s --no-pager grep --no-color --line-number -I %s %s",
       \     "a": "--no-index",
       \     "i": "--ignore-case",
       \     "w": "--word-regexp"
