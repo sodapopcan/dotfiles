@@ -87,7 +87,9 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jparise/vim-graphql'
-Plug 'prettier/vim-prettier'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " CoffeeScript
 Plug 'kchmck/vim-coffee-script'
@@ -877,6 +879,23 @@ let g:rails_projections = {
 
 
 nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
+
+" Prettier {{{1
+"
+" when running at every change you may want to disable quickfix
+let g:prettier#autoformat = 0
+try
+  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+catch
+  echom "Prettier done goofed"
+endtry
+
+function! s:map_prettier()
+  if exists(":Prettier") && system('which prettier') != ""
+    nnoremap <buffer> <silent> + :Prettier<CR>
+  endif
+endfunction
+autocmd BufEnter *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html call <sid>map_prettier()
 
 " RuboCop {{{1
 "
