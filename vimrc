@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugins')
 Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'Valloric/YouCompleteMe'
 Plug 'editorconfig/editorconfig-vim'
 
 " Utility
@@ -953,6 +953,11 @@ let g:tmux_navigator_no_mappings = 1
 nmap co yo
 
 nmap c<CR> mm'o:TestNearest<CR>'m
+
+" YouCompleteMe {{{1
+"
+let g:ycm_key_list_select_completion = ['<c-e>']
+
 
 " Work {{{1
 "
