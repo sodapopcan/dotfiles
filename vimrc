@@ -807,7 +807,7 @@ let g:rails_projections = {
       \      "  include Sidekiq::Worker", "", "  def perform(id)",
       \      "  end", "end"]
       \ },
-      \ "app/services/*_service.rb": {
+      \ "app/services/*.rb": {
       \   "command": "service",
       \   "template":
       \     [
