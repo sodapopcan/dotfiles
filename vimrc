@@ -488,6 +488,8 @@ command! -nargs=0 So so %
 command! -nargs=0 Redraw redraw!
 " Branj
 command! -nargs=+ Branj exec ":Start branj " . <f-args>
+" JS
+command! -nargs=1 L exec "normal! oconsole.log(\"".<f-args>.":\", ".<f-args>.");\<Esc>"
 
 " Mappings Functions {{{2
 
