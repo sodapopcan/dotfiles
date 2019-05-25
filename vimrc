@@ -8,8 +8,13 @@ call plug#begin('~/.vim/plugins')
 Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
-Plug 'Valloric/YouCompleteMe'
 Plug 'editorconfig/editorconfig-vim'
+function! BuildYCM(info)
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Utility
 Plug 'tpope/vim-dispatch'
