@@ -241,15 +241,26 @@ function! s:rummage(bang, ...) abort
 
   let cmd = shellescape(command.search_pattern)
 
+  let program_name = g:rummage_default_program
+
+
   if len(command.file_pattern)
     let filetypes = split(command.file_pattern, ',')
     let dirs = map(split(command.directory_pattern, ','), 'substitute(v:val, ''\v[/]+$'', '''', '''')')
-    let cmd.= " --"
+
+    if program_name ==# 'git'
+      let cmd.= " --"
+    endif
+
     for filetype in filetypes
       let pattern = filetype ==# '*' ? '*' : '*.'.filetype
       if len(dirs)
         for dir in dirs
-          let cmd.= " '".dir."/".pattern."'"
+          if program_name ==# 'git'
+            let cmd.= " '".dir."/".pattern."'"
+          else
+            let cmd.= " ".dir."/".pattern
+          endif
         endfor
       else
         let cmd.= " '".pattern."'"
@@ -259,7 +270,6 @@ function! s:rummage(bang, ...) abort
 
   let s:return_file = expand('%')
 
-  let program_name = g:rummage_default_program
   let program = s:programs[program_name]
 
   let flags = ''
