@@ -333,6 +333,12 @@ function! s:parse_command(cmd) abort
     return command
   endif
 
+  " Make array match `match()` output
+  if len(matches) <= 3
+    call insert(matches, '', 1)
+    call insert(matches, '', 1)
+  endif
+
   if index(['"', "'"], matches[1]) >=0
     let command.type = "fixed"
   elseif matches[1] ==# '/'
@@ -340,6 +346,7 @@ function! s:parse_command(cmd) abort
   else
     let command.type = "fixed"
   endif
+
   if len(matches) > 2
     let command.options = split(matches[2], '\zs')
     let command.file_pattern = matches[3]
