@@ -22,7 +22,7 @@ Plug 'majutsushi/tagbar'
 " Plug '~/src/vim/rummage'
 Plug 'RRethy/vim-illuminate'
 Plug 'google/vim-searchindex'
-Plug 'svermeulen/vim-yoink'
+" Plug 'svermeulen/vim-yoink'
 Plug 'markonm/traces.vim'
 
 Plug 'tpope/vim-commentary'
@@ -318,12 +318,12 @@ nnoremap <C-]> <C-]>zt
 " nmap <C-N> ]m
 " nmap <C-P> [m
 " Yoink
-    nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-    nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+    " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+    " nmap <c-p> <plug>(YoinkPostPasteSwapForward)
 " nmap <C-N> ]m
 
-    nmap p <plug>(YoinkPaste_p)
-    nmap P <plug>(YoinkPaste_P)
+    " nmap p <plug>(YoinkPaste_p)
+    " nmap P <plug>(YoinkPaste_P)
 " Sync zz with my eyes
 nnoremap zz zz2<C-E>
 " Open quickfix list across bottom
