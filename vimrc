@@ -356,11 +356,18 @@ nnoremap <leader>ga ga
 nnoremap <leader>gl gr
 " Grepping
 nnoremap g<Space> :Rummage "" <Left><Left>
-for t in ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
-  exec "nnoremap gy".t."<Space> y".t.":Rummage \"\"<Left><C-R><C-\">"
-  exec "nnoremap gyi".t."<Space> yi".t.":Rummage \"\"<Left><C-R><C-\">"
-  exec "nnoremap gya".t."<Space> ya".t.":Rummage \"\"<Left><C-R><C-\">"
+let chars = ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
+for c in chars
+  " Grep
+  exec "nnoremap gy".c."<Space> y".c.":Rummage \"\"<Left><C-R><C-\">"
+  exec "nnoremap gyi".c."<Space> yi".c.":Rummage \"\"<Left><C-R><C-\">"
+  exec "nnoremap gya".c."<Space> ya".c.":Rummage \"\"<Left><C-R><C-\">"
+  " Substitute
+  exec "nnoremap gy".c."s y".c.":%s/<C-R><C-\">//g<Left><Left>"
+  exec "nnoremap gyi".c."s yi".c.":%s/<C-R><C-\">//g<Left><Left>"
+  exec "nnoremap gya".c."s ya".c.":%s/<C-R><C-\">//g<Left><Left>"
 endfor
+
 " Leader Mappings
 
 " Location
