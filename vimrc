@@ -73,7 +73,7 @@ Plug 'justinmk/vim-syntax-extra'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
-Plug !empty(glob("~/src/vim/twiggy")) ? '~/src/vim/twiggy' : 'sodapopcan/vim-twiggy'
+Plug !empty(glob('~/src/vim/twiggy')) ? '~/src/vim/twiggy' : 'sodapopcan/vim-twiggy'
 Plug 'junegunn/gv.vim'
 
 " Markdown
