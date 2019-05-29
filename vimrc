@@ -4,6 +4,10 @@ if !&compatible | set nocompatible | endif
 "
 call plug#begin('~/.vim/plugins')
 
+function! s:PlugLocal(local, remote)
+  Plug !empty(glob(a:local)) ? a:local : a:remote
+endfunction
+
 " Usability
 Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -64,7 +68,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
 Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug !empty(glob('~/src/vim/ifionly')) ? '~/src/vim/ifionly' : 'sodapopcan/vim-ifionly'
+call s:PlugLocal('~/src/vim/ifionly', 'sodapopcan/vim-ifionly')
 Plug 'tpope/vim-ragtag'
 Plug 'vim-scripts/a.vim'
 Plug 'justinmk/vim-syntax-extra'
@@ -73,7 +77,7 @@ Plug 'justinmk/vim-syntax-extra'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
-Plug !empty(glob('~/src/vim/twiggy')) ? '~/src/vim/twiggy' : 'sodapopcan/vim-twiggy'
+call s:PlugLocal('~/src/vim/twiggy', 'sodapopcan/vim-twiggy')
 Plug 'junegunn/gv.vim'
 
 " Markdown
