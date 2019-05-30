@@ -347,6 +347,7 @@ function! s:parse_command(cmd) abort
   if len(matches) <= 3
     call insert(matches, '', 1)
     call insert(matches, '', 1)
+    call add(matches, '')
   endif
 
   if index(['"', "'"], matches[1]) >=0
