@@ -220,8 +220,8 @@ let s:return_file = ''
 let s:last_output = ''
 let s:last_linenr = 1
 
-function! s:rummage(bang, ...) abort
-  if !len(a:1) " No arguments supplied
+function! s:rummage(cnt, bang, ...) abort
+  if !a:cnt && !len(a:1) " No arguments supplied
     if a:bang
       if len(s:return_file)
         exec "edit" s:return_file
@@ -231,9 +231,15 @@ function! s:rummage(bang, ...) abort
     endif
 
     return
+  elseif a:cnt && a:cnt ==# line('.')
+    let str = expand("<cword>")
+  elseif a:cnt
+    return s:warn("Cursor not on specified line")
+  else
+    let str = join(a:000, ' ')
   endif
 
-  let command = s:parse_command(join(a:000, ' '))
+  let command = s:parse_command(str)
 
   if len(command.error)
     return s:warn(command.error)
@@ -406,7 +412,7 @@ function! s:custom_dirs(A,L,P) abort
   return ''
 endfunction
 
-command! -nargs=* -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<bang>0, <q-args>)
+command! -nargs=* -count=0 -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<count>, <bang>0, <q-args>)
 
 au! FileType qf au! CursorMoved <buffer> 
       \   if getqflist({"title":0}).title ==# "Rummage"
