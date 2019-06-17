@@ -983,21 +983,25 @@ if $WORK_COMPUTER
   autocmd BufEnter * call s:lcd()
 
   function! s:lcd() abort
-    let path = expand('%:p')
+    try
+      let path = expand('%:p')
 
-    if match(path, '\v\/capacity_planning\/') < 0
-      return
-    endif
+      if match(path, '\v\/capacity_planning\/') < 0
+        return
+      endif
 
-    let cd_base_path = matchstr(path, '\v.+capacity_planning\/')
+      let cd_base_path = matchstr(path, '\v.+capacity_planning\/')
 
-    if match(path, '\v\/backend\/') >= 0
-      exec "lcd ".cd_base_path."backend"
-    endif
+      if match(path, '\v\/backend\/') >= 0
+        exec "lcd ".cd_base_path."backend"
+      endif
 
-    if match(path, '\v\/frontend\/') >= 0
-      exec "lcd ".cd_base_path."frontend"
-    endif
+      if match(path, '\v\/frontend\/') >= 0
+        exec "lcd ".cd_base_path."frontend"
+      endif
+    catch
+      echo "Failed to lcd"
+    endtry
   endfunction
 endif
 
