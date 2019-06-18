@@ -504,7 +504,12 @@ command! -nargs=0 Redraw redraw!
 " Branj
 command! -nargs=+ Branj exec ":Start branj " . <f-args>
 " JS
-command! -nargs=1 L exec "normal! oconsole.log(\"".<f-args>.":\", ".<f-args>.");\<Esc>"
+command! -nargs=? L call <SID>console_log(<f-args>)
+function! s:console_log(...)
+  let token = a:0 ? a:1 : expand('<cword>')
+  call append(line('.'), 'console.log("'.token.'", '.token.')')
+  normal! j==k
+endfunction
 
 " Mappings Functions {{{2
 
