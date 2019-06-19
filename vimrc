@@ -503,12 +503,25 @@ command! -nargs=0 So so %
 command! -nargs=0 Redraw redraw!
 " Branj
 command! -nargs=+ Branj exec ":Start branj " . <f-args>
-" JS
-command! -nargs=? L call <SID>console_log(<f-args>)
+" Add a debug statement
+" Takes a variable name as an arg and will output a debug log
+" statement dependent on the language
+" With no argument will use the word under the cursor
+command! -nargs=? P call <SID>console_log(<f-args>)
 function! s:console_log(...)
   let token = a:0 ? a:1 : expand('<cword>')
-  call append(line('.'), 'console.log("'.token.'", '.token.')')
-  normal! j==k
+  if &ft ==# 'vim'
+    let output = 'echo '.token
+  elseif &ft ==# 'ruby'
+    let output = ['p "#" * 80', 'p '.token, 'p "#" * 80']
+  elseif &ft =~# '^javascript'
+    let output = 'console.log("'.token.'", '.token.')'
+  endif
+  call append(line('.'), output)
+  let z = @z
+  normal! mz
+  exec "silent normal! j".len(output)."=j`z"
+  let @z = z
 endfunction
 
 " Mappings Functions {{{2
