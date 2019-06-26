@@ -327,9 +327,9 @@ function! s:parse_command(cmd) abort
   if len(char)
     let search_regex = '\v(''|"|/)\zs%([^'.char.'\\]|\\.)*\ze%(\1)'
     let modifier_regex = '(i)?'
-    let one = '%(%(\s+)(\S+)?)'
-    let two = '%(%(\s+)(\S+))?'
-    let regex = search_regex.modifier_regex.'%(%(%(\s+)?)@<=%('.one.two.')?)?'
+    let ft_regex = '%(%(\s+)(\S+)?)'
+    let dir_regex = '%(%(\s+)(\S+))?'
+    let regex = search_regex.modifier_regex.'%(%(%(\s+)?)@<=%('.ft_regex.dir_regex.')?)?'
     let matches = matchlist(a:cmd, regex)
   endif
 
