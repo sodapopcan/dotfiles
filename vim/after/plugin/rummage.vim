@@ -395,7 +395,7 @@ function! s:custom_dirs(A,L,P) abort
   let args = substitute(a:L, '\v\C^%(\s+)?Rum%(mage)? %(\s+)?%(%(%("|''|/)%(.*)%("|''|/)%(i)?|\w+)\s+)?', '', '')
   let filetypes = matchstr(args, '\v%(\*(\s+)?|[a-zA-Z,]+(\s+)?)')
   if len(filetypes) && filetypes[-1:] ==# ' '
-    let dirstr = split(args, '\v\s+')[-1]
+    let dirstr = substitute(args, filetypes, '', '')
     if match(dirstr, '\v,') >= 0
       if dirstr[-1:] !=# ','
         let dirstr = matchstr(dirstr, '\v%(.*),')
