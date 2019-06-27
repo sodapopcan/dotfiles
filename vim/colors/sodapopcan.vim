@@ -57,6 +57,7 @@ hi Visual                            ctermbg=11    ctermfg=16
 
 hi DiffAdd                           ctermbg=bg   ctermfg=108 cterm=bold
 hi DiffDelete                        ctermbg=bg    ctermfg=95 cterm=bold
+hi! link DiffRemoved DiffDelete 
 hi DiffChange                        ctermbg=143    ctermfg=16  cterm=none
 hi DiffText                          ctermbg=bg   ctermfg=114 cterm=bold
 hi HelpExample                       ctermbg=none ctermfg=137
@@ -78,10 +79,11 @@ hi qfLineNr ctermfg=214
 hi! link qfError Error
 
 autocmd Syntax ruby syn match rubyDefine "&"
+autocmd Syntax ruby syn match rubyDefine "|"
 
 " Ruby
 hi link rubyBlockParameter           Normal
-hi link rubyBlockParameterList       rubyControl
+hi link rubyBlockParameterList       Normal
 hi link rubyCapitalizedMethod        Function
 hi link rubyConstant                 Type
 hi link rubyPredefinedConstant       Type
@@ -178,7 +180,7 @@ hi scssVariable     ctermbg=none ctermfg=208 cterm=none
 " hi jsParens                             ctermbg=none ctermfg=067 cterm=none
 " hi jsParen                              ctermbg=none ctermfg=111 cterm=none
 
-hi jsFunction                           ctermbg=none ctermfg=096 cterm=none
+hi jsFunction                           ctermbg=none ctermfg=097 cterm=none
 " hi jsFuncCall                           ctermbg=none ctermfg=062 cterm=none
 hi link jsFuncCall Normal
 hi jsBlock                              ctermbg=none ctermfg=167 cterm=none
@@ -188,12 +190,21 @@ hi link jsFuncBraces Normal
 hi link jsArrowFunction Normal
 " 62 deepish lightish blue
 hi jsStorageClass                       ctermbg=none ctermfg=067 cterm=none
-hi link jsReturn            jsStorageClass
-hi link jsFuncName jsReturn
+hi link jsConditional jsStorageClass
+hi jsReturn ctermbg=none ctermfg=96
+hi link jsFuncName jsStorageClass
+hi link jsModuleAs jsReturn
+hi link jsSpreadOperator jsStorageClass
 hi link jsImport jsReturn
 hi link jsExport jsReturn
 hi link jsFrom jsReturn
-hi jsGlobalNodeObjects ctermbg=none ctermfg=060 cterm=none
+hi link jsExtendsKeyword jsReturn
+hi link jsClassKeyword jsReturn
+hi jsClassKeyword ctermfg=061
+hi jsClassDefinition ctermfg=068
+hi link jsThis jsObjectKey
+hi jsGlobalObjects ctermbg=none ctermfg=060 cterm=none
+hi link jsGlobalNodeObjects jsGlobalObjects
 hi link jsOperator Normal
 hi! link jsObjectKey jsExportDefault
 hi link jsTemplateBraces String
