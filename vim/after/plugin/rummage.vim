@@ -391,7 +391,7 @@ endfunction
 
 " Command {{{1
 "
-function! s:custom_dirs(A,L,P) abort
+function! s:complete(A,L,P) abort
   let args = substitute(a:L, '\v\C^%(\s+)?Rum%(mage)? %(\s+)?%(%(%("|''|/)%(.*)%("|''|/)%(i)?|\w+)\s+)?', '', '')
   let filetypes = matchstr(args, '\v%(\*(\s+)?|[a-zA-Z,]+(\s+)?)')
   if len(filetypes) && filetypes[-1:] ==# ' '
@@ -430,7 +430,7 @@ function! s:custom_dirs(A,L,P) abort
   return ''
 endfunction
 
-command! -nargs=* -count=0 -bang -complete=custom,s:custom_dirs Rummage call s:rummage(<count>, <bang>0, <q-args>)
+command! -nargs=* -count=0 -bang -complete=custom,s:complete Rummage call s:rummage(<count>, <bang>0, <q-args>)
 
 au! FileType qf au! CursorMoved <buffer> 
       \   if getqflist({"title":0}).title ==# "Rummage"
