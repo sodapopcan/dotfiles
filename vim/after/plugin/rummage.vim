@@ -411,6 +411,20 @@ function! s:custom_dirs(A,L,P) abort
     endif
 
     return join(dirs, "\n")
+  elseif len(filetypes)
+    if match(filetypes, '\v,') >= 0
+      if filetypes[-1:] !=# ','
+        let filetypes = matchstr(filetypes, '\v%(.*),')
+      endif
+      let currfts = split(filetypes, ',')
+      let res = keys(s:filetypes)
+      let res = filter(res, "index(currfts, v:val) < 0")
+      let res = map(res, 'filetypes.v:val')
+    else
+      let res = keys(s:filetypes)
+    end
+
+    return join(res, "\n")
   endif
 
   return ''
