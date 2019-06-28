@@ -392,7 +392,11 @@ endfunction
 " Command {{{1
 "
 function! s:complete(A,L,P) abort
-  let args = substitute(a:L, '\v\C^%(\s+)?Rum%(mage)? %(\s+)?%(%(%("|''|/)%(.*)%("|''|/)%(i)?|\w+)\s+)?', '', '')
+  let command_regex = '\v\C^%(\s+)?Rum%(mage)?' 
+  let search_string_regex = '\v\C%(\s+)?%(%(%("|''|/)%(.*)%("|''|/)%(i)?|\w+)\s+)?'
+  let all_args = substitute(a:L, command_regex, '', '')
+  let search_string = matchstr(all_args, search_string_regex)
+  let args = substitute(all_args, search_string_regex, '', '')
   let filetypes = matchstr(args, '\v%(\*(\s+)?|[a-zA-Z,]+(\s+)?)')
   if len(filetypes) && filetypes[-1:] ==# ' '
     let dirstr = substitute(args, filetypes, '', '')
@@ -411,7 +415,7 @@ function! s:complete(A,L,P) abort
     endif
 
     return join(dirs, "\n")
-  elseif len(filetypes)
+  elseif match(search_string, '\S') >= 0
     if match(filetypes, '\v,') >= 0
       if filetypes[-1:] !=# ','
         let filetypes = matchstr(filetypes, '\v%(.*),')
