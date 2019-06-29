@@ -942,7 +942,7 @@ let g:vimrubocop_keymap = 0
 
 " Rummage {{{1
 "
-let g:rummage_default_program = 'git'
+let g:rummage_program = 'git'
 
 
 " RSI  {{{1
