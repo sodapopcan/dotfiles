@@ -245,7 +245,7 @@ inoremap <silent> <C-C> <Esc>:redraw!<CR>
 nnoremap <silent> <C-C> :redraw!<CR>
 
 " One keystroke--instead of 4--to save
-au! BufReadPost * if &buftype ==# '' && &modifiable | exec "nnoremap \<buffer> \<CR> :write\<CR>" | endif
+nnoremap <CR> :write<CR>
 " Don't jump on search (and always highlight)
 nnoremap <silent> * *<C-O>:set hlsearch<CR>
 nnoremap <silent> # #<C-O>:set hlsearch<CR>
