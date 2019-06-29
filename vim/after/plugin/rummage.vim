@@ -136,7 +136,7 @@ let s:filetypes = {
       \   "protobuf": ["*.proto"],
       \   "ps": ["*.cdxml", "*.ps1", "*.ps1xml", "*.psd1", "*.psm1"],
       \   "purs": ["*.purs"],
-      \   "py": ["*.py"],
+      \   "python": ["*.py"],
       \   "qmake": ["*.prf", "*.pri", "*.pro"],
       \   "r": ["*.R", "*.Rmd", "*.Rnw", "*.r"],
       \   "rdoc": ["*.rdoc"],
