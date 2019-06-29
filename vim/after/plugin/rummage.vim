@@ -350,7 +350,7 @@ function! s:parse_command(cmd) abort
   if !len(char) || !len(matches)
     " Regex did not match meaning quotes or slashes were not used for the search pattern
     let matches = split(a:cmd)
-    if !len(matches) " || len(matches) > 3
+    if !len(matches)
       let command.error = "No pattern given"
     endif
   endif
