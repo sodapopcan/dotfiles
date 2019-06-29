@@ -223,9 +223,9 @@ let s:last_linenr = 1
 function! s:rummage(cnt, bang, ...) abort
   let has_args = len(a:1)
   if !a:cnt
-    if has_args " Has args
+    if has_args
       let command = s:parse_command(substitute(a:1, '\v\s\s', '', 'g'))
-    else " No arguments supplied
+    else
       if a:bang
         if len(s:return_file)
           exec "edit" s:return_file
