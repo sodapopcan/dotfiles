@@ -252,7 +252,7 @@ function! s:rummage(cnt, bang, ...) abort
   elseif a:cnt
     return s:warn("Cursor not on specified line")
   else
-    let str = join(a:000, ' ')
+    let str = a:1
   endif
 
   if len(command.error)
