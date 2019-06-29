@@ -184,10 +184,10 @@ let s:filetypes = {
 
 " Globals {{{1
 "
-if !exists('g:rummage_default_program')
+if !exists('g:rummage_program')
   for p in s:program_names
     if executable(p)
-      let g:rummage_default_program = p
+      let g:rummage_program = p
       break
     endif
   endfor
@@ -247,7 +247,7 @@ function! s:rummage(cnt, bang, ...) abort
 
   let cmd = shellescape(command.search_pattern)
 
-  let program_name = g:rummage_default_program
+  let program_name = g:rummage_program
 
 
   if len(command.file_pattern)
