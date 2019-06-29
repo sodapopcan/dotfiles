@@ -221,25 +221,39 @@ let s:last_output = ''
 let s:last_linenr = 1
 
 function! s:rummage(cnt, bang, ...) abort
-  if !a:cnt && !len(a:1) " No arguments supplied
-    if a:bang
-      if len(s:return_file)
-        exec "edit" s:return_file
+  let has_args = len(a:1)
+  if !a:cnt
+    if has_args " Has args
+      let command = s:parse_command(substitute(a:1, '\v\s\s', '', 'g'))
+    else " No arguments supplied
+      if a:bang
+        if len(s:return_file)
+          exec "edit" s:return_file
+        endif
+      else
+        call s:populate(s:last_output, "No recent searches")
       endif
-    else
-      call s:populate(s:last_output, "No recent searches")
-    endif
 
-    return
+      return
+    end
   elseif a:cnt && a:cnt ==# line('.')
     let str = expand("<cword>")
+    if has_args
+      let args = split(substitute(a:1, '\v\s\s', '', 'g'), " ")
+      let command = {
+            \   "type": 'fixed',
+            \   "search_pattern": expand("<cword>"),
+            \   "file_pattern": args[0],
+            \   "directory_pattern": len(args) > 1 ? args[1] : '',
+            \   "options": [],
+            \   "error": ''
+            \ }
+    endif
   elseif a:cnt
     return s:warn("Cursor not on specified line")
   else
     let str = join(a:000, ' ')
   endif
-
-  let command = s:parse_command(str)
 
   if len(command.error)
     return s:warn(command.error)
