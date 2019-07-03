@@ -5,7 +5,7 @@ au! FileType vim setlocal foldmethod=marker
 " nnoremap <silent> <buffer> <C-P> :call search('\v^function', 'bW')<CR>
 
 " Plugin dev
-nnoremap <buffer> & :source %<cr>:mess clear<cr>
+nnoremap <buffer> <silent> & :source %<cr>:mess clear<cr>:echo "Reloaded ".expand('%')." and cleared messages"<CR>
 
 if exists('g:loaded_plug')
   if expand('%:t') == 'vimrc'
