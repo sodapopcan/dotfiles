@@ -13,6 +13,7 @@ Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'ludovicchabant/vim-gutentags'
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
     !./install.py
