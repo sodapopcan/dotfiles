@@ -276,8 +276,8 @@ if [ -f ~/.fzf.zsh ]; then
   export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public'
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+alias loadnvm='[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"'  # This loads nvm
+
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Shell tools {{{1
