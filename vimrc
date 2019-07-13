@@ -116,6 +116,9 @@ Plug 'elixir-lang/vim-elixir'
 " Haskell
 Plug 'itchyny/vim-haskell-indent'
 
+" Pony
+Plug 'jakwings/vim-pony'
+
 " Other
 Plug 'junegunn/goyo.vim'
 Plug 'chr4/nginx.vim'
