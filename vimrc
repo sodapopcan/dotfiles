@@ -19,7 +19,7 @@ function! BuildYCM(info)
     !./install.py
   endif
 endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Utility
 Plug 'tpope/vim-dispatch'
