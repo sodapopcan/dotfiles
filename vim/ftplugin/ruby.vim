@@ -18,12 +18,12 @@ function! s:insert_instance_vars() abort
     return
   endif
 
-  if match(line, '\v(\s+)?def initialize\([a-zA-Z0-9_, ]+\)') < 0
+  if match(line, '\v(\s+)?def initialize\([a-zA-Z0-9_,: ]+\)') < 0
     return
   endif
 
-  let matches = matchlist(line, '\v\(([a-zA-Z0-9_, ]+)\)')
-  let vars = split(substitute(matches[1], ' ', '', 'g'), ',')
+  let matches = matchlist(line, '\v\(([a-zA-Z0-9_,: ]+)\)')
+  let vars = split(substitute(matches[1], '\v[^a-zA-Z0-9_,]+', '', 'g'), ',')
   let ivars = []
   let readers = []
   let indent = indent(linenr)
