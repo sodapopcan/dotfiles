@@ -605,7 +605,7 @@ nnoremap <silent> gC :Gcommit -v<CR>
 nnoremap <silent> gd :! clear && git diff<CR>
 nnoremap <silent> gD :! clear && git diff --cached<CR>
 nnoremap <silent> g? :Gblame -w<CR>
-nnoremap <silent> gw :Gwrite<CR>:write<CR>
+nnoremap <silent> gw :silent Gwrite<CR>
 nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
