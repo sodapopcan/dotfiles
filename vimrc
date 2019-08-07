@@ -917,6 +917,18 @@ let g:rails_projections = {
       \ }}
 
 
+command! -nargs=? Gemfile call <SID>gemfile(<f-args>)
+
+function! s:gemfile(...) abort
+  edit Gemfile
+  if a:0
+    call search('\v^group')
+    keepjumps normal! {k
+    call append(line('.'), 'gem "'.a:1.'"')
+    normal! j
+  endif
+endfunction
+
 nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
 
 " Prettier {{{1
