@@ -251,7 +251,11 @@ nnoremap <silent> <C-C> :redraw!<CR>
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
 " Don't jump on search (and always highlight)
-nnoremap <silent> * *<C-O>:set hlsearch<CR>
+nnoremap * :let winstate = winsaveview()<bar>
+      \ exec "normal! *"<bar>
+      \ setlocal hlsearch<bar>
+      \ call winrestview(winstate)<bar>
+      \ unlet winstate<cr>
 nnoremap <silent> # #<C-O>:set hlsearch<CR>
 " Apparently I have to do this because of my iTerm key-remaps
 let g:tmux_navigator_no_mappings = 1
