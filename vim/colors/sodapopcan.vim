@@ -48,7 +48,7 @@ hi CursorLineNr                      ctermbg=235  ctermfg=255 cterm=none
 hi String                            ctermfg=107
 hi link Number String
 hi PreProc                           ctermfg=103
-hi Search                            ctermbg=none  ctermfg=186
+hi Search                            ctermbg=235  ctermfg=178 cterm=none
 " hi link Search Normal
 hi IncSearch                         ctermbg=186    ctermfg=16
 hi Title                             ctermfg=250
