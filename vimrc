@@ -271,7 +271,7 @@ cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
 " Set paste, paste from clipboard, unset paste
 
-nnoremap <silent> gp :set paste<bar>put<bar>set nopaste<CR>
+nnoremap <silent> gp :set paste<bar>put<bar>set nopaste<CR>==
 " Thanks a lot, touchbar
 nnoremap <F1> <nop>
 
