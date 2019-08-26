@@ -251,7 +251,7 @@ nnoremap <silent> <C-C> :redraw!<CR>
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
 " Don't jump on search (and always highlight)
-nnoremap * :let winstate = winsaveview()<bar>
+nnoremap <silent> * :let winstate = winsaveview()<bar>
       \ exec "normal! *"<bar>
       \ setlocal hlsearch<bar>
       \ call winrestview(winstate)<bar>
