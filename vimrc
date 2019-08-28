@@ -975,7 +975,7 @@ autocmd BufEnter *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphq
 "
 let g:vimrubocop_keymap = 0
 " if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
-  let g:vimrubocop_rubocop_cmd = 'bundle exec rubocop '
+let g:vimrubocop_rubocop_cmd = 'bundle exec rubocop '
 " endif
 
 
