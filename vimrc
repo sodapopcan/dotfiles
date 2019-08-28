@@ -701,14 +701,14 @@ endif
 "
 
 let g:ale_linters = {
-\   'ruby': ['mri', 'rubocop'],
-\   'javascript': ['eslint'],
-\   'javascript.jsx': ['eslint'],
-\   'haskell': ['ghc']
-\ }
+      \   'ruby': ['mri', 'rubocop'],
+      \   'javascript': ['eslint'],
+      \   'javascript.jsx': ['eslint'],
+      \   'haskell': ['ghc']
+      \ }
 
 " if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
-  let g:ale_ruby_rubocop_executable = 'bundle'
+let g:ale_ruby_rubocop_executable = 'bundle'
 " endif
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
