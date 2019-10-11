@@ -4,3 +4,4 @@ endif
 
 " I'm very used to `o` from NERDTree and the like.
 nmap <buffer> <silent> o <CR>
+nnoremap <buffer> <silent> q :quit<CR>
