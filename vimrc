@@ -20,6 +20,7 @@ function! BuildYCM(info)
   endif
 endfunction
 " Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'dzeban/vim-log-syntax'
 
 " Utility
 Plug 'tpope/vim-dispatch'
