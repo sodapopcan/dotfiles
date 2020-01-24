@@ -266,7 +266,7 @@ bindkey '^R' history-incremental-search-backward
 # t {{{1
 alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
 
-plugins=(nulogy richard docker-osx)
+plugins=(nulogy)
 
 # zfz {{{1
 if [ -f ~/.fzf.zsh ]; then
