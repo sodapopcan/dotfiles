@@ -493,6 +493,8 @@ augroup AutoMkdir
   endfunction
 augroup END
 
+autocmd! BufRead,BufNewFile *.tfvars setlocal filetype=tf
+
 " Commands {{{1
 "
 
