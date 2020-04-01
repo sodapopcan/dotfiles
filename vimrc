@@ -735,11 +735,11 @@ let g:gitgutter_sign_modified_removed = g:gitgutter_sign_added
 " Pre-defined leader mappings in plugins fill me with rage.  Well, not that much
 " rage.  I love Git Gutter.
 let g:gitgutter_map_keys = 0
-nmap g+ <Plug>GitGutterStageHunk
-nmap g- <Plug>GitGutterUndoHunk
-nmap g_ <Plug>GitGutterPreviewHunk
-nmap ]c <Plug>GitGutterNextHunk
-nmap [c <Plug>GitGutterPrevHunk
+nmap g+ <Plug>(GitGutterStageHunk)
+nmap g- <Plug>(GitGutterUndoHunk)
+nmap g_ <Plug>(GitGutterPreviewHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
 
 hi GitGutterAdd    ctermfg=28  ctermbg=bg cterm=NONE
 hi GitGutterChange ctermfg=24  ctermbg=bg cterm=NONE
