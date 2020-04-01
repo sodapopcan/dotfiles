@@ -1056,7 +1056,7 @@ function! s:get_current_branch_name() abort
   return s:git_cmd('rev-parse --abbrev-ref HEAD')[0]
 endfunction
 
-let s:ticket_regex = '\v^CP-[0-9]+'
+let s:ticket_regex = '\v^PS-[0-9]+'
 
 function! s:add_ticket_number() abort
   let branch = s:get_current_branch_name()
