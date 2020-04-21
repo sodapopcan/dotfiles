@@ -941,6 +941,8 @@ nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
 " Prettier {{{1
 "
 " when running at every change you may want to disable quickfix
+let g:prettier#config#arrow_parens = 'always'
+let g:prettier#config#trailing_comma ='es5'
 let g:prettier#autoformat = 1
 try
   autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
