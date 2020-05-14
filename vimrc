@@ -124,6 +124,7 @@ Plug 'jakwings/vim-pony'
 " Other
 Plug 'junegunn/goyo.vim'
 Plug 'chr4/nginx.vim'
+Plug 'hashivim/vim-terraform'
 
 " Work
 if $WORK_COMPUTER
