@@ -790,8 +790,17 @@ let g:ifionly_destructive_jump = 0
 
 " Illuminate {{{1
 "
+let illuminateJS = [
+      \ 'jsFuncCall',
+      \ 'jsFuncBlock',
+      \ 'jsVariableDef',
+      \ 'jsDestructuringPropertyValue',
+      \ 'jsObjectValue'
+      \ ]
 let g:Illuminate_ftHighlightGroups = {
-      \ 'ruby': ['rubyBlock']
+      \ 'ruby': ['rubyBlock'],
+      \ 'javascript': illuminateJS,
+      \ 'javascript.jsx': illuminateJS,
       \ }
 
 " JavaScript
