@@ -37,6 +37,7 @@ hi Define                            cterm=none   ctermfg=173
 hi Statement                         cterm=none   ctermfg=137
 hi Error                             ctermbg=167   ctermfg=16
 hi ErrorMsg                          ctermbg=none   ctermfg=167
+hi WarningMsg                        ctermbg=none ctermfg=220 cterm=bold
 hi Function                          cterm=none   ctermfg=215
 hi Keyword                           cterm=none   ctermfg=173
 hi link Include                      Statement
@@ -48,7 +49,7 @@ hi CursorLineNr                      ctermbg=235  ctermfg=255 cterm=none
 hi String                            ctermfg=107
 hi link Number String
 hi PreProc                           ctermfg=103
-hi Search                            ctermbg=235  ctermfg=178 cterm=none
+hi Search                            ctermbg=235  ctermfg=220 cterm=none
 " hi link Search Normal
 hi IncSearch                         ctermbg=186    ctermfg=16
 hi Title                             ctermfg=250
@@ -193,6 +194,7 @@ hi jsStorageClass                       ctermbg=none ctermfg=067 cterm=none
 hi link jsConditional jsStorageClass
 hi jsReturn ctermbg=none ctermfg=96
 hi link jsFuncName jsStorageClass
+hi link jsFuncBlock jsExportDefault
 hi link jsModuleAs jsReturn
 hi link jsSpreadOperator jsStorageClass
 hi link jsImport jsReturn
@@ -203,6 +205,8 @@ hi link jsClassKeyword jsReturn
 hi jsClassKeyword ctermfg=061
 hi jsClassDefinition ctermfg=068
 hi link jsThis jsObjectKey
+hi link jsObjectFuncName jsStorageClass
+hi link jsRepeat jsStorageClass
 hi jsGlobalObjects ctermbg=none ctermfg=060 cterm=none
 hi link jsGlobalNodeObjects jsGlobalObjects
 hi link jsOperator Normal
@@ -232,3 +236,6 @@ hi link JsonBraces JsonNoise
 
 " Plug
 hi link PlugDeleted String
+
+" Illuminate
+hi illuminatedWord cterm=underline gui=underline
