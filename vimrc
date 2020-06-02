@@ -293,12 +293,15 @@ nnoremap Q @q
 nnoremap <silent> L :IfIOnly<CR>
 " Make Y do what you think it would
 nnoremap Y y$
-" Yank full path (yank full)
-nnoremap yff :let @+ = expand('%:p')<CR>:echo "Yanked: ".expand('%:p')<CR>
-" Yank relative path ([y]ank [f]ile [p]ath)
-nnoremap yfp :let @+ = expand('%')<CR>:echo "Yanked: ".expand('%')<CR>
-" Yank relative path ([y]ank [f]ile [n]ame)
-nnoremap yfn :let @+ = expand('%:t')<CR>:echo "Yanked: ".expand('%:t')<CR>
+" Yank full path (yank full path)
+nnoremap ypp :let @+ = expand('%:p')<CR>:echo "Yanked: ".expand('%:p')<CR>
+nnoremap ypP :let @+ = expand('%:p').":".line(".")<CR>:echo "Yanked: ".expand('%:p').":".line(".")<CR>
+" Yank relative path ([y]ank [p]ath [r]elative)
+nnoremap ypr :let @+ = expand('%')<CR>:echo "Yanked: ".expand('%')<CR>
+nnoremap ypR :let @+ = expand('%').":".line(".")<CR>:echo "Yanked: ".expand('%').":".line(".")<CR>
+" Yank relative path ([y]ank [p]ath [b]asename)
+nnoremap yfb :let @+ = expand('%:t')<CR>:echo "Yanked: ".expand('%:t')<CR>
+nnoremap yfB :let @+ = expand('%:t').":".line(".")<CR>:echo "Yanked: ".expand('%:t').":".line(".")<CR>
 " I'm a S over cc kinda guy so may as well use cc for a corner case
 nnoremap cc S<esc>
 " I never use & but it drives me nuts when I hit due to the error it throws
