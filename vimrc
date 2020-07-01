@@ -1043,11 +1043,11 @@ if $WORK_COMPUTER
     try
       let path = expand('%:p')
 
-      if match(path, '\v\/capacity_planning\/') < 0
+      if match(path, '\v\/production_scheduling\/') < 0
         return
       endif
 
-      let cd_base_path = matchstr(path, '\v.+capacity_planning\/')
+      let cd_base_path = matchstr(path, '\v.+production_scheduling\/')
 
       if match(path, '\v\/backend\/') >= 0
         exec "lcd ".cd_base_path."backend"
