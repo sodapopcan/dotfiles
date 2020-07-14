@@ -626,6 +626,7 @@ else
   nnoremap <silent> gl :GV<CR>
 endif
 nnoremap <silent> gL :GV!<CR>
+nnoremap          gM :GV master<CR>
 nnoremap          g^ :Gpush<CR>
 nnoremap          gV :Gpull<CR>
 
