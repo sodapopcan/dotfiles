@@ -529,6 +529,8 @@ function! s:console_log(...)
     let output = 'echo '.token
   elseif &ft ==# 'ruby'
     let output = ['p "#" * 80', 'p '.token, 'p "#" * 80']
+  elseif &ft ==# 'elixir'
+    let output = ['IO.inspect '.token]
   elseif &ft =~# '^javascript'
     let output = 'console.log("'.token.'", '.token.')'
   endif
