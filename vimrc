@@ -541,6 +541,8 @@ function! s:console_log(...)
   let @z = z
 endfunction
 
+nnoremap gI :P<cr>
+
 " Mappings Functions {{{2
 
 " Paste at end of the line
