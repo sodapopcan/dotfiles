@@ -251,6 +251,21 @@ endif
 inoremap <silent> <C-C> <Esc>:redraw!<CR>
 nnoremap <silent> <C-C> :redraw!<CR>
 
+" Thanks a lot, macOS touchbar you worthless... ugh.  Ok, I'll stop.
+imap <F1> <Nop>
+imap <F2> <Nop>
+imap <F3> <Nop>
+imap <F4> <Nop>
+imap <F5> <Nop>
+imap <F6> <Nop>
+imap <F7> <Nop>
+imap <F8> <Nop>
+imap <F9> <Nop>
+imap <F10> <Nop>
+imap <F11> <Nop>
+imap <F12> <Nop>
+
+
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
 " Don't jump on search (and always highlight)
