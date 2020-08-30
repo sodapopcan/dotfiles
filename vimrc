@@ -264,6 +264,18 @@ imap <F9> <Nop>
 imap <F10> <Nop>
 imap <F11> <Nop>
 imap <F12> <Nop>
+cmap <F1> <Nop>
+cmap <F2> <Nop>
+cmap <F3> <Nop>
+cmap <F4> <Nop>
+cmap <F5> <Nop>
+cmap <F6> <Nop>
+cmap <F7> <Nop>
+cmap <F8> <Nop>
+cmap <F9> <Nop>
+cmap <F10> <Nop>
+cmap <F11> <Nop>
+cmap <F12> <Nop>
 
 
 " One keystroke--instead of 4--to save
