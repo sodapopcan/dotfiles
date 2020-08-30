@@ -251,32 +251,13 @@ endif
 inoremap <silent> <C-C> <Esc>:redraw!<CR>
 nnoremap <silent> <C-C> :redraw!<CR>
 
-" Thanks a lot, macOS touchbar you worthless... ugh.  Ok, I'll stop.
-imap <F1> <Nop>
-imap <F2> <Nop>
-imap <F3> <Nop>
-imap <F4> <Nop>
-imap <F5> <Nop>
-imap <F6> <Nop>
-imap <F7> <Nop>
-imap <F8> <Nop>
-imap <F9> <Nop>
-imap <F10> <Nop>
-imap <F11> <Nop>
-imap <F12> <Nop>
-cmap <F1> <Nop>
-cmap <F2> <Nop>
-cmap <F3> <Nop>
-cmap <F4> <Nop>
-cmap <F5> <Nop>
-cmap <F6> <Nop>
-cmap <F7> <Nop>
-cmap <F8> <Nop>
-cmap <F9> <Nop>
-cmap <F10> <Nop>
-cmap <F11> <Nop>
-cmap <F12> <Nop>
-
+" Thanks a lot, macOS touchbar you worthless... ugh.  Ok, I'll stop...
+" Disable Fn keys in command and insert modes.
+for i in range(1, 12)
+  for mode in ['c', 'i']
+    exec mode."map <F".i."> <Nop>"
+  endfor
+endfor
 
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
