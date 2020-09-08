@@ -189,6 +189,10 @@ set autoindent
 set incsearch hlsearch
 set ignorecase smartcase
 
+" Stop highlighting past the 120th column.
+" Really, I hate having lines even that long.  Ah well.
+set synmaxcol=120
+
 " I just like this stuff
 set number
 set cmdheight=2
