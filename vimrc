@@ -156,10 +156,7 @@ hi User7 ctermbg=130  ctermfg=0    cterm=none   " line
 " More, and file-type overrides, can be found in vim/ftplugins
 
 set hidden " navigate away from  a buffer without saving it first
-" if !has('nvim')
-" Necessary to run the correct versions of unix programs when using zsh
 set shell=/bin/bash
-" endif
 set clipboard=unnamed
 
 if has('nvim')
