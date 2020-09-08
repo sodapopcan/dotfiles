@@ -669,9 +669,6 @@ let g:ale_sign_warning = '>>'
 
 highlight ALEErrorSign term=bold ctermfg=160
 highlight ALEWarningSign term=bold ctermfg=178
-" ^ I can't decide v ¯\_(ツ)_/¯
-" highlight ALEErrorSign ctermfg=167
-" highlight ALEWarningSign ctermfg=187
 
 " Dispatch
 "
