@@ -608,6 +608,17 @@ nnoremap <silent> gl :GV<CR>
 nnoremap <silent> gL :GV!<CR>
 nnoremap          gM :GV master<CR>
 
+" Commands
+command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
+
+function! s:git_push(bang) abort
+  if a:bang
+    Gpush -f
+  else
+    Gpush -u
+  endif
+endfunction
+
 " GV specific
 
 function! s:scroll_commits(down) abort
@@ -629,26 +640,14 @@ augroup END
 
 " Rails
 command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
-command! -nargs=0 Rollback Dispatch rake db:rollback && RAILS_ENV=test rake db:rollback
+command! -nargs=0 Rollback Dispatch rake db:rollback
 command! -nargs=0 Eform Eview _form
-command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
-command! -nargs=0 -bang Pull Dispatch git pull
-command! -nargs=* -bang Reset Dispatch git reset <args>
-command! -nargs=* Revert Gread
 
 function! s:migrate_rails(...)
   if a:0 > 0
     exec ":Dispatch rails g migration " . a:1
   else
     Dispatch rake db:migrate && RAILS_ENV=test rake db:migrate
-  endif
-endfunction
-
-function! s:git_push(bang) abort
-  if a:bang
-    Gpush -f
-  else
-    Gpush -u
   endif
 endfunction
 
