@@ -189,11 +189,8 @@ set autoindent
 set incsearch hlsearch
 set ignorecase smartcase
 
-if $WORK_COMPUTER
-  " I don't need numbers when I work alone but they are useful when pairing
-  set number
-endif
 " I just like this stuff
+set number
 set cmdheight=2
 set cursorline
 set nostartofline
