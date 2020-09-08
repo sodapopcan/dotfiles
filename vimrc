@@ -247,6 +247,8 @@ if has('nvim')
   tnoremap <silent> jk <C-\><C-N>
 endif
 
+" I accidentally hit this more than you'd think
+inoremap <C-@> <Nop>
 " Since C-L is in use, C-C will just do everything
 inoremap <silent> <C-C> <Esc>:redraw!<CR>
 nnoremap <silent> <C-C> :redraw!<CR>
