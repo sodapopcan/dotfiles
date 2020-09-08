@@ -152,8 +152,8 @@ hi User7 ctermbg=130  ctermfg=0    cterm=none   " line
 
 " Settings {{{1
 
-" The following defaults are required to maintain my sanity
-" More, and file-type overrides, can be found in vim/ftplugins
+" The following defaults are required to maintain my sanity.
+" More, and file-type overrides, can be found in vim/ftplugins.
 
 set hidden " navigate away from  a buffer without saving it first
 set shell=/bin/bash
