@@ -32,7 +32,6 @@ Plug 'heavenshell/vim-slack'
 Plug 'majutsushi/tagbar'
 " Plug '~/src/vim/rummage'
 Plug 'RRethy/vim-illuminate'
-Plug 'google/vim-searchindex'
 " Plug 'svermeulen/vim-yoink'
 Plug 'markonm/traces.vim'
 
