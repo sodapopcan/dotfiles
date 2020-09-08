@@ -579,12 +579,6 @@ augroup SignColumn
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 augroup END
 
-augroup Debugging
-  au!
-  au FileType eruby nnoremap <buffer><silent><leader>f :exec "call append(line('.'), '<% byebug %>')\<bar>normal j==\<bar>"<cr>:write<cr>
-  au FileType ruby  nnoremap <buffer><silent><leader>f :exec "call append(line('.'), 'byebug')\<bar>normal j=="<cr>:write<cr>
-augroup END
-
 au FileType GV nnoremap go :normal o<cr><bar>:wincmd w<cr><bar>:normal! zR<cr>
 au FileType GV nnoremap <buffer> Q :tabclose<CR>
 
