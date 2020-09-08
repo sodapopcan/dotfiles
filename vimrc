@@ -159,13 +159,9 @@ set hidden " navigate away from  a buffer without saving it first
 set shell=/bin/bash
 set clipboard=unnamed
 
-if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-else
-  set ttyfast
-  if &encoding !=# 'utf-8'
-    set encoding=utf-8
-  endif
+set ttyfast
+if &encoding !=# 'utf-8'
+  set encoding=utf-8
 endif
 set lazyredraw
 
