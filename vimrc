@@ -585,7 +585,7 @@ au FileType GV nnoremap <buffer> Q :tabclose<CR>
 
 " Closetag {{{1
 "
-let g:closetag_filenames = "*.html,*.erb,*.xml,*.js,*.jsx,*.mustache"
+let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.xml,*.js,*.jsx,*.mustache"
 
 " Edtiorconfig {{{1
 "
