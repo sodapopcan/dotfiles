@@ -498,23 +498,15 @@ autocmd! BufRead,BufNewFile *.tfvars setlocal filetype=tf
 command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
 " Vim
 command! -nargs=* E silent edit <f-args>
-" Dispatch
-command! -nargs=* D Dispatch <f-args>
-" HTML
-command! -nargs=1 Note exec ":e ~/notes/" . <f-args> . ".txt"
 " Shruggie
 command! -nargs=0 Shrug exec "normal! a¯\\_(ツ)_/¯\<Esc>"
 " Source
 command! -nargs=0 So so %
-" :redraw!
-command! -nargs=0 Redraw redraw!
-" Branj
-command! -nargs=+ Branj exec ":Start branj " . <f-args>
 " Add a debug statement
 " Takes a variable name as an arg and will output a debug log
 " statement dependent on the language
 " With no argument will use the word under the cursor
-command! -nargs=? P call <SID>console_log(<f-args>)
+nnoremap <silent> gI :call <SID>console_log()<CR>
 function! s:console_log(...)
   let token = a:0 ? a:1 : expand('<cword>')
   if &ft ==# 'vim'
