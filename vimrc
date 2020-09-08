@@ -496,8 +496,6 @@ autocmd! BufRead,BufNewFile *.tfvars setlocal filetype=tf
 
 " General
 command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
-" Vim
-command! -nargs=* E silent edit <f-args>
 " Shruggie
 command! -nargs=0 Shrug exec "normal! a¯\\_(ツ)_/¯\<Esc>"
 " Source
