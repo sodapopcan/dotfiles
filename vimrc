@@ -341,26 +341,12 @@ inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 " Just take me quick to github
 vnoremap <CR> :Gbrowse<CR>
-" I've held off on this for a long time.  I dont' know why
-nnoremap <F5> :so ~/.vimrc<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
-" This relies on having unimpaired installed
-" nmap <C-N> ]m
-" nmap <C-P> [m
-" Yoink
-    " nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-    " nmap <c-p> <plug>(YoinkPostPasteSwapForward)
-" nmap <C-N> ]m
-
-    " nmap p <plug>(YoinkPaste_p)
-    " nmap P <plug>(YoinkPaste_P)
 " Sync zz with my eyes
 nnoremap zz zz2<C-E>
 " Open quickfix list across bottom
 cnoreabbrev copen botright copen
-" Maximize current vertical split
-nnoremap <silent> gZ :wincmd \|<CR>
 " Even up the current vertical split
 nnoremap <silent> g\| :wincmd =<CR>
 " Running
@@ -377,8 +363,6 @@ nnoremap c-d :set fdm=diff<CR>
 " a.vim-like
 nnoremap ga :A<CR>
 nnoremap gr :R<CR>
-nnoremap gA :only<Bar>AV<CR>
-nnoremap gR :only<Bar>RV<CR>
 nnoremap <leader>ga ga
 nnoremap <leader>gl gr
 " Grepping
@@ -405,8 +389,6 @@ nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
 " Read a file in the same directory
 nnoremap <Leader>r :r <C-R>=expand('%:p:h') . '/'<CR>
-" Rails specific
-nnoremap <Leader>c :e config/settings.local.yml<CR>
 " Add bash shebang
 nnoremap <Leader># :normal! ggi#!/usr/bin/env bash<CR>
 
