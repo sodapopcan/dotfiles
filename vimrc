@@ -594,6 +594,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " Git {{{1
 "
+
+" Mappings (maybe I should move this to mappings section)
+
 nnoremap <silent> gs :keepalt G<CR>
 nnoremap <silent> gC :G commit -v<CR>
 nnoremap <silent> gd :! clear && git diff<CR>
@@ -635,6 +638,7 @@ endfunction
 augroup ScrollGV
   autocmd!
   autocmd FileType GV call s:init_gv_scroll_mappings()
+  autocmd FileType GV set buftype=nowrite
 augroup END
 
 
@@ -718,25 +722,6 @@ autocmd User GoyoLeave nested call <SID>goyo_leave()
 let g:gutentags_exclude_filetypes = ['javascript', 'javascript.jsx', 'markdown']
 let g:gutentags_ctags_exclude = ['js', 'jsx', 'md', 'markdown', 'json', 'sh']
 
-" GV {{{1
-"
-
-function! s:scroll_commits(down) abort
-  wincmd p
-  execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
-  wincmd p
-endfunction
-
-function! s:init_gv_scroll() abort
-  nnoremap <silent> <buffer> J :call <sid>scroll_commits(1)<cr>
-  nnoremap <silent> <buffer> K :call <sid>scroll_commits(0)<cr>
-endfunction
-
-augroup GV
-  autocmd!
-  autocmd FileType GV call s:init_gv_scroll()
-  autocmd FileType GV set buftype=nowrite
-augroup END
 " IfIOnly {{{1
 "
 let g:ifionly_filetypes = ['vim-plug']
