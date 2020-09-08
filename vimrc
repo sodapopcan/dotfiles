@@ -235,9 +235,6 @@ set wildignore+=*.png,*.jpg,*.gif
 " I'm trying to grow out of jk for escaping insert mode, but I'm failing pretty
 " hard.  j/k!  jk4lyfe!
 inoremap <silent> jk <ESC>
-if has('nvim')
-  tnoremap <silent> jk <C-\><C-N>
-endif
 
 " I accidentally hit this more than you'd think
 inoremap <C-@> <Nop>
