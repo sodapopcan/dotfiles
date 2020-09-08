@@ -566,8 +566,6 @@ augroup CursorStatusLines
   autocmd VimEnter,WinEnter,BufReadPost * if &ft !=# 'gitcommit'
         \ | setlocal statusline=%!StatusLine()
         \ | endif
-  " Just put an ASCII cat on inactive status bars why not
-  autocmd WinLeave * setlocal statusline=\ \ \=^..^\=
   autocmd InsertEnter * set nocursorline
   autocmd InsertLeave * set cursorline
   autocmd WinLeave * setlocal nocursorline
