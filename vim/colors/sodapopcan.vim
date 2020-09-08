@@ -163,6 +163,8 @@ hi link NERDTreeClosable String
 hi link NERDTreeOpenable String
 
 " Vim
+autocmd Syntax vim syn match vimUserCommand '^[A-Z][A-Za-z0-9]\+'
+hi! link vimUserCommand function
 hi link VimIsCommand function
 hi link VimFuncKey function
 hi! link vimVar Normal
