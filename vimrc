@@ -651,29 +651,6 @@ function! s:migrate_rails(...)
   endif
 endfunction
 
-" +++ Git Functions {{{2
-if !exists('*GitDiffPlus')
-  function! GitDiffPlus()
-    let linenr = line('.')
-    GitGutterDisable
-    tabnew %
-    Gvdiff
-    colorscheme diff
-    exec "normal! " . linenr . 'G'
-    windo nnoremap <buffer> q :call GitDiffPlusCleanUp()<CR>
-  endfunction
-
-  function! GitDiffPlusCleanUp()
-    windo write
-    tabclose
-    colorscheme sodapopcan
-    GitGutterEnable
-    nnoremap <buffer> q q
-    source $MYVIMRC
-  endfunction
-endif
-
-
 " ALE {{{1
 "
 
