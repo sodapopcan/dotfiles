@@ -594,26 +594,21 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " Git {{{1
 "
-nnoremap <silent> gs :keepalt leftabove Gstatus<CR>
-nnoremap <silent> gC :Gcommit -v<CR>
+nnoremap <silent> gs :keepalt G<CR>
+nnoremap <silent> gC :G commit -v<CR>
 nnoremap <silent> gd :! clear && git diff<CR>
 nnoremap <silent> gD :! clear && git diff --cached<CR>
-nnoremap <silent> g? :Gblame -w<CR>
+nnoremap <silent> g? :G blame -w<CR>
 nnoremap <silent> gw :silent Gwrite<CR>
-nnoremap <silent> gR :call system(fugitive#buffer().repo().git_command() . ' checkout ' . expand('%'))<CR>:e!<CR>:normal! zo<CR>
+nnoremap          g^ :G push<CR>
+nnoremap          gV :G pull<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
-if $WORK_COMPUTER == 1
-  nnoremap <silent> gl :GV --since=1year<CR>
-else
-  nnoremap <silent> gl :GV<CR>
-endif
+nnoremap <silent> gl :GV<CR>
 nnoremap <silent> gL :GV!<CR>
 nnoremap          gM :GV master<CR>
-nnoremap          g^ :Gpush<CR>
-nnoremap          gV :Gpull<CR>
 
-" GV
+" GV specific
 
 function! s:scroll_commits(down) abort
   wincmd p
