@@ -485,7 +485,8 @@ command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
 command! -nargs=0 Shrug exec "normal! a¯\\_(ツ)_/¯\<Esc>"
 " Source
 command! -nargs=0 So so %
-" Add a debug statement
+
+" Debugging
 " Takes a variable name as an arg and will output a debug log
 " statement dependent on the language
 " With no argument will use the word under the cursor
