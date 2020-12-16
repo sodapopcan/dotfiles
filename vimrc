@@ -12,7 +12,6 @@ endfunction
 Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'ludovicchabant/vim-gutentags'
 function! BuildYCM(info)
   if a:info.status == 'installed' || a:info.force
@@ -570,11 +569,6 @@ au FileType GV nnoremap <buffer> Q :tabclose<CR>
 " Closetag {{{1
 "
 let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.xml,*.js,*.jsx,*.mustache"
-
-" Edtiorconfig {{{1
-"
-
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 
 " Git {{{1
 "
