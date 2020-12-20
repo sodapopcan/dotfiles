@@ -587,7 +587,6 @@ nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 nnoremap <silent> gl :GV<CR>
 nnoremap <silent> gL :GV!<CR>
-nnoremap          gM :GV master<CR>
 
 " Commands
 command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
@@ -761,6 +760,7 @@ autocmd FileType mkd setlocal foldexpr=MarkdownFold(v:lnum) | setlocal foldmetho
 " NERDTree {{{1
 "
 nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
+nnoremap <silent> gM :NERDTreeFind<CR>:wincmd =<CR>
 
 let NERDTreeQuitOnOpen          = 1
 let NERDTreeHijackNetrw         = 1
