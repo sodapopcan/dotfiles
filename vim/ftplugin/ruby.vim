@@ -1,5 +1,9 @@
 command! -buffer -nargs=0 UpdateRubyHashSyntax %s/:\([^ ]*\)\(\s*\)=>/\1:/g
 
+if $WORK_COMPUTER
+  nnoremap <buffer> <silent> + :call system("bundle exec rubocop -A --force-exclusion  ".expand("%"))<bar>e!<cr>
+endif
+
 augroup Sinatra
   autocmd!
   autocmd BufEnter *
