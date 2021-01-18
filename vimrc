@@ -315,6 +315,12 @@ nnoremap <silent> + :let winstate = winsaveview()<bar>
       \ exec "normal! mzgg=G`z"<bar>
       \ call winrestview(winstate)<bar>
       \ unlet winstate<cr>
+function! s:map_prettier()
+  if exists(":Prettier") && system('which prettier') != "" && system('which eslint') != ""
+    nnoremap <buffer> <silent> + :Prettier<CR>:call system("eslint --fix ".expand("%"))<bar>e!<CR>
+  endif
+endfunction
+autocmd BufEnter *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html call <sid>map_prettier()
 " Increase scroll speed a little
 nnoremap <C-E> 2<C-E>
 nnoremap <C-Y> 2<C-Y>
@@ -871,19 +877,7 @@ nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
 " when running at every change you may want to disable quickfix
 let g:prettier#config#arrow_parens = 'always'
 let g:prettier#config#trailing_comma ='es5'
-let g:prettier#autoformat = 1
-try
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-catch
-  echom "Prettier done goofed"
-endtry
 
-function! s:map_prettier()
-  if exists(":Prettier") && system('which prettier') != ""
-    nnoremap <buffer> <silent> + :Prettier<CR>
-  endif
-endfunction
-autocmd BufEnter *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html call <sid>map_prettier()
 
 " RuboCop {{{1
 "
