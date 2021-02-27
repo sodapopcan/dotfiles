@@ -112,6 +112,7 @@ Plug 'tpope/vim-rails'
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 
 " Haskell
 Plug 'itchyny/vim-haskell-indent'
