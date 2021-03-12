@@ -20,6 +20,7 @@ function! BuildYCM(info)
 endfunction
 " Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'dzeban/vim-log-syntax'
+" Plug 'styled-components/vim-styled-components'
 
 " Utility
 Plug 'tpope/vim-dispatch'
@@ -29,10 +30,11 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'janko-m/vim-test'
 Plug 'heavenshell/vim-slack'
 Plug 'majutsushi/tagbar'
-" Plug '~/src/vim/rummage'
+Plug '~/src/vim/vim-rummage'
 Plug 'RRethy/vim-illuminate'
 " Plug 'svermeulen/vim-yoink'
 Plug 'markonm/traces.vim'
+Plug 'rhysd/git-messenger.vim'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
@@ -46,14 +48,15 @@ Plug 'rhysd/vim-textobj-ruby'
 Plug 'andyl/vim-textobj-elixir'
 
 Plug 'kana/vim-smartinput'
+" Plug 'tmsvg/pear-tree'
 
 " Navigation
-Plug 'scrooloose/nerdtree',            { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree',            { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-scriptease'
+" Plug 'tpope/vim-scriptease'
 
 " Lint
 Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
@@ -66,6 +69,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
+" call s:PlugLocal('~/src/vim/endwise', 'tpope/vim-endwise')
 Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
 call s:PlugLocal('~/src/vim/ifionly', 'sodapopcan/vim-ifionly')
@@ -74,7 +78,8 @@ Plug 'vim-scripts/a.vim'
 Plug 'justinmk/vim-syntax-extra'
 
 " Git
-Plug 'tpope/vim-fugitive'
+call s:PlugLocal('~/src/vim/fugitive', 'tpope/vim-fugitive')
+Plug 'zivyangll/git-blame.vim'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 call s:PlugLocal('~/src/vim/twiggy', 'sodapopcan/vim-twiggy')
@@ -111,7 +116,9 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
 
 " Elixir
-Plug 'elixir-lang/vim-elixir'
+" Plug 'elixir-lang/vim-elixir'
+Plug '~/src/vim/elixir'
+Plug '~/src/vim/scriptease'
 Plug 'slashmili/alchemist.vim'
 
 " Haskell
@@ -134,6 +141,8 @@ call plug#end()
 
 " Common {{{1
 "
+autocmd! InsertLeave * if &modifiable | write | endif
+
 runtime! macros/matchit.vim
 let g:netrw_dirhistmax = 0
 
@@ -190,7 +199,7 @@ set breakindent
 set breakindentopt=shift:2
 set ruler
 set textwidth=80
-set wrap
+set nowrap
 set scrolloff=2
 set sidescrolloff=0
 set shortmess=atWI
@@ -250,7 +259,9 @@ endfor
 nnoremap <CR> :write<CR>
 " Don't jump on search (and always highlight)
 nnoremap <silent> * :let winstate = winsaveview()<bar>
+      \ setlocal noignorecase<bar>
       \ exec "normal! *"<bar>
+      \ setlocal ignorecase<bar>
       \ setlocal hlsearch<bar>
       \ call winrestview(winstate)<bar>
       \ unlet winstate<cr>
@@ -318,7 +329,8 @@ nnoremap <silent> + :let winstate = winsaveview()<bar>
       \ unlet winstate<cr>
 function! s:map_prettier()
   if exists(":Prettier") && system('which prettier') != "" && system('which eslint') != ""
-    nnoremap <buffer> <silent> + :Prettier<CR>:call system("eslint --fix ".expand("%"))<bar>e!<CR>
+    " nnoremap <buffer> <silent> + :Prettier<CR>:call system("eslint --fix ".expand("%"))<bar>e!<CR>
+    nnoremap <buffer> <silent> + :Prettier<CR>e!<CR><c-c>
   endif
 endfunction
 autocmd BufEnter *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html call <sid>map_prettier()
@@ -501,7 +513,7 @@ function! s:console_log()
   let token = expand('<cword>')
   let output = []
   if &ft ==# 'vim'
-    let output = 'echo '.token
+    let output = 'echom "'.token.'=".'.token
   elseif &ft ==# 'elixir'
     let output = ['IO.puts "\n#################"', 'IO.inspect('.token.', label: "'.token.'")']
   elseif &ft ==# 'ruby'
@@ -575,7 +587,7 @@ au FileType GV nnoremap <buffer> Q :tabclose<CR>
 
 " Closetag {{{1
 "
-let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.ex,*.xml,*.js,*.jsx,*.mustache"
+let g:closetag_filenames = "*.html,*.erb,*.eex,*.ex,*.leex,*.xml,*.js,*.jsx,*.mustache"
 
 " Git {{{1
 "
@@ -639,6 +651,12 @@ function! s:migrate_rails(...)
   endif
 endfunction
 
+
+" Alchemist {{{1
+" 
+let g:alchemist_mappings_disable = 1
+
+
 " ALE {{{1
 "
 
@@ -648,6 +666,8 @@ let g:ale_linters = {
       \   'javascript.jsx': ['eslint'],
       \   'haskell': ['ghc']
       \ }
+
+let g:ale_elixir_credo_strict = 1
 
 " if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
 let g:ale_ruby_rubocop_executable = 'bundle'
@@ -890,7 +910,7 @@ let g:vimrubocop_rubocop_cmd = 'bundle exec rubocop '
 
 " Rummage {{{1
 "
-let g:rummage_program = 'git'
+let g:rummage_program = 'rg'
 
 
 " RSI  {{{1
@@ -969,8 +989,6 @@ if $WORK_COMPUTER
     endtry
   endfunction
 endif
-
-
 
 function! s:git_cmd(cmd) abort
   return systemlist(fugitive#repo().git_command() . ' ' . a:cmd)
