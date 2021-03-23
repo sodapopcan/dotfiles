@@ -612,9 +612,9 @@ command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
 
 function! s:git_push(bang) abort
   if a:bang
-    Gpush -f
+    G push -f
   else
-    Gpush -u
+    G push -u
   endif
 endfunction
 
