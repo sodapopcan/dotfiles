@@ -35,8 +35,8 @@ ln -s ~/dotfiles/config/nvim/init.vim ~/.config/nvim/init.vim
 echo "  * nvim"
 
 echo "Use ctrl-w and ctrl-u everywhere on macOS"
-mkdir "$HOME/Library/KeyBindings"
-cp "$DOTFILES/macos_DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
+
+mkdir "$HOME/Library/KeyBindings" && cp "$DOTFILES/macos_DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
 
 echo "NVIM c-h thinger"
 infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
