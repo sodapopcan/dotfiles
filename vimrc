@@ -587,7 +587,7 @@ au FileType GV nnoremap <buffer> Q :tabclose<CR>
 
 " Closetag {{{1
 "
-let g:closetag_filenames = "*.html,*.erb,*.eex,*.ex,*.leex,*.xml,*.js,*.jsx,*.mustache"
+let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.mustache"
 
 " Git {{{1
 "
