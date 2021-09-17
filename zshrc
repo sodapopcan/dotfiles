@@ -15,6 +15,8 @@ export PATH="$HOME/.stack/compiler-tools/x86_64-osx/ghc-8.2.2/bin:$PATH"
 export PATH="$HOME/.stack/programs/x86_64-osx/ghc-8.2.2/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# Disable abhorrent eslint default behaviour
+export ESLINT_NO_DEV_ERRORS=true
 
 # This supposedly fixes vim the "tags file not sorted" error in vim.  So far, it
 # seems to have done the trick.
