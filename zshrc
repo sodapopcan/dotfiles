@@ -42,6 +42,8 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
 
+alias permit_alacritty='xattr -d com.apple.quarantine $(which alacritty)'
+
 # system stuffs {{{1
 alias r="source $HOME/.zshrc"
 alias p="$EDITOR ~/dotfiles/zshrc"
