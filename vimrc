@@ -991,7 +991,7 @@ if $WORK_COMPUTER
 endif
 
 function! s:git_cmd(cmd) abort
-  return systemlist(fugitive#repo().git_command() . ' ' . a:cmd)
+  return systemlist(FugitiveShellCommand() . ' ' . a:cmd)
 endfunction
 
 function! s:get_current_branch_name() abort
