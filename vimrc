@@ -93,6 +93,7 @@ Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 Plug 'slim-template/vim-slim'
+let g:html_indent_inctags = 'p'
 
 " CSS
 Plug 'cakebaker/scss-syntax.vim'
@@ -946,7 +947,7 @@ let g:test#strategy = 'dispatch'
 
 " Vim-Tmux Navigator {{{1
 "
-let g:tmux_navigator_no_mappings = 1
+" let g:tmux_navigator_no_mappings = 1
 
 " Unimpaired {{{1
 "
