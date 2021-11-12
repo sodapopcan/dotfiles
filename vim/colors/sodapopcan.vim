@@ -77,6 +77,7 @@ hi gitDiff                           ctermbg=bg    ctermfg=243
 hi Special                           ctermbg=bg   ctermfg=167  cterm=none
 
 hi qfLineNr ctermfg=214
+" hi qfSeparator ctermfg=238
 hi! link qfError Error
 
 autocmd Syntax ruby syn match rubyDefine "&"
@@ -103,6 +104,15 @@ hi link rubyCallback rubyDefine
 hi link rubyMacro rubyDefine
 hi link rubyMagicComment rubySymbol
 hi rubyTodo ctermbg=bg ctermfg=166
+hi VimTodo ctermbg=bg ctermfg=166
+hi helpNote ctermbg=bg ctermfg=166
+
+" syn keyword elixirBuiltin @moduledoc
+" hi! link elixirBuiltin Comment
+" hi link elixirPseudoVariable Comment
+
+" hi elixirStructDelimiter ctermfg=131
+hi link elixirDocTest Comment
 
 " hi! clear rubyIdentifier
 " hi! clear rubyInstanceVaria           ble
