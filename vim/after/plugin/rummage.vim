@@ -10,6 +10,7 @@
 " endif
 " let g:loaded_rummage = 1
 
+finish
 
 " Programs {{{1
 "
