@@ -141,8 +141,6 @@ call plug#end()
 
 " Common {{{1
 "
-autocmd! InsertLeave * if &modifiable | write | endif
-
 runtime! macros/matchit.vim
 let g:netrw_dirhistmax = 0
 
