@@ -280,9 +280,13 @@ if [ -f ~/.fzf.zsh ]; then
   export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public'
 fi
 
-alias loadnvm='[ -s "$HOME/.nvm/nvm.sh" ] && source "$HOME/.nvm/nvm.sh"'  # This loads nvm
+export NVM_DIR="$HOME/.nvm"
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_comp
+
+alias loadnvm='[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"'  # This loads nvm
+
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Shell tools {{{1
 #
