@@ -86,6 +86,9 @@ alias nuvango="cd $SRC/nuvango/retail && clear"
 alias dotfiles="cd ~/dotfiles"
 alias songs="$EDITOR ~/docs/band/songs.md"
 
+# js for phoenix
+alias n="npm --prefix assets"
+
 # tmux
 ide() { "$DOTFILES/ide.sh" }
 
