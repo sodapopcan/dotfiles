@@ -960,34 +960,8 @@ nmap c<CR> mm'o:TestNearest<CR>'m
 let g:ycm_key_list_select_completion = ['<c-e>']
 
 
-" Work {{{1
+" Jira {{{1
 "
-
-if $WORK_COMPUTER
-  autocmd BufEnter * call s:lcd()
-
-  function! s:lcd() abort
-    try
-      let path = expand('%:p')
-
-      if match(path, '\v\/production-scheduling\/') < 0
-        return
-      endif
-
-      let cd_base_path = matchstr(path, '\v.+production-scheduling\/')
-
-      if match(path, '\v\/backend\/') >= 0
-        exec "lcd ".cd_base_path."backend"
-      endif
-
-      if match(path, '\v\/frontend\/') >= 0
-        exec "lcd ".cd_base_path."frontend"
-      endif
-    catch
-      echo "Failed to lcd"
-    endtry
-  endfunction
-endif
 
 function! s:git_cmd(cmd) abort
   return systemlist(FugitiveShellCommand() . ' ' . a:cmd)
