@@ -502,6 +502,21 @@ command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
 command! -nargs=0 Shrug exec "normal! a¯\\_(ツ)_/¯\<Esc>"
 " Source
 command! -nargs=0 So so %
+" Deploy
+command! -nargs=0 Deploy call s:deploy()
+function! s:deploy() abort
+  if empty(expand(glob("./deploy")))
+    echom "Can't find a deploy script."
+    return 0
+  endif
+
+  let cmd = "!"
+  if exists(":Dispatch") ==# 2
+    let cmd = "Dispatch"
+  endif
+
+  execute cmd."./deploy"
+endfunction
 
 " Debugging
 " Takes a variable name as an arg and will output a debug log
