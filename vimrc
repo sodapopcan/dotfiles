@@ -499,34 +499,6 @@ function! s:deploy() abort
   execute cmd."./deploy"
 endfunction
 
-" Debugging
-" Takes a variable name as an arg and will output a debug log
-" statement dependent on the language
-" With no argument will use the word under the cursor
-nnoremap <silent> gI :call <SID>console_log()<CR>
-function! s:console_log()
-  let token = expand('<cword>')
-  let output = []
-  if &ft ==# 'vim'
-    let output = 'echom "'.token.'=".'.token
-  elseif &ft ==# 'elixir'
-    let output = ['IO.puts "\n#################"', 'IO.inspect('.token.', label: "'.token.'")']
-  elseif &ft ==# 'ruby'
-    let output = ['p "#" * 80', 'p '.token, 'p "#" * 80']
-  elseif &ft ==# 'elixir'
-    let output = ['IO.inspect '.token]
-  elseif &ft =~# '^javascript'
-    let output = 'console.log("'.token.'", '.token.')'
-  else
-    return
-  endif
-  call append(line('.'), output)
-  let z = @z
-  normal! mz
-  exec "silent normal! j".len(output)."=j`z"
-  let @z = z
-endfunction
-
 " Mappings Functions {{{2
 
 " Paste at end of the line
