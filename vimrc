@@ -14,7 +14,6 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'dzeban/vim-log-syntax'
-" Plug 'styled-components/vim-styled-components'
 
 " Utility
 Plug 'tpope/vim-dispatch'
@@ -26,7 +25,6 @@ Plug 'heavenshell/vim-slack'
 Plug 'majutsushi/tagbar'
 Plug '~/src/vim/vim-rummage'
 Plug 'RRethy/vim-illuminate'
-" Plug 'svermeulen/vim-yoink'
 Plug 'markonm/traces.vim'
 Plug 'rhysd/git-messenger.vim'
 
@@ -42,7 +40,6 @@ Plug 'rhysd/vim-textobj-ruby'
 Plug 'andyl/vim-textobj-elixir'
 
 Plug 'kana/vim-smartinput'
-" Plug 'tmsvg/pear-tree'
 
 " Navigation
 Plug 'scrooloose/nerdtree',            { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -72,8 +69,8 @@ Plug 'vim-scripts/a.vim'
 Plug 'justinmk/vim-syntax-extra'
 
 " Git
-call s:PlugLocal('~/src/vim/fugitive', 'tpope/vim-fugitive')
 Plug 'zivyangll/git-blame.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
 call s:PlugLocal('~/src/vim/twiggy', 'sodapopcan/vim-twiggy')
@@ -111,10 +108,8 @@ Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
 
 " Elixir
-" Plug 'elixir-lang/vim-elixir'
-Plug '~/src/vim/elixir'
-Plug '~/src/vim/scriptease'
 Plug 'slashmili/alchemist.vim'
+Plug 'elixir-lang/vim-elixir'
 
 " Haskell
 Plug 'itchyny/vim-haskell-indent'
