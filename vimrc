@@ -13,12 +13,6 @@ Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-tbone'
 Plug 'ludovicchabant/vim-gutentags'
-function! BuildYCM(info)
-  if a:info.status == 'installed' || a:info.force
-    !./install.py
-  endif
-endfunction
-" Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'dzeban/vim-log-syntax'
 " Plug 'styled-components/vim-styled-components'
 
