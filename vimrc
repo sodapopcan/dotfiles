@@ -47,7 +47,7 @@ Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all
 Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-projectionist'
-" Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-scriptease'
 
 " Lint
 Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
