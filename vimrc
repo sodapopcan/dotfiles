@@ -235,14 +235,6 @@ inoremap <C-@> <Nop>
 inoremap <silent> <C-C> <Esc>:redraw!<CR>
 nnoremap <silent> <C-C> :redraw!<CR>
 
-" Thanks a lot, macOS touchbar you worthless... ugh.  Ok, I'll stop...
-" Disable Fn keys in command and insert modes.
-for i in range(1, 12)
-  for mode in ['c', 'i']
-    exec mode."map <F".i."> <Nop>"
-  endfor
-endfor
-
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
 " Don't jump on search (and always highlight)
