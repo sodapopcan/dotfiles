@@ -696,7 +696,7 @@ let g:gutentags_ctags_exclude = ['js', 'jsx', 'md', 'markdown', 'json', 'sh']
 " IfIOnly {{{1
 "
 let g:ifionly_filetypes = ['vim-plug']
-let g:ifionly_destructive_jump = 0
+let g:ifionly_destructive_jump = 1
 
 " Illuminate {{{1
 "
