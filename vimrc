@@ -579,7 +579,7 @@ command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
 
 function! s:git_push(bang) abort
   if a:bang
-    G push -f
+    G push --force-with-lease
   else
     G push -u
   endif
