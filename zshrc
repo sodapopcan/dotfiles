@@ -168,7 +168,8 @@ current_project()
   if [ -z $ref ]; then
     echo "${PWD/#$HOME/~}"
   else
-    echo "$(basename $(git rev-parse --show-toplevel))"
+    toplevel=$(git rev-parse --show-toplevel)
+    [ "$toplevel" != "" ] && echo "$(basename $toplevel)"
   fi
 }
 
