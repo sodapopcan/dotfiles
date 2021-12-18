@@ -357,9 +357,9 @@ for c in chars
   exec "nnoremap gyi".c."<Space> yi".c.":Rummage \"\"<Left><C-R><C-\">"
   exec "nnoremap gya".c."<Space> ya".c.":Rummage \"\"<Left><C-R><C-\">"
   " Substitute
-  exec "nnoremap gy".c."s y".c.":%s/<C-R><C-\">//g<Left><Left>"
-  exec "nnoremap gyi".c."s yi".c.":%s/<C-R><C-\">//g<Left><Left>"
-  exec "nnoremap gya".c."s ya".c.":%s/<C-R><C-\">//g<Left><Left>"
+  exec "nnoremap gy".c."s y".c.":%s/\\\<<C-R><C-\">\\\>//g<Left><Left>"
+  exec "nnoremap gyi".c."s yi".c.":%s/\\\<<C-R><C-\">\\\>//g<Left><Left>"
+  exec "nnoremap gya".c."s ya".c.":%s/\\\<<C-R><C-\">\\\>//g<Left><Left>"
 endfor
 
 " Leader Mappings
