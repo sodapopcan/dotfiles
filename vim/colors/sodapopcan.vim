@@ -113,6 +113,7 @@ hi helpNote ctermbg=bg ctermfg=166
 
 " hi elixirStructDelimiter ctermfg=131
 hi link elixirDocTest Comment
+hi link elixirStringDelimiter String
 
 " hi! clear rubyIdentifier
 " hi! clear rubyInstanceVaria           ble
