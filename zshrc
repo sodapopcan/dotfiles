@@ -311,6 +311,9 @@ if which brew > /dev/null; then
   [ -f "$zsh_syntax_hilite_path" ] && . "$zsh_syntax_hilite_path"
 fi
 
+# asdf
+. /opt/homebrew/opt/asdf/asdf.sh
+
 # rbenv
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
