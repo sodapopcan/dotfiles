@@ -14,6 +14,12 @@ export PATH="$HOME/.stack/snapshots/x86_64-osx/lts-11.5/8.2.2/bin:$PATH"
 export PATH="$HOME/.stack/compiler-tools/x86_64-osx/ghc-8.2.2/bin:$PATH"
 export PATH="$HOME/.stack/programs/x86_64-osx/ghc-8.2.2/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
+# Fixes problems with Erlang on Apple Chip
+export CFLAGS="-O2 -g -arch arm64"
+export CXXFLAGS="-arch arm64"
+export LDFLAGS="-arch arm64"
 
 # Disable abhorrent eslint default behaviour
 export ESLINT_NO_DEV_ERRORS=true
