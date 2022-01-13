@@ -634,7 +634,10 @@ let g:ale_linters = {
       \   'haskell': ['ghc']
       \ }
 
-let g:ale_elixir_credo_strict = 1
+let g:ale_elixir_credo_strict = 0
+if !empty(glob(".credo.exs"))
+  let g:ale_elixir_credo_config_file = ".credo.exs"
+endif
 
 " if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
 let g:ale_ruby_rubocop_executable = 'bundle'
