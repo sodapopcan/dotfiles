@@ -1,4 +1,4 @@
-if !exists('g:loaded_fugitive') || b:fugitive_type != 'index'
+if !exists('g:loaded_fugitive') || exists("b:fugitive_type") && b:fugitive_type != 'index'
   finish
 endif
 
