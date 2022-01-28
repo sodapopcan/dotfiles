@@ -115,6 +115,9 @@ hi helpNote ctermbg=bg ctermfg=166
 hi link elixirDocTest Comment
 hi link elixirStringDelimiter String
 
+hi elixirFunctionSpec ctermfg=240
+call matchadd("elixirFunctionSpec", '^\s\+@spec.*')
+
 " hi! clear rubyIdentifier
 " hi! clear rubyInstanceVaria           ble
 hi erubyBlock                           ctermfg=167 cterm=none
