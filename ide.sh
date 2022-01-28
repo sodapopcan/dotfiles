@@ -31,7 +31,7 @@ fi
 if [ -z "$WORK_COMPUTER" ]; then
   main_session=andrwe
 else
-  main_session=nulogy
+  main_session=payitoff
 fi
 
 # main session
