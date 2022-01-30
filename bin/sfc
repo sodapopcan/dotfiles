@@ -7,19 +7,53 @@ if ! command -v jq &> /dev/null || ! command -v git &> /dev/null ; then
   exit 1
 fi
 
-resp=$(
-  curl -s -X GET \
-  -H "Content-Type: application/json" \
-  -H "Shortcut-Token: ${SHORTCUT_API_TOKEN}" \
-  -L "https://api.app.shortcut.com/api/v3/stories/${1}"
-)
+get_story_branch ()
+{
+  resp=$(
+  curl -s -w '\n%{http_code}' -X GET \
+    -H "Content-Type: application/json" \
+    -H "Shortcut-Token: ${SHORTCUT_API_TOKEN}" \
+    -L "https://api.app.shortcut.com/api/v3/stories/${1}"
+  )
 
-branch=$(
-  echo "${resp}" \
-  | jq .name \
-  | iconv -t ascii//TRANSLIT \
-  | sed -r s/[^a-zA-Z0-9]+/-/g \
-  | sed -r s/^-+\|-+$//g | tr A-Z a-z
-)
+  local http_status="${resp##*$'\n'}"
+  local json="${resp%%$'\n'*}"
 
-git checkout "sc-${1}/${branch}"
+  case "${http_status}" in
+    200)
+      branch=$(
+      echo "${json}" \
+        | jq .name \
+        | iconv -t ascii//TRANSLIT \
+        | sed -r s/[^a-zA-Z0-9]+/-/g \
+        | sed -r s/^-+\|-+$//g | tr A-Z a-z
+      )
+
+      branch="sc-${1}/${branch}"
+      echo $branch
+      ;;
+
+    400)
+      echo "No story with id \"${1}\""
+      ;;
+
+    401)
+      echo "Unathorized"
+      ;;
+
+    404)
+      echo "Not found"
+      ;;
+
+    *)
+      echo "Got HTTP ${http_status}. Payload:"
+      echo "${json}"
+      exit 1
+      ;;
+  esac
+}
+
+
+get_story_branch $1
+
+# git checkout "sc-${1}/${branch}"
