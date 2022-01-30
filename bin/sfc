@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+if ! command -v jq &> /dev/null || ! command -v git &> /dev/null ; then
+  echo "The jq and git programs are required to use this script"
+  exit 1
+fi
+
+resp=$(
+  curl -s -X GET \
+  -H "Content-Type: application/json" \
+  -H "Shortcut-Token: ${SHORTCUT_API_TOKEN}" \
+  -L "https://api.app.shortcut.com/api/v3/stories/${1}"
+)
+
+branch=$(
+  echo "${resp}" \
+  | jq .name \
+  | iconv -t ascii//TRANSLIT \
+  | sed -r s/[^a-zA-Z0-9]+/-/g \
+  | sed -r s/^-+\|-+$//g | tr A-Z a-z
+)
+
+git checkout "sc-${1}/${branch}"
