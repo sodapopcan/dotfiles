@@ -19,7 +19,7 @@ json="${resp%%$'\n'*}"
 
 case "${http_status}" in
   200)
-    local slugified_ticket_name=$(
+    slugified_ticket_name=$(
       echo "${json}" \
         | jq .name \
         | iconv -t ascii//TRANSLIT \
