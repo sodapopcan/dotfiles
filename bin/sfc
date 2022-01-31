@@ -21,16 +21,15 @@ get_story_branch ()
 
   case "${http_status}" in
     200)
-      branch=$(
-      echo "${json}" \
-        | jq .name \
-        | iconv -t ascii//TRANSLIT \
-        | sed -r s/[^a-zA-Z0-9]+/-/g \
-        | sed -r s/^-+\|-+$//g | tr A-Z a-z
+      local slugified_ticket_name=$(
+        echo "${json}" \
+          | jq .name \
+          | iconv -t ascii//TRANSLIT \
+          | sed -r s/[^a-zA-Z0-9]+/-/g \
+          | sed -r s/^-+\|-+$//g | tr A-Z a-z
       )
 
-      branch="sc-${1}/${branch}"
-      echo $branch
+      echo "sc-${1}/${slugified_ticket_name}"
       ;;
 
     400)
@@ -54,6 +53,6 @@ get_story_branch ()
 }
 
 
-get_story_branch $1
+branch=$(get_story_branch $1)
 
-# git checkout "sc-${1}/${branch}"
+git checkout -b "sc-${1}/${branch}"
