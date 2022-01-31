@@ -5,7 +5,7 @@ export DOTFILES="$HOME/dotfiles"
 export EDITOR=vim
 export GIT_EDITOR="$EDITOR"
 export PROMPT_COMMAND="history -a; history -n"
-export PATH=LOCAL_PATH:$PATH
+export PATH="$HOME/dotfiles/bin:$PATH"
 export ERL_AFLAGS="-kernel shell_history enabled"
 export PATH="$HOME/.rbenv/bin:$PATH" # rbenv
 # Haskell stuff
