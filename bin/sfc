@@ -7,12 +7,39 @@ if ! command -v jq &> /dev/null || ! command -v git &> /dev/null ; then
   exit 1
 fi
 
+config_dir="${HOME}/.shortcut-formerly-clubhouse" 
+members_file="${config_dir}/members"
+
+if [ ! -d "${config_dir}" ] ; then
+  mkdir "${config_dir}"
+  curl -s -X GET \
+  -H "Content-Type: application/json" \
+  -H "Shortcut-Token: $SHORTCUT_API_TOKEN" \
+  -L "https://api.app.shortcut.com/api/v3/members" \
+  | jq -r '.[] | [.id, .profile.email_address | sub("@payitoff.io"; "")] | @tsv' > "${members_file}"
+fi
+
+if [ $# -eq 0 ] ; then
+  curl -s -X POST \
+  -H "Content-Type: application/json" \
+  -H "Shortcut-Token: ${SHORTCUT_API_TOKEN}" \
+  -d '{ "workflow_state_id": 500000008, "archived": false }' \
+  -L "https://api.app.shortcut.com/api/v3/stories/search" \
+  | jq -r '.[] | [.id, .name, .owner_ids[0]] | @tsv' \
+  | sort -t $'\t' -k3 \
+  | column -t -s $'\t'
+
+  exit 0
+fi
+
 resp=$(
 curl -s -w '\n%{http_code}' -X GET \
   -H "Content-Type: application/json" \
   -H "Shortcut-Token: ${SHORTCUT_API_TOKEN}" \
   -L "https://api.app.shortcut.com/api/v3/stories/${1}"
 )
+
+# workflow-state ready for dev: 500000008
 
 http_status="${resp##*$'\n'}"
 json="${resp%%$'\n'*}"

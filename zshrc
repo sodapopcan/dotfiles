@@ -222,14 +222,6 @@ job_prompt_string()
   fi
 }
 
-work_computer_string()
-{
-  local strang=()
-  [[ "$RAILS_NEXT" = "true" ]] && strang+=("%{%F{3}%}RN")
-  [[ "$DISABLE_SPRING" = "1" ]] && strang+=("%{%F{130}%}xSpringx")
-  [[ ${#strang[@]} > 0 ]] && echo -n " ${strang[@]}"
-}
-
 battery()
 {
   ~/dotfiles/sh/battery.sh
@@ -239,7 +231,7 @@ battery()
 # Prompt {{{1
 
 PS1='
-   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string)$(work_computer_string)
+   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string)
 %(?.%{%F{108}%} *.%{%F{167}%} *)%{%F{253}%}%b '
 
 
