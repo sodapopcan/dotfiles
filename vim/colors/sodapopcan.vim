@@ -111,12 +111,16 @@ hi helpNote ctermbg=bg ctermfg=166
 " hi! link elixirBuiltin Comment
 " hi link elixirPseudoVariable Comment
 
+
 " hi elixirStructDelimiter ctermfg=131
 hi link elixirDocTest Comment
 hi link elixirStringDelimiter String
 
-hi elixirFunctionSpec ctermfg=240
-call matchadd("elixirFunctionSpec", '^\s\+@spec.*')
+hi link elixirFunctionSpec Comment
+hi link elixirDocString Comment
+hi link elixirImpl Comment
+
+hi elixirTodo ctermfg=208 ctermbg=bg
 
 " hi! clear rubyIdentifier
 " hi! clear rubyInstanceVaria           ble
