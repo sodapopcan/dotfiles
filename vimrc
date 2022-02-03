@@ -350,6 +350,8 @@ nnoremap <leader>ga ga
 nnoremap <leader>gl gr
 " Grepping
 nnoremap g<Space> :Rummage "" <Left><Left>
+" Grep in file
+nnoremap g/ :BLines<CR>
 let chars = ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
 for c in chars
   " Grep
