@@ -550,10 +550,6 @@ augroup SignColumn
   autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
 augroup END
 
-au FileType GV nnoremap go :normal o<cr><bar>:wincmd w<cr><bar>:normal! zR<cr>
-au FileType GV nnoremap <buffer> Q :tabclose<CR>
-
-
 " Closetag {{{1
 "
 let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.mustache"
