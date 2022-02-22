@@ -677,18 +677,6 @@ hi GitGutterAdd    ctermfg=28  ctermbg=bg cterm=NONE
 hi GitGutterChange ctermfg=24  ctermbg=bg cterm=NONE
 hi GitGutterDelete ctermfg=167 ctermbg=bg cterm=NONE
 
-" Goyo {{{1
-"
-
-function! s:goyo_enter()
-  set statusline=0
-endfunction
-function! s:goyo_leave()
-  source ~/.vimrc
-endfunction
-autocmd User GoyoEnter nested call <SID>goyo_enter()
-autocmd User GoyoLeave nested call <SID>goyo_leave()
-
 " Gutentags {{{1
 "
 let g:gutentags_exclude_filetypes = ['javascript', 'javascript.jsx', 'markdown']
