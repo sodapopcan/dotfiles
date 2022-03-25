@@ -1,3 +1,4 @@
+brew "asdf"
 brew "tmux"
 brew "vim"
 brew "git"
