@@ -268,6 +268,7 @@ nnoremap <silent> d<CR> :Dispatch<CR>
 " Tests (Vim-Test)
 nnoremap <silent> f<CR> :TestFile<CR>
 nnoremap <silent> t<CR> :TestNearest<CR>
+nnoremap <silent> T<CR> :TestSuite<CR>
 nnoremap <silent> F<CR> :TestVisit<CR>
 " Write everything and quit
 nnoremap z; :wall \| qall!<CR>
