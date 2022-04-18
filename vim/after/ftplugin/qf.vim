@@ -4,9 +4,9 @@ nnoremap <buffer> H :res 999<cr>gg
 nnoremap <buffer> M :res 30<cr>gg
 nnoremap <buffer> L :res 10<cr>gg
 
-nnoremap <silent> <buffer> o :call <SID>open_file()<CR>
+nnoremap <silent> <buffer> O :call <SID>open_file()<CR>
 nnoremap <silent> <buffer> go :call <SID>preview_file()<CR>
-nnoremap <silent> <buffer> O :call <SID>open_file_and_close_qf()<CR>
+nnoremap <silent> <buffer> o :call <SID>open_file_and_close_qf()<CR>
 nnoremap <silent> <buffer> q :quit<CR>
 nnoremap <silent> <buffer> <c-c> <c-c>:quit<CR>:call <SID>edit_return_file()<CR>
 
