@@ -245,7 +245,6 @@ nnoremap <silent> * :let winstate = winsaveview()<bar>
       \ setlocal hlsearch<bar>
       \ call winrestview(winstate)<bar>
       \ unlet winstate<cr>
-nnoremap <silent> # #<C-O>:set hlsearch<CR>
 " Apparently I have to do this because of my iTerm key-remaps
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
