@@ -283,9 +283,4 @@ fi
 # asdf
 . /opt/homebrew/opt/asdf/asdf.sh
 
-# rbenv
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
-fi
-
 [ -f "$HOME/.privaterc" ] && . "$HOME/.privaterc"
