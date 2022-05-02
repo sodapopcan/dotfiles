@@ -283,4 +283,7 @@ fi
 # asdf
 . /opt/homebrew/opt/asdf/asdf.sh
 
+# gggit
+ssh-add ~/.ssh/github
+
 [ -f "$HOME/.privaterc" ] && . "$HOME/.privaterc"
