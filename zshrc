@@ -14,6 +14,7 @@ export PATH="$HOME/.stack/snapshots/x86_64-osx/lts-11.5/8.2.2/bin:$PATH"
 export PATH="$HOME/.stack/compiler-tools/x86_64-osx/ghc-8.2.2/bin:$PATH"
 export PATH="$HOME/.stack/programs/x86_64-osx/ghc-8.2.2/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
 # Fixes problems with Erlang on Apple Chip
@@ -52,10 +53,6 @@ alias permit_alacritty='xattr -d com.apple.quarantine $(which alacritty)'
 
 # system stuffs {{{1
 alias r="source $HOME/.zshrc"
-alias p="$EDITOR ~/dotfiles/zshrc"
-alias mkdir="mkdir -p"
-
-alias s="cd $HOME/src"
 
 d () { mkdir -p "$1" && cd "$1"; }
 g () { mkdir -p "$1" && cd "$1" && git init; }
@@ -77,18 +74,19 @@ colours()
   done
 }
 
+# Fix postgres
+fixpg()
+{
+  rm /opt/homebrew/var/postgres/postmaster.pid
+  brew services restart postgres
+}
+
 
 # theme {{{1
 export CLICOLOR=1
-export PATH="/usr/local/bin:$PATH"
-export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
 
+# mysql
 export MYSQL_PS1="\d> "
-
-# projects {{{1
-alias nuvango="cd $SRC/nuvango/retail && clear"
-alias dotfiles="cd ~/dotfiles"
-alias songs="$EDITOR ~/docs/band/songs.md"
 
 # tmux
 ide() { "$DOTFILES/ide.sh" }
@@ -96,31 +94,21 @@ ide() { "$DOTFILES/ide.sh" }
 # stuff
 alias lsl="ls -l"
 alias lsla="ls -la"
-# git {{{1
+
 alias gs="git status -s"
 alias gb="git branch"
 alias gc="git commit"
 alias gA="git commit --amend --no-edit"
-alias grim="git rebase -i master"
-alias grid="git rebase -i development"
+alias grim="git rebase -i main"
 alias gr="git rebase"
 alias gri="git rebase -i"
 alias grc="git rebase --continue"
 alias gra="git rebase --abort"
 alias gco="git checkout"
-alias gcp="git cherry-pick"
-alias gM="git checkout master"
-alias gf="git fetch"
-alias gfm="git fetch master"
 alias gl="git log --pretty=format:'%Cred%H%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias l="gl master.."
 alias gd="git_diff"
 alias gdc="git_diff --cached"
 alias gD="git diff --name-only"
-alias gdm="git_diff master"
-alias gdM="git diff master --name-only"
-alias gr="git reset"
-alias gS="git reset --soft HEAD\^"
 alias gR="git reset --hard"
 alias ga="git add"
 alias gap="git add -p"
