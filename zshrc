@@ -81,9 +81,7 @@ colours()
 # theme {{{1
 export CLICOLOR=1
 export PATH="/usr/local/bin:$PATH"
-export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:$HOME/vert.x-2.1.2/bin"
-export PATH="$PATH:/opt/yarn-[version]/bin"
 
 export MYSQL_PS1="\d> "
 
@@ -91,9 +89,6 @@ export MYSQL_PS1="\d> "
 alias nuvango="cd $SRC/nuvango/retail && clear"
 alias dotfiles="cd ~/dotfiles"
 alias songs="$EDITOR ~/docs/band/songs.md"
-
-# js for phoenix
-alias n="npm --prefix assets"
 
 # tmux
 ide() { "$DOTFILES/ide.sh" }
@@ -283,14 +278,6 @@ if [ -f ~/.fzf.zsh ]; then
   # export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v "fonts\/*" | grep -v "images\/*" | grep -v "db\/*" | grep -v "public\/*" || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
   export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public'
 fi
-
-export NVM_DIR="$HOME/.nvm"
-
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_comp
-
-alias loadnvm='[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"'  # This loads nvm
-
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Shell tools {{{1
 #
