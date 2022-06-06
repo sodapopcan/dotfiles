@@ -111,8 +111,8 @@ Plug 'tpope/vim-rails'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
 
-" Haskell
-Plug 'itchyny/vim-haskell-indent'
+" PHP
+Plug 'captbaritone/better-indent-support-for-php-with-html'
 
 " Pony
 Plug 'jakwings/vim-pony'
