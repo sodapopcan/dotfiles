@@ -365,6 +365,8 @@ for c in chars
   exec "nnoremap gyi".c."s yi".c.":%s/\\\<<C-R><C-\">\\\>//g<Left><Left>"
   exec "nnoremap gya".c."s ya".c.":%s/\\\<<C-R><C-\">\\\>//g<Left><Left>"
 endfor
+" Shruggie
+nnoremap <leader>s a¯\_(ツ)_/¯<Esc>
 
 " Leader Mappings
 
@@ -485,8 +487,6 @@ autocmd! BufRead,BufNewFile *.tfvars setlocal filetype=tf
 
 " General
 command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
-" Shruggie
-command! -nargs=0 Shrug exec "normal! a¯\\_(ツ)_/¯\<Esc>"
 " Source
 command! -nargs=0 So so %
 " Deploy
