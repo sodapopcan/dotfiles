@@ -12,4 +12,5 @@ tags.temp
 tags.temp.tmp
 vim/.netrwhist
 vim/plugins
+Brewfile.lock.json
 .rummage.json
