@@ -222,6 +222,9 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 " Mappings {{{1
 "
 
