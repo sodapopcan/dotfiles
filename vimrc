@@ -167,7 +167,7 @@ set mouse=a
 set backspace=2     " Backspace over everything
 set laststatus=2    " Always show the status line
 set showtabline=2   " I don't really use tabs, but the tabline works decently
-                    " as a global status line
+" as a global status line
 set expandtab
 set shiftround
 set tabstop=2 softtabstop=2 shiftwidth=2
@@ -260,6 +260,7 @@ nnoremap <silent> * :let winstate = winsaveview()<bar>
 
 let g:tmux_navigator_no_mappings = 1
 nnoremap <C-J> <Nop>
+nnoremap <C-j> <Nop>
 nnoremap <silent> <F6> :TmuxNavigateLeft<cr>
 nnoremap <silent> <F7> :TmuxNavigateDown<cr>
 nnoremap <silent> <F8> :TmuxNavigateUp<cr>
