@@ -21,6 +21,8 @@ export LIBRARY_PATH=/opt/homebrew/lib
 export CFLAGS="-O2 -g -arch arm64"
 export CXXFLAGS="-arch arm64"
 export LDFLAGS="-arch arm64"
+# https://stackoverflow.com/questions/64185912/need-help-installing-ruby-2-7-2-on-mac
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Disable abhorrent eslint default behaviour
 export ESLINT_NO_DEV_ERRORS=true
