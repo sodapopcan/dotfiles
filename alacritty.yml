@@ -48,9 +48,9 @@ font:
 draw_bold_text_with_bright_colors: true
 
 colors:
-    primary:
-      background: "#303030" # base
-      foreground: "#c7c7c7" # text
+  primary:
+    background: "#303030" # base
+    foreground: "#c7c7c7" # text
 
 # Key Bindings
 # To figure out chars, `xxd -psd`
