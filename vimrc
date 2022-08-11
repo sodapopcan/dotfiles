@@ -248,7 +248,16 @@ nnoremap <silent> * :let winstate = winsaveview()<bar>
       \ setlocal hlsearch<bar>
       \ call winrestview(winstate)<bar>
       \ unlet winstate<cr>
-" Apparently I have to do this because of my iTerm key-remaps
+
+" I'm using F keys here to solve a problem with C-J in vim causing issue with my
+" save mapping (<CR>).  I'm not exactly what is happening but sometimes
+" (which turned into "often' when getting an M1) after leaving insert mode and
+" quickly hitting <CR> would cause the cursor to jump down a window (which was
+" infuriating).  I'm assuming this is because <C-J> is the same as <CR> which
+" would somehow register <CR> as <C-J> if done very quickly?  Something like
+" that.  Anyway, I've finally solved it by just using F keys (which I never use)
+" and unmapping <C-J>.
+
 let g:tmux_navigator_no_mappings = 1
 nnoremap <C-J> <Nop>
 nnoremap <silent> <F6> :TmuxNavigateLeft<cr>
