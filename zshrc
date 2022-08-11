@@ -289,3 +289,5 @@ fi
 ssh-add ~/.ssh/github
 
 [ -f "$HOME/.privaterc" ] && . "$HOME/.privaterc"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
