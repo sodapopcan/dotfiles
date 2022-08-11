@@ -16,6 +16,6 @@ These are my personal config files that I have only ever used on macOS.
 
 ### Alacritty
 
-In order to use `cmd-q` in the way I want to use it, `cmd-q` must be disabled at
-the OS level.  Go to Preferences -> Keyboard -> Shortcuts -> App Shortcuts and
-override `cmd-q` for Alacritty to something else.  I do `cmd-shift-ctl-q`.
+In order to use `cmd-q` and `cmd-h` in the ways I want to use them, they must be
+disabled at the OS level.  Go to Preferences -> Keyboard -> Shortcuts -> App
+Shortcuts to override them.  I prefix with `cmd-ctrl-shift-`.
