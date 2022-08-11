@@ -291,3 +291,6 @@ ssh-add ~/.ssh/github
 [ -f "$HOME/.privaterc" ] && . "$HOME/.privaterc"
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# opam configuration
+[[ ! -r /Users/andrewhaust/.opam/opam-init/init.zsh ]] || source /Users/andrewhaust/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
