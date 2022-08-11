@@ -65,9 +65,9 @@ key_bindings:
   # MacOS native-like
   - { key: V, mods: Command, action: Paste }
   - { key: C, mods: Command, action: Copy }
-  - { key: Key0, mods: Command, action: ResetFontSize }
-  - { key: Equals, mods: Command, action: IncreaseFontSize }
-  - { key: Minus, mods: Command, action: DecreaseFontSize }
+  - { key: Key0, mods: Command|Shift, action: ResetFontSize }
+  - { key: Equals, mods: Command|Shift, action: IncreaseFontSize }
+  - { key: Minus, mods: Command|Shift, action: DecreaseFontSize }
 
   # Sessions
   - { key: Slash, mods: Command, chars: "\x10\x73" } # Switch sessions
@@ -77,8 +77,8 @@ key_bindings:
   - { key: T, mods: Command, chars: "\x10\x63" } # Create window
   - { key: W, mods: Command|Shift, chars: "\x10\x57" } # Kill current window
   - { key: Comma, mods: Command, chars: "\x10\x2c" } # Rename window
-  - { key: LBracket, mods: Command|Shift, chars: "\x10\x7b" } # Previous window
-  - { key: RBracket, mods: Command|Shift, chars: "\x10\x7d" } # Next window
+  - { key: LBracket, mods: Command|Shift, chars: "\x10\x70" } # Previous window
+  - { key: RBracket, mods: Command|Shift, chars: "\x10\x6e" } # Next window
 
   # Pane navigations
   - { key: H, mods: Command, chars: "\x10\x68" } # Pane left
@@ -107,8 +107,13 @@ key_bindings:
   - { key: Left, mods: Command, chars: "\x10\x1b\x5b\x44" } # Move window left
   - { key: Right, mods: Command, chars: "\x10\x1b\x5b\x43" } # Move window right
 
+  # Pane moving
+  - { key: LBracket, mods: Command, chars: "\x10\x7b" } # Move window left
+  - { key: RBracket, mods: Command, chars: "\x10\x7d" } # Move window right
+
   # Misc pane manipulation
-  - { key: Z, mods: Command, chars: "\x10\x7a" } # Zoom pabe
+  - { key: Z, mods: Command, chars: "\x10\x7a" } # Zoom pane
+  - { key: Equals, mods: Command, chars: "\x10\x61" } # Sync panes
 
   # Restore ctrl-6 behaviour
   # https://github.com/alacritty/alacritty/issues/1108#issuecomment-365354347
