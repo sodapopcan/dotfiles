@@ -97,12 +97,6 @@ key_bindings:
   - { key: LBracket, mods: Command|Shift, chars: "\x01\x7b" } # window left
   - { key: RBracket, mods: Command|Shift, chars: "\x01\x7d" } # window right
 
-  - { key: Key1, mods: Command, chars: "\x01\x31" } # jump to window 1
-  - { key: Key2, mods: Command, chars: "\x01\x32" } # jump to window 2
-  - { key: Key3, mods: Command, chars: "\x01\x33" } # jump to window 3
-  - { key: Key4, mods: Command, chars: "\x01\x34" } # jump to window 4
-  - { key: Key5, mods: Command, chars: "\x01\x35" } # jump to window 5
-  - { key: Key6, mods: Command, chars: "\x01\x36" } # jump to window 6
-  - { key: Key7, mods: Command, chars: "\x01\x37" } # jump to window 7
-  - { key: Key8, mods: Command, chars: "\x01\x38" } # jump to window 8
-  - { key: Key9, mods: Command, chars: "\x01\x39" } # jump to window 9
+  # Restore ctrl-6 behaviour
+  # https://github.com/alacritty/alacritty/issues/1108#issuecomment-365354347
+  - { key: Key6, mods: Control, chars: "\x1e" }
