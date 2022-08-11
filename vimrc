@@ -250,10 +250,11 @@ nnoremap <silent> * :let winstate = winsaveview()<bar>
       \ unlet winstate<cr>
 " Apparently I have to do this because of my iTerm key-remaps
 let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <C-H> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-J> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-K> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-L> :TmuxNavigateRight<cr>
+nnoremap <C-J> <Nop>
+nnoremap <silent> <F6> :TmuxNavigateLeft<cr>
+nnoremap <silent> <F7> :TmuxNavigateDown<cr>
+nnoremap <silent> <F8> :TmuxNavigateUp<cr>
+nnoremap <silent> <F9> :TmuxNavigateRight<cr>
 " Control when you want to see more
 exec "nnoremap \<silent> H :vertical resize " . string(&columns * 0.6) "\<CR>"
 " nnoremap <silent> <M-H>:TmuxNavigatePrevious<cr>
