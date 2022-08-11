@@ -71,21 +71,24 @@ key_bindings:
 
   - { key: Slash, mods: Command, chars: "\x10\x73" } # Switch sessions
   - { key: N, mods: Command, chars: "\x10\x6e" } # New session
-  - { key: K, mods: Command|Shift, chars: "\x10\x4b" } # Kill session
 
   - { key: Minus, mods: Command|Shift, chars: "\x10\x5f" } # Split horizontal
-  - { key: Backslash, mods: Command|Shift, chars: "\x10\x7c" } # Split vertical
-
+  - { key: Backslash, mods: Command|Shift, chars: "\x10\x7c" } # Split vertical 
   - { key: Left, mods: Command, chars: "\x10\x1b\x5b\x44" } # Move window left
   - { key: Right, mods: Command, chars: "\x10\x1b\x5b\x43" } # Move window right
 
   - { key: H, mods: Command, chars: "\x10\x68" } # Pane left
-  - { key: J, mods: Command, chars: "\x10\x6a" } # Pane up
-  - { key: K, mods: Command, chars: "\x10\x6b" } # Pane down
+  - { key: J, mods: Command, chars: "\x10\x6a" } # Pane down
+  - { key: K, mods: Command, chars: "\x10\x6b" } # Pane up
   - { key: L, mods: Command, chars: "\x10\x6c" } # Pane right
 
-  - { key: LBracket, mods: Command|Shift, chars: "\x10\x7b" } # window left
-  - { key: RBracket, mods: Command|Shift, chars: "\x10\x7d" } # window right
+  - { key: H, mods: Command|Shift, chars: "\x10\x48" } # Resize up
+  - { key: J, mods: Command|Shift, chars: "\x10\x4a" } # Resize down
+  - { key: K, mods: Command|Shift, chars: "\x10\x4b" } # Resize up
+  - { key: L, mods: Command|Shift, chars: "\x10\x4c" } # Resize right
+
+  - { key: LBracket, mods: Command|Shift, chars: "\x10\x7b" } # Window left
+  - { key: RBracket, mods: Command|Shift, chars: "\x10\x7d" } # Window right
 
   - { key: A, mods: Command, chars: "\x10\x31" } # Jump to window 1
   - { key: S, mods: Command, chars: "\x10\x32" } # Jump to window 2
