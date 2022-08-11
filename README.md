@@ -14,15 +14,8 @@ These are my personal config files that I have only ever used on macOS.
 
 ## Manual Steps
 
-### iTerm
-Preferences -> Profiles -> Keys
-  - `Left option keys acts as: +Esc`
+### Alacritty
 
-Preferences -> Keys
-  - `Left command key: Left Option`
-  - `Right command key: Right Option`
-  - `Left option key: Left Command`
-
-### Karbiner Elements
-  - Download [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements)
-  - Remap the right-hand option key to control
+In order to use `cmd-q` in the way I want to use it, `cmd-q` must be disabled at
+the OS level.  Go to Preferences -> Keyboard -> Shortcuts -> App Shortcuts and
+override `cmd-q` for Alacritty to something else.  I do `cmd-shift-ctl-q`.
