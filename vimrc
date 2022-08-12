@@ -645,21 +645,6 @@ nnoremap <silent> <Space> :FZF<CR>
 let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_commits_log_options = "--pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-" Signify {{{1
-"
-let g:signify_sign_add               = "\u258F"
-let g:signify_sign_delete            = "_"
-let g:signify_sign_delete_first_line = "‾"
-let g:signify_sign_change            = g:signify_sign_add
-let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
-nnoremap g+ :SignifyUndoHunk<CR>
-
-hi SignifySignAdd             ctermfg=120 ctermbg=bg cterm=NONE
-hi SignifySignChange          ctermfg=68 ctermbg=bg cterm=NONE
-hi SignifySignChangeDelete    ctermfg=167 ctermbg=bg cterm=NONE
-hi SignifySignDelete          ctermfg=167 ctermbg=bg cterm=NONE
-hi SignifySignDeleteFirstLine ctermfg=167 ctermbg=bg cterm=NONE
-
 " Gutentags {{{1
 "
 let g:gutentags_exclude_filetypes = ['javascript', 'javascript.jsx', 'markdown']
@@ -856,6 +841,21 @@ let g:rummage_program = 'rg'
 "
 let g:rsi_no_meta = 1
 
+
+" Signify {{{1
+"
+let g:signify_sign_add               = "\u258F"
+let g:signify_sign_delete            = "_"
+let g:signify_sign_delete_first_line = "‾"
+let g:signify_sign_change            = g:signify_sign_add
+let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
+nnoremap g+ :SignifyUndoHunk<CR>
+
+hi SignifySignAdd             ctermfg=120 ctermbg=bg cterm=NONE
+hi SignifySignChange          ctermfg=68 ctermbg=bg cterm=NONE
+hi SignifySignChangeDelete    ctermfg=167 ctermbg=bg cterm=NONE
+hi SignifySignDelete          ctermfg=167 ctermbg=bg cterm=NONE
+hi SignifySignDeleteFirstLine ctermfg=167 ctermbg=bg cterm=NONE
 
 " SplitJoin  {{{1
 "
