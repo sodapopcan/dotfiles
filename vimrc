@@ -61,7 +61,8 @@ Plug 'tpope/vim-ragtag'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 call s:PlugLocal('~/src/vim/twiggy', 'sodapopcan/vim-twiggy')
 Plug 'junegunn/gv.vim'
 
@@ -228,18 +229,9 @@ nnoremap <silent> * :let winstate = winsaveview()<bar>
       \ call winrestview(winstate)<bar>
       \ unlet winstate<cr>
 
-" I'm using F keys here to solve a problem with C-J in vim causing issue with my
-" save mapping (<CR>).  I'm not exactly what is happening but sometimes
-" (which turned into "often' when getting an M1) after leaving insert mode and
-" quickly hitting <CR> would cause the cursor to jump down a window (which was
-" infuriating).  I'm assuming this is because <C-J> is the same as <CR> which
-" would somehow register <CR> as <C-J> if done very quickly?  Something like
-" that.  Anyway, I've finally solved it by just using F keys (which I never use)
-" and unmapping <C-J>.
-
+" I'm using F keys here to leave ctrl-<H,J,K,L> free for other uses.  I don't
+" actually use the F keys, I use cmd mapped through Alacritty.
 let g:tmux_navigator_no_mappings = 1
-nnoremap <C-J> <Nop>
-nnoremap <C-j> <Nop>
 nnoremap <silent> <F6> :TmuxNavigateLeft<cr>
 nnoremap <silent> <F7> :TmuxNavigateDown<cr>
 nnoremap <silent> <F8> :TmuxNavigateUp<cr>
@@ -653,26 +645,20 @@ nnoremap <silent> <Space> :FZF<CR>
 let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_commits_log_options = "--pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-" GitGutter {{{1
+" Signify {{{1
 "
-let g:gitgutter_sign_added = "\u258F"
-let g:gitgutter_sign_modified = g:gitgutter_sign_added
-let g:gitgutter_sign_removed = "\u2581"
-let g:gitgutter_sign_removed_first_line = "\u2594"
-let g:gitgutter_sign_modified_removed = g:gitgutter_sign_added
+let g:signify_sign_add               = "\u258F"
+let g:signify_sign_delete            = "_"
+let g:signify_sign_delete_first_line = "‾"
+let g:signify_sign_change            = g:signify_sign_add
+let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
+nnoremap g+ :SignifyUndoHunk<CR>
 
-" Pre-defined leader mappings in plugins fill me with rage.  Well, not that much
-" rage.  I love Git Gutter.
-let g:gitgutter_map_keys = 0
-nmap g+ <Plug>(GitGutterStageHunk)
-nmap g- <Plug>(GitGutterUndoHunk)
-nmap g_ <Plug>(GitGutterPreviewHunk)
-nmap ]c <Plug>(GitGutterNextHunk)
-nmap [c <Plug>(GitGutterPrevHunk)
-
-hi GitGutterAdd    ctermfg=28  ctermbg=bg cterm=NONE
-hi GitGutterChange ctermfg=24  ctermbg=bg cterm=NONE
-hi GitGutterDelete ctermfg=167 ctermbg=bg cterm=NONE
+hi SignifySignAdd             ctermfg=120 ctermbg=bg cterm=NONE
+hi SignifySignChange          ctermfg=117 ctermbg=bg cterm=NONE
+hi SignifySignChangeDelete    ctermfg=167 ctermbg=bg cterm=NONE
+hi SignifySignDelete          ctermfg=167 ctermbg=bg cterm=NONE
+hi SignifySignDeleteFirstLine ctermfg=167 ctermbg=bg cterm=NONE
 
 " Gutentags {{{1
 "
