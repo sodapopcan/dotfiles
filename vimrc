@@ -655,7 +655,7 @@ let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_de
 nnoremap g+ :SignifyUndoHunk<CR>
 
 hi SignifySignAdd             ctermfg=120 ctermbg=bg cterm=NONE
-hi SignifySignChange          ctermfg=117 ctermbg=bg cterm=NONE
+hi SignifySignChange          ctermfg=68 ctermbg=bg cterm=NONE
 hi SignifySignChangeDelete    ctermfg=167 ctermbg=bg cterm=NONE
 hi SignifySignDelete          ctermfg=167 ctermbg=bg cterm=NONE
 hi SignifySignDeleteFirstLine ctermfg=167 ctermbg=bg cterm=NONE
