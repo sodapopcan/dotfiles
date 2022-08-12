@@ -11,6 +11,8 @@ shell:
     - -s
     - main
 
+working_directory: dotfiles
+
 window:
   dimensions:
     columns: 0
