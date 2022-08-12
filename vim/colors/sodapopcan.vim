@@ -59,9 +59,9 @@ hi Title                             ctermfg=250
 hi Type                              cterm=none   ctermfg=167
 hi Visual                            ctermbg=11    ctermfg=16
 
-hi DiffAdd                           ctermbg=bg   ctermfg=108 cterm=bold
-hi DiffDelete                        ctermbg=bg    ctermfg=95 cterm=bold
-hi! link DiffRemoved DiffDelete 
+hi link DiffAdd String
+hi link DiffDelete Type
+hi link DiffRemoved Type
 hi DiffChange                        ctermbg=143    ctermfg=16  cterm=none
 hi DiffText                          ctermbg=bg   ctermfg=114 cterm=bold
 hi HelpExample                       ctermbg=none ctermfg=137
@@ -72,7 +72,6 @@ hi! link diffFile diffIndexLine
 hi! link diffSubname diffIndexLine
 hi diffAdded                         ctermbg=bg    ctermfg=108
 " hi diffRemoved                       ctermbg=bg     ctermfg=196
-hi! link diffRemoved gitEmail
 hi diffLine                          ctermbg=bg    ctermfg=242
 " hi diffSubname                       ctermbg=bg    ctermfg=114
 hi gitDiff                           ctermbg=bg    ctermfg=243
