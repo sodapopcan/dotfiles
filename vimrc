@@ -9,9 +9,7 @@ function! s:PlugLocal(local, remote)
 endfunction
 
 " Usability
-Plug 'sjl/vitality.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tpope/vim-tbone'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'dzeban/vim-log-syntax'
 
@@ -19,14 +17,10 @@ Plug 'dzeban/vim-log-syntax'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-obsession'
 Plug 'mbbill/undotree'
-Plug 'junegunn/vim-pseudocl'
 Plug 'janko-m/vim-test'
-Plug 'heavenshell/vim-slack'
-Plug 'majutsushi/tagbar'
 Plug '~/src/vim/vim-rummage'
 Plug 'RRethy/vim-illuminate'
 Plug 'markonm/traces.vim'
-Plug 'rhysd/git-messenger.vim'
 
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
@@ -35,7 +29,6 @@ Plug '~/src/vim/refactor'
 
 " Text Objects
 Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-entire'
 Plug 'rhysd/vim-textobj-ruby'
 Plug 'andyl/vim-textobj-elixir'
 
@@ -60,16 +53,12 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
-" call s:PlugLocal('~/src/vim/endwise', 'tpope/vim-endwise')
 Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
 call s:PlugLocal('~/src/vim/ifionly', 'sodapopcan/vim-ifionly')
 Plug 'tpope/vim-ragtag'
-Plug 'vim-scripts/a.vim'
-Plug 'justinmk/vim-syntax-extra'
 
 " Git
-Plug 'zivyangll/git-blame.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
@@ -78,12 +67,10 @@ Plug 'junegunn/gv.vim'
 
 " Markdown
 Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
-Plug 'junegunn/vim-xmark',             { 'for': 'markdown' }
 
 " Html
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
-Plug 'slim-template/vim-slim'
 let g:html_indent_inctags = 'p'
 
 " CSS
@@ -98,11 +85,7 @@ Plug 'prettier/vim-prettier', {
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'kristijanhusak/vim-js-file-import'
 
-" CoffeeScript
-Plug 'kchmck/vim-coffee-script'
-
 " Ruby
-Plug 'tpope/vim-bundler'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
@@ -114,13 +97,9 @@ Plug 'elixir-lang/vim-elixir'
 " PHP
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 
-" Pony
-Plug 'jakwings/vim-pony'
-
 " Other
 Plug 'junegunn/goyo.vim'
 Plug 'chr4/nginx.vim'
-Plug 'hashivim/vim-terraform'
 
 " Work
 if $WORK_COMPUTER
