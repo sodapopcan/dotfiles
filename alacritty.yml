@@ -62,20 +62,20 @@ key_bindings:
   - { key: Semicolon, mods: Command|Shift, chars: "\x10\x3a" } # Run command
   - { key: R, mods: Command|Shift, chars: "\x10\x52" } # Reload tmux config
 
-  # MacOS native-like
+    # MacOS native-like
   - { key: V, mods: Command, action: Paste }
   - { key: C, mods: Command, action: Copy }
-  - { key: Key0, mods: Command|Shift, action: ResetFontSize }
-  - { key: Equals, mods: Command|Shift, action: IncreaseFontSize }
-  - { key: Minus, mods: Command|Shift, action: DecreaseFontSize }
+  - { key: Key0, mods: Command|Control, action: ResetFontSize }
+  - { key: Equals, mods: Command|Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Command|Control, action: DecreaseFontSize }
 
   # Sessions
   - { key: Slash, mods: Command, chars: "\x10\x73" } # Switch sessions
-  - { key: N, mods: Command, chars: "\x10\x6e" } # New session
+  - { key: Equals, mods: Command|Shift, chars: "\x10\x6e" } # New session
 
   # Windows
-  - { key: T, mods: Command, chars: "\x10\x63" } # Create window
-  - { key: W, mods: Command|Shift, chars: "\x10\x57" } # Kill current window
+  - { key: C, mods: Command|Shift, chars: "\x10\x63" } # Create window
+  - { key: X, mods: Command|Shift, chars: "\x10\x57" } # Kill current window
   - { key: Comma, mods: Command, chars: "\x10\x2c" } # Rename window
   - { key: LBracket, mods: Command|Shift, chars: "\x10\x70" } # Previous window
   - { key: RBracket, mods: Command|Shift, chars: "\x10\x6e" } # Next window
