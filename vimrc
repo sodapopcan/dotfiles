@@ -791,6 +791,7 @@ hi SignifySignChangeDelete    ctermfg=167 ctermbg=bg cterm=NONE
 hi SignifySignDelete          ctermfg=167 ctermbg=bg cterm=NONE
 hi SignifySignDeleteFirstLine ctermfg=167 ctermbg=bg cterm=NONE
 
+
 " SplitJoin  {{{1
 "
 let g:splitjoin_ruby_curly_braces = 0
