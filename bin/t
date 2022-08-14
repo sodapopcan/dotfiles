@@ -12,7 +12,7 @@
 #   - identify tasks by their text (partial match);
 #   - a pure bash solution.
 #
-set -o pipefail
+set -euo pipefail
 
 USAGE=$(cat <<'EOF'
 t             List all todo lists
