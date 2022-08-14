@@ -33,44 +33,69 @@ TODO_FILE="${TODO_DIR}/.todo.txt"
 
 touch "${TODO_FILE}"
 
+function complete_task {
+  sed -i'.bak' -e "/$1/ s/\[ \]/[x]/" "${TODO_FILE}"
+}
+
+function uncomplete_task {
+  sed -i'.bak' -e "/$1/ s/\[\x\]/[ ]/" "${TODO_FILE}"
+}
+
+function delete_task {
+  sed -i'.bak' "/$1/d" "${TODO_FILE}"
+}
+
+function purge_completed_tasks {
+  sed -i'.bak' "/\[\x\]/d" "${TODO_FILE}"
+}
+
+function print_tasks {
+  cat "${TODO_FILE}"
+}
+
+function print_uncompleted_tasks {
+  cat "${TODO_FILE}" | grep -e '^\[ \]'
+}
+
+function print_usage {
+  echo "${USAGE}"
+}
+
 while getopts 'x:X:d:hpt' opt; do
   case "$opt" in
     x)
-      arg="${OPTARG}"
-      sed -i'.bak' -e "/${arg}/ s/\[ \]/[x]/" "${TODO_FILE}"
-      cat "${TODO_FILE}"
+      complete_task "${OPTARG}"
+      print_tasks
       ;;
 
     X)
-      arg="${OPTARG}"
-      sed -i'.bak' -e "/${arg}/ s/\[\x\]/[ ]/" "${TODO_FILE}"
-      cat "${TODO_FILE}"
+      uncomplete_task "${OPTARG}"
+      print_tasks
       ;;
 
     d)
-      arg="${OPTARG}"
-      sed -i'.bak' "/${arg}/d" "${TODO_FILE}"
-      cat "${TODO_FILE}"
+      delete_task "${OPTARG}"
+      print_tasks
       ;;
 
     p)
-      sed -i'.bak' "/\[\x\]/d" "${TODO_FILE}"
-      cat "${TODO_FILE}"
+      purge_completed_tasks
+      print_tasks
       ;;
 
     t)
-      cat "${TODO_FILE}" | grep -e '^\[ \]'
+      print_uncompleted_tasks
       ;;
 
     h)
-      echo "${USAGE}"
+      print_usage
       ;;
   esac
 done
 
 if [ $OPTIND -eq 1 ]; then
   [ ${#@} -gt 0 ] && echo "[ ] $@" >> "${TODO_FILE}"
-  cat "${TODO_FILE}"
+  print_tasks
 fi
 
 [ -f "${TODO_FILE}.bak" ] && rm "${TODO_FILE}.bak"
