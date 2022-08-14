@@ -215,10 +215,15 @@ battery()
 
 # Prompt {{{1
 
-task_count() { t -t | wc -l | tr -d ' ' }
+task_count() {
+  local COMPLETED=$(t -T | wc -l | tr -d ' ')
+  local TOTAL=$(t | wc -l | tr -d ' ')
+
+  echo "${COMPLETED}/${TOTAL}"
+}
 
 PS1='
-   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string)-- $(task_count) task(s)
+   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string) %{%F{244}%}$(task_count)%{%F{242}%} task(s) completed
 %(?.%{%F{108}%} *.%{%F{167}%} *)%{%F{253}%}%b '
 
 # vim / editor {{{1

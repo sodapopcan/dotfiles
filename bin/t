@@ -21,6 +21,7 @@ t -X "item"   Uncheck the task containing "item"
 t -d "item"   Delete task containing "item"
 t -p          Purge completed tasks
 t -t          Print uncompleted tasks only
+t -T          Print completed tasks only
 EOF
 )
 
@@ -58,11 +59,15 @@ function print_uncompleted_tasks {
   cat "${TODO_FILE}" | grep -e '^\[ \]'
 }
 
+function print_completed_tasks {
+  cat "${TODO_FILE}" | grep -e '^\[x\]'
+}
+
 function print_usage {
   echo "${USAGE}"
 }
 
-while getopts 'x:X:d:hpt' opt; do
+while getopts 'x:X:d:hptT' opt; do
   case "$opt" in
     x)
       complete_task "${OPTARG}"
@@ -86,6 +91,10 @@ while getopts 'x:X:d:hpt' opt; do
 
     t)
       print_uncompleted_tasks
+      ;;
+
+    T)
+      print_completed_tasks
       ;;
 
     h)
