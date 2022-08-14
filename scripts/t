@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# A command line todo utility
+#
+# t             List all todo lists
+# t -x "item"   Check off the item containing "item"
+# t -X "item"   Uncheck the item containing "item"
+# t -p          Purge completed items
+
+if [ -z T_TODO_DIR ]; then
+  TODO_DIR="${T_TODO_DIR}"
+else
+  TODO_DIR="${HOME}"
+fi
+
+TODO_FILE="${TODO_DIR}/.todo.txt"
+
+touch "${TODO_FILE}"
+
+while getopts 'x:X:p' opt; do
+  case "$opt" in
+    x)
+      arg="${OPTARG}"
+      sed -i'.bak' -e "/${arg}/ s/\[ \]/[*]/" "${TODO_FILE}"
+      ;;
+
+    X)
+      arg="${OPTARG}"
+      sed -i'.bak' -e "/${arg}/ s/\[\*\]/[ ]/" "${TODO_FILE}"
+      ;;
+
+    p)
+      sed -i'.bak' "/\[\*\]/d" "${TODO_FILE}"
+      ;;
+  esac
+done
+
+if [ $OPTIND -eq 1 ]; then
+  [ ${#@} -gt 0 ] && echo "[ ] $@" >> "${TODO_FILE}"
+fi
+
+[ -f "${TODO_FILE}.bak" ] && rm "${TODO_FILE}.bak"
+cat "${TODO_FILE}"
