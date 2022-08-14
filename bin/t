@@ -2,7 +2,7 @@
 
 # A command line todo utility
 #
-# t is inspired by Steve Losh's todo app by the same name (https://stevelosh.com/projects/t/).
+# Inspired by Steve Losh's todo app by the same name (https://stevelosh.com/projects/t/).
 # 
 # I made this because I wanted:
 #
@@ -10,7 +10,7 @@
 #   - to see completed tasks;
 #   - tasks always printed after every command;
 #   - identify tasks by their text (partial match);
-#   - a pure bash solution.
+#   - a pure bash implementation.
 #
 set -euo pipefail
 
