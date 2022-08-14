@@ -72,6 +72,11 @@ key_bindings:
   - { key: Equals, mods: Command|Control, action: IncreaseFontSize }
   - { key: Minus, mods: Command|Control, action: DecreaseFontSize }
 
+  # Readline fixes
+  - { key: F, mods: Alt, chars: "\x1bf" }
+  - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: D, mods: Alt, chars: "\x1bd" }
+
   # Sessions
   - { key: Slash, mods: Command, chars: "\x00\x73" } # Switch sessions
   - { key: Equals, mods: Command|Shift, chars: "\x00\x6e" } # New session
