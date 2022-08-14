@@ -60,7 +60,7 @@ colors:
 # Ignore 0a, that is <return>
 key_bindings:
   # High-level control
-  - { key: Return, mods: Command, chars: "\x00\x5b" } # Copy mode
+  - { key: I, mods: Command, chars: "\x00\x5b" } # Copy mode
   - { key: Semicolon, mods: Command|Shift, chars: "\x00\x3a" } # Run command
   - { key: R, mods: Command|Shift, chars: "\x00\x52" } # Reload tmux config
   - { key: L, mods: Command|Control, chars: "\x00\x43" } # Full-clea screen
@@ -82,7 +82,7 @@ key_bindings:
   - { key: Comma, mods: Command, chars: "\x00\x2c" } # Rename window
   - { key: LBracket, mods: Command|Shift, chars: "\x00\x70" } # Previous window
   - { key: RBracket, mods: Command|Shift, chars: "\x00\x6e" } # Next window
-  - { key: Semicolon, mods: Command, chars: "\x00\x3b" } # Last window
+  - { key: Key6, mods: Command, chars: "\x00\x3b" } # Last window
 
   # Pane navigations
   - { key: H, mods: Command, chars: "\x00\x68" } # Pane left
@@ -117,7 +117,7 @@ key_bindings:
 
   # Misc pane manipulation
   - { key: Z, mods: Command, chars: "\x00\x7a" } # Zoom pane
-  - { key: Equals, mods: Command, chars: "\x00\x61" } # Sync panes
+  - { key: S, mods: Command|Shift, chars: "\x00\x61" } # Sync panes
 
   # Restore ctrl-6 behaviour
   # https://github.com/alacritty/alacritty/issues/1108#issuecomment-365354347
