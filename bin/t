@@ -16,12 +16,13 @@ set -euo pipefail
 
 USAGE=$(cat <<'EOF'
 t             List all todo lists
+t Some item   Add task called "Some item"
+t -t          Print uncompleted tasks only
+t -T          Print completed tasks only
 t -x "item"   Check off the task containing "item"
 t -X "item"   Uncheck the task containing "item"
 t -d "item"   Delete task containing "item"
 t -p          Purge completed tasks
-t -t          Print uncompleted tasks only
-t -T          Print completed tasks only
 EOF
 )
 
