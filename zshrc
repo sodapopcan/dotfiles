@@ -256,8 +256,6 @@ bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 # bindkey -M viins 'jk' vi-cmd-mode
 
-plugins=(nulogy)
-
 # zfz {{{1
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
