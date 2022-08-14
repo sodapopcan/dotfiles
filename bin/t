@@ -5,6 +5,7 @@
 # t             List all todo lists
 # t -x "item"   Check off the task containing "item"
 # t -X "item"   Uncheck the task containing "item"
+# t -d "item"   Delete task containing "item"
 # t -p          Purge completed tasks
 # t -t          Print uncompleted tasks only
 
@@ -18,7 +19,7 @@ TODO_FILE="${TODO_DIR}/.todo.txt"
 
 touch "${TODO_FILE}"
 
-while getopts 'x:X:pt' opt; do
+while getopts 'x:X:d:pt' opt; do
   case "$opt" in
     x)
       arg="${OPTARG}"
@@ -30,12 +31,18 @@ while getopts 'x:X:pt' opt; do
       sed -i'.bak' -e "/${arg}/ s/\[\*\]/[ ]/" "${TODO_FILE}"
       ;;
 
+    d)
+      arg="${OPTARG}"
+      sed -i'.bak' "/${arg}/d" "${TODO_FILE}"
+      ;;
+
     p)
       sed -i'.bak' "/\[\*\]/d" "${TODO_FILE}"
       ;;
 
     t)
       cat "${TODO_FILE}" | grep -e '^\[ \]'
+      ;;
   esac
 done
 
