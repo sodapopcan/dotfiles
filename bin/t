@@ -4,7 +4,7 @@
 #
 # t is inspired by Steve Losh's todo app by the same name (https://stevelosh.com/projects/t/).
 # 
-# I made this because wanted:
+# I made this because I wanted:
 #
 #   - nice, big checkboxes;
 #   - to see completed tasks;
