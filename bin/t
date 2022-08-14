@@ -31,29 +31,31 @@ fi
 
 TODO_FILE="${TODO_DIR}/.todo.txt"
 
-PRINT_TASKS=1
-
 touch "${TODO_FILE}"
 
 while getopts 'x:X:d:hpt' opt; do
   case "$opt" in
     x)
       arg="${OPTARG}"
-      sed -i'.bak' -e "/${arg}/ s/\[ \]/[*]/" "${TODO_FILE}"
+      sed -i'.bak' -e "/${arg}/ s/\[ \]/[x]/" "${TODO_FILE}"
+      cat "${TODO_FILE}"
       ;;
 
     X)
       arg="${OPTARG}"
-      sed -i'.bak' -e "/${arg}/ s/\[\*\]/[ ]/" "${TODO_FILE}"
+      sed -i'.bak' -e "/${arg}/ s/\[\x\]/[ ]/" "${TODO_FILE}"
+      cat "${TODO_FILE}"
       ;;
 
     d)
       arg="${OPTARG}"
       sed -i'.bak' "/${arg}/d" "${TODO_FILE}"
+      cat "${TODO_FILE}"
       ;;
 
     p)
-      sed -i'.bak' "/\[\*\]/d" "${TODO_FILE}"
+      sed -i'.bak' "/\[\x\]/d" "${TODO_FILE}"
+      cat "${TODO_FILE}"
       ;;
 
     t)
@@ -62,14 +64,15 @@ while getopts 'x:X:d:hpt' opt; do
 
     h)
       echo "${USAGE}"
-      PRINT_TASKS=0
       ;;
   esac
 done
 
 if [ $OPTIND -eq 1 ]; then
   [ ${#@} -gt 0 ] && echo "[ ] $@" >> "${TODO_FILE}"
-  [ "${PRINT_TASKS}" -eq 1 ] && cat "${TODO_FILE}"
+  cat "${TODO_FILE}"
 fi
 
 [ -f "${TODO_FILE}.bak" ] && rm "${TODO_FILE}.bak"
+
+exit 0
