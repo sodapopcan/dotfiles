@@ -256,9 +256,6 @@ bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 # bindkey -M viins 'jk' vi-cmd-mode
 
-# t {{{1
-alias t='python ~/src/apps/t/t.py --task-dir ~/tasks --list tasks'
-
 plugins=(nulogy)
 
 # zfz {{{1
