@@ -14,6 +14,7 @@ elif [ -d vim -a -f vimrc -a -f "$nvim_init" ]; then
   mv "$nvim_init" "$nvim_init.bak"
   mkdir -p vim/autoload
   mkdir vim/plugins
+
   cat <<VIMRC > vimrc
 set nocompatible
 
@@ -25,13 +26,16 @@ call plug#begin('~/.vim/plugins')
   Plug '~/src/vim/twiggy'
 call plug#end()
 VIMRC
+
   cat <<INIT > "$nvim_init"
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
+
 let &packpath = &runtimepath
 source ~/.vimrc
 INIT
+
   ln -s vimrc vim/init.vim
   cp vim.bak/autoload/plug.vim vim/autoload
 else
-  echo rekt
+  echo "rekt"
 fi
