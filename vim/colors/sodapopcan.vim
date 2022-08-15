@@ -105,9 +105,10 @@ hi link rubyRailsMethod rubyDefine
 hi link rubyCallback rubyDefine
 hi link rubyMacro rubyDefine
 hi link rubyMagicComment rubySymbol
-hi rubyTodo ctermbg=bg ctermfg=166
-hi VimTodo ctermbg=bg ctermfg=166
-hi helpNote ctermbg=bg ctermfg=166
+hi shTodo ctermbg=bg ctermfg=11
+hi rubyTodo ctermbg=bg ctermfg=11
+hi VimTodo ctermbg=bg ctermfg=11
+hi helpNote ctermbg=bg ctermfg=11
 
 " syn keyword elixirBuiltin @moduledoc
 " hi! link elixirBuiltin Comment
