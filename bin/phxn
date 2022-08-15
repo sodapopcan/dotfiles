@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+# This is everything I do immediately after creating a new Phoenix project.
+#
+# Currently there are no options since I always do all these things:
+#
+#  - Assumes I want to use UUIDs and creates a Schema module for use in Schemas
+#  - Removes page controller and associated files
+#  - Removes other template boiler plate
+#  - Creates a HomeLive LiveView
+#  - Removes the Phoenix Logo
+#
+# TODO: Add an option to install tailwind
+
+function snake_to_camel {
+  echo $1 | perl -pe 's/(?:\b|_)(\p{Ll})/\u$1/g'
+}
+
+mix phx.new $@ --binary-id
+
+cd "$1"
+
+# Delete page controller
+rm "lib/$1_web/controllers/page_controller.ex"
+rm "test/$1_web/controllers/page_controller_test.exs"
+
+# Delete templates
+rm "lib/$1_web/templates/page/index.html.heex"
+rmdir "lib/$1_web/templates/page"
+
+# Delete view
+rm "lib/$1_web/views/page_view.ex"
+
+# Remove header from the root layout
+sed -I '' '13,27d' "lib/$1_web/templates/layout/root.html.heex"
+
+subt="s/pool_size: 10/pool_size: 10,\n  migration_timestamps: \[type: :utc_datetime_usec\]/"
+sed -I '' "$subt" "config/dev.exs"
+sed -I '' "$subt" "config/test.exs"
+
+sed -I '' 's/get "\/", PageController, :index/live "\/", HomeLive, :index/' "lib/$1_web/router.ex"
+
+mkdir "lib/$1_web/live"
+
+module=$(snake_to_camel "$1")
+
+tee "lib/$1/schema.ex" <<EOF >/dev/null
+defmodule ${module}.Schema do
+  defmacro __using(_)__ do
+    quote do
+      use Ecto.Schema
+
+      import Ecto.Changeset, warn: false
+
+      @timestamps_opts type: :utc_datetime_usec
+
+      @primary_key {:id, :binary_id, autogenerate: true}
+      @foreign_key_type :binary_id
+    end
+  end
+end
+EOF
+
+tee "lib/$1_web/live/home_live.ex" <<EOF >/dev/null
+defmodule ${module}Web.HomeLive do
+  use ${module}Web, :live_view
+
+  def render(assigns) do
+    ~H"""
+    <h1>${module}</h1>
+    """
+  end
+end
+EOF
+
+# Delete phoenix logo
+rm priv/static/images/phoenix.png
