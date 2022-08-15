@@ -44,7 +44,7 @@ mkdir "lib/$1_web/live"
 
 module=$(snake_to_camel "$1")
 
-tee "lib/$1/schema.ex" <<EOF >/dev/null
+cat <<EOF > "lib/$1/schema.ex" 
 defmodule ${module}.Schema do
   defmacro __using(_)__ do
     quote do
@@ -61,7 +61,7 @@ defmodule ${module}.Schema do
 end
 EOF
 
-tee "lib/$1_web/live/home_live.ex" <<EOF >/dev/null
+cat <<EOF > "lib/$1_web/live/home_live.ex" 
 defmodule ${module}Web.HomeLive do
   use ${module}Web, :live_view
 
