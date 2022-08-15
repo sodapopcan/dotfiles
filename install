@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-DOTFILES="$HOME/dotfiles"
+WORK_DIR="$HOME/dotfiles"
 
-files="alacritty.yml \
+DOTFILES="alacritty.yml \
   zshrc \
   zshenv \
   zlogin \
@@ -19,20 +19,20 @@ files="alacritty.yml \
 
 echo "Symlinking:"
 
-for file in $files; do
-  ln -s "${DOTFILES}/$file" "${DOTFILES}/.$file"
+for file in $DOTFILES; do
+  ln -s "$WORK_DIR/$file" "$WORK_DIR/.$file"
   echo "  * $file"
 done
 
 echo "Use ctrl-w and ctrl-u everywhere on macOS"
-
-mkdir "$HOME/Library/KeyBindings" && cp "$DOTFILES/macos_DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
+mkdir "$HOME/Library/KeyBindings" && \
+  cp "$WORK_DIR/macos_DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
 
 echo "NVIM c-h thinger"
 infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
 tic $TERM.ti
 
-if which brew > /dev/null && [ -f "$DOTFILES/Brewfile" ]; then
+if which brew > /dev/null && [ -f "$WORK_DIR/Brewfile" ]; then
   brew bundle
 else
   cat <<MSG
