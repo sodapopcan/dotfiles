@@ -113,9 +113,21 @@ while getopts 'x:X:d:heptT' opt; do
   esac
 done
 
+# If there are no options
 if [ $OPTIND -eq 1 ]; then
-  [ ${#@} -gt 0 ] && echo "[ ] $@" >> "${TODO_FILE}"
-  print_tasks
+  # If there are non-option arguments (ie, a new task)
+  if [ ${#@} -gt 0 ]; then
+    num_tasks=$(print_tasks | { grep -i -e "^\[.\] $*\$" || true; } | wc -l)
+    if [ $num_tasks -eq 0 ]; then
+      echo "[ ] $@" >> "${TODO_FILE}"
+
+      print_tasks
+    else
+      echo "Task already exists"
+    fi
+  else
+    print_tasks
+  fi
 fi
 
 [ -f "${TODO_FILE}.bak" ] && rm "${TODO_FILE}.bak"
