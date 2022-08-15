@@ -10,7 +10,7 @@ DOTFILES="alacritty.yml \
   tmux.conf \
   vim \
   vimrc \
-  init.vim \
+  config/nvim/init.vim \
   gitconfig \
   cvsignore \
   psqlrc \
