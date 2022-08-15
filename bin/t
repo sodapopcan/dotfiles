@@ -23,6 +23,7 @@ t -x "item"   Check off the task containing "item"
 t -X "item"   Uncheck the task containing "item"
 t -d "item"   Delete task containing "item"
 t -p          Purge completed tasks
+t -e          Opens the todo file in $EDITOR
 EOF
 )
 
@@ -52,6 +53,10 @@ function purge_completed_tasks {
   sed -i'.bak' "/\[\x\]/d" "${TODO_FILE}"
 }
 
+function edit_todo_file {
+  "$EDITOR" "${TODO_FILE}"
+}
+
 function print_tasks {
   cat "${TODO_FILE}"
 }
@@ -68,7 +73,7 @@ function print_usage {
   echo "${USAGE}"
 }
 
-while getopts 'x:X:d:hptT' opt; do
+while getopts 'x:X:d:heptT' opt; do
   case "$opt" in
     x)
       complete_task "${OPTARG}"
@@ -96,6 +101,10 @@ while getopts 'x:X:d:hptT' opt; do
 
     T)
       print_completed_tasks
+      ;;
+
+    e)
+      edit_todo_file
       ;;
 
     h)
