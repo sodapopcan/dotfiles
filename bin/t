@@ -50,16 +50,6 @@ fi
 
 CURRENT_TODO="${TODO_DIR}/$(cat "$CURRENT_FILE")"
 
-function print_todo_lists {
-  for entry in "${TODO_DIR}"/*; do
-    if [ "$entry" = "$CURRENT_TODO" ]; then
-      echo '*' $(basename "$entry")
-    else
-      echo ' ' $(basename "$entry")
-    fi
-  done
-}
-
 function create_todo_list {
   local todo="${TODO_DIR}/$1"
   touch "$todo"
@@ -94,6 +84,16 @@ function purge_completed_tasks {
 
 function edit_todo_file {
   "$EDITOR" "${CURRENT_TODO}"
+}
+
+function print_todo_lists {
+  for entry in "${TODO_DIR}"/*; do
+    if [ "$entry" = "$CURRENT_TODO" ]; then
+      echo '*' $(basename "$entry")
+    else
+      echo ' ' $(basename "$entry")
+    fi
+  done
 }
 
 function print_tasks {
