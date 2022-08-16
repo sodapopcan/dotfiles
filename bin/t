@@ -16,14 +16,17 @@
 set -euo pipefail
 
 USAGE=$(cat <<'EOF'
-t             List all todo lists
-t Some item   Add task called "Some item"
-t -t          Print uncompleted tasks only
-t -T          Print completed tasks only
+t             List all tasks for current list
+t Some item   Add task called "Some item" to the current list
 t -x "item"   Check off the task containing "item"
 t -X "item"   Uncheck the task containing "item"
 t -d "item"   Delete task containing "item"
 t -p          Purge completed tasks
+t -n          Create a new todo list
+t -l          Print all todo lists
+t -c list     Make <list> the current list
+t -t          Print uncompleted tasks only
+t -T          Print completed tasks only
 t -e          Opens the todo file in $EDITOR
 EOF
 )
@@ -39,47 +42,89 @@ fi
 
 # Initialize
 [ ! -d "${TODO_DIR}" ] && mkdir "${TODO_DIR}"
-TODO_FILE="${TODO_DIR}/todo.txt"
-touch "${TODO_FILE}"
+CURRENT_FILE="${TODO_DIR}/.current"
+if [ ! -f "$CURRENT_FILE" ] || [ ! -s "$CURRENT_FILE" ]; then
+  echo "todo" > "$CURRENT_FILE"
+fi
+
+CURRENT_TODO="${TODO_DIR}/$(cat "$CURRENT_FILE")"
+
+function print_todo_lists {
+  for entry in "${TODO_DIR}"/*; do
+    if [ "$entry" = "$CURRENT_TODO" ]; then
+      echo '*' $(basename "$entry")
+    else
+      echo ' ' $(basename "$entry")
+    fi
+  done
+}
+
+function create_todo_list {
+  local todo="${TODO_DIR}/$1"
+  touch "$todo"
+  echo $1 > "$CURRENT_FILE"
+}
+
+function make_current_list {
+  if [ -f "$TODO_DIR/$1" ]; then
+    echo $1 > "$CURRENT_FILE"
+    CURRENT_TODO="${TODO_DIR}/$(cat "$CURRENT_FILE")"
+    print_tasks
+  else
+    echo "Todo list does not exist"
+  fi
+}
 
 function complete_task {
-  sed -i'.bak' -e "/$1/ s/\[ \]/[x]/" "${TODO_FILE}"
+  sed -i'.bak' -e "/$1/ s/\[ \]/[x]/" "${CURRENT_TODO}"
 }
 
 function uncomplete_task {
-  sed -i'.bak' -e "/$1/ s/\[\x\]/[ ]/" "${TODO_FILE}"
+  sed -i'.bak' -e "/$1/ s/\[\x\]/[ ]/" "${CURRENT_TODO}"
 }
 
 function delete_task {
-  sed -i'.bak' "/$1/d" "${TODO_FILE}"
+  sed -i'.bak' "/$1/d" "${CURRENT_TODO}"
 }
 
 function purge_completed_tasks {
-  sed -i'.bak' "/\[\x\]/d" "${TODO_FILE}"
+  sed -i'.bak' "/\[\x\]/d" "${CURRENT_TODO}"
 }
 
 function edit_todo_file {
-  "$EDITOR" "${TODO_FILE}"
+  "$EDITOR" "${CURRENT_TODO}"
 }
 
 function print_tasks {
-  cat "${TODO_FILE}"
+  cat "${CURRENT_TODO}"
 }
 
 function print_uncompleted_tasks {
-  cat "${TODO_FILE}" | grep -e '^\[ \]'
+  cat "${CURRENT_TODO}" | grep -e '^\[ \]'
 }
 
 function print_completed_tasks {
-  cat "${TODO_FILE}" | grep -e '^\[x\]'
+  cat "${CURRENT_TODO}" | grep -e '^\[x\]'
 }
 
 function print_usage {
   echo "${USAGE}"
 }
 
-while getopts 'x:X:d:heptT' opt; do
+while getopts 'x:X:d:n:c:lheptT' opt; do
   case "$opt" in
+    n)
+      create_todo_list "${OPTARG}"
+      ;;
+
+    c)
+      make_current_list "${OPTARG}"
+      ;;
+
+    l)
+      print_todo_lists
+      ;;
+
     x)
       complete_task "${OPTARG}"
       print_tasks
@@ -119,10 +164,10 @@ while getopts 'x:X:d:heptT' opt; do
 done
 
 if [ $OPTIND -eq 1 ]; then
-  [ ${#@} -gt 0 ] && echo "[ ] $@" >> "${TODO_FILE}"
+  [ ${#@} -gt 0 ] && echo "[ ] $@" >> "${CURRENT_TODO}"
   print_tasks
 fi
 
-[ -f "${TODO_FILE}.bak" ] && rm "${TODO_FILE}.bak"
+[ -f "${CURRENT_TODO}.bak" ] && rm "${CURRENT_TODO}.bak"
 
 exit 0
