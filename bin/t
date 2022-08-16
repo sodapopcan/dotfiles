@@ -101,11 +101,11 @@ function print_tasks {
 }
 
 function print_uncompleted_tasks {
-  cat "${CURRENT_TODO}" | grep -e '^\[ \]'
+  cat "${CURRENT_TODO}" | { grep -e '^\[ \]' || true; }
 }
 
 function print_completed_tasks {
-  cat "${CURRENT_TODO}" | grep -e '^\[x\]'
+  cat "${CURRENT_TODO}" | { grep -e '^\[x\]' || true; }
 }
 
 function print_status {
