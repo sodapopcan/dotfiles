@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-WORK_DIR="$HOME/dotfiles"
+WORKING_DIR="$HOME/dotfiles"
+
+cd "$WORKING_DIR"
 
 DOTFILES="alacritty.yml \
   zshrc \
@@ -18,17 +20,18 @@ DOTFILES="alacritty.yml \
   gemrc"
 
 echo "Symlinking:"
-
+mkdir -p config/nvim 2>/dev/null
 for file in $DOTFILES; do
-  ln -s "$WORK_DIR/$file" "$WORK_DIR/.$file"
+  ln -snf "$WORKING_DIR/$file" "$WORKING_DIR/.$file"
   echo "  * $file"
 done
 
 echo "Use ctrl-w and ctrl-u everywhere on macOS"
-mkdir "$HOME/Library/KeyBindings" && \
-  cp "$WORK_DIR/macos_DefaultKeyBinding.dict" "$HOME/Library/KeyBindings/DefaultKeyBinding.dict"
+KEY_BINDINGS="$HOME/Library/KeyBindings" 
+[ ! -d "$KEY_BINDINGS" ] && mkdir "$KEY_BINDINGS" && \
+  cp "$WORKING_DIR/macos_DefaultKeyBinding.dict" "$KEY_BINDINGS/DefaultKeyBinding.dict"
 
-if which brew > /dev/null && [ -f "$WORK_DIR/Brewfile" ]; then
+if command -v brew > /dev/null && [ -f "$WORKING_DIR/Brewfile" ]; then
   brew bundle
 else
   cat <<MSG
