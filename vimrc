@@ -783,7 +783,7 @@ let g:signify_sign_delete            = "_"
 let g:signify_sign_delete_first_line = "‾"
 let g:signify_sign_change            = g:signify_sign_add
 let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
-nnoremap g+ :SignifyHunkUndo<CR>
+nnoremap g- :SignifyHunkUndo<CR>
 
 hi SignifySignAdd             ctermfg=120 ctermbg=bg cterm=NONE
 hi SignifySignChange          ctermfg=68 ctermbg=bg cterm=NONE
