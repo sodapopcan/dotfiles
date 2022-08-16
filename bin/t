@@ -110,9 +110,9 @@ function print_completed_tasks {
 
 function print_status {
   completed=$(print_completed_tasks | wc -l | tr -d ' ')
-  uncompleted=$(print_uncompleted_tasks | wc -l | tr -d ' ')
+  all=$(print_tasks | wc -l | tr -d ' ')
 
-  echo "$(cat $CURRENT_FILE): $completed/$uncompleted"
+  echo "$(cat $CURRENT_FILE): $completed/$all"
 }
 
 function print_usage {
