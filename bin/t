@@ -10,6 +10,7 @@
 #   - to see completed tasks;
 #   - tasks always printed after every command;
 #   - identify tasks by their text (partial match);
+#   - multiple lists with the same command;
 #   - a pure bash implementation.
 #
 set -euo pipefail
@@ -27,14 +28,18 @@ t -e          Opens the todo file in $EDITOR
 EOF
 )
 
+# Theoretically, you could have multiple todo directories and switch between
+# them by exporting T_TODO_DIR.  I'm never going to do this myself so I don't
+# know why this logic exists other than it feels "right".
 if [ -z T_TODO_DIR ]; then
   TODO_DIR="${T_TODO_DIR}"
 else
-  TODO_DIR="${HOME}"
+  TODO_DIR="${HOME}/todos"
 fi
 
-TODO_FILE="${TODO_DIR}/.todo.txt"
-
+# Initialize
+[ ! -d "${TODO_DIR}" ] && mkdir "${TODO_DIR}"
+TODO_FILE="${TODO_DIR}/todo.txt"
 touch "${TODO_FILE}"
 
 function complete_task {
