@@ -27,6 +27,7 @@ t -l          Print all todo lists
 t -c list     Make <list> the current list
 t -t          Print uncompleted tasks only
 t -T          Print completed tasks only
+t -s          Print the status for the current list
 t -e          Opens the todo file in $EDITOR
 EOF
 )
@@ -107,11 +108,18 @@ function print_completed_tasks {
   cat "${CURRENT_TODO}" | grep -e '^\[x\]'
 }
 
+function print_status {
+  completed=$(print_completed_tasks | wc -l | tr -d ' ')
+  uncompleted=$(print_uncompleted_tasks | wc -l | tr -d ' ')
+
+  echo "$(cat $CURRENT_FILE): $completed/$uncompleted"
+}
+
 function print_usage {
   echo "${USAGE}"
 }
 
-while getopts 'x:X:d:n:c:lheptT' opt; do
+while getopts 'x:X:d:n:c:lhepstT' opt; do
   case "$opt" in
     n)
       create_todo_list "${OPTARG}"
@@ -151,6 +159,10 @@ while getopts 'x:X:d:n:c:lheptT' opt; do
 
     T)
       print_completed_tasks
+      ;;
+
+    s)
+      print_status
       ;;
 
     e)
