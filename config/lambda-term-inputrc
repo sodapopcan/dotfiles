@@ -1,0 +1,3 @@
+C-w: kill-prev-word
+C-n: history-prev
+C-p: history-prev

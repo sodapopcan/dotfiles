@@ -13,6 +13,7 @@ DOTFILES="alacritty.yml \
   vim \
   vimrc \
   config/nvim/init.vim \
+  config/lambda-term-inputrc \
   gitconfig \
   cvsignore \
   psqlrc \
