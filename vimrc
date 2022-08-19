@@ -1,5 +1,10 @@
 if !&compatible | set nocompatible | endif
 
+" Hopefully this is just temporary so I'm throwing it at the top.
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+au BufRead,BufNewFile mix.lock set filetype=elixir
+
 " Plugins {{{1
 "
 call plug#begin('~/.vim/plugins')
