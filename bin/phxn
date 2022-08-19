@@ -12,11 +12,11 @@
 #
 # TODO: Add an option to install tailwind
 
-function snake_to_camel {
+function snake_to_pascal {
   echo $1 | perl -pe 's/(?:\b|_)(\p{Ll})/\u$1/g'
 }
 
-mix phx.new $@ --binary-id
+mix phx.new "$@" --binary-id
 
 cd "$1"
 
@@ -34,19 +34,25 @@ rm "lib/$1_web/views/page_view.ex"
 # Remove header from the root layout
 sed -I '' '13,27d' "lib/$1_web/templates/layout/root.html.heex"
 
+# Remove CSS
+rm assets/css/phoenix.css
+echo > assets/css/app.css
+
+# Use utc_datetime_usec in migrations
 subt="s/pool_size: 10/pool_size: 10,\n  migration_timestamps: \[type: :utc_datetime_usec\]/"
 sed -I '' "$subt" "config/dev.exs"
 sed -I '' "$subt" "config/test.exs"
 
+# Setup a HomeLive
 sed -I '' 's/get "\/", PageController, :index/live "\/", HomeLive, :index/' "lib/$1_web/router.ex"
 
 mkdir "lib/$1_web/live"
 
-module=$(snake_to_camel "$1")
+module=$(snake_to_pascal "$1")
 
 cat <<EOF > "lib/$1/schema.ex" 
 defmodule ${module}.Schema do
-  defmacro __using(_)__ do
+  defmacro __using__(_) do
     quote do
       use Ecto.Schema
 
