@@ -34,6 +34,9 @@ rm "lib/$1_web/views/page_view.ex"
 # Remove header from the root layout
 sed -I '' '13,27d' "lib/$1_web/templates/layout/root.html.heex"
 
+# Remove getext thing (if it's there)
+sed -I '' '10s/.*/      compilers: Mix.compilers(),/' mix.exs
+
 # Remove CSS
 rm assets/css/phoenix.css
 echo > assets/css/app.css
@@ -81,3 +84,13 @@ EOF
 
 # Delete phoenix logo
 rm priv/static/images/phoenix.png
+
+# Use the heex formatting plugin
+cat <<EOF > ".formatter.exs"
+[
+  import_deps: [:ecto, :phoenix],
+  plugins: [Phoenix.LiveView.HTMLFormatter],
+  inputs: ["*.{heex,ex,exs}", "priv/*/seeds.exs", "{config,lib,test}/**/*.{heex,ex,exs}"],
+  subdirectories: ["priv/*/migrations"]
+]
+EOF
