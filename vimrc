@@ -719,7 +719,7 @@ let NERDTreeHighlightCursorline = 0
 let NERDTreeMinimalUI           = 1
 let NERDTreeWinSize             = 45
 let NERDTreeIgnore=[]
-let NERDTreeIgnore=['\.vim$', 'node_modules$[[dir]]', 'tags$[[file]]', '\~$']
+let NERDTreeIgnore=['^Session\.vim$', 'node_modules$[[dir]]', 'tags$[[file]]', '\~$']
 
 " Rails
 "
