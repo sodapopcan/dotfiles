@@ -107,6 +107,9 @@ Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'junegunn/goyo.vim'
 Plug 'chr4/nginx.vim'
 
+" DB
+Plug 'tpope/vim-dadbod'
+
 " Work
 if $WORK_COMPUTER
   Plug '~/src/vim/packman'
@@ -313,7 +316,7 @@ nnoremap <silent> da<Space> :call StripWhitespace()<bar>echo "All clean"<CR>
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 " Just take me quick to github
-vnoremap <CR> :Gbrowse<CR>
+vnoremap <CR> :DB g:db<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
 " Sync zz with my eyes
