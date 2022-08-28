@@ -84,6 +84,7 @@ Plug 'cakebaker/scss-syntax.vim'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'mxw/vim-jsx'
 Plug 'jparise/vim-graphql'
 Plug 'prettier/vim-prettier', {
@@ -316,7 +317,7 @@ nnoremap <silent> da<Space> :call StripWhitespace()<bar>echo "All clean"<CR>
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 " Just take me quick to github
-vnoremap <CR> :DB g:db<CR>
+vnoremap <CR> :DB<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
 " Sync zz with my eyes
@@ -496,6 +497,21 @@ function! s:deploy() abort
   endif
 
   execute cmd."./deploy"
+endfunction
+
+" Project Edit
+"
+" Jump to a project in the ~/src/projects directory and lcd to it.
+" 
+command! -nargs=1 Pedit call s:pedit(<f-args>)
+function s:pedit(project)
+  let path = "~/src/projects/" . a:project"
+  exec "lcd ".path
+  if !empty(glob(path."/mix.exs"))
+    exec "edit ".path."/mix.exs"
+  elseif !empty(glob(path."/Gemfile"))
+    exec "edit ".path."/Gemfile"
+  endif
 endfunction
 
 " Mappings Functions {{{2
