@@ -23,7 +23,7 @@ DOTFILES="alacritty.yml \
 echo "Symlinking:"
 mkdir -p config/nvim 2>/dev/null
 for file in $DOTFILES; do
-  ln -snf "$WORKING_DIR/$file" "$WORKING_DIR/.$file"
+  ln -snf "$WORKING_DIR/$file" "$SRC/.$file"
   echo "  * $file"
 done
 
