@@ -74,7 +74,7 @@ hi diffAdded                         ctermbg=bg    ctermfg=108
 " hi diffRemoved                       ctermbg=bg     ctermfg=196
 hi diffLine                          ctermbg=bg    ctermfg=242
 " hi diffSubname                       ctermbg=bg    ctermfg=114
-hi gitDiff                           ctermbg=bg    ctermfg=243
+hi gitDiff                           ctermbg=bg    ctermfg=247
 
 hi Special                           ctermbg=bg   ctermfg=167  cterm=none
 
