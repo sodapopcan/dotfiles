@@ -9,8 +9,6 @@
 #  - Removes other template boiler plate
 #  - Creates a HomeLive LiveView
 #  - Removes the Phoenix Logo
-#
-# TODO: Add an option to install tailwind
 
 function snake_to_pascal {
   echo $1 | perl -pe 's/(?:\b|_)(\p{Ll})/\u$1/g'
