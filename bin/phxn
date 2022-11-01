@@ -92,3 +92,26 @@ cat <<EOF > ".formatter.exs"
   subdirectories: ["priv/*/migrations"]
 ]
 EOF
+
+cat <<EOF > "test/support/factory.ex"
+defmodule ${module}.Factory do
+  ## API
+  #
+  def build(factory_name, attrs) do
+    factory_name |> build() |> struct(attrs)
+  end
+
+  def insert(factory_or_factory_name, attrs \\ [])
+
+  def insert(factory_name, attrs) when is_atom(factory_name) do
+    build(factory_name, attrs) |> ${module}.Repo.insert!()
+  end
+
+  def insert(factory, attrs) do
+    factory |> struct(attrs) |> ${module}.Repo.insert!()
+  end
+
+  defp unique, do: System.unique_integer()
+  defp unique(string) when is_binary(string), do: "#{string}#{unique()}"
+end
+EOF
