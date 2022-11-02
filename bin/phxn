@@ -101,7 +101,7 @@ defmodule ${module}.Factory do
     factory_name |> build() |> struct(attrs)
   end
 
-  def insert(factory_or_factory_name, attrs \\ [])
+  def insert(factory_or_factory_name, attrs \\\\ [])
 
   def insert(factory_name, attrs) when is_atom(factory_name) do
     build(factory_name, attrs) |> ${module}.Repo.insert!()
