@@ -63,6 +63,7 @@ key_bindings:
   - { key: I, mods: Command, chars: "\x00\x5b" } # Copy mode
   - { key: Semicolon, mods: Command|Shift, chars: "\x00\x3a" } # Run command
   - { key: R, mods: Command|Shift, chars: "\x00\x52" } # Reload tmux config
+  - { key: L, mods: Command|Control, chars: "\x00\x43" } # Full-clear screen
 
     # MacOS native-like
   - { key: V, mods: Command, action: Paste }
