@@ -63,14 +63,10 @@ key_bindings:
   - { key: I, mods: Command, chars: "\x00\x5b" } # Copy mode
   - { key: Semicolon, mods: Command|Shift, chars: "\x00\x3a" } # Run command
   - { key: R, mods: Command|Shift, chars: "\x00\x52" } # Reload tmux config
-  - { key: L, mods: Command|Control, chars: "\x00\x43" } # Full-clea screen
 
     # MacOS native-like
   - { key: V, mods: Command, action: Paste }
   - { key: C, mods: Command, action: Copy }
-  - { key: Key0, mods: Command|Control, action: ResetFontSize }
-  - { key: Equals, mods: Command|Control, action: IncreaseFontSize }
-  - { key: Minus, mods: Command|Control, action: DecreaseFontSize }
 
   # Readline fixes
   - { key: F, mods: Alt, chars: "\x1bf" }
