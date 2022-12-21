@@ -3,6 +3,7 @@
 .byebug_history
 .xmark.*
 Session.vim
+.projections.json
 dump.rdb
 node_modules
 npm-debug.log
