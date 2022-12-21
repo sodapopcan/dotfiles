@@ -102,8 +102,17 @@ Plug 'tpope/vim-bundler'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
 
+" Clojure
+Plug 'tpope/vim-fireplace'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
 " PHP
 Plug 'captbaritone/better-indent-support-for-php-with-html'
+
+" Hugo
+call s:PlugLocal('~/src/vim/vim-hugo', 'phelipetls/vim-hugo')
 
 " Other
 Plug 'junegunn/goyo.vim'
