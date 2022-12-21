@@ -15,7 +15,7 @@ function! s:debug()
     let output = 'echom "'.token.'=".'.token
     let skip_patterns = []
   elseif &ft ==# 'elixir'
-    let output = ['IO.inspect('.token.', label: "'.token.'")']
+    let output = ['dbg('.token.')']
     let skip_patterns = ['^\s*|>', '\s*,$', '^\s*[a-z_]\+:', '\s*%{$', '\s*[$', '=$']
     let terminal_patterns = ['\s*]$', '\s*}$']
     let continuations = ['\s|>']
