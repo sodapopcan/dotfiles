@@ -96,6 +96,7 @@ Plug 'kristijanhusak/vim-js-file-import'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-bundler'
 
 " Elixir
 Plug 'slashmili/alchemist.vim'
