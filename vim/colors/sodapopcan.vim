@@ -81,6 +81,7 @@ hi Special                           ctermbg=bg   ctermfg=167  cterm=none
 hi qfLineNr ctermfg=214
 " hi qfSeparator ctermfg=238
 hi! link qfError Error
+hi! link qfFileName String
 
 autocmd Syntax ruby syn match rubyDefine "&"
 autocmd Syntax ruby syn match rubyDefine "|"
