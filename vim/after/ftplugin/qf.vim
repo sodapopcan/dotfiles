@@ -7,6 +7,7 @@ nnoremap <buffer> L :res 10<cr>gg
 nnoremap <silent> <buffer> O :call <SID>open_file()<CR>
 nnoremap <silent> <buffer> go :call <SID>preview_file()<CR>
 nnoremap <silent> <buffer> o :call <SID>open_file_and_close_qf()<CR>
+nnoremap <silent> <buffer> I :call <SID>open_screenshot()<CR>
 nnoremap <silent> <buffer> q :quit<CR>
 nnoremap <silent> <buffer> <c-c> <c-c>:quit<CR>:call <SID>edit_return_file()<CR>
 
@@ -32,4 +33,12 @@ endfunction
 function! s:preview_file() abort
   let [filename, linenr] = split(getline('.'), '|')[0:1]
   exec "pedit +".linenr filename
+endfunction
+
+function! s:open_screenshot() abort
+  if search("screenshots/failures")
+    normal gx
+  else
+    echo "No screenshot found"
+  endif
 endfunction
