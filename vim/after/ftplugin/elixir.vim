@@ -12,6 +12,6 @@ let g:projectionist_heuristics['mix.exs'] = {
   \     'alternate': 'lib/{}.ex',
   \     'template': ['defmodule {camelcase|capitalize|dot}Test do', '  use ExUnit.Case', '', '  @subject {camelcase|capitalize|dot}', 'end'],
   \   },
-  \   'mix.exs': { 'type': 'mix' },
+  \   'mix.exs': { 'type': 'mix', 'dispatch': 'mix deps.get' },
   \   'config/*.exs': { 'type': 'config' }
   \ }
