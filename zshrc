@@ -278,7 +278,7 @@ if which brew > /dev/null; then
 fi
 
 # asdf
-. /opt/homebrew/opt/asdf/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # gggit
 ssh-add ~/.ssh/github
