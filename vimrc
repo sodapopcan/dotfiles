@@ -13,6 +13,7 @@ function! s:PlugLocal(local, remote)
   Plug !empty(glob(a:local)) ? a:local : a:remote
 endfunction
 
+Plug 'sodapopcan/vim-hugo'
 " Usability
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ludovicchabant/vim-gutentags'
