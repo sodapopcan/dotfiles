@@ -79,6 +79,7 @@ Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 let g:html_indent_inctags = 'p'
+let g:html_indent_autotags = 'source'
 
 " CSS
 Plug 'cakebaker/scss-syntax.vim'
