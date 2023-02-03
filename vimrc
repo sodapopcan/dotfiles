@@ -330,7 +330,7 @@ nnoremap <silent> da<Space> :call StripWhitespace()<bar>echo "All clean"<CR>
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 " Just take me quick to github
-vnoremap <CR> :DB<CR>
+vnoremap <CR> :GBrowse<CR>
 " Position func/meth definition at top of screen after jump
 nnoremap <C-]> <C-]>zt
 " Sync zz with my eyes
@@ -341,8 +341,6 @@ cnoreabbrev copen botright copen
 nnoremap <silent> g\| :wincmd =<CR>
 " Running
 nnoremap g<cr> :exec "Dispatch " . &ft . " %"<cr>
-" Tagbar
-nnoremap zt :Tagbar<cr>
 " Folding
 nnoremap c-m :set fdm=marker<CR>
 nnoremap c-{ :set fdm=manual<CR>
