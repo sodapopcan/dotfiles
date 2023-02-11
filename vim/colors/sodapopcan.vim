@@ -127,8 +127,8 @@ hi link elixirImpl Comment
 hi elixirTodo ctermfg=208 ctermbg=bg
 
 " hi! clear rubyIdentifier
-" hi! clear rubyInstanceVaria           ble
-hi erubyBlock                           ctermfg=167 cterm=none
+" hi! clear rubyInstanceVariable
+hi erubyBlock                           ctermfg=248 cterm=none
 hi link erubyExpression erubyBlock
 hi link erubyOneLiner erubyBlock
 hi erubyDelimiter ctermfg=131
@@ -155,6 +155,7 @@ hi xmlEndTag                            ctermfg=179
 
 hi link htmlTag                         xmlTag
 hi link htmlTagName                     xmlTagName
+hi link htmlTagN                        xmlTagName
 hi link htmlEndTag                      xmlEndTag
 hi htmlItalic                           ctermfg=bg    ctermbg=137   cterm=italic
 
