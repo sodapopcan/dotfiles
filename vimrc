@@ -353,7 +353,7 @@ nnoremap ga :A<CR>
 nnoremap gr :R<CR>
 nnoremap <leader>ga ga
 nnoremap <leader>gl gr
-nnoremap d: :Dispatch<space>
+nnoremap d; :Dispatch<space>
 nnoremap <silent> gO :Copen<cr>:res 30<cr>gg
 " Grepping
 nnoremap g<Space> :Rummage "" <Left><Left>
