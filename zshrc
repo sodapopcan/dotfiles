@@ -117,6 +117,7 @@ alias ga="git add"
 alias gap="git add -p"
 alias wip="git add . && git commit -m '--wip--'"
 alias unwip="git log --oneline | head -1 | awk '{print \$2}' | grep '^\-\-wip\-\-' > /dev/null && git reset head^"
+alias effit="git add . && git reset --hard"
 
 L ()
 {
