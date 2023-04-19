@@ -13,5 +13,6 @@ let g:projectionist_heuristics['mix.exs'] = {
   \     'template': ['defmodule {camelcase|capitalize|dot}Test do', '  use ExUnit.Case', '', '  @subject {camelcase|capitalize|dot}', 'end'],
   \   },
   \   'mix.exs': { 'type': 'mix', 'dispatch': 'mix deps.get' },
-  \   'config/*.exs': { 'type': 'config' }
+  \   'config/*.exs': { 'type': 'config' },
+  \   'priv/repo/migrations/*.exs': { 'type': 'migration', 'dispatch': 'mix ecto.migrate' }
   \ }
