@@ -12,7 +12,16 @@ let g:projectionist_heuristics['mix.exs'] = {
   \     'alternate': 'lib/{}.ex',
   \     'template': ['defmodule {camelcase|capitalize|dot}Test do', '  use ExUnit.Case', '', '  @subject {camelcase|capitalize|dot}', 'end'],
   \   },
-  \   'mix.exs': { 'type': 'mix', 'dispatch': 'mix deps.get' },
+  \   'mix.exs': {
+  \     'type': 'mix',
+  \     'alternate': 'mix.lock',
+  \     'dispatch': 'mix deps.get'
+  \   },
+  \   'mix.lock': {
+  \     'type': 'lock',
+  \     'alternate': 'mix.exs',
+  \     'dispatch': 'mix deps.get'
+  \   },
   \   'config/*.exs': { 'type': 'config' },
   \   'priv/repo/migrations/*.exs': { 'type': 'migration', 'dispatch': 'mix ecto.migrate' }
   \ }
