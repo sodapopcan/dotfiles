@@ -243,6 +243,12 @@ E()
   fi
 }
 
+unfuck_postgres()
+{
+  rm /opt/homebrew/var/postgres/postmaster.pid
+  brew services restart 'postgresql@14'
+}
+
 
 alias vid='e $(git diff master --name-only)'
 
