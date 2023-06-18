@@ -98,6 +98,9 @@ ide() { "$DOTFILES/ide.sh" }
 alias lsl="ls -l"
 alias lsla="ls -la"
 
+# Who woulda thought I'd need Ghostscript
+alias GS='\gs'
+# The rest is all git
 alias gs="git status -s"
 alias gb="git branch"
 alias gc="git commit"
