@@ -1,5 +1,20 @@
 nnoremap <buffer> <silent> + :silent w<cr>:echo "Formating..."<cr>:call system("mix format ".expand("%"))<Bar>e!<cr>
 
+command! -nargs=1 Dep call s:add_hex_dep(<f-args>)
+
+function s:add_hex_dep(dep) abort
+  let result = system('mix hex.info '.a:dep)
+  let dep = matchstr(result, "{:".a:dep.",.*}")
+  call append(line("."), dep)
+  normal! j==
+  echom match(getline(line(".") + 1), "\]$")
+  if match(getline(line(".") + 1), "\]$") == -1
+    exec "normal! A,\<esc>^"
+  else
+    exec "normal! kA,\<esc>j^"
+  endif
+endfunction
+
 let g:projectionist_heuristics['mix.exs'] = {
   \   'apps/*/mix.exs': { 'type': 'app' },
   \   'lib/*.ex': {
