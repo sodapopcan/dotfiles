@@ -224,6 +224,7 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif,*.webp,*.mp3
 
+" Fixes cursor
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
