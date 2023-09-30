@@ -568,12 +568,7 @@ augroup CursorStatusLines
   autocmd WinEnter * setlocal cursorline
 augroup END
 
-augroup SignColumn
-  autocmd!
-  " Always show the sign column
-  autocmd BufEnter * sign define dummy
-  autocmd BufEnter * exec 'sign place 9999 line=1 name=dummy buffer=' . bufnr('')
-augroup END
+set signcolumn=yes
 
 " Closetag {{{1
 "
