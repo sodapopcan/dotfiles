@@ -124,3 +124,6 @@ key_bindings:
   # Restore ctrl-6 behaviour
   # https://github.com/alacritty/alacritty/issues/1108#issuecomment-365354347
   - { key: Key6, mods: Control, chars: "\x1e" }
+
+  # - { key: C, mods: Command, chars: "236965783a627265616b"}
+  - { key: C, mods: Command, chars: "\x23iex:break\x0a"od
