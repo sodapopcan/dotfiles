@@ -217,6 +217,13 @@ battery()
   ~/dotfiles/sh/battery.sh
 }
 
+# Audio
+
+# Convert to ogg
+to_ogg()
+{
+  ffmpeg -i $1 -c:a libvorbis -qscale:a 3 $2
+}
 
 # Prompt {{{1
 
