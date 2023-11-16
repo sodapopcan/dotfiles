@@ -17,6 +17,7 @@ DOTFILES="alacritty.yml \
   gitconfig \
   cvsignore \
   psqlrc \
+  sqliterc \
   irbrc \
   gemrc"
 
