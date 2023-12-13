@@ -121,6 +121,10 @@ key_bindings:
   - { key: Z, mods: Command, chars: "\x00\x7a" } # Zoom pane
   - { key: S, mods: Command|Shift, chars: "\x00\x61" } # Sync panes
 
+  # Session Navigation
+  - { key: Left, mods: Command|Option, chars: "\x00\x280a" }
+  - { key: Right, mods: Command|Option, chars: "\x00\x290a" }
+
   # Restore ctrl-6 behaviour
   # https://github.com/alacritty/alacritty/issues/1108#issuecomment-365354347
   - { key: Key6, mods: Control, chars: "\x1e" }
