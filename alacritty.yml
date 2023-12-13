@@ -122,8 +122,8 @@ key_bindings:
   - { key: S, mods: Command|Shift, chars: "\x00\x61" } # Sync panes
 
   # Session Navigation
-  - { key: Left, mods: Command|Option, chars: "\x00\x280a" }
-  - { key: Right, mods: Command|Option, chars: "\x00\x290a" }
+  - { key: Left, mods: Command|Option, chars: "\x00\x28" }
+  - { key: Right, mods: Command|Option, chars: "\x00\x29" }
 
   # Restore ctrl-6 behaviour
   # https://github.com/alacritty/alacritty/issues/1108#issuecomment-365354347
