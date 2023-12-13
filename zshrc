@@ -307,3 +307,6 @@ ssh-add ~/.ssh/github
 
 # opam configuration
 [[ ! -r /Users/andrewhaust/.opam/opam-init/init.zsh ]] || source /Users/andrewhaust/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# Shopify Hydrogen alias to local projects
+alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
