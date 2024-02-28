@@ -1,0 +1,22 @@
+{
+  "title": "Prevent unintended command-m minimising",
+  "rules": [
+    {
+      "description": "Disable Cmd+m minimise",
+      "manipulators": [
+        {
+          "type": "basic",
+          "description": "",
+          "from": {
+            "key_code": "m",
+            "modifiers": {
+              "mandatory": [
+                "command"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
