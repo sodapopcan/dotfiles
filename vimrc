@@ -226,6 +226,7 @@ set wildmenu
 set wildmode=list:longest,full
 set wildignore+=*DS_Store*
 set wildignore+=*.gem
+set wildignore+=assets/vendor/heroicons/
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif,*.webp,*.mp3
