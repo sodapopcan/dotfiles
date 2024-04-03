@@ -577,6 +577,14 @@ augroup CursorStatusLines
   autocmd WinEnter * setlocal cursorline
 augroup END
 
+augroup Events
+  autocmd!
+  " Make windows equal size when resizing Vim itself.
+  " This saves headaches not realizing my mouse is hidden
+  " in a 1 cell wide split.
+  autocmd VimResized * wincmd =
+augroup END
+
 set signcolumn=yes
 
 " Closetag {{{1
