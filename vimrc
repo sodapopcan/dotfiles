@@ -332,6 +332,8 @@ autocmd BufEnter *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphq
 " Increase scroll speed a little
 nnoremap <C-E> 2<C-E>
 nnoremap <C-Y> 2<C-Y>
+nnoremap zl 2zl
+nnoremap zh 2zh
 " Strip whitespace
 nnoremap <silent> da<Space> :call StripWhitespace()<bar>echo "All clean"<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
