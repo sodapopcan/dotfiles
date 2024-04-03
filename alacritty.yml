@@ -47,8 +47,9 @@ font:
 
   size: 12
 
+draw_bold_text_with_bright_colors: true
+
 colors:
-  draw_bold_text_with_bright_colors: true
   primary:
     background: "#303030" # base
     foreground: "#c7c7c7" # text
@@ -57,77 +58,76 @@ colors:
 # To figure out chars, `xxd -psd`
 # Enter char seq, <return>
 # Ignore 0a, that is <return>
-keyboard:
-  bindings:
-    # High-level control
-    - { key: I, mods: Command, chars: "\x00\x5b" } # Copy mode
-    - { key: Semicolon, mods: Command|Shift, chars: "\x00\x3a" } # Run command
-    - { key: R, mods: Command|Shift, chars: "\x00\x52" } # Reload tmux config
-    - { key: L, mods: Command|Control, chars: "\x00\x43" } # Full-clear screen
+key_bindings:
+  # High-level control
+  - { key: I, mods: Command, chars: "\x00\x5b" } # Copy mode
+  - { key: Semicolon, mods: Command|Shift, chars: "\x00\x3a" } # Run command
+  - { key: R, mods: Command|Shift, chars: "\x00\x52" } # Reload tmux config
+  - { key: L, mods: Command|Control, chars: "\x00\x43" } # Full-clear screen
 
-      # MacOS native-like
-    - { key: V, mods: Command, action: Paste }
-    - { key: C, mods: Command, action: Copy }
+    # MacOS native-like
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
 
-    # Readline fixes
-    - { key: F, mods: Alt, chars: "\x1bf" }
-    - { key: B, mods: Alt, chars: "\x1bb" }
-    - { key: D, mods: Alt, chars: "\x1bd" }
+  # Readline fixes
+  - { key: F, mods: Alt, chars: "\x1bf" }
+  - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: D, mods: Alt, chars: "\x1bd" }
 
-    # Sessions
-    - { key: Slash, mods: Command, chars: "\x00\x73" } # Switch sessions
-    - { key: Equals, mods: Command|Shift, chars: "\x00\x6e" } # New session
+  # Sessions
+  - { key: Slash, mods: Command, chars: "\x00\x73" } # Switch sessions
+  - { key: Equals, mods: Command|Shift, chars: "\x00\x6e" } # New session
 
-    # Windows
-    - { key: C, mods: Command|Shift, chars: "\x00\x63" } # Create window
-    - { key: X, mods: Command|Shift, chars: "\x00\x57" } # Kill current window
-    - { key: Comma, mods: Command, chars: "\x00\x2c" } # Rename window
-    - { key: LBracket, mods: Command|Shift, chars: "\x00\x70" } # Previous window
-    - { key: RBracket, mods: Command|Shift, chars: "\x00\x6e" } # Next window
-    - { key: Key6, mods: Command, chars: "\x00\x3b" } # Last window
+  # Windows
+  - { key: C, mods: Command|Shift, chars: "\x00\x63" } # Create window
+  - { key: X, mods: Command|Shift, chars: "\x00\x57" } # Kill current window
+  - { key: Comma, mods: Command, chars: "\x00\x2c" } # Rename window
+  - { key: LBracket, mods: Command|Shift, chars: "\x00\x70" } # Previous window
+  - { key: RBracket, mods: Command|Shift, chars: "\x00\x6e" } # Next window
+  - { key: Key6, mods: Command, chars: "\x00\x3b" } # Last window
 
-    # Pane navigations
-    - { key: H, mods: Command, chars: "\x00\x68" } # Pane left
-    - { key: J, mods: Command, chars: "\x00\x6a" } # Pane down
-    - { key: K, mods: Command, chars: "\x00\x6b" } # Pane up
-    - { key: L, mods: Command, chars: "\x00\x6c" } # Pane right
+  # Pane navigations
+  - { key: H, mods: Command, chars: "\x00\x68" } # Pane left
+  - { key: J, mods: Command, chars: "\x00\x6a" } # Pane down
+  - { key: K, mods: Command, chars: "\x00\x6b" } # Pane up
+  - { key: L, mods: Command, chars: "\x00\x6c" } # Pane right
 
-    - { key: A, mods: Command, chars: "\x00\x31" } # Jump to window 1
-    - { key: S, mods: Command, chars: "\x00\x32" } # Jump to window 2
-    - { key: D, mods: Command, chars: "\x00\x33" } # Jump to window 3
-    - { key: F, mods: Command, chars: "\x00\x34" } # Jump to window 4
-    - { key: Q, mods: Command, chars: "\x00\x35" } # Jump to window 5
-    - { key: W, mods: Command, chars: "\x00\x36" } # Jump to window 6
-    - { key: E, mods: Command, chars: "\x00\x37" } # Jump to window 7
-    - { key: R, mods: Command, chars: "\x00\x38" } # Jump to window 8
+  - { key: A, mods: Command, chars: "\x00\x31" } # Jump to window 1
+  - { key: S, mods: Command, chars: "\x00\x32" } # Jump to window 2
+  - { key: D, mods: Command, chars: "\x00\x33" } # Jump to window 3
+  - { key: F, mods: Command, chars: "\x00\x34" } # Jump to window 4
+  - { key: Q, mods: Command, chars: "\x00\x35" } # Jump to window 5
+  - { key: W, mods: Command, chars: "\x00\x36" } # Jump to window 6
+  - { key: E, mods: Command, chars: "\x00\x37" } # Jump to window 7
+  - { key: R, mods: Command, chars: "\x00\x38" } # Jump to window 8
 
-    # Pane resizing
-    - { key: H, mods: Command|Shift, chars: "\x00\x48" } # Resize up  
-    - { key: J, mods: Command|Shift, chars: "\x00\x4a" } # Resize down
-    - { key: K, mods: Command|Shift, chars: "\x00\x4b" } # Resize up
-    - { key: L, mods: Command|Shift, chars: "\x00\x4c" } # Resize right
+  # Pane resizing
+  - { key: H, mods: Command|Shift, chars: "\x00\x48" } # Resize up  
+  - { key: J, mods: Command|Shift, chars: "\x00\x4a" } # Resize down
+  - { key: K, mods: Command|Shift, chars: "\x00\x4b" } # Resize up
+  - { key: L, mods: Command|Shift, chars: "\x00\x4c" } # Resize right
 
-    # Pane splitting
-    - { key: Minus, mods: Command|Shift, chars: "\x00\x22" } # Split horizontal
-    - { key: Backslash, mods: Command|Shift, chars: "\x00\x25" } # Split vertical 
-    - { key: Left, mods: Command, chars: "\x00\x1b\x5b\x44" } # Move window left
-    - { key: Right, mods: Command, chars: "\x00\x1b\x5b\x43" } # Move window right
+  # Pane splitting
+  - { key: Minus, mods: Command|Shift, chars: "\x00\x22" } # Split horizontal
+  - { key: Backslash, mods: Command|Shift, chars: "\x00\x25" } # Split vertical 
+  - { key: Left, mods: Command, chars: "\x00\x1b\x5b\x44" } # Move window left
+  - { key: Right, mods: Command, chars: "\x00\x1b\x5b\x43" } # Move window right
 
-    # Pane moving
-    - { key: LBracket, mods: Command, chars: "\x00\x7b" } # Move window left
-    - { key: RBracket, mods: Command, chars: "\x00\x7d" } # Move window right
+  # Pane moving
+  - { key: LBracket, mods: Command, chars: "\x00\x7b" } # Move window left
+  - { key: RBracket, mods: Command, chars: "\x00\x7d" } # Move window right
 
-    # Misc pane manipulation
-    - { key: Z, mods: Command, chars: "\x00\x7a" } # Zoom pane
-    - { key: S, mods: Command|Shift, chars: "\x00\x61" } # Sync panes
+  # Misc pane manipulation
+  - { key: Z, mods: Command, chars: "\x00\x7a" } # Zoom pane
+  - { key: S, mods: Command|Shift, chars: "\x00\x61" } # Sync panes
 
-    # Session Navigation
-    - { key: Left, mods: Command|Option, chars: "\x00\x28" }
-    - { key: Right, mods: Command|Option, chars: "\x00\x29" }
+  # Session Navigation
+  - { key: Left, mods: Command|Option, chars: "\x00\x28" }
+  - { key: Right, mods: Command|Option, chars: "\x00\x29" }
 
-    # Restore ctrl-6 behaviour
-    # https://github.com/alacritty/alacritty/issues/1108#issuecomment-365354347
-    - { key: Key6, mods: Control, chars: "\x1e" }
+  # Restore ctrl-6 behaviour
+  # https://github.com/alacritty/alacritty/issues/1108#issuecomment-365354347
+  - { key: Key6, mods: Control, chars: "\x1e" }
 
-    # - { key: C, mods: Command, chars: "236965783a627265616b"}
-    - { key: C, mods: Command, chars: "\x23iex:break\x0a" }
+  # - { key: C, mods: Command, chars: "236965783a627265616b"}
+  - { key: C, mods: Command, chars: "\x23iex:break\x0a" }

@@ -175,6 +175,12 @@ set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8
 autocmd FileType cpp setlocal tabstop=8 softtabstop=8 shiftwidth=8
 
+function s:dim_specs() abort
+  hi link elixirFunctionSpec Comment
+  call matchadd("elixirFunctionSpec", '^\s\+@spec.*')
+endfunction
+autocmd FileType elixir call s:dim_specs()
+
 set autoindent
 set incsearch hlsearch
 set ignorecase smartcase
