@@ -21,7 +21,8 @@ t Some item   Add task called "Some item" to the current list
 t -x "item"   Check off the task containing "item"
 t -X "item"   Uncheck the task containing "item"
 t -d "item"   Delete task containing "item"
-t -p          Purge completed tasks
+t -S          Sorts the current list
+t -p          Purge completed tasks in the current list
 t -n          Create a new todo list
 t -l          Print all todo lists
 t -c list     Make <list> the current list
@@ -32,9 +33,8 @@ t -e          Opens the todo file in $EDITOR
 EOF
 )
 
-# Theoretically, you could have multiple todo directories and switch between
-# them by exporting T_TODO_DIR.  I'm never going to do this myself so I don't
-# know why this logic exists other than it feels "right".
+# Support multiple todo directories and switch between them by exporting
+# T_TODO_DIR.
 if [ -z T_TODO_DIR ]; then
   TODO_DIR="${T_TODO_DIR}"
 else
@@ -78,6 +78,10 @@ function delete_task {
   sed -i'.bak' "/$1/d" "${CURRENT_TODO}"
 }
 
+function sort_tasks {
+  sort --output="${CURRENT_TODO}" "${CURRENT_TODO}"
+}
+
 function purge_completed_tasks {
   sed -i'.bak' "/\[\x\]/d" "${CURRENT_TODO}"
 }
@@ -119,7 +123,7 @@ function print_usage {
   echo "${USAGE}"
 }
 
-while getopts 'x:X:d:n:c:lhepstT' opt; do
+while getopts 'x:X:d:n:c:SlhepstT' opt; do
   case "$opt" in
     n)
       create_todo_list "${OPTARG}"
@@ -145,6 +149,11 @@ while getopts 'x:X:d:n:c:lhepstT' opt; do
 
     d)
       delete_task "${OPTARG}"
+      print_tasks
+      ;;
+
+    S)
+      sort_tasks
       print_tasks
       ;;
 
