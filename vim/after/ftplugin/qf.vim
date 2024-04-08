@@ -14,14 +14,14 @@ nnoremap <silent> <buffer> <c-c> <c-c>:quit<CR>:call <SID>edit_return_file()<CR>
 function! s:open_file() abort
   pclose
   let line = getline(".")
-  let filename_with_linenr = matchstr(line, '[a-z\/_\-\.]\+:\d\+')
+  let filename_with_linenr = matchstr(line, '[a-z\/_\-\.]\+\(:|\|\)?\d\+')
   if filename_with_linenr !=# ""
     let [filename, linenr] = split(filename_with_linenr, ":")
     wincmd w
     exec ":edit ".filename
     exec "keepjumps ".linenr
   else
-    .cc
+    echom "Can't find file on this line"
   endif
 endfunction
 
