@@ -13,11 +13,10 @@ function! s:PlugLocal(local, remote)
   Plug !empty(glob(a:local)) ? a:local : a:remote
 endfunction
 
-Plug 'sodapopcan/vim-hugo'
 " Usability
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 Plug 'dzeban/vim-log-syntax'
+Plug 'garbas/vim-snipmate' | Plug 'marcweber/vim-addon-mw-utils'
 
 " Utility
 Plug 'tpope/vim-dispatch'
@@ -28,15 +27,15 @@ Plug '~/src/vim/vim-rummage'
 Plug 'RRethy/vim-illuminate'
 Plug 'markonm/traces.vim'
 
+Plug 'vimwiki/vimwiki'
+nmap '<CR> <Plug>VimwikiFollowLink
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-abolish'
-
-Plug '~/src/vim/refactor'
 
 " Text Objects
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
-Plug 'andyl/vim-textobj-elixir'
 
 Plug 'kana/vim-smartinput'
 
@@ -67,13 +66,9 @@ Plug 'tpope/vim-ragtag'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-" Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 call s:PlugLocal('~/src/vim/twiggy', 'sodapopcan/vim-twiggy')
 Plug 'junegunn/gv.vim'
-
-" Markdown
-Plug 'plasticboy/vim-markdown',        { 'for': 'markdown' }
 
 " Html
 Plug 'alvan/vim-closetag'
@@ -101,7 +96,6 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
 
 " Elixir
-Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
 
 " Clojure
@@ -110,15 +104,17 @@ Plug 'tpope/vim-fireplace'
 " Rust
 Plug 'rust-lang/rust.vim'
 
-" PHP
-Plug 'captbaritone/better-indent-support-for-php-with-html'
-
 " Hugo
 call s:PlugLocal('~/src/vim/vim-hugo', 'phelipetls/vim-hugo')
 
-" Other
-Plug 'junegunn/goyo.vim'
+" Nginx
 Plug 'chr4/nginx.vim'
+
+" Other
+" Distraction free editing
+Plug 'junegunn/goyo.vim'
+" MJML - HTML email language
+Plug 'amadeus/vim-mjml'
 
 " DB
 Plug 'tpope/vim-dadbod'
@@ -127,6 +123,7 @@ Plug 'tpope/vim-dadbod'
 if $WORK_COMPUTER
   Plug '~/src/vim/packman'
 endif
+
 call plug#end()
 " }}}
 
@@ -165,10 +162,10 @@ set lazyredraw
 
 set mouse=a
 
+set showtabline=2   " I don't really use tabs, but the tabline works decently
+                    " as a global status line
 set backspace=2     " Backspace over everything
 set laststatus=2    " Always show the status line
-set showtabline=2   " I don't really use tabs, but the tabline works decently
-" as a global status line
 set expandtab
 set shiftround
 set tabstop=2 softtabstop=2 shiftwidth=2
@@ -235,6 +232,9 @@ set wildignore+=*.png,*.jpg,*.gif,*.webp,*.mp3
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+" set t_TI=^[[4?h
+" set t_TE=^[[4?l
+
 " Mappings {{{1
 "
 
@@ -259,16 +259,8 @@ nnoremap <silent> * :let winstate = winsaveview()<bar>
       \ call winrestview(winstate)<bar>
       \ unlet winstate<cr>
 
-" I'm using F keys here to leave ctrl-<H,J,K,L> free for other uses.  I don't
-" actually use the F keys, I use cmd mapped through Alacritty.
-let g:tmux_navigator_no_mappings = 1
-nnoremap <silent> <F6> :TmuxNavigateLeft<cr>
-nnoremap <silent> <F7> :TmuxNavigateDown<cr>
-nnoremap <silent> <F8> :TmuxNavigateUp<cr>
-nnoremap <silent> <F9> :TmuxNavigateRight<cr>
 " Control when you want to see more
 exec "nnoremap \<silent> H :vertical resize " . string(&columns * 0.6) "\<CR>"
-" nnoremap <silent> <M-H>:TmuxNavigatePrevious<cr>
 " Up/Down in command line
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
@@ -279,6 +271,9 @@ nnoremap <F1> <nop>
 
 " Dispatch
 nnoremap <silent> d<CR> :Dispatch<CR>
+nnoremap d; :Dispatch<space>
+" Mix
+nnoremap dm :Mix<space>
 " Tests (Vim-Test)
 nnoremap <silent> f<CR> :TestFile<CR>
 nnoremap <silent> t<CR> :TestNearest<CR>
@@ -299,7 +294,7 @@ nnoremap ypP :let @+ = expand('%:p').":".line(".")<CR>:echo "Yanked: ".expand('%
 " Yank relative path ([y]ank [p]ath [r]elative)
 nnoremap ypr :let @+ = expand('%')<CR>:echo "Yanked: ".expand('%')<CR>
 nnoremap ypR :let @+ = expand('%').":".line(".")<CR>:echo "Yanked: ".expand('%').":".line(".")<CR>
-" Yank relative path ([y]ank [p]ath [b]asename)
+" Yank base path ([y]ank [p]ath [b]asename)
 nnoremap yfb :let @+ = expand('%:t')<CR>:echo "Yanked: ".expand('%:t')<CR>
 nnoremap yfB :let @+ = expand('%:t').":".line(".")<CR>:echo "Yanked: ".expand('%:t').":".line(".")<CR>
 " I'm a S over cc kinda guy so may as well use cc for a corner case
@@ -316,12 +311,22 @@ nnoremap ' `
 nnoremap <silent>  _ :sp<CR>
 nnoremap <silent> \| :vsp<CR>
 " Paste at EOL
-nnoremap <silent> K :call PasteAtEOL()<CR>
+nnoremap <silent> K :call s:paste_at_eol()<CR>
+" Paste at end of the line
+function! s:paste_at_eol()
+  " strip trailing space on current line
+  s/\s\+$//e
+  " add trailing space then paste
+  exec "normal! A\<space>\<esc>mzp`z"
+endfunction
+
 " Reformat entire file
 nnoremap <silent> + :let winstate = winsaveview()<bar>
       \ exec "normal! mzgg=G`z"<bar>
       \ call winrestview(winstate)<bar>
       \ unlet winstate<cr>
+
+" Prettier
 function! s:map_prettier()
   if exists(":Prettier") && system('which prettier') != "" && system('which eslint') != ""
     " nnoremap <buffer> <silent> + :Prettier<CR>:call system("eslint --fix ".expand("%"))<bar>e!<CR>
@@ -329,13 +334,22 @@ function! s:map_prettier()
   endif
 endfunction
 autocmd BufEnter *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html call <sid>map_prettier()
+
 " Increase scroll speed a little
 nnoremap <C-E> 2<C-E>
 nnoremap <C-Y> 2<C-Y>
 nnoremap zl 2zl
 nnoremap zh 2zh
 " Strip whitespace
-nnoremap <silent> da<Space> :call StripWhitespace()<bar>echo "All clean"<CR>
+function! s:strip_whitespace()
+  let winstate = winsaveview()
+  %s/\s\+$//e
+  %s#\($\n\s*\)\+\%$##e
+  call winrestview(winstate)
+  unlet winstate
+endfunction
+
+nnoremap <silent> da<Space> :call s:strip_whitespace()<bar>echo "All clean"<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
@@ -363,11 +377,10 @@ nnoremap ga :A<CR>
 nnoremap gr :R<CR>
 nnoremap <leader>ga ga
 nnoremap <leader>gl gr
-nnoremap d; :Dispatch<space>
 nnoremap <silent> gO :Copen<cr>:res 30<cr>gg
 " Grepping
 nnoremap g<Space> :Rummage "" <Left><Left>
-" Grep in file
+" Fuzzy find in buffer
 nnoremap g/ :BLines<CR>
 let chars = ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
 for c in chars
@@ -391,6 +404,8 @@ nnoremap <leader>s a¯\_(ツ)_/¯<Esc>
 nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
 " Edit a new file in the same directory
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
+" Write a file in the same directory
+nnoremap <Leader>w :w <C-R>=expand('%:p:h') . '/'<CR>
 " Read a file in the same directory
 nnoremap <Leader>r :r <C-R>=expand('%:p:h') . '/'<CR>
 " Add bash shebang
@@ -501,6 +516,7 @@ autocmd! BufRead,BufNewFile *.tfvars setlocal filetype=tf
 "
 
 " General
+" Open help in vertical split
 command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
 " Source
 command! -nargs=0 So so %
@@ -519,6 +535,11 @@ function! s:deploy() abort
 
   execute cmd."./deploy"
 endfunction
+" Obsession
+" Ensure I can just us :O to start a session
+command! O Obsession
+" Hugo
+command! -nargs=* Hugo exec ":Dispatch hugo " . <f-args> . "\<cr>"
 
 " Project Edit
 "
@@ -535,24 +556,6 @@ function s:pedit(project)
   endif
 endfunction
 
-" Mappings Functions {{{2
-
-" Paste at end of the line
-function! PasteAtEOL()
-  " strip trailing space on current line
-  s/\s\+$//e
-  " add trailing space then paste
-  exec "normal! A\<space>\<esc>mzp`z"
-endfunction
-
-function! StripWhitespace()
-  let winstate = winsaveview()
-  %s/\s\+$//e
-  %s#\($\n\s*\)\+\%$##e
-  call winrestview(winstate)
-  unlet winstate
-endfunction
-
 " Autocommands {{{1
 "
 augroup FileTypeOptions
@@ -560,7 +563,7 @@ augroup FileTypeOptions
   autocmd BufReadPost fugitive://*
         \ setlocal bufhidden=wipe |
         \ nnoremap <buffer> q :q<CR>
-  autocmd FileType ruby,javascript,coffee autocmd BufWritePre <buffer> call StripWhitespace()
+  autocmd FileType elixir,ruby,javascript,coffee autocmd BufWritePre <buffer> call s:strip_whitespace()
   autocmd FileType help nnoremap <silent> <buffer> q :q<CR>
   autocmd FileType git setlocal foldlevel=1
 augroup END
@@ -654,29 +657,43 @@ function! s:migrate_rails(...)
 endfunction
 
 
-" Alchemist {{{1
-" 
-let g:alchemist_mappings_disable = 1
-
-
 " ALE {{{1
 "
 
-let g:ale_linters = {
-      \   'ruby': ['mri', 'rubocop'],
-      \   'javascript': ['eslint'],
-      \   'javascript.jsx': ['eslint'],
-      \   'haskell': ['ghc']
+" let g:ale_linters = {
+"       \   'ruby': ['mri', 'rubocop'],
+"       \   'javascript': ['eslint'],
+"       \   'javascript.jsx': ['eslint'],
+"       \   'haskell': ['ghc']
+"       \ }
+
+let g:ale_completion_enabled = 1
+let g:ale_fixers = {
+      \ 'javascript': ['prettier']
       \ }
 
-let g:ale_elixir_credo_strict = 0
+let g:ale_fix_on_save = 1
+" let g:ale_elixir_credo_strict = 0
+let g:ale_completion_delay = 500
 if !empty(glob(".credo.exs"))
   let g:ale_elixir_credo_config_file = ".credo.exs"
 endif
 
-" if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
-let g:ale_ruby_rubocop_executable = 'bundle'
-" endif
+function! SmartInsertCompletion() abort
+  " Use the default CTRL-N in completion menus
+  if pumvisible()
+    return "\<C-n>"
+  endif
+
+  " Exit and re-enter insert mode, and use insert completion
+  return "\<C-c>a\<C-n>"
+endfunction
+
+inoremap <silent> <C-n> <C-R>=SmartInsertCompletion()<CR>
+
+if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
+  let g:ale_ruby_rubocop_executable = 'bundle'
+endif
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '>>'
 
@@ -692,6 +709,8 @@ let g:nremap = {"m":"","`":"","'":"","g":""}
 nnoremap <silent> <Space> :FZF<CR>
 let g:fzf_layout = { 'down': '~20%' }
 let g:fzf_commits_log_options = "--pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+autocmd!  FileType fzf set laststatus=0 noshowmode noruler
+      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " Gutentags {{{1
 "
@@ -819,6 +838,7 @@ let g:splitjoin_ruby_hanging_args = 0
 
 let test#ruby#minitest#executable = 'ruby'
 " let g:test#runner_commands = ['Minitest']
+let g:test#strategy = 'dispatch'
 
 " Twiggy {{{1
 "
@@ -832,21 +852,9 @@ if $WORK_COMPUTER
 endif
 
 
-" Vim-Test {{{1
-"
-let g:test#strategy = 'dispatch'
-
-
 " Unimpaired {{{1
 "
 nmap co yo
-
-nmap c<CR> mm'o:TestNearest<CR>'m
-
-
-" YouCompleteMe {{{1
-"
-let g:ycm_key_list_select_completion = ['<c-e>']
 
 
 " Jira {{{1

@@ -1,0 +1,103 @@
+###
+# LiveView
+
+## Mount
+snippet mi
+	@impl true
+	def mount(${1:_params}, ${2:_session}, socket) do
+		$3 = $4
+
+		socket =
+			socket
+			|> assign(:$3, $3)
+
+		{:noreply, socket}
+	end
+
+snippet m
+	def mount(${1:_params}, ${2:_session}, socket) do
+		$3 = $4
+
+		socket =
+			socket
+			|> assign(:$3, $3)
+
+		{:noreply, socket}
+	end
+
+snippet mp
+	def mount(%{"$1" => $1}, ${2:_session}, socket) do
+		$3 = $4
+
+		socket =
+			socket
+			|> assign(:$3, $3)
+
+		{:noreply, socket}
+	end
+
+snippet mip
+	@impl true
+	def mount(%{"$1" => $1}, ${2:_session}, socket) do
+		$3 = $4
+
+		socket =
+			socket
+			|> assign(:$3, $3)
+
+		{:noreply, socket}
+	end
+
+snippet ri
+	@impl true
+	def render(assigns) do
+		~H"""
+		$1
+		"""
+	end
+
+snippet r
+	def render(assigns) do
+		~H"""
+		$1
+		"""
+	end
+
+snippet ei
+	@impl true
+	def handle_event($1, ${2:_params}, socket) do
+		$3
+
+		{:noreply, socket}
+	end
+
+snippet e
+	def handle_event($1, ${2:_params}, socket) do
+		$3
+
+		{:noreply, socket}
+	end
+
+snippet d
+	describe "$1" do
+		test "$2" do
+			$3
+		end
+	end
+
+snippet dc
+	describe "$1" do
+		test "$2", %{conn: conn} do
+			$3
+		end
+	end
+
+snippet t
+	test "$1" do
+		$2
+	end
+
+snippet tc
+	test "$1", %{conn: conn} do
+		$2
+	end
