@@ -21,7 +21,6 @@ hi TabLineSel                        ctermbg=244    ctermfg=bg    cterm=bold
 
 hi StatusLine                        ctermbg=237    ctermfg=248   cterm=none
 hi StatusLineNC                      ctermbg=237    ctermfg=237   cterm=none
-hi StatusLineTerm                    ctermbg=237    ctermfg=248   cterm=none
 hi StatusLineTermNC                  ctermbg=237    ctermfg=237   cterm=none
 
 hi VertSplit                         ctermbg=bg     ctermfg=235    cterm=none
@@ -52,7 +51,7 @@ hi CursorLineNr                      ctermbg=235  ctermfg=255 cterm=none
 hi String                            ctermfg=107
 hi link Number String
 hi PreProc                           ctermfg=103
-hi Search                            ctermbg=235  ctermfg=220 cterm=none
+hi Search                            ctermbg=none  ctermfg=120 cterm=none
 " hi link Search Normal
 hi IncSearch                         ctermbg=186    ctermfg=16
 hi Title                             ctermfg=250
@@ -119,6 +118,7 @@ hi helpNote ctermbg=bg ctermfg=11
 " hi elixirStructDelimiter ctermfg=131
 hi link elixirDocTest Comment
 hi link elixirStringDelimiter String
+hi link eelixirDelimiter Comment
 
 hi link elixirFunctionSpec Comment
 hi link elixirDocString Comment
@@ -132,6 +132,8 @@ hi erubyBlock                           ctermfg=248 cterm=none
 hi link erubyExpression erubyBlock
 hi link erubyOneLiner erubyBlock
 hi erubyDelimiter ctermfg=131
+
+hi! VimWikiItalic ctermfg=fg ctermbg=none cterm=italic
 
 " Python
 hi pythonBuiltin                     cterm=none ctermfg=73
@@ -251,6 +253,9 @@ hi link graphqlStructure graphqlKeyword
 
 hi link coffeeInterpDelim rubyInterpolationDelimiter
 
+" ALE
+
+" hi ALEWarning ctermfg=137
 " JSON
 hi JsonKeyword                          ctermbg=none  ctermfg=214
 hi JsonNoise                            ctermbg=none  ctermfg=243
