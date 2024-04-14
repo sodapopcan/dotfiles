@@ -78,6 +78,7 @@ let g:html_indent_autotags = 'source'
 
 " CSS
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'amadeus/vim-convert-color-to'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
