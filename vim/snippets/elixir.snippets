@@ -1,18 +1,35 @@
 ###
+# Elixir
+
+## General
+
+snippet defm
+	defmodule $1 do
+		@moduledoc """
+		$0
+		"""
+	end
+
+###
 # LiveView
 
-## Mount
-snippet mi
+## General
+
+snippet i
 	@impl true
-	def mount(${1:_params}, ${2:_session}, socket) do
-		$3 = $4
+	$0
 
-		socket =
-			socket
-			|> assign(:$3, $3)
+snippet cu
+	current_user = socket.assigns.current_user
+	$0
 
-		{:noreply, socket}
-	end
+snippet =sa
+	$1 = socket.assigns.$1
+	$0
+
+snippet aa
+	|> assign(:$1, assigns.$1)
+## Mount
 
 snippet m
 	def mount(${1:_params}, ${2:_session}, socket) do
@@ -36,68 +53,69 @@ snippet mp
 		{:noreply, socket}
 	end
 
-snippet mip
-	@impl true
-	def mount(%{"$1" => $1}, ${2:_session}, socket) do
-		$3 = $4
-
-		socket =
-			socket
-			|> assign(:$3, $3)
-
-		{:noreply, socket}
-	end
-
-snippet ri
-	@impl true
-	def render(assigns) do
-		~H"""
-		$1
-		"""
-	end
+## Render
 
 snippet r
 	def render(assigns) do
 		~H"""
-		$1
+		$0
 		"""
 	end
 
-snippet ei
-	@impl true
-	def handle_event($1, ${2:_params}, socket) do
-		$3
+## Update
 
-		{:noreply, socket}
+snippet u
+	def update(assigns, socket) do
+	  socket =
+			socket
+			|> assign(:$1, assigns.$1)
+
+		{:ok, socket}
 	end
 
 snippet e
 	def handle_event($1, ${2:_params}, socket) do
-		$3
+		$0
 
 		{:noreply, socket}
+	end
+
+###
+# Tests
+
+snippet f
+	feature "$1", %{session: session} do
+		$0
 	end
 
 snippet d
 	describe "$1" do
 		test "$2" do
-			$3
+			$0
+		end
+	end
+
+snippet d
+	describe "$1" do
+		test "$2" do
+			$0
 		end
 	end
 
 snippet dc
 	describe "$1" do
 		test "$2", %{conn: conn} do
-			$3
+			$0
 		end
 	end
 
 snippet t
 	test "$1" do
-		$2
+		$0
 	end
 
 snippet tc
 	test "$1", %{conn: conn} do
-		$2
+		$0
 	end
+
