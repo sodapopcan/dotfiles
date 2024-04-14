@@ -159,7 +159,7 @@ hi link htmlTag                         xmlTag
 hi link htmlTagName                     xmlTagName
 hi link htmlTagN                        xmlTagName
 hi link htmlEndTag                      xmlEndTag
-hi htmlItalic                           ctermfg=bg    ctermbg=137   cterm=italic
+hi htmlItalic                           ctermfg=fg ctermbg=none cterm=italic
 
 hi mailSubject                          ctermfg=107
 hi mailHeaderKey                        ctermfg=221
@@ -254,6 +254,7 @@ hi link graphqlStructure graphqlKeyword
 hi link coffeeInterpDelim rubyInterpolationDelimiter
 
 " ALE
+hi! ALEError ctermfg=160 cterm=undercurl ctermul=160
 
 " hi ALEWarning ctermfg=137
 " JSON

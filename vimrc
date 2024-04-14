@@ -233,6 +233,10 @@ set wildignore+=*.png,*.jpg,*.gif,*.webp,*.mp3
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 
+" Allows undercurl
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+
 " set t_TI=^[[4?h
 " set t_TE=^[[4?l
 
