@@ -14,5 +14,6 @@ tags.temp.tmp
 vim/.netrwhist
 vim/plugins
 Brewfile.lock.json
+.lexical
 .rummage.json
 .andrwe.*
