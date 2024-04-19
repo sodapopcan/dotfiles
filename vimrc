@@ -27,7 +27,7 @@ Plug '~/src/vim/vim-rummage'
 Plug 'RRethy/vim-illuminate'
 Plug 'markonm/traces.vim'
 
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 nmap '<CR> <Plug>VimwikiFollowLink
 
 Plug 'tpope/vim-commentary'
@@ -128,6 +128,20 @@ endif
 call plug#end()
 " }}}
 
+
+" Ultility {{{1
+"
+function! s:error_msg() abort
+  if v:warningmsg !=# ''
+    redraw
+    echohl WarningMsg
+    echomsg v:warningmsg
+    let v:warningmsg = ''
+    echohl None
+  endif
+endfunction
+
+
 " Common {{{1
 "
 runtime! macros/matchit.vim
@@ -152,7 +166,7 @@ hi User7 ctermbg=130  ctermfg=0    cterm=none   " line
 " More, and file-type overrides, can be found in vim/ftplugins.
 
 set hidden " navigate away from  a buffer without saving it first
-set shell=/bin/bash
+set shell=/bin/zsh
 set clipboard=unnamed
 
 set ttyfast
@@ -317,7 +331,7 @@ nnoremap ' `
 nnoremap <silent>  _ :sp<CR>
 nnoremap <silent> \| :vsp<CR>
 " Paste at EOL
-nnoremap <silent> K :call s:paste_at_eol()<CR>
+nnoremap <silent> K :call <sid>paste_at_eol()<CR>
 " Paste at end of the line
 function! s:paste_at_eol()
   " strip trailing space on current line
@@ -355,7 +369,7 @@ function! s:strip_whitespace()
   unlet winstate
 endfunction
 
-nnoremap <silent> da<Space> :call s:strip_whitespace()<bar>echo "All clean"<CR>
+nnoremap <silent> da<Space> :call <sid>strip_whitespace()<bar>echo "All clean"<CR>
 " Allow recovery from accidental c-w or c-u while in insert mode
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
@@ -518,6 +532,49 @@ augroup END
 
 autocmd! BufRead,BufNewFile *.tfvars setlocal filetype=tf
 
+" Dotfile Navigation {{{1
+"
+" These give me a few global projectionist-list commands for navigating to my
+" most-visited dotfiles.  They ensure I'm :lcd'd into ~/dotfiles.
+command! -nargs=? Edot call <sid>edit_dotfile("e", <f-args>)
+command! -nargs=? Tdot call <sid>edit_dotfile("t", <f-args>)
+command! -nargs=? Vdot call <sid>edit_dotfile("v", <f-args>)
+
+function! s:edit_dotfile(type, ...) abort
+  if a:0 > 0
+    let id = a:1
+  else
+    let id = "vim"
+  endif
+
+  let types = {
+        \ "e": "edit",
+        \ "t": "tabedit",
+        \ "v": "botright vsplit"
+        \ }
+
+  let paths = {
+        \ "vim": "vimrc",
+        \ "kitty": "config/kitty/kitty.conf",
+        \ "sh": "zshrc",
+        \ "soda": "vim/colors/sodapopcan.vim"
+        \ }
+
+  if has_key(paths, id)
+    exec types[a:type]." ~/dotfiles/".paths[id]
+    lcd ~/dotfiles
+  else
+    let v:warningmsg = "Invalid dotfile"
+    call <sid>error_msg()
+  endif
+endfunction
+
+function! s:edit_dotfile_complete(A,L,P) abort
+  let path = expand("~/dotfiles/")
+  let paths = split(glob(path.a:A."*"))
+  return map(paths, "substitute(v:val,'".path."','','')")
+endfunction
+
 " Commands {{{1
 "
 
@@ -592,211 +649,211 @@ augroup Events
   " This saves headaches not realizing my mouse is hidden
   " in a 1 cell wide split.
   autocmd VimResized * wincmd =
-augroup END
+    augroup END
 
-set signcolumn=yes
+  set signcolumn=yes
 
-" Closetag {{{1
-"
-let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.mustache"
+  " Closetag {{{1
+  "
+  let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.mustache"
 
-" Git {{{1
-"
+  " Git {{{1
+  "
 
-" Mappings (maybe I should move this to mappings section)
+  " Mappings (maybe I should move this to mappings section)
 
-nnoremap <silent> gs :keepalt G<CR>
-nnoremap <silent> gC :G commit -v<CR>
-nnoremap <silent> gd :! clear && git diff<CR>
-nnoremap <silent> gD :! clear && git diff --cached<CR>
-nnoremap <silent> g? :G blame -w<CR>
-nnoremap <silent> gw :silent Gwrite<CR>
-nnoremap          g^ :G push<CR>
-nnoremap          gV :G pull<CR>
-nnoremap <silent> gb :Twiggy<CR>
-nnoremap          gB :Twiggy<Space>
-nnoremap <silent> gl :GV<CR>
-nnoremap <silent> gL :GV!<CR>
+  nnoremap <silent> gs :keepalt G<CR>
+  nnoremap <silent> gC :G commit -v<CR>
+  nnoremap <silent> gd :! clear && git diff<CR>
+  nnoremap <silent> gD :! clear && git diff --cached<CR>
+  nnoremap <silent> g? :G blame -w<CR>
+  nnoremap <silent> gw :silent Gwrite<CR>
+  nnoremap          g^ :G push<CR>
+  nnoremap          gV :G pull<CR>
+  nnoremap <silent> gb :Twiggy<CR>
+  nnoremap          gB :Twiggy<Space>
+  nnoremap <silent> gl :GV<CR>
+  nnoremap <silent> gL :GV!<CR>
 
-" Commands
-command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
+  " Commands
+  command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
 
-function! s:git_push(bang) abort
-  if a:bang
-    G push --force-with-lease
-  else
-    G push -u
-  endif
-endfunction
+  function! s:git_push(bang) abort
+    if a:bang
+      G push --force-with-lease
+    else
+      G push -u
+    endif
+  endfunction
 
-" GV specific
+  " GV specific
 
-function! s:scroll_commits(down) abort
-  wincmd p
-  execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
-  wincmd p
-endfunction
+  function! s:scroll_commits(down) abort
+    wincmd p
+    execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
+    wincmd p
+  endfunction
 
-function! s:init_gv_scroll_mappings() abort
-  nnoremap <silent> <buffer> J :call s:scroll_commits(1)<CR>
-  nnoremap <silent> <buffer> K :call s:scroll_commits(0)<CR>
-endfunction
+  function! s:init_gv_scroll_mappings() abort
+    nnoremap <silent> <buffer> J :call s:scroll_commits(1)<CR>
+    nnoremap <silent> <buffer> K :call s:scroll_commits(0)<CR>
+  endfunction
 
-augroup ScrollGV
-  autocmd!
-  autocmd FileType GV call s:init_gv_scroll_mappings()
-  autocmd FileType GV set buftype=nowrite
-augroup END
-
-
-" Rails
-command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
-command! -nargs=0 Rollback Dispatch rake db:rollback
-command! -nargs=0 Eform Eview _form
-
-function! s:migrate_rails(...)
-  if a:0 > 0
-    exec ":Dispatch rails g migration " . a:1
-  else
-    Dispatch rake db:migrate && RAILS_ENV=test rake db:migrate
-  endif
-endfunction
+  augroup ScrollGV
+    autocmd!
+    autocmd FileType GV call s:init_gv_scroll_mappings()
+    autocmd FileType GV set buftype=nowrite
+  augroup END
 
 
-" ALE {{{1
-"
+  " Rails
+  command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
+  command! -nargs=0 Rollback Dispatch rake db:rollback
+  command! -nargs=0 Eform Eview _form
 
-" let g:ale_linters = {
-"       \   'ruby': ['mri', 'rubocop'],
-"       \   'javascript': ['eslint'],
-"       \   'javascript.jsx': ['eslint'],
-"       \   'haskell': ['ghc']
-"       \ }
+  function! s:migrate_rails(...)
+    if a:0 > 0
+      exec ":Dispatch rails g migration " . a:1
+    else
+      Dispatch rake db:migrate && RAILS_ENV=test rake db:migrate
+    endif
+  endfunction
 
-let g:ale_completion_enabled = 1
-let g:ale_fixers = {
-      \ 'javascript': ['prettier']
-      \ }
 
-let g:ale_fix_on_save = 1
-" let g:ale_elixir_credo_strict = 0
-let g:ale_completion_delay = 500
-if !empty(glob(".credo.exs"))
-  let g:ale_elixir_credo_config_file = ".credo.exs"
-endif
+  " ALE {{{1
+  "
 
-function! SmartInsertCompletion() abort
-  " Use the default CTRL-N in completion menus
-  if pumvisible()
-    return "\<C-n>"
+  " let g:ale_linters = {
+  "       \   'ruby': ['mri', 'rubocop'],
+  "       \   'javascript': ['eslint'],
+  "       \   'javascript.jsx': ['eslint'],
+  "       \   'haskell': ['ghc']
+  "       \ }
+
+  let g:ale_completion_enabled = 1
+  let g:ale_fixers = {
+        \ 'javascript': ['prettier']
+        \ }
+
+  let g:ale_fix_on_save = 1
+  " let g:ale_elixir_credo_strict = 0
+  let g:ale_completion_delay = 500
+  if !empty(glob(".credo.exs"))
+    let g:ale_elixir_credo_config_file = ".credo.exs"
   endif
 
-  " Exit and re-enter insert mode, and use insert completion
-  return "\<C-c>a\<C-n>"
-endfunction
+  function! SmartInsertCompletion() abort
+    " Use the default CTRL-N in completion menus
+    if pumvisible()
+      return "\<C-n>"
+    endif
 
-inoremap <silent> <C-n> <C-R>=SmartInsertCompletion()<CR>
+    " Exit and re-enter insert mode, and use insert completion
+    return "\<C-c>a\<C-n>"
+  endfunction
 
-if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
-  let g:ale_ruby_rubocop_executable = 'bundle'
-endif
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '>>'
+  inoremap <silent> <C-n> <C-R>=SmartInsertCompletion()<CR>
 
-highlight ALEErrorSign term=bold ctermfg=160
-highlight ALEWarningSign term=bold ctermfg=178
-
-" Dispatch
-"
-let g:nremap = {"m":"","`":"","'":"","g":""}
-
-" FZF {{{1
-"
-nnoremap <silent> <Space> :FZF<CR>
-let g:fzf_layout = { 'down': '~20%' }
-let g:fzf_commits_log_options = "--pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-autocmd!  FileType fzf set laststatus=0 noshowmode noruler
-      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-" Gutentags {{{1
-"
-let g:gutentags_exclude_filetypes = ['javascript', 'javascript.jsx', 'markdown']
-let g:gutentags_ctags_exclude = ['js', 'jsx', 'md', 'markdown', 'json', 'sh']
-
-" IfIOnly {{{1
-"
-let g:ifionly_filetypes = ['vim-plug']
-let g:ifionly_destructive_jump = 1
-
-" Illuminate {{{1
-"
-let illuminateJS = [
-      \ 'jsFuncCall',
-      \ 'jsFuncBlock',
-      \ 'jsVariableDef',
-      \ 'jsDestructuringPropertyValue',
-      \ 'jsObjectValue'
-      \ ]
-let g:Illuminate_ftHighlightGroups = {
-      \ 'ruby': ['rubyBlock'],
-      \ 'javascript': illuminateJS,
-      \ 'javascript.jsx': illuminateJS,
-      \ }
-
-" JavaScript
-"
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-
-
-" NERDTree {{{1
-"
-nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
-nnoremap <silent> gM :NERDTreeFind<CR>:wincmd =<CR>
-
-let NERDTreeQuitOnOpen          = 1
-let NERDTreeHijackNetrw         = 1
-let NERDTreeHighlightCursorline = 0
-let NERDTreeMinimalUI           = 1
-let NERDTreeWinSize             = 45
-let NERDTreeIgnore=[]
-let NERDTreeIgnore=['^Session\.vim$', 'node_modules$[[dir]]', 'tags$[[file]]', '\~$']
-
-" Rails
-"
-let g:rails_projections = {
-      \ "app/workers/*_worker.rb": {
-      \   "command": "worker",
-      \   "template":
-      \     ["class {camelcase|capitalize|colons}Worker",
-      \      "  include Sidekiq::Worker", "", "  def perform(id)",
-      \      "  end", "end"]
-      \ },
-      \ "lib/utils/*.rb": {
-      \   "command": "util",
-      \   "template":
-      \     ["module Utils", "  module {camelcase|capitalize|colons}", "    module_function", "  end", "end"]
-      \ }}
-
-
-command! -nargs=? Gemfile call <SID>gemfile(<f-args>)
-
-function! s:gemfile(...) abort
-  edit Gemfile
-  if a:0
-    call search('\v^group')
-    keepjumps normal! {k
-    call append(line('.'), 'gem "'.a:1.'"')
-    normal! j
+  if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
+    let g:ale_ruby_rubocop_executable = 'bundle'
   endif
-endfunction
+  let g:ale_sign_error = '>>'
+  let g:ale_sign_warning = '>>'
 
-nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
+  highlight ALEErrorSign term=bold ctermfg=160
+  highlight ALEWarningSign term=bold ctermfg=178
 
-" Prettier {{{1
-"
-" when running at every change you may want to disable quickfix
-let g:prettier#config#arrow_parens = 'always'
-let g:prettier#config#trailing_comma ='es5'
+  " Dispatch
+  "
+  let g:nremap = {"m":"","`":"","'":"","g":""}
+
+  " FZF {{{1
+  "
+  nnoremap <silent> <Space> :FZF<CR>
+  let g:fzf_layout = { 'down': '~20%' }
+  let g:fzf_commits_log_options = "--pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+  autocmd!  FileType fzf set laststatus=0 noshowmode noruler
+        \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+  " Gutentags {{{1
+  "
+  let g:gutentags_exclude_filetypes = ['javascript', 'javascript.jsx', 'markdown']
+  let g:gutentags_ctags_exclude = ['js', 'jsx', 'md', 'markdown', 'json', 'sh']
+
+  " IfIOnly {{{1
+  "
+  let g:ifionly_filetypes = ['vim-plug']
+  let g:ifionly_destructive_jump = 1
+
+  " Illuminate {{{1
+  "
+  let illuminateJS = [
+        \ 'jsFuncCall',
+        \ 'jsFuncBlock',
+        \ 'jsVariableDef',
+        \ 'jsDestructuringPropertyValue',
+        \ 'jsObjectValue'
+        \ ]
+  let g:Illuminate_ftHighlightGroups = {
+        \ 'ruby': ['rubyBlock'],
+        \ 'javascript': illuminateJS,
+        \ 'javascript.jsx': illuminateJS,
+        \ }
+
+  " JavaScript
+  "
+  let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+
+  " NERDTree {{{1
+  "
+  nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
+  nnoremap <silent> gM :NERDTreeFind<CR>:wincmd =<CR>
+
+  let NERDTreeQuitOnOpen          = 1
+  let NERDTreeHijackNetrw         = 1
+  let NERDTreeHighlightCursorline = 0
+  let NERDTreeMinimalUI           = 1
+  let NERDTreeWinSize             = 45
+  let NERDTreeIgnore=[]
+  let NERDTreeIgnore=['^Session\.vim$', 'node_modules$[[dir]]', 'tags$[[file]]', '\~$']
+
+  " Rails
+  "
+  let g:rails_projections = {
+        \ "app/workers/*_worker.rb": {
+        \   "command": "worker",
+        \   "template":
+        \     ["class {camelcase|capitalize|colons}Worker",
+        \      "  include Sidekiq::Worker", "", "  def perform(id)",
+        \      "  end", "end"]
+        \ },
+        \ "lib/utils/*.rb": {
+        \   "command": "util",
+        \   "template":
+        \     ["module Utils", "  module {camelcase|capitalize|colons}", "    module_function", "  end", "end"]
+        \ }}
+
+
+  command! -nargs=? Gemfile call <SID>gemfile(<f-args>)
+
+  function! s:gemfile(...) abort
+    edit Gemfile
+    if a:0
+      call search('\v^group')
+      keepjumps normal! {k
+      call append(line('.'), 'gem "'.a:1.'"')
+      normal! j
+    endif
+  endfunction
+
+  nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
+
+  " Prettier {{{1
+  "
+  " when running at every change you may want to disable quickfix
+  let g:prettier#config#arrow_parens = 'always'
+  let g:prettier#config#trailing_comma ='es5'
 
 
 " RuboCop {{{1
