@@ -276,6 +276,7 @@ nnoremap <F1> <nop>
 
 " Dispatch
 nnoremap <silent> d<CR> :Dispatch<CR>
+nnoremap <silent> dM<CR> :Dispatch mix ecto.gen.migration<space>
 nnoremap d; :Dispatch<space>
 " Mix
 nnoremap dm :Mix<space>
