@@ -111,6 +111,9 @@ call s:PlugLocal('~/src/vim/vim-hugo', 'phelipetls/vim-hugo')
 " Nginx
 Plug 'chr4/nginx.vim'
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 " Other
 " Distraction free editing
 Plug 'junegunn/goyo.vim'
