@@ -543,8 +543,6 @@ augroup AutoMkdir
   endfunction
 augroup END
 
-autocmd! BufRead,BufNewFile *.tfvars setlocal filetype=tf
-
 " Dotfile Navigation {{{1
 "
 " These give me a few global projectionist-list commands for navigating to my
