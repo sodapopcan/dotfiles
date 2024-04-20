@@ -274,7 +274,7 @@ nnoremap <silent> <C-C> :redraw!<CR>
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
 
-nnoremap g<cr> :botright terminal<cr>
+nnoremap <silent> g<cr> :botright terminal<cr>
 " Don't mess with READLINE in :terminal
 tmap <c-j> <c-g>j
 tmap <c-k> <c-g>k
@@ -285,6 +285,7 @@ autocmd TerminalWinOpen *
   \   resize 10 |
   \   setlocal nonumber |
   \   setlocal nowrap |
+  \   setlocal winfixheight |
   \ endif
 
 " Don't jump on search (and always highlight)
