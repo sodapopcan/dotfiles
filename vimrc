@@ -274,7 +274,7 @@ nnoremap <silent> <C-C> :redraw!<CR>
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
 
-nnoremap <leader>t :botright terminal<cr>
+nnoremap g<cr> :botright terminal<cr>
 " Don't mess with READLINE in :terminal
 tmap <c-j> <c-g>j
 tmap <c-k> <c-g>k
@@ -401,8 +401,6 @@ nnoremap zz zz2<C-E>
 cnoreabbrev copen botright copen
 " Even up the current vertical split
 nnoremap <silent> g\| :wincmd =<CR>
-" Running
-nnoremap g<cr> :exec "Dispatch " . &ft . " %"<cr>
 " Folding
 nnoremap c-m :set fdm=marker<CR>
 nnoremap c-{ :set fdm=manual<CR>
