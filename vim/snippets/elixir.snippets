@@ -39,7 +39,7 @@ snippet m
 			socket
 			|> assign(:$3, $3)
 
-		{:noreply, socket}
+		{:ok, socket}
 	end
 
 snippet mp
@@ -50,7 +50,7 @@ snippet mp
 			socket
 			|> assign(:$3, $3)
 
-		{:noreply, socket}
+		{:ok, socket}
 	end
 
 ## Render
