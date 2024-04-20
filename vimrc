@@ -180,10 +180,11 @@ set lazyredraw
 
 set mouse=a
 
-set showtabline=2   " I don't really use tabs, but the tabline works decently
-                    " as a global status line
-set backspace=2     " Backspace over everything
-set laststatus=2    " Always show the status line
+set termwinkey=<c-g> " Don't mess with readline
+
+set showtabline=2
+set backspace=2      " Backspace over everything
+set laststatus=2     " Always show the status line
 set expandtab
 set shiftround
 set tabstop=2 softtabstop=2 shiftwidth=2
@@ -272,6 +273,20 @@ nnoremap <silent> <C-C> :redraw!<CR>
 
 " One keystroke--instead of 4--to save
 nnoremap <CR> :write<CR>
+
+nnoremap <leader>t :botright terminal<cr>
+" Don't mess with READLINE in :terminal
+tmap <c-j> <c-g>j
+tmap <c-k> <c-g>k
+" Enter normal mode
+tmap <c-space> <c-g>N
+autocmd TerminalWinOpen *
+  \ if &buftype == 'terminal' |
+  \   resize 10 |
+  \   setlocal nonumber |
+  \   setlocal nowrap |
+  \ endif
+
 " Don't jump on search (and always highlight)
 nnoremap <silent> * :let winstate = winsaveview()<bar>
       \ setlocal noignorecase<bar>
