@@ -17,10 +17,11 @@ hi ColorColumn                       ctermbg=235    ctermfg=none   cterm=none
 
 hi TabLine                           ctermbg=237    ctermfg=242   cterm=none
 hi TabLineFill                       ctermbg=237    ctermfg=254   cterm=none
-hi TabLineSel                        ctermbg=244    ctermfg=bg    cterm=bold
+hi TabLineSel                        ctermbg=137    ctermfg=0     cterm=bold
 
 hi StatusLine                        ctermbg=237    ctermfg=248   cterm=none
 hi StatusLineNC                      ctermbg=237    ctermfg=237   cterm=none
+hi StatusLineTerm                    ctermbg=237    ctermfg=248   cterm=none
 hi StatusLineTermNC                  ctermbg=237    ctermfg=237   cterm=none
 
 hi VertSplit                         ctermbg=bg     ctermfg=235    cterm=none
@@ -255,6 +256,8 @@ hi link coffeeInterpDelim rubyInterpolationDelimiter
 
 " ALE
 hi! ALEError ctermfg=160 cterm=undercurl ctermul=160
+hi! ALEWarning ctermfg=fg
+
 
 " hi ALEWarning ctermfg=137
 " JSON
