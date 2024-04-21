@@ -279,7 +279,7 @@ if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
   export FZF_TMUX=1
   # export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v "fonts\/*" | grep -v "images\/*" | grep -v "db\/*" | grep -v "public\/*" || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
-  export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public'
+  export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public --ignore-dir assets/vendor/heroicons'
 fi
 
 # Shell tools {{{1
