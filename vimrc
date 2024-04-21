@@ -60,14 +60,14 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
 Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
-call s:PlugLocal('~/src/vim/ifionly', 'sodapopcan/vim-ifionly')
+call s:PlugLocal('~/src/vim/vim-ifionly', 'sodapopcan/vim-ifionly')
 Plug 'tpope/vim-ragtag'
 
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'mhinz/vim-signify'
-call s:PlugLocal('~/src/vim/twiggy', 'sodapopcan/vim-twiggy')
+call s:PlugLocal('~/src/vim/vim-twiggy', 'sodapopcan/vim-twiggy')
 Plug 'junegunn/gv.vim'
 
 " Html
