@@ -276,7 +276,7 @@ nnoremap <silent> g<cr> :botright terminal<cr>
 tmap <c-j> <c-g>j
 tmap <c-k> <c-g>k
 " Enter normal mode
-tmap <c-space> <c-g>N
+tmap <silent> g<cr> <c-g>N
 autocmd TerminalWinOpen *
   \ if &buftype == 'terminal' |
   \   resize 10 |
