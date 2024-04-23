@@ -183,6 +183,8 @@ set mouse=a
 
 set termwinkey=<c-g> " Don't mess with readline
 
+set previewheight=20
+
 set showtabline=2
 set backspace=2      " Backspace over everything
 set laststatus=2     " Always show the status line
