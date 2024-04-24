@@ -885,9 +885,10 @@ let g:rsi_no_meta = 1
 
 " Signify {{{1
 "
-let g:signify_sign_add               = "\u258F"
-let g:signify_sign_delete            = "_"
-let g:signify_sign_delete_first_line = "‾"
+let g:signify_sign_add               = "\u258D"
+
+let g:signify_sign_delete            = "\u2581"
+let g:signify_sign_delete_first_line = "\u2594"
 let g:signify_sign_change            = g:signify_sign_add
 let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
 nnoremap g- :SignifyHunkUndo<CR>
