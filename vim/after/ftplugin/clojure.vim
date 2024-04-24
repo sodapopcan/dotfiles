@@ -4,13 +4,13 @@ if exists("g:loaded_fireplace")
 endif
 
 let g:projectionist_heuristics['project.clj'] = {
-  \   'src/*.clj': {
-  \     'type': 'src',
-  \     'alternate': 'test/{}_test.clj',
-  \   },
-  \   'test/*_test.clj': {
-  \     'type': 'test',
-  \     'alternate': 'src/{}.clj',
-  \   },
-  \   'project.clj': { 'type': 'project' },
-  \ }
+      \   'src/*.clj': {
+      \     'type': 'src',
+      \     'alternate': 'test/{}_test.clj',
+      \   },
+      \   'test/*_test.clj': {
+      \     'type': 'test',
+      \     'alternate': 'src/{}.clj',
+      \   },
+      \   'project.clj': { 'type': 'project' },
+      \ }

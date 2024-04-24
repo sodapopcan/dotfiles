@@ -1,1 +1,1 @@
-setlocal statusline=""
+setlocal statusline=~
