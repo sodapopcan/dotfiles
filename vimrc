@@ -306,7 +306,6 @@ nnoremap <F1> <nop>
 
 " Dispatch
 nnoremap <silent> d<CR> :Dispatch<CR>
-nnoremap <silent> dM<CR> :Dispatch mix ecto.gen.migration<space>
 nnoremap d; :Dispatch<space>
 " Mix
 nnoremap dm :Mix<space>
@@ -745,7 +744,6 @@ augroup Events
         \ }
 
   let g:ale_fix_on_save = 1
-  " let g:ale_elixir_credo_strict = 0
   let g:ale_completion_delay = 500
   if !empty(glob(".credo.exs"))
     let g:ale_elixir_credo_config_file = ".credo.exs"
