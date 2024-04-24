@@ -26,6 +26,7 @@ Plug 'janko-m/vim-test'
 Plug '~/src/vim/vim-rummage'
 Plug 'RRethy/vim-illuminate'
 Plug 'markonm/traces.vim'
+Plug 'tpope/vim-vinegar'
 
 " Plug 'vimwiki/vimwiki'
 nmap '<CR> <Plug>VimwikiFollowLink
@@ -191,8 +192,6 @@ set laststatus=2     " Always show the status line
 set expandtab
 set shiftround
 set tabstop=2 softtabstop=2 shiftwidth=2
-autocmd FileType c setlocal tabstop=8 softtabstop=8 shiftwidth=8
-autocmd FileType cpp setlocal tabstop=8 softtabstop=8 shiftwidth=8
 
 set autoindent
 set incsearch hlsearch
@@ -818,7 +817,7 @@ augroup Events
   nnoremap <silent> gM :NERDTreeFind<CR>:wincmd =<CR>
 
   let NERDTreeQuitOnOpen          = 1
-  let NERDTreeHijackNetrw         = 1
+  let NERDTreeHijackNetrw         = 0
   let NERDTreeHighlightCursorline = 0
   let NERDTreeMinimalUI           = 1
   let NERDTreeWinSize             = 45
