@@ -277,9 +277,9 @@ tmap <c-j> <c-g>j
 tmap <c-k> <c-g>k
 " Enter normal mode
 tmap <silent> g<cr> <c-g>N
+tmap <c-m> <c-g>:res 40<cr>
 autocmd TerminalWinOpen *
   \ if &buftype == 'terminal' |
-  \   resize 10 |
   \   setlocal nonumber |
   \   setlocal nowrap |
   \   setlocal winfixheight |
