@@ -827,6 +827,14 @@ augroup Events
   let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 
+" Kitty Navigator {{{1
+let g:kitty_navigator_no_mappings = 1
+
+nnoremap <silent> <c-`>h :KittyNavigateLeft<cr>
+nnoremap <silent> <c-`>j :KittyNavigateDown<cr>
+nnoremap <silent> <c-`>k :KittyNavigateUp<cr>
+nnoremap <silent> <c-`>l :KittyNavigateRight<cr>
+
   " NERDTree {{{1
   "
   nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
