@@ -738,6 +738,10 @@ augroup Events
   "       \ }
 
   let g:ale_completion_enabled = 1
+  let g:ale_hover_cursor = 0
+  let g:ale_set_balloons = 1
+  let g:ale_floating_preview = 1
+  let g:ale_floating_window_border = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   let g:ale_fixers = {
         \ 'javascript': ['prettier']
         \ }
@@ -766,6 +770,18 @@ augroup Events
   let g:ale_sign_error = '>>'
   let g:ale_sign_warning = '>>'
 
+  function! AleCustomOpts() abort
+    let [l:info, l:loc] = ale#util#FindItemAtCursor(bufnr(''))
+
+    return {
+          \ 'close': 'click',
+          \ 'highlight': 'PopUpWin',
+          \ 'scrollbarhighlight': 'PopUpScrollBar',
+          \ 'thumbhighlight': 'PopUpThumb'
+          \ }
+  endfunction
+
+  let g:ale_floating_preview_popup_opts = 'g:AleCustomOpts'
   highlight ALEErrorSign term=bold ctermfg=160
   highlight ALEWarningSign term=bold ctermfg=178
 
