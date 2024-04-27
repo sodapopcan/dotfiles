@@ -305,7 +305,7 @@ nnoremap <F1> <nop>
 
 " Dispatch
 nnoremap <silent> d<CR> :Dispatch<CR>
-nnoremap d; :Dispatch<space>
+nnoremap d: :Dispatch<space>
 " Mix
 nnoremap dm :Mix<space>
 " Tests (Vim-Test)
@@ -785,7 +785,7 @@ augroup Events
   highlight ALEErrorSign term=bold ctermfg=160
   highlight ALEWarningSign term=bold ctermfg=178
 
-  " Dispatch
+  " Dispatch {{{1
   "
   let g:nremap = {"m":"","`":"","'":"","g":""}
 
@@ -822,7 +822,7 @@ augroup Events
         \ 'javascript.jsx': illuminateJS,
         \ }
 
-  " JavaScript
+  " JavaScript {{{1
   "
   let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
