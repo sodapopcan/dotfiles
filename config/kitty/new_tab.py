@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 def main(_args) -> str:
     location_and_maybe_name = input('New tab: ')
@@ -10,36 +11,28 @@ def handle_result(args, location_and_maybe_name, target_window_id, boss):
     pieces = location_and_maybe_name.split(':')
     location = pieces[0]
 
+    if location == "":
+        location = os.getcwd()
+    else:
+        location = subprocess.check_output(["autojump", location]).rstrip().decode("utf-8")
+
     if len(pieces) > 1:
         name = pieces[1]
     else:
-        if location == "":
-            name = os.getcwd()
-        else:
-            name = location
+        name = os.path.basename(location)
 
     window = boss.window_id_map.get(target_window_id)
 
     if window is not None:
-        if location != "":
-            boss.call_remote_control(window, ('action', 'new_tab'))
-            boss.call_remote_control(window, ('send-text', 'j ' + location + '\r'))
-        else:
-            boss.call_remote_control(window, ('action', 'new_tab_with_cwd'))
-
+        boss.call_remote_control(window, ('launch', '--type=tab', f'--cwd={location}'))
         boss.call_remote_control(window, ('action', 'set_tab_title', name))
 
         if num_windows > 1:
-            boss.call_remote_control(window, ('launch', '--location=hsplit', '--cwd=current'))
-            boss.call_remote_control(window, ('send-text', 'j ' + location + '\r'))
+            boss.call_remote_control(window, ('launch', '--location=hsplit', f'--cwd={location}'))
 
             if num_windows > 2:
-                boss.call_remote_control(window, ('launch', '--location=vsplit', '--cwd=current'))
-                boss.call_remote_control(window, ('send-text', 'j ' + location + '\r'))
+                boss.call_remote_control(window, ('launch', '--location=vsplit', f'--cwd={location}'))
                 boss.call_remote_control(window, ('action', 'previous_window'))
 
             boss.call_remote_control(window, ('action', 'previous_window'))
             boss.call_remote_control(window, ('action', 'resize_window taller 20'))
-
-        else:
-            boss.call_remote_control(window, ('action', 'previous_window'))
