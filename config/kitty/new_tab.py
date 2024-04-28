@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-def main(_args) -> str:
+def main(_args):
     location_and_maybe_name = input('New tab: ')
 
     return location_and_maybe_name
