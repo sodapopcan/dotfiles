@@ -656,226 +656,226 @@ augroup Events
   " Make windows equal size when resizing Vim itself.
   " This saves headaches not realizing my mouse is hidden
   " in a 1 cell wide split.
-  autocmd VimResized * wincmd =
-    augroup END
+  autocmd VimResized * exec "wincmd ="
+augroup END
 
-  set signcolumn=yes
+set signcolumn=yes
 
-  " Closetag {{{1
-  "
-  let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.mustache"
+" Closetag {{{1
+"
+let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.mustache"
 
-  " Git {{{1
-  "
+" Git {{{1
+"
 
-  " Mappings (maybe I should move this to mappings section)
+" Mappings (maybe I should move this to mappings section)
 
-  nnoremap <silent> gs :keepalt G<CR>
-  nnoremap <silent> gC :G commit -v<CR>
-  nnoremap <silent> gd :! clear && git diff<CR>
-  nnoremap <silent> gD :! clear && git diff --cached<CR>
-  nnoremap <silent> g? :G blame -w<CR>
-  nnoremap <silent> gw :silent Gwrite<CR>
-  nnoremap          g^ :G push<CR>
-  nnoremap          gV :G pull<CR>
-  nnoremap <silent> gb :Twiggy<CR>
-  nnoremap          gB :Twiggy<Space>
-  nnoremap <silent> gl :GV<CR>
-  nnoremap <silent> gL :GV!<CR>
+nnoremap <silent> gs :keepalt G<CR>
+nnoremap <silent> gC :G commit -v<CR>
+nnoremap <silent> gd :! clear && git diff<CR>
+nnoremap <silent> gD :! clear && git diff --cached<CR>
+nnoremap <silent> g? :G blame -w<CR>
+nnoremap <silent> gw :silent Gwrite<CR>
+nnoremap          g^ :G push<CR>
+nnoremap          gV :G pull<CR>
+nnoremap <silent> gb :Twiggy<CR>
+nnoremap          gB :Twiggy<Space>
+nnoremap <silent> gl :GV<CR>
+nnoremap <silent> gL :GV!<CR>
 
-  " Commands
-  command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
+" Commands
+command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
 
-  function! s:git_push(bang) abort
-    if a:bang
-      G push --force-with-lease
-    else
-      G push -u
-    endif
-  endfunction
+function! s:git_push(bang) abort
+  if a:bang
+    G push --force-with-lease
+  else
+    G push -u
+  endif
+endfunction
 
-  " GV specific
+" GV specific
 
-  function! s:scroll_commits(down) abort
-    wincmd p
-    execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
-    wincmd p
-  endfunction
+function! s:scroll_commits(down) abort
+  wincmd p
+  execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
+  wincmd p
+endfunction
 
-  function! s:init_gv_scroll_mappings() abort
-    nnoremap <silent> <buffer> J :call s:scroll_commits(1)<CR>
-    nnoremap <silent> <buffer> K :call s:scroll_commits(0)<CR>
-  endfunction
+function! s:init_gv_scroll_mappings() abort
+  nnoremap <silent> <buffer> J :call s:scroll_commits(1)<CR>
+  nnoremap <silent> <buffer> K :call s:scroll_commits(0)<CR>
+endfunction
 
-  augroup ScrollGV
-    autocmd!
-    autocmd FileType GV call s:init_gv_scroll_mappings()
-    autocmd FileType GV set buftype=nowrite
-  augroup END
-
-
-  " Rails
-  command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
-  command! -nargs=0 Rollback Dispatch rake db:rollback
-  command! -nargs=0 Eform Eview _form
-
-  function! s:migrate_rails(...)
-    if a:0 > 0
-      exec ":Dispatch rails g migration " . a:1
-    else
-      Dispatch rake db:migrate && RAILS_ENV=test rake db:migrate
-    endif
-  endfunction
+augroup ScrollGV
+  autocmd!
+  autocmd FileType GV call s:init_gv_scroll_mappings()
+  autocmd FileType GV set buftype=nowrite
+augroup END
 
 
-  " ALE {{{1
-  "
+" Rails
+command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
+command! -nargs=0 Rollback Dispatch rake db:rollback
+command! -nargs=0 Eform Eview _form
 
-  " let g:ale_linters = {
-  "       \   'ruby': ['mri', 'rubocop'],
-  "       \   'javascript': ['eslint'],
-  "       \   'javascript.jsx': ['eslint'],
-  "       \   'haskell': ['ghc']
-  "       \ }
+function! s:migrate_rails(...)
+  if a:0 > 0
+    exec ":Dispatch rails g migration " . a:1
+  else
+    Dispatch rake db:migrate && RAILS_ENV=test rake db:migrate
+  endif
+endfunction
 
-  let g:ale_completion_enabled = 1
-  let g:ale_hover_cursor = 0
-  let g:ale_set_balloons = 1
-  let g:ale_floating_preview = 1
-  let g:ale_floating_window_border = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  let g:ale_fixers = {
-        \ 'javascript': ['prettier']
-        \ }
 
-  let g:ale_fix_on_save = 1
-  let g:ale_completion_delay = 500
-  if !empty(glob(".credo.exs"))
-    let g:ale_elixir_credo_config_file = ".credo.exs"
+" ALE {{{1
+"
+
+" let g:ale_linters = {
+"       \   'ruby': ['mri', 'rubocop'],
+"       \   'javascript': ['eslint'],
+"       \   'javascript.jsx': ['eslint'],
+"       \   'haskell': ['ghc']
+"       \ }
+
+let g:ale_completion_enabled = 1
+let g:ale_hover_cursor = 0
+let g:ale_set_balloons = 1
+let g:ale_floating_preview = 1
+let g:ale_floating_window_border = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+let g:ale_fixers = {
+      \ 'javascript': ['prettier']
+      \ }
+
+let g:ale_fix_on_save = 1
+let g:ale_completion_delay = 500
+if !empty(glob(".credo.exs"))
+  let g:ale_elixir_credo_config_file = ".credo.exs"
+endif
+
+function! SmartInsertCompletion() abort
+  " Use the default CTRL-N in completion menus
+  if pumvisible()
+    return "\<C-n>"
   endif
 
-  function! SmartInsertCompletion() abort
-    " Use the default CTRL-N in completion menus
-    if pumvisible()
-      return "\<C-n>"
-    endif
+  " Exit and re-enter insert mode, and use insert completion
+  return "\<C-c>a\<C-n>"
+endfunction
 
-    " Exit and re-enter insert mode, and use insert completion
-    return "\<C-c>a\<C-n>"
-  endfunction
+inoremap <silent> <C-n> <C-R>=SmartInsertCompletion()<CR>
 
-  inoremap <silent> <C-n> <C-R>=SmartInsertCompletion()<CR>
+if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
+  let g:ale_ruby_rubocop_executable = 'bundle'
+endif
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '>>'
 
-  if !empty(glob("Gemfile")) && system('grep "rubocop" < Gemfile')
-    let g:ale_ruby_rubocop_executable = 'bundle'
-  endif
-  let g:ale_sign_error = '>>'
-  let g:ale_sign_warning = '>>'
+function! AleCustomOpts() abort
+  let [l:info, l:loc] = ale#util#FindItemAtCursor(bufnr(''))
 
-  function! AleCustomOpts() abort
-    let [l:info, l:loc] = ale#util#FindItemAtCursor(bufnr(''))
-
-    return {
-          \ 'close': 'click',
-          \ 'highlight': 'PopUpWin',
-          \ 'scrollbarhighlight': 'PopUpScrollBar',
-          \ 'thumbhighlight': 'PopUpThumb'
-          \ }
-  endfunction
-
-  let g:ale_floating_preview_popup_opts = 'g:AleCustomOpts'
-  highlight ALEErrorSign term=bold ctermfg=160
-  highlight ALEWarningSign term=bold ctermfg=178
-
-  " Dispatch {{{1
-  "
-  let g:nremap = {"m":"","`":"","'":"","g":""}
-
-  " FZF {{{1
-  "
-  nnoremap <silent> <Space> :FZF<CR>
-  let g:fzf_layout = { 'down': '~20%' }
-  let g:fzf_commits_log_options = "--pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-  autocmd!  FileType fzf set laststatus=0 noshowmode noruler
-        \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-  " Gutentags {{{1
-  "
-  let g:gutentags_exclude_filetypes = ['javascript', 'javascript.jsx', 'markdown']
-  let g:gutentags_ctags_exclude = ['js', 'jsx', 'md', 'markdown', 'json', 'sh']
-
-  " IfIOnly {{{1
-  "
-  let g:ifionly_filetypes = ['vim-plug']
-  let g:ifionly_destructive_jump = 1
-
-  " Illuminate {{{1
-  "
-  let illuminateJS = [
-        \ 'jsFuncCall',
-        \ 'jsFuncBlock',
-        \ 'jsVariableDef',
-        \ 'jsDestructuringPropertyValue',
-        \ 'jsObjectValue'
-        \ ]
-  let g:Illuminate_ftHighlightGroups = {
-        \ 'ruby': ['rubyBlock'],
-        \ 'javascript': illuminateJS,
-        \ 'javascript.jsx': illuminateJS,
+  return {
+        \ 'close': 'click',
+        \ 'highlight': 'PopUpWin',
+        \ 'scrollbarhighlight': 'PopUpScrollBar',
+        \ 'thumbhighlight': 'PopUpThumb'
         \ }
+endfunction
 
-  " JavaScript {{{1
-  "
-  let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:ale_floating_preview_popup_opts = 'g:AleCustomOpts'
+highlight ALEErrorSign term=bold ctermfg=160
+highlight ALEWarningSign term=bold ctermfg=178
 
-  " NERDTree {{{1
-  "
-  nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
-  nnoremap <silent> gM :NERDTreeFind<CR>:wincmd =<CR>
+" Dispatch {{{1
+"
+let g:nremap = {"m":"","`":"","'":"","g":""}
 
-  let NERDTreeQuitOnOpen          = 1
-  let NERDTreeHijackNetrw         = 0
-  let NERDTreeHighlightCursorline = 0
-  let NERDTreeMinimalUI           = 1
-  let NERDTreeWinSize             = 45
-  let NERDTreeIgnore=[]
-  let NERDTreeIgnore=['^Session\.vim$', 'node_modules$[[dir]]', 'tags$[[file]]', '\~$']
+" FZF {{{1
+"
+nnoremap <silent> <Space> :FZF<CR>
+let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_commits_log_options = "--pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+autocmd!  FileType fzf set laststatus=0 noshowmode noruler
+      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-  " Rails
-  "
-  let g:rails_projections = {
-        \ "app/workers/*_worker.rb": {
-        \   "command": "worker",
-        \   "template":
-        \     ["class {camelcase|capitalize|colons}Worker",
-        \      "  include Sidekiq::Worker", "", "  def perform(id)",
-        \      "  end", "end"]
-        \ },
-        \ "lib/utils/*.rb": {
-        \   "command": "util",
-        \   "template":
-        \     ["module Utils", "  module {camelcase|capitalize|colons}", "    module_function", "  end", "end"]
-        \ }}
+" Gutentags {{{1
+"
+let g:gutentags_exclude_filetypes = ['javascript', 'javascript.jsx', 'markdown']
+let g:gutentags_ctags_exclude = ['js', 'jsx', 'md', 'markdown', 'json', 'sh']
+
+" IfIOnly {{{1
+"
+let g:ifionly_filetypes = ['vim-plug']
+let g:ifionly_destructive_jump = 1
+
+" Illuminate {{{1
+"
+let illuminateJS = [
+      \ 'jsFuncCall',
+      \ 'jsFuncBlock',
+      \ 'jsVariableDef',
+      \ 'jsDestructuringPropertyValue',
+      \ 'jsObjectValue'
+      \ ]
+let g:Illuminate_ftHighlightGroups = {
+      \ 'ruby': ['rubyBlock'],
+      \ 'javascript': illuminateJS,
+      \ 'javascript.jsx': illuminateJS,
+      \ }
+
+" JavaScript {{{1
+"
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+" NERDTree {{{1
+"
+nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
+nnoremap <silent> gM :NERDTreeFind<CR>:wincmd =<CR>
+
+let NERDTreeQuitOnOpen          = 1
+let NERDTreeHijackNetrw         = 0
+let NERDTreeHighlightCursorline = 0
+let NERDTreeMinimalUI           = 1
+let NERDTreeWinSize             = 45
+let NERDTreeIgnore=[]
+let NERDTreeIgnore=['^Session\.vim$', 'node_modules$[[dir]]', 'tags$[[file]]', '\~$']
+
+" Rails
+"
+let g:rails_projections = {
+      \ "app/workers/*_worker.rb": {
+      \   "command": "worker",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Worker",
+      \      "  include Sidekiq::Worker", "", "  def perform(id)",
+      \      "  end", "end"]
+      \ },
+      \ "lib/utils/*.rb": {
+      \   "command": "util",
+      \   "template":
+      \     ["module Utils", "  module {camelcase|capitalize|colons}", "    module_function", "  end", "end"]
+      \ }}
 
 
-  command! -nargs=? Gemfile call <SID>gemfile(<f-args>)
+command! -nargs=? Gemfile call <SID>gemfile(<f-args>)
 
-  function! s:gemfile(...) abort
-    edit Gemfile
-    if a:0
-      call search('\v^group')
-      keepjumps normal! {k
-      call append(line('.'), 'gem "'.a:1.'"')
-      normal! j
-    endif
-  endfunction
+function! s:gemfile(...) abort
+  edit Gemfile
+  if a:0
+    call search('\v^group')
+    keepjumps normal! {k
+    call append(line('.'), 'gem "'.a:1.'"')
+    normal! j
+  endif
+endfunction
 
-  nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
+nnoremap <leader>y /up<cr>cechange<esc>/down<cr>djkddkO
 
-  " Prettier {{{1
-  "
-  " when running at every change you may want to disable quickfix
-  let g:prettier#config#arrow_parens = 'always'
-  let g:prettier#config#trailing_comma ='es5'
+" Prettier {{{1
+"
+" when running at every change you may want to disable quickfix
+let g:prettier#config#arrow_parens = 'always'
+let g:prettier#config#trailing_comma ='es5'
 
 
 " RuboCop {{{1
