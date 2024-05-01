@@ -15,6 +15,7 @@ endfunction
 
 " Usability
 Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'} | call s:PlugLocal('~/src/vim/vim-kitty', 'fladson/vim-kitty')
+let g:kitty_navigator_no_mappings = 1
 
 Plug 'dzeban/vim-log-syntax'
 Plug 'garbas/vim-snipmate' | Plug 'marcweber/vim-addon-mw-utils'
@@ -609,6 +610,8 @@ endfunction
 " Obsession
 " Ensure I can just us :O to start a session
 command! O Obsession
+" Colours
+command! -nargs=0 Colours exec 'vertical botright term ++cols=9 zsh -ic "colours | less -R"'
 " Hugo
 command! -nargs=* Hugo exec ":Dispatch hugo " . <f-args> . "\<cr>"
 
