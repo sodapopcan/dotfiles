@@ -14,7 +14,8 @@ function! s:PlugLocal(local, remote)
 endfunction
 
 " Usability
-Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
+Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'} | call s:PlugLocal('~/src/vim/vim-kitty', 'fladson/vim-kitty')
+
 Plug 'dzeban/vim-log-syntax'
 Plug 'garbas/vim-snipmate' | Plug 'marcweber/vim-addon-mw-utils'
 
