@@ -675,8 +675,6 @@ let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.
 
 nnoremap <silent> gs :keepalt G<CR>
 nnoremap <silent> gC :G commit -v<CR>
-nnoremap <silent> gd :! clear && git diff<CR>
-nnoremap <silent> gD :! clear && git diff --cached<CR>
 nnoremap <silent> g? :G blame -w<CR>
 nnoremap <silent> gw :silent Gwrite<CR>
 nnoremap          g^ :G push<CR>
