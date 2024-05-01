@@ -278,11 +278,11 @@ tmap <c-k> <c-g>k
 tmap <silent> g<cr> <c-g>N
 tmap <c-m> <c-g>:res 40<cr>
 autocmd TerminalWinOpen *
-  \ if &buftype == 'terminal' |
-  \   setlocal nonumber |
-  \   setlocal nowrap |
-  \   setlocal winfixheight |
-  \ endif
+      \ if &buftype == 'terminal' |
+      \   setlocal nonumber |
+      \   setlocal nowrap |
+      \   setlocal winfixwidth winfixheight |
+      \ endif
 
 " Don't jump on search (and always highlight)
 nnoremap <silent> * :let winstate = winsaveview()<bar>
