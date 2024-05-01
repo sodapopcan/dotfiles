@@ -7,6 +7,8 @@ au! FileType vim setlocal foldmethod=marker
 " Plugin dev
 nnoremap <buffer> <silent> & :source %<cr>:mess clear<cr>:echo "Reloaded ".expand('%')." and cleared messages"<CR>
 
+nnoremap <buffer> <c-k> K
+
 if exists('g:loaded_plug')
   if expand('%:t') == 'vimrc'
     command! -nargs=* -bang P call s:add_plugin(<bang>0, <f-args>)
