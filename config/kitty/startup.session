@@ -1,0 +1,6 @@
+new_tab home
+cd ~/src/andrew.hau.st-hugo
+launch
+launch --cwd=current --location=hsplit
+launch --cwd=current --location=vsplit
+resize_window shorter 20

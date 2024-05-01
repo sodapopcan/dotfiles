@@ -1,6 +1,3 @@
-import os
-import subprocess
-
 def main(_args):
     location_and_maybe_name = input('New tab: ')
 
@@ -14,7 +11,7 @@ def handle_result(args, location_and_maybe_name, target_window_id, boss):
     if len(pieces) > 1:
         title = pieces[1]
     else:
-        title = "~"
+        title = location
 
     window = boss.window_id_map.get(target_window_id)
 
@@ -24,7 +21,6 @@ def handle_result(args, location_and_maybe_name, target_window_id, boss):
         _set_win(boss, window, location)
 
         if num_windows > 1:
-            # boss.call_remote_control(window, ('action', 'new_window_with_cwd'))
             boss.call_remote_control(window, ('launch', '--type=window', '--location=hsplit'))
             _set_win(boss, window, location)
 
@@ -35,10 +31,10 @@ def handle_result(args, location_and_maybe_name, target_window_id, boss):
 
             boss.call_remote_control(window, ('action', 'previous_window'))
             boss.call_remote_control(window, ('action', 'resize_window taller 20'))
+            boss.call_remote_control(window, ('send-text', 'e\n'))
 
 def _set_win(boss, window, location):
     if location != "":
         boss.call_remote_control(window, ('send-text', f'j {location}\n'))
 
     boss.call_remote_control(window, ('send-key', 'ctrl+l'))
-
