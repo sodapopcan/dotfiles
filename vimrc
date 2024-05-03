@@ -614,6 +614,23 @@ command! O Obsession
 command! -nargs=0 Colours exec 'vertical botright term ++cols=9 zsh -ic "colours | less -R"'
 " Hugo
 command! -nargs=* Hugo exec ":Dispatch hugo " . <f-args> . "\<cr>"
+" Home
+command! -nargs=0 Home call <sid>home()
+function! s:home() abort
+  if tabpagenr("$") != 3
+    silent lcd ~/src/andrew.hau.st-hugo
+    silent e hugo.yaml
+    silent Obsession
+    silent tabedit ~/dotfiles/vimrc
+    silent lcd ~/dotfiles
+    Colours
+    wincmd h
+    silent tabedit ~/notes/notes.md
+    silent lcd ~/notes
+    normal! 1gt
+  endif
+endfunction
+
 
 " Project Edit
 "
