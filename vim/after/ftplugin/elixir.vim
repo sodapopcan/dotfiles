@@ -50,5 +50,6 @@ let g:projectionist_heuristics['mix.exs'] = {
 let b:ale_linters = ['lexical', 'mix']
 let b:ale_elixir_lexical_release = '/Users/andrewhaust/elixir/lexical/_build/dev/package/lexical/bin'
 
-imap <C-Space> <Plug>(ale_complete)
-nnoremap gd :ALEGoToDefinition<cr>
+imap <buffer> <C-Space> <Plug>(ale_complete)
+nnoremap <buffer> <c-]> :ALEGoToDefinition<cr>
+nnoremap <buffer> <c-k> :ALEHover<cr>
