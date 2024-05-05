@@ -61,7 +61,7 @@ hi Search                            ctermbg=none  ctermfg=120 cterm=none
 hi IncSearch                         ctermbg=186    ctermfg=16
 hi Title                             ctermfg=250
 hi Type                              cterm=none   ctermfg=167
-hi Visual                            ctermbg=11    ctermfg=16
+hi Visual                            ctermbg=3     ctermfg=16
 
 hi link DiffAdd String
 hi link DiffDelete Type
