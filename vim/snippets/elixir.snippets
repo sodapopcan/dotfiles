@@ -27,6 +27,14 @@ snippet =sa
 	$1 = socket.assigns.$1
 	$0
 
+snippet sa=
+	socket =
+		socket
+		|> assign(:$1, $1)
+
+snippet |>a
+	|> assign(:$1, $1)
+
 snippet aa
 	|> assign(:$1, assigns.$1)
 ## Mount
@@ -74,7 +82,7 @@ snippet u
 	end
 
 snippet e
-	def handle_event($1, ${2:_params}, socket) do
+	def handle_event("$1", ${2:_params}, socket) do
 		$0
 
 		{:noreply, socket}
@@ -118,4 +126,3 @@ snippet tc
 	test "$1", %{conn: conn} do
 		$0
 	end
-
