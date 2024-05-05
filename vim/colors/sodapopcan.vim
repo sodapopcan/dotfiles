@@ -9,6 +9,10 @@ endif
 let g:colors_name = "sodapopcan"
 
 hi Normal                            ctermbg=236    ctermfg=248    cterm=none
+" hi PopUpWin                          ctermbg=234    ctermfg=248    cterm=none
+hi link PopUpWin CursorLine
+hi PopUpScrollBar                    ctermbg=233    ctermfg=236    cterm=none
+hi PopUpThumb                        ctermbg=242    ctermfg=242    cterm=none
 
 hi Cursor                            ctermbg=15     ctermfg=0      cterm=none
 hi CursorLine                        ctermbg=235    ctermfg=none   cterm=none
