@@ -1,7 +1,5 @@
 if !exists('g:loaded_kitty_navigator') | finish | endif
 
-let g:kitty_navigator_no_mappings = 1
-
 nnoremap <silent> <c-`>h :KittyNavigateLeft<cr>
 nnoremap <silent> <c-`>j :KittyNavigateDown<cr>
 nnoremap <silent> <c-`>k :KittyNavigateUp<cr>
