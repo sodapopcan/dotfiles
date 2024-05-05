@@ -36,5 +36,3 @@ def handle_result(args, location_and_maybe_name, target_window_id, boss):
 def _set_win(boss, window, location):
     if location != "":
         boss.call_remote_control(window, ('send-text', f'j {location}\n'))
-
-    boss.call_remote_control(window, ('send-key', 'ctrl+l'))
