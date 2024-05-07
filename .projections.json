@@ -9,9 +9,9 @@
     "related": "tmux.conf",
     "type": "zsh"
   },
-  "tmux.conf": {
+  "config/kitty/kitty.conf": {
     "related": "zshrc",
-    "type": "tmux"
+    "type": "kitty"
   },
   "vim/colors/sodapopcan.vim": {
     "related": "vimrc",
