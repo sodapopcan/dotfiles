@@ -52,6 +52,9 @@ setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
 
+# https://github.com/kovidgoyal/kitty/issues/713
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
 alias permit_alacritty='xattr -d com.apple.quarantine $(which alacritty)'
 
 # system stuffs {{{1
