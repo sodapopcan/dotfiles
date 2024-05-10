@@ -302,7 +302,7 @@ fi
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # gggit
-ssh-add ~/.ssh/github
+ssh-add -q ~/.ssh/github
 
 [ -f "$HOME/.privaterc" ] && . "$HOME/.privaterc"
 
