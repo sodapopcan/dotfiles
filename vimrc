@@ -307,7 +307,7 @@ nnoremap <F1> <nop>
 
 " Dispatch
 nnoremap <silent> d<CR> :Dispatch<CR>
-nnoremap d: :Dispatch<space>
+nnoremap d; :Dispatch<space>
 " Mix
 nnoremap dm :Mix<space>
 " Tests (Vim-Test)
