@@ -1,3 +1,4 @@
+[read-line]
 C-w: kill-prev-word
-C-n: history-prev
-C-p: history-prev
+C-p: history-search-prev
+C-n: history-search-next
