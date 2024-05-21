@@ -435,7 +435,7 @@ nnoremap <leader>s a¯\_(ツ)_/¯<Esc>
 " Location
 "
 " Wipe buffer while maintaining its split
-nnoremap <silent> <leader>q :bp\|bwipeout #<CR>
+nnoremap <silent> <leader>q :b # <bar> bwipeout #<CR>
 " Edit a new file in the same directory
 nnoremap <Leader>e :e <C-R>=expand('%:p:h') . '/'<CR>
 " Write a file in the same directory
