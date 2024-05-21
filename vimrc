@@ -263,8 +263,6 @@ let &t_Ce = "\e[4:0m"
 " hard.  j/k!  jk4lyfe!
 inoremap <silent> jk <ESC>
 
-" I accidentally hit this more than you'd think
-inoremap <C-@> <Nop>
 " Since C-L is in use, C-C will just do everything
 inoremap <silent> <C-C> <Esc>:redraw!<CR>
 nnoremap <silent> <C-C> :redraw!<CR>
@@ -444,6 +442,11 @@ nnoremap <Leader>w :w <C-R>=expand('%:p:h') . '/'<CR>
 nnoremap <Leader>r :r <C-R>=expand('%:p:h') . '/'<CR>
 " Add bash shebang
 nnoremap <Leader># :normal! ggi#!/usr/bin/env bash<CR>
+" Tab switching
+nnoremap <c-1> 1gt
+nnoremap <c-@> 2gt
+nnoremap <c-3> 3gt
+nnoremap <c-4> 4gt
 
 " Status/Tab Lines {{{1
 "
@@ -764,7 +767,7 @@ let g:ale_floating_window_border = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 let g:ale_fixers = {
       \ 'javascript': ['prettier']
       \ }
-
+let g:ale_virtualtext_cursor = 0
 let g:ale_fix_on_save = 1
 let g:ale_completion_delay = 500
 if !empty(glob(".credo.exs"))
@@ -916,9 +919,10 @@ let g:rsi_no_meta = 1
 
 " Signify {{{1
 "
-let g:signify_sign_add               = "\u258D"
+let g:signify_sign_add               = "\u258F"
 
-let g:signify_sign_delete            = "\u2581"
+" let g:signify_sign_delete            = "\u2581"
+let g:signify_sign_delete            = "_"
 let g:signify_sign_delete_first_line = "\u2594"
 let g:signify_sign_change            = g:signify_sign_add
 let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
