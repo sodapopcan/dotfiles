@@ -443,6 +443,8 @@ nnoremap <Leader>r :r <C-R>=expand('%:p:h') . '/'<CR>
 " Add bash shebang
 nnoremap <Leader># :normal! ggi#!/usr/bin/env bash<CR>
 " Tab switching
+nnoremap <c-9> gT
+nnoremap <c-0> gt
 nnoremap <c-1> 1gt
 nnoremap <c-@> 2gt
 nnoremap <c-3> 3gt
