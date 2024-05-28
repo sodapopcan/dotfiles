@@ -699,8 +699,6 @@ nnoremap <silent> gs :keepalt G<CR>
 nnoremap <silent> gC :G commit -v<CR>
 nnoremap <silent> g? :G blame -w<CR>
 nnoremap <silent> gw :silent Gwrite<CR>
-nnoremap          g^ :G push<CR>
-nnoremap          gV :G pull<CR>
 nnoremap <silent> gb :Twiggy<CR>
 nnoremap          gB :Twiggy<Space>
 nnoremap <silent> gl :GV<CR>
