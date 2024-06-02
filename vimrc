@@ -320,6 +320,8 @@ nnoremap z; :wall \| qall!<CR>
 nnoremap Q @q
 " Only show this window
 nnoremap <silent> L :IfIOnly<CR>
+" Send line to blackhole
+nnoremap <silent> d_ :d_<cr>
 " Make Y do what you think it would
 nnoremap Y y$
 " Yank full path (yank full path)
