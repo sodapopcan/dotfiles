@@ -31,6 +31,7 @@ Plug 'markonm/traces.vim'
 Plug 'tpope/vim-vinegar'
 
 " Plug 'vimwiki/vimwiki'
+Plug 'preservim/vim-markdown'
 nmap '<CR> <Plug>VimwikiFollowLink
 
 Plug 'tpope/vim-commentary'
@@ -100,7 +101,8 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-bundler'
 
 " Elixir
-Plug 'elixir-lang/vim-elixir'
+" Plug 'elixir-lang/vim-elixir'
+call s:PlugLocal('~/src/vim/vim-elixir', 'elixir-lang/vim-elixir')
 
 " Clojure
 Plug 'tpope/vim-fireplace'
@@ -275,7 +277,7 @@ nnoremap <silent> g<cr> :botright terminal<cr>
 tmap <c-j> <c-g>j
 tmap <c-k> <c-g>k
 " Enter normal mode
-tmap <silent> g<cr> <c-g>N
+tmap <silent> <c-/> <c-g>N
 tmap <c-m> <c-g>:res 40<cr>
 autocmd TerminalWinOpen *
       \ if &buftype == 'terminal' |
@@ -639,8 +641,14 @@ function! s:home() abort
 endfunction
 
 
-" Project Edit
+" Projectionist
 "
+let g:projectionist_heuristics = {
+      \   "Makefile": {
+      \     "type": "Make"
+      \   }
+      \ }
+
 " Jump to a project in the ~/src/projects directory and lcd to it.
 " 
 command! -nargs=1 Pedit call s:pedit(<f-args>)
@@ -697,8 +705,8 @@ let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.
 
 " Mappings (maybe I should move this to mappings section)
 
-nnoremap <silent> gs :keepalt G<CR>
-nnoremap <silent> gC :G commit -v<CR>
+nnoremap <silent> gs :keepalt Git<CR>
+nnoremap <silent> gC :Git commit -v<CR>
 nnoremap <silent> g? :G blame -w<CR>
 nnoremap <silent> gw :silent Gwrite<CR>
 nnoremap <silent> gb :Twiggy<CR>

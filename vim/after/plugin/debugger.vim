@@ -2,7 +2,7 @@
 " Takes a variable name as an arg and will output a debug log
 " statement dependent on the language
 " With no argument will use the word under the cursor
-nnoremap <silent> gI :call <sid>debug()<CR>
+nnoremap <silent> dI :call <sid>debug()<CR>
 
 function! s:debug()
   let token = expand('<cword>')
@@ -31,8 +31,9 @@ function! s:debug()
   let next_line_number = current_line_number + 1
 
   " Special case for Elixir
-  if s:match(getline('.'), '^\s*|>') || s:match(getline(next_line_number), '^\s*|>')
-    let output = ['|> IO.inspect()']
+  if s:on_pipe()
+
+    let output = ['|> dbg()']
     return s:append(current_line_number, output)
   endif
 
@@ -68,4 +69,15 @@ function! s:append(linenr, output)
   exec "keepjumps" a:linenr + 1
   exec "silent normal! ".len(a:output)."=="
   exec "keepjumps" current_linenr
+endfunction
+
+function! s:on_pipe()
+  return index(["|", ">"], getline('.')[col('.')-1]) != -1 && match(getline("."), '^\(\s\+\)\?|>') >= 0
+endfunction
+
+function! s:get_syn_groups()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction

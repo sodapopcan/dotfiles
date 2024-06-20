@@ -10,7 +10,9 @@
     "type": "zsh"
   },
   "config/kitty/kitty.conf": {
-    "related": "zshrc",
+    "type": "kitty"
+  },
+  "config/kitty/*": {
     "type": "kitty"
   },
   "vim/colors/sodapopcan.vim": {

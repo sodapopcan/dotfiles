@@ -1,0 +1,30 @@
+# Hugo
+#
+snippet -
+	{{- $0 -}}
+
+snippet <
+	{{< $0 >}}
+
+snippet %
+	{{% $0 %}}
+
+snippet p
+	{{- partial $0 -}}
+
+snippet -
+	{{- $1 -}}
+		$0
+	{{- end -}}
+snippet r
+	{{- range $1 -}}
+		$0
+	{{- end -}}
+
+snippet i
+	{{- if $1 -}}
+		$0
+	{{- end -}}
+
+snippet p
+	{{- printf "%v" $0 -}}

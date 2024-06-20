@@ -18,6 +18,7 @@ if IsMixProject()
     else
       exec "normal! kA,\<esc>j^"
     endif
+    write
   endfunction
 endif
 
@@ -51,5 +52,13 @@ let b:ale_linters = ['lexical', 'mix']
 let b:ale_elixir_lexical_release = '/Users/andrewhaust/elixir/lexical/_build/dev/package/lexical/bin'
 
 imap <buffer> <C-Space> <Plug>(ale_complete)
-nnoremap <buffer> <c-]> :ALEGoToDefinition<cr>
+nnoremap <buffer> dg :ALEGoToDefinition<cr>
+nnoremap <buffer> dv :ALEGoToDefinition -vsplit<cr>
+nnoremap <buffer> dh :ALEGoToDefinition -split<cr>
+nnoremap <buffer> dn :ALEGoToDefinition -tab<cr>
+nnoremap <buffer> du :ALEFindReferences -quickfix<cr>
 nnoremap <buffer> <c-k> :ALEHover<cr>
+
+nnoremap <silent> <buffer> <C-N> :call search('^\%(\s\+\)\?\zsdef', 'W')<CR>
+nnoremap <silent> <buffer> <C-P> :call search('^\%(\s\+\)\?\zsdef', 'bW')<CR>
+

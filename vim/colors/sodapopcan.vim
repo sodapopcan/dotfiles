@@ -156,15 +156,35 @@ hi! link sassMixinName sassProperty
 hi NonText                              ctermfg=8
 hi SpecialKey                           ctermfg=8
 
-hi xmlTag                               ctermfg=179
-hi xmlTagName                           ctermfg=179
-hi xmlEndTag                            ctermfg=179
+" hi xmlTag                               ctermfg=214 "143
+" hi xmlTag                               ctermfg=137
+" hi xmlTag                               ctermfg=209 "247
+hi xmlTag ctermfg=246
+hi link xmlTagName xmlTag
+hi link xmlEndTag xmlTag
 
 hi link htmlTag                         xmlTag
 hi link htmlTagName                     xmlTagName
 hi link htmlTagN                        xmlTagName
 hi link htmlEndTag                      xmlEndTag
 hi htmlItalic                           ctermfg=fg ctermbg=none cterm=italic
+hi htmlArg                              ctermfg=243 "243 "137 "143
+" hi link htmlArg Keyword
+" hi htmlString ctermfg=144
+hi htmlString ctermfg=130
+hi heexDelimiter ctermfg=243
+hi link eelixirDelimiter heexDelimiter
+hi htmlEquals ctermfg=240
+hi link heexSpecialAttribute Keyword
+
+" hi link heexDelimiter Normal
+hi elixirHeexSigil ctermfg=245
+hi htmlH1 ctermfg=245
+hi htmlH2 ctermfg=245
+hi htmlH3 ctermfg=245
+hi htmlH4 ctermfg=245
+hi htmlH5 ctermfg=245
+hi htmlH6 ctermfg=245
 
 hi mailSubject                          ctermfg=107
 hi mailHeaderKey                        ctermfg=221
@@ -260,7 +280,7 @@ hi link coffeeInterpDelim rubyInterpolationDelimiter
 
 " ALE
 hi! ALEError ctermfg=160 cterm=undercurl ctermul=160
-hi! ALEWarning ctermfg=fg
+hi! ALEWarning cterm=undercurl ctermul=11
 
 
 " hi ALEWarning ctermfg=137

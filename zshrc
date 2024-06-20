@@ -32,6 +32,7 @@ export ESLINT_NO_DEV_ERRORS=true
 # seems to have done the trick.
 export LC_COLLATE=C
 
+zstyle ':completion:*:*:make:*' tag-order 'targets'
 autoload -U promptinit && promptinit
 setopt PROMPT_SUBST
 
@@ -233,7 +234,7 @@ to_ogg()
 PS1='
 
    %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string) %{%F{244}%}[$(x -s)]%{%F{242}%}
-%(?.%{%F{108}%} *.%{%F{167}%} *)%{%F{253}%}%b '
+%(?.%{%F{108}%} $.%{%F{167}%} $)%{%F{253}%}%b '
 
 # vim / editor {{{1
 e()
@@ -317,5 +318,12 @@ upgrade_chromedriver()
   brew upgrade chromedriver && xattr -d com.apple.quarantine $(which chromedriver)
 }
 
+unfuck_chromedriver()
+{
+  xattr -d com.apple.quarantine $(which chromedriver)
+}
+
 # Shopify Hydrogen alias to local projects
 alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
+
+eval "$(direnv hook zsh)"
