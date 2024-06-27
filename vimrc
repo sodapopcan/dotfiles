@@ -30,8 +30,8 @@ Plug 'RRethy/vim-illuminate'
 Plug 'markonm/traces.vim'
 Plug 'tpope/vim-vinegar'
 
-" Plug 'vimwiki/vimwiki'
-Plug 'preservim/vim-markdown'
+Plug 'vimwiki/vimwiki'
+" Plug 'preservim/vim-markdown'
 nmap '<CR> <Plug>VimwikiFollowLink
 
 Plug 'tpope/vim-commentary'
