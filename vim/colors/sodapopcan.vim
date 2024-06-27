@@ -159,7 +159,7 @@ hi SpecialKey                           ctermfg=8
 " hi xmlTag                               ctermfg=214 "143
 " hi xmlTag                               ctermfg=137
 " hi xmlTag                               ctermfg=209 "247
-hi xmlTag ctermfg=97
+hi xmlTag ctermfg=103
 hi link xmlTagName xmlTag
 hi link xmlEndTag xmlTag
 
@@ -171,7 +171,7 @@ hi htmlItalic                           ctermfg=fg ctermbg=none cterm=italic
 hi htmlArg                              ctermfg=242 "243 "137 "143
 " hi link htmlArg Keyword
 " hi htmlString ctermfg=144
-hi htmlString ctermfg=103
+hi htmlString ctermfg=102
 hi link heexComponentName xmlTag
 hi heexDelimiter ctermfg=243
 hi link eelixirDelimiter heexDelimiter
