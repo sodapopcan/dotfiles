@@ -62,6 +62,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-capslock'
 Plug 'tommcdo/vim-exchange'
 Plug 'AndrewRadev/splitjoin.vim'
 call s:PlugLocal('~/src/vim/vim-ifionly', 'sodapopcan/vim-ifionly')
