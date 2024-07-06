@@ -58,6 +58,8 @@ Plug 'tpope/vim-scriptease'
 Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
 Plug 'w0rp/ale'
 
+Plug '~/src/vim/vim-elixir-ext'
+
 " Extend
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-eunuch'
