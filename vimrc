@@ -29,6 +29,9 @@ Plug '~/src/vim/vim-rummage'
 Plug 'RRethy/vim-illuminate'
 Plug 'markonm/traces.vim'
 Plug 'tpope/vim-vinegar'
+Plug 'AndrewRadev/deleft.vim'
+let g:deleft_mapping = "dl"
+Plug 'AndrewRadev/whitespaste.vim'
 
 Plug 'vimwiki/vimwiki'
 " Plug 'preservim/vim-markdown'
