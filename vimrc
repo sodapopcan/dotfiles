@@ -556,49 +556,6 @@ augroup AutoMkdir
   endfunction
 augroup END
 
-" Dotfile Navigation {{{1
-"
-" These give me a few global projectionist-list commands for navigating to my
-" most-visited dotfiles.  They ensure I'm :lcd'd into ~/dotfiles.
-command! -nargs=? Edot call <sid>edit_dotfile("e", <f-args>)
-command! -nargs=? Tdot call <sid>edit_dotfile("t", <f-args>)
-command! -nargs=? Vdot call <sid>edit_dotfile("v", <f-args>)
-
-function! s:edit_dotfile(type, ...) abort
-  if a:0 > 0
-    let id = a:1
-  else
-    let id = "vim"
-  endif
-
-  let types = {
-        \ "e": "edit",
-        \ "t": "tabedit",
-        \ "v": "botright vsplit"
-        \ }
-
-  let paths = {
-        \ "vim": "vimrc",
-        \ "kitty": "config/kitty/kitty.conf",
-        \ "sh": "zshrc",
-        \ "soda": "vim/colors/sodapopcan.vim"
-        \ }
-
-  if has_key(paths, id)
-    exec types[a:type]." ~/dotfiles/".paths[id]
-    lcd ~/dotfiles
-  else
-    let v:warningmsg = "Invalid dotfile"
-    call <sid>error_msg()
-  endif
-endfunction
-
-function! s:edit_dotfile_complete(A,L,P) abort
-  let path = expand("~/dotfiles/")
-  let paths = split(glob(path.a:A."*"))
-  return map(paths, "substitute(v:val,'".path."','','')")
-endfunction
-
 " Commands {{{1
 "
 
