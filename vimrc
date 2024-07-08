@@ -422,6 +422,7 @@ nnoremap <leader>gl gr
 nnoremap <silent> gO :Copen<cr>:res 30<cr>gg
 " Grepping
 nnoremap g<Space> :Rummage "" <Left><Left>
+nnoremap g'<Space> :Rummage '' <Left><Left>
 " Fuzzy find in buffer
 nnoremap g/ :BLines<CR>
 let chars = ['w', 'W', 'b', 'B', '"', "'", '`', '<', '>', '[', ']', '(', ')', '{', '}']
