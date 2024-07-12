@@ -175,6 +175,37 @@ hi User5 ctermbg=227  ctermfg=bg   cterm=none   " Obsession - paused
 hi User6 ctermbg=167  ctermfg=bg   cterm=none   " Obsession - not tracking
 hi User7 ctermbg=130  ctermfg=0    cterm=none   " line
 
+" Save current view settings on a per-window, per-buffer basis.  This prevents
+" a rescroll when switching buffers, especially when scrolled past the last
+" line.
+
+function! s:auto_save_win_view()
+  if !exists("w:saved_buf_view")
+    let w:saved_buf_view = {}
+  endif
+  let w:saved_buf_view[bufnr("%")] = winsaveview()
+endfunction
+
+" Auto-Restore
+" Restore current view settings.
+function! s:auto_restore_win_view()
+  let buf = bufnr("%")
+  if exists("w:saved_buf_view") && has_key(w:saved_buf_view, buf)
+    let v = winsaveview()
+    let at_start_of_file = v.lnum == 1 && v.col == 0
+    if at_start_of_file && !&diff
+      call winrestview(w:saved_buf_view[buf])
+    endif
+    unlet w:saved_buf_view[buf]
+  endif
+endfunction
+
+" When switching buffers, preserve window view.
+if v:version >= 700
+    autocmd BufLeave * call s:auto_save_win_view()
+    autocmd BufEnter * call s:auto_restore_win_view()
+endif
+
 " Settings {{{1
 
 " The following defaults are required to maintain my sanity.
