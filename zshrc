@@ -18,6 +18,8 @@ export PATH="~/.mix/escripts/:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
+# Vim testing
+export PATH="$HOME/.vim/plugins/vim-vspec/bin/:$PATH"
 # Fixes problems with Erlang on Apple Chip
 export CFLAGS="-O2 -g -arch arm64"
 export CXXFLAGS="-arch arm64"
