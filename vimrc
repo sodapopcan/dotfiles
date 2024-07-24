@@ -222,6 +222,7 @@ endif
 set lazyredraw
 
 set mouse=a
+set fdm=manual
 
 set termwinkey=<c-g> " Don't mess with readline
 
