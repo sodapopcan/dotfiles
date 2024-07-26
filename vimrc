@@ -325,10 +325,10 @@ function! s:S()
     delete
     call append(lnr - 1, [""])
     exec lnr
-endif
+  endif
 
-startinsert
-call feedkeys("\<c-f>")
+  startinsert
+  call feedkeys("\<c-f>")
 endfunction
 
 " do it
