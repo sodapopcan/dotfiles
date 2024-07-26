@@ -318,18 +318,7 @@ tmap <c-k> <c-g>k
 " I'm big into seeing proper indentation as I type.
 " This doesn't clobber the " register when using S.
 " Can still use cc to get S's original behaviour.
-nnoremap <silent> S :call <sid>S()<cr>
-function! s:S()
-  if getline('.') !~ '^\s*$'
-    let lnr = line('.')
-    delete
-    call append(lnr - 1, [""])
-    exec lnr
-  endif
-
-  startinsert
-  call feedkeys("\<c-f>")
-endfunction
+nnoremap <expr> <silent> S getline('.') =~ '^\s*$' ? '"_S' : 'S'
 
 " do it
 nnoremap vv vg_
