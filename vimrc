@@ -314,6 +314,26 @@ nnoremap <silent> g<cr> :botright terminal<cr>
 " Don't mess with READLINE in :terminal
 tmap <c-j> <c-g>j
 tmap <c-k> <c-g>k
+
+" I'm big into seeing proper indentation as I type.
+" This doesn't clobber the " register when using S.
+" Can still use cc to get S's original behaviour.
+nnoremap <silent> S :call <sid>S()<cr>
+function! s:S()
+  if getline('.') !~ '^\s*$'
+    let lnr = line('.')
+    delete
+    call append(lnr - 1, [""])
+    exec lnr
+endif
+
+startinsert
+call feedkeys("\<c-f>")
+endfunction
+
+" do it
+nnoremap vv vg_
+
 " Enter normal mode
 tmap <silent> <c-/> <c-g>N
 tmap <c-m> <c-g>:res 40<cr>
