@@ -4,5 +4,11 @@ function! s:extract_variable(prepend, template) abort
   exec "normal! ".(a:prepend ? 'k' : 'j')."$==p"
 endfunction
 
-autocmd FileType vim nnoremap <buffer> yvp :call <SID>extract_variable(0, "let {id} = ")<CR>
-autocmd FileType vim nnoremap <buffer> yvP :call <SID>extract_variable(1, "let {id} = ")<CR>
+augroup Extracts
+  autocmd!
+  autocmd FileType vim nnoremap <buffer> ]<cr> :call <SID>extract_variable(0, "let {id} = ")<CR>
+  autocmd FileType vim nnoremap <buffer> [<cr> :call <SID>extract_variable(1, "let {id} = ")<CR>
+  autocmd FileType elixir nnoremap <buffer> ]<cr> :call <SID>extract_variable(0, "{id} = ")<CR>
+  autocmd FileType elixir nnoremap <buffer> [<cr> :call <SID>extract_variable(1, "{id} = ")<CR>
+augroup END
+
