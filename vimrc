@@ -31,6 +31,13 @@ Plug 'markonm/traces.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'AndrewRadev/deleft.vim'
 let g:deleft_mapping = "dl"
+Plug 'AndrewRadev/sideways.vim'
+" omap aa <Plug>SidewaysArgumentTextobjA
+" xmap aa <Plug>SidewaysArgumentTextobjA
+" omap ia <Plug>SidewaysArgumentTextobjI
+" xmap ia <Plug>SidewaysArgumentTextobjI
+" nnoremap >aa :SidewaysLeft<cr>
+" nnoremap <aa :SidewaysRight<cr>
 Plug 'AndrewRadev/whitespaste.vim'
 
 Plug 'vimwiki/vimwiki'
