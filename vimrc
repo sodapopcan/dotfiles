@@ -59,7 +59,13 @@ Plug 'junegunn/fzf',                   { 'dir': '~/.fzf', 'do': './install --all
 Plug 'junegunn/fzf.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'tpope/vim-projectionist'
+" VimL
 Plug 'tpope/vim-scriptease'
+Plug 'AndrewRadev/exception.vim'
+Plug 'mhinz/vim-lookup'
+autocmd FileType vim nnoremap <buffer><silent> <c-]>  :call lookup#lookup()<cr>
+autocmd FileType vim nnoremap <buffer><silent> <c-t>  :call lookup#pop()<cr>
+Plug 'tweekmonster/helpful.vim'
 
 " Lint
 Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
