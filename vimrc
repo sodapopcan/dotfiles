@@ -65,7 +65,6 @@ Plug 'tpope/vim-scriptease'
 Plug '~/src/vim/rubocop',              { 'branch': 'dev' }
 Plug 'w0rp/ale'
 
-Plug '~/src/vim/vim-elixir-ext'
 
 " Extend
 Plug 'tpope/vim-rsi'
@@ -87,7 +86,7 @@ Plug 'mhinz/vim-signify'
 call s:PlugLocal('~/src/vim/vim-twiggy', 'sodapopcan/vim-twiggy')
 Plug 'junegunn/gv.vim'
 
-" Html
+" HTML
 Plug 'alvan/vim-closetag'
 Plug 'othree/html5.vim'
 let g:html_indent_inctags = 'p'
@@ -141,11 +140,6 @@ Plug 'amadeus/vim-mjml'
 " DB
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
-
-" Work
-if $WORK_COMPUTER
-  Plug '~/src/vim/packman'
-endif
 
 call plug#end()
 " }}}
@@ -218,6 +212,7 @@ endif
 " The following defaults are required to maintain my sanity.
 " More, and file-type overrides, can be found in vim/ftplugins.
 
+set path+=**
 set hidden " navigate away from  a buffer without saving it first
 set shell=/bin/zsh
 set clipboard=unnamed
@@ -230,6 +225,8 @@ set lazyredraw
 
 set mouse=a
 set fdm=manual
+set undofile
+set undodir=~/.vim-undo
 
 set termwinkey=<c-g> " Don't mess with readline
 
@@ -256,7 +253,7 @@ set breakindentopt=shift:2
 set ruler
 set textwidth=80
 set nowrap
-set scrolloff=2
+set scrolloff=5
 set sidescrolloff=0
 set shortmess=atWI
 set pumheight=5
@@ -703,7 +700,7 @@ augroup Events
   " Make windows equal size when resizing Vim itself.
   " This saves headaches not realizing my mouse is hidden
   " in a 1 cell wide split.
-  autocmd VimResized * exec "wincmd ="
+  autocmd VimResized * exec "horizontal wincmd ="
 augroup END
 
 set signcolumn=yes
@@ -831,7 +828,7 @@ highlight ALEWarningSign term=bold ctermfg=178
 
 " Dispatch {{{1
 "
-let g:nremap = {"m":"","`":"","'":"","g":""}
+let g:nremap = {"`":"","'":"","g":""}
 
 " FZF {{{1
 "
@@ -951,7 +948,7 @@ let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_de
 nnoremap g- :SignifyHunkUndo<CR>
 
 hi SignifySignAdd             ctermfg=120 ctermbg=bg cterm=NONE
-hi SignifySignChange          ctermfg=68 ctermbg=bg cterm=NONE
+hi SignifySignChange          ctermfg=68  ctermbg=bg cterm=NONE
 hi SignifySignChangeDelete    ctermfg=167 ctermbg=bg cterm=NONE
 hi SignifySignDelete          ctermfg=167 ctermbg=bg cterm=NONE
 hi SignifySignDeleteFirstLine ctermfg=167 ctermbg=bg cterm=NONE
