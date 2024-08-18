@@ -655,19 +655,6 @@ let g:projectionist_heuristics = {
       \   }
       \ }
 
-" Jump to a project in the ~/src/projects directory and lcd to it.
-" 
-command! -nargs=1 Pedit call s:pedit(<f-args>)
-function s:pedit(project)
-  let path = "~/src/projects/" . a:project"
-  exec "lcd ".path
-  if !empty(glob(path."/mix.exs"))
-    exec "edit ".path."/mix.exs"
-  elseif !empty(glob(path."/Gemfile"))
-    exec "edit ".path."/Gemfile"
-  endif
-endfunction
-
 " Autocommands {{{1
 "
 augroup FileTypeOptions
