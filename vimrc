@@ -646,6 +646,13 @@ function! s:home() abort
   endif
 endfunction
 
+" New scratch buffer
+command! -nargs=? -complete=file New call s:New(<f-args>)
+function! s:New(...)
+  exec "new" a:0 ? a:1 : ""
+  setlocal spell wrap textwidth=0
+endfunction
+
 
 " Projectionist
 "
