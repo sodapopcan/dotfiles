@@ -105,13 +105,6 @@ Plug 'amadeus/vim-convert-color-to'
 
 " Javascript
 Plug 'pangloss/vim-javascript'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'mxw/vim-jsx'
-Plug 'jparise/vim-graphql'
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-Plug 'kristijanhusak/vim-js-file-import'
 
 " Ruby
 Plug 'vim-ruby/vim-ruby'
