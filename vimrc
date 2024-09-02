@@ -50,6 +50,7 @@ Plug 'tpope/vim-abolish'
 " Text Objects
 Plug 'kana/vim-textobj-user'
 Plug 'rhysd/vim-textobj-ruby'
+Plug 'kana/vim-textobj-function'
 
 Plug 'kana/vim-smartinput'
 
