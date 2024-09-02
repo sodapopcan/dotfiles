@@ -599,8 +599,6 @@ augroup END
 " General
 " Open help in vertical split
 command! -nargs=1 H exec ":vert h " . <f-args> . "\<cr>"
-" Source
-command! -nargs=0 So so %
 " Deploy
 command! -nargs=0 Deploy call s:deploy()
 function! s:deploy() abort
