@@ -281,7 +281,7 @@ set formatoptions+=l     " Don't break lines that are already long
 set formatoptions+=1     " Break before 1-letter words
 
 set wildmenu
-set wildmode=list:longest,full
+set wildmode=list:longest,full:lastused
 set wildignore+=*DS_Store*
 set wildignore+=*.gem
 set wildignore+=assets/vendor/heroicons/
