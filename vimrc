@@ -89,7 +89,7 @@ Plug 'tpope/vim-ragtag'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 call s:PlugLocal('~/src/vim/vim-twiggy', 'sodapopcan/vim-twiggy')
 Plug 'junegunn/gv.vim'
 
@@ -918,23 +918,24 @@ let g:rummage_program = 'rg'
 "
 let g:rsi_no_meta = 1
 
-
-" Signify {{{1
+" GitGutter {{{1
 "
-let g:signify_sign_add               = "\u258F"
+let g:gitgutter_sign_added = "\u258F"
+let g:gitgutter_sign_modified = g:gitgutter_sign_added
+let g:gitgutter_sign_removed = "_"
+let g:gitgutter_sign_removed_first_line = "\u2594"
+let g:gitgutter_sign_modified_removed = g:gitgutter_sign_added
 
-" let g:signify_sign_delete            = "\u2581"
-let g:signify_sign_delete            = "_"
-let g:signify_sign_delete_first_line = "\u2594"
-let g:signify_sign_change            = g:signify_sign_add
-let g:signify_sign_change_delete     = g:signify_sign_change . g:signify_sign_delete_first_line
-nnoremap g- :SignifyHunkUndo<CR>
+let g:gitgutter_map_keys = 0
+nmap g+ <Plug>(GitGutterStageHunk)
+nmap g- <Plug>(GitGutterUndoHunk)
+nmap g_ <Plug>(GitGutterPreviewHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
 
-hi SignifySignAdd             ctermfg=120 ctermbg=bg cterm=NONE
-hi SignifySignChange          ctermfg=68  ctermbg=bg cterm=NONE
-hi SignifySignChangeDelete    ctermfg=167 ctermbg=bg cterm=NONE
-hi SignifySignDelete          ctermfg=167 ctermbg=bg cterm=NONE
-hi SignifySignDeleteFirstLine ctermfg=167 ctermbg=bg cterm=NONE
+hi GitGutterAdd    ctermfg=28  ctermbg=bg cterm=NONE
+hi GitGutterChange ctermfg=24  ctermbg=bg cterm=NONE
+hi GitGutterDelete ctermfg=167 ctermbg=bg cterm=NONE
 
 
 " SplitJoin  {{{1
