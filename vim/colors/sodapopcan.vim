@@ -203,9 +203,9 @@ hi! link Directory String
 hi Folded                               ctermfg=144 ctermbg=NONE    cterm=NONE
 hi link FoldColumn Normal
 
-hi Pmenu                                ctermfg=White ctermbg=238 cterm=NONE
-hi PmenuSel                             ctermfg=Black ctermbg=150
-hi PMenuSbar                            cterm=NONE
+hi Pmenu                                ctermfg=248 ctermbg=238 cterm=NONE
+hi PmenuSel                             ctermfg=232 ctermbg=137
+hi PMenuSbar                            ctermfg=137 ctermbg=137
 hi PMenuThumb                           cterm=NONE
 
 hi SignColumn ctermbg=bg
@@ -223,6 +223,21 @@ hi vimLet                               ctermbg=none  ctermfg=180 cterm=none
 hi! link vimFuncBody vimLet
 hi! link vimNotFunc vimLet
 hi! link vimCommand vimLet
+hi link vim9OperAssign Normal
+hi link vim9Declare vim9DefKey
+hi link vim9Export Type
+hi link vim9AutocmdPat Normal
+hi link vim9FuncHeader Normal
+hi link vim9FuncArgs Normal
+hi link vim9RepeatForDeclareName Normal
+hi link vim9AugroupNameEnd vimLet
+hi link vim9DataType Comment
+hi link vim9FuncCallUser vimNotFunc
+hi link vim9Oper Normal
+hi link vim9ParenSep vim9DefKey
+hi link vim9Sep Normal
+hi vim9Norm ctermfg=130
+hi link vim9NormCmds Type
 
 " CSS
 hi link scssSelectorName Function
@@ -246,6 +261,7 @@ hi link jsArrowFunction Normal
 hi jsStorageClass                       ctermbg=none ctermfg=067 cterm=none
 hi link jsConditional jsStorageClass
 hi jsReturn ctermbg=none ctermfg=96
+hi link jsOf jsStorageClass
 hi link jsFuncName jsStorageClass
 hi link jsFuncBlock jsExportDefault
 hi link jsModuleAs jsReturn
