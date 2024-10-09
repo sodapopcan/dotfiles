@@ -8,12 +8,12 @@ if exists("syntax_on")
 endif
 let g:colors_name = "sodapopcan"
 
-hi Normal                            ctermbg=254    ctermfg=240    cterm=none
+hi Normal                            ctermbg=253    ctermfg=238    cterm=none
 hi String                            ctermbg=none   ctermfg=233 cterm=none
 hi link Delimiter String
-hi! link Todo Normal
+hi! Todo                             ctermbg=bg     ctermfg=fg     cterm=bold
 
-hi Cursor                            ctermbg=15     ctermfg=0      cterm=none
+" hi Cursor                            ctermbg=15     ctermfg=231      cterm=none
 hi CursorLine                        ctermbg=255    ctermfg=none   cterm=none
 hi CursorColumn                      ctermbg=254    ctermfg=none   cterm=none
 hi ColorColumn                       ctermbg=234    ctermfg=none   cterm=none
@@ -25,13 +25,14 @@ hi PopUpThumb                        ctermbg=242    ctermfg=242    cterm=none
 
 hi TabLine                           ctermbg=bg    ctermfg=242   cterm=none
 hi TabLineFill                       ctermbg=250    ctermfg=254   cterm=none
-hi TabLineSel                        ctermbg=137    ctermfg=0     cterm=bold
+hi TabLineSel                        ctermbg=bg     ctermfg=0     cterm=bold
 
-hi StatusLine                        ctermbg=252    ctermfg=fg   cterm=none
-hi StatusLineNC                      ctermbg=bg    ctermfg=fg   cterm=none
+hi StatusLine                        ctermbg=253    ctermfg=24    cterm=none
+hi StatusLineNC                      ctermbg=253    ctermfg=fg  cterm=none
 hi StatusLineTerm                    ctermbg=bg    ctermfg=fg   cterm=none
-hi StatusLineTermNC                  ctermbg=bg    ctermfg=fg   cterm=none
+hi StatusLineTermNC                  ctermbg=252    ctermfg=160   cterm=none
 
+hi! elixirUnusedVariable ctermfg=247
 hi VertSplit                         ctermbg=bg     ctermfg=235    cterm=none
 
 hi VimVar                            ctermfg=208
@@ -43,7 +44,7 @@ hi! link Identifier Constant
 hi! link Label Constant
 hi! link TypeDef Constant
 hi! link StorageClass Constant
-hi link Define String
+hi link Define Normal
 " hi Define                            cterm=none   ctermfg=173
 hi Statement                         cterm=none   ctermfg=fg
 hi Error                             ctermbg=167   ctermfg=16
@@ -59,15 +60,16 @@ hi LineNr                            ctermbg=bg   ctermfg=242 cterm=none
 hi CursorLineNr                      ctermbg=252  ctermfg=0 cterm=bold
 hi link Number String
 hi PreProc                           ctermfg=103
-hi Search                            ctermbg=none  ctermfg=9 cterm=none
+hi Search                            ctermbg=none  ctermfg=9 cterm=underdashed
 " hi link Search Normal
 hi IncSearch                         ctermbg=186    ctermfg=16
 hi Title                             ctermfg=250
 hi Type                              cterm=bold   ctermfg=fg
-hi Visual                            ctermbg=3     ctermfg=16
+hi Visual                            ctermbg=186    ctermfg=fg
+hi link markdownError Normal
 
-hi link DiffAdd String
-hi link DiffDelete Type
+hi DiffAdd ctermfg=28
+hi DiffDelete ctermfg=1
 hi DiffRemoved ctermfg=240
 hi DiffChange                        ctermbg=143    ctermfg=16  cterm=none
 hi DiffText                          ctermbg=bg   ctermfg=114 cterm=bold
@@ -179,7 +181,7 @@ hi mailEmail                            ctermfg=107 cterm=underline
 hi SpellBad                             ctermbg=NONE ctermfg=160 cterm=underline
 hi SpellRare                            ctermbg=NONE ctermfg=168 cterm=underline
 hi SpellCap                             ctermbg=NONE ctermfg=189 cterm=underline
-hi MatchParen                           ctermbg=23 ctermfg=15
+hi MatchParen                           ctermbg=bg ctermfg=fg
 
 hi Ignore                               ctermfg=Black
 hi WildMenu                             ctermbg=179  ctermfg=016 cterm=none
