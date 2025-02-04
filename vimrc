@@ -852,8 +852,8 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " NERDTree {{{1
 "
-nnoremap <silent> M :NERDTreeToggle<CR>:wincmd =<CR>
-nnoremap <silent> gM :NERDTreeFind<CR>:wincmd =<CR>
+nnoremap <silent> - :NERDTreeToggle<CR>:wincmd =<CR>
+nnoremap <silent> _ :NERDTreeFind<CR>:wincmd =<CR>
 
 let NERDTreeQuitOnOpen          = 1
 let NERDTreeHijackNetrw         = 0

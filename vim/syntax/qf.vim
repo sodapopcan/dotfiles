@@ -3,3 +3,9 @@ highlight TestError ctermbg=red
 
 syn match ExUnitDebugLocation    "\[\(lib\|test\).*\]$"
 syn match TestError "\<Err:"
+
+syn match qfEmptyPipes '^||'
+
+highlight! qfEmptyPipes ctermfg=bg
+
+nnoremap q ZQ

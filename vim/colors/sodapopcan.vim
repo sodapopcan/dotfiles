@@ -113,6 +113,7 @@ hi link rubyMagicComment rubySymbol
 hi shTodo ctermbg=bg ctermfg=11
 hi rubyTodo ctermbg=bg ctermfg=11
 hi VimTodo ctermbg=bg ctermfg=11
+hi Vim9Todo ctermbg=bg ctermfg=11
 hi helpNote ctermbg=bg ctermfg=11
 
 " syn keyword elixirBuiltin @moduledoc
@@ -265,6 +266,7 @@ hi link jsOf jsStorageClass
 hi link jsFuncName jsStorageClass
 hi link jsFuncBlock jsExportDefault
 hi link jsModuleAs jsReturn
+hi link jsStatement jsReturn
 hi link jsSpreadOperator jsStorageClass
 hi link jsImport jsReturn
 hi link jsExport jsReturn
