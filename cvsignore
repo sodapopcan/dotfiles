@@ -19,3 +19,4 @@ Brewfile.lock.json
 .andrwe.*
 MY_NOTES
 .questions.md
+vim-lsp.log
