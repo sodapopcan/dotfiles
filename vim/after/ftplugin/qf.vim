@@ -1,4 +1,4 @@
-setlocal nowrap norelativenumber number
+setlocal nowrap norelativenumber nolist number
 
 nnoremap <buffer> H :res 999<cr>gg
 nnoremap <buffer> M :res 30<cr>gg
@@ -9,7 +9,7 @@ nnoremap <silent> <buffer> go :call <SID>preview_file()<CR>
 " nnoremap <silent> <buffer> o :call <SID>open_file_and_close_qf()<CR>
 nnoremap <silent> <buffer> o :.cc<cr><bar>:cclose<cr>
 nnoremap <silent> <buffer> I :call <SID>open_screenshot()<CR>
-nnoremap <silent> <buffer> q :quit<CR>
+nnoremap <silent> <buffer> gq :quit<CR>
 nnoremap <silent> <buffer> <c-c> <c-c>:quit<CR>:call <SID>edit_return_file()<CR>
 
 function! s:open_file() abort
