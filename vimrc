@@ -114,6 +114,7 @@ Plug 'tpope/vim-bundler'
 
 " Elixir
 " Plug 'elixir-lang/vim-elixir'
+Plug 'mhinz/vim-mix-format'
 call s:PlugLocal('~/src/vim/vim-elixir', 'elixir-lang/vim-elixir')
 
 " Clojure
