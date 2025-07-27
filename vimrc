@@ -431,8 +431,8 @@ nnoremap zh 2zh
 " Strip whitespace
 function! s:strip_whitespace()
   let winstate = winsaveview()
-  %s/\s\+$//e
-  %s#\($\n\s*\)\+\%$##e
+  keeppatterns %s/\s\+$//e
+  keeppatterns %s#\($\n\s*\)\+\%$##e
   call winrestview(winstate)
   unlet winstate
 endfunction
