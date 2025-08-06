@@ -960,6 +960,11 @@ if $WORK_COMPUTER
   let g:twiggy_group_locals_by_slash = 1
 endif
 
+" Undotree
+"
+nnoremap U :UndotreeShow<cr>:UndotreeFocus<cr>
+let g:undotree_WindowLayout = 2
+let g:undotree_SplitWidth = 36
 
 " Unimpaired {{{1
 "
