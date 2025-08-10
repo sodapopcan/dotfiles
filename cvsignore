@@ -20,3 +20,4 @@ Brewfile.lock.json
 MY_NOTES
 .questions.md
 vim-lsp.log
+/bin/x
