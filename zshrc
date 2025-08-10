@@ -83,13 +83,6 @@ colours()
   done
 }
 
-# Fix postgres
-fixpg()
-{
-  rm /opt/homebrew/var/postgres/postmaster.pid
-  brew services restart postgres
-}
-
 
 # theme {{{1
 export CLICOLOR=1
@@ -101,53 +94,23 @@ export MYSQL_PS1="\d> "
 ide() { "$DOTFILES/ide.sh" }
 
 # stuff
-alias lsl="ls -l"
-alias lsla="ls -la"
 
-# Who woulda thought I'd need Ghostscript
-alias GS='\gs'
 # The rest is all git
 alias gs="git status -s"
 alias gb="git branch"
 alias gc="git commit"
 alias gA="git commit --amend --no-edit"
 alias grim="git rebase -i main"
-alias gr="git rebase"
-alias gri="git rebase -i"
-alias grc="git rebase --continue"
-alias gra="git rebase --abort"
 alias gco="git checkout"
 alias gl="git log --pretty=format:'%Cred%H%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gd="git_diff"
-alias gdc="git_diff --cached"
-alias gD="git diff --name-only"
+alias gd="git diff"
+alias gD="git diff --cached"
 alias gR="git reset --hard"
 alias ga="git add"
 alias gap="git add -p"
 alias wip="git add . && git commit -m '--wip--'"
 alias unwip="git log --oneline | head -1 | awk '{print \$2}' | grep '^\-\-wip\-\-' > /dev/null && git reset head^"
 alias effit="git add . && git reset --hard"
-
-L ()
-{
-  local out shas sha q k
-  while out=$(
-      l "$@" |
-      fzf --ansi --multi --no-sort --reverse --query="$q" --print-query --expect=ctrl-d --toggle-sort=\` \
-    ); do
-    q=$(head -1 <<< "$out")
-    k=$(head -2 <<< "$out" | tail -1)
-    shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
-    [ -z "$shas" ] && continue
-    if [ "$k" = ctrl-d ]; then
-      git diff --color=always $shas | less -R
-    else
-      for sha in $shas; do
-        git show --color=always $sha | less -R
-      done
-    fi
-  done
-}
 
 gitprune()
 {
@@ -235,7 +198,7 @@ to_ogg()
 
 PS1='
 
-   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string) %{%F{244}%}[$(x -s)]%{%F{242}%}
+   %{%F{253}%}$(current_project)%{%F{241}%}$(current_relative_path) $(dirty_tree)%{%F{248}%}$(current_branch)%{%F{238}%}$(job_prompt_string)
 %(?.%{%F{108}%} $.%{%F{167}%} $)%{%F{253}%}%b '
 
 # vim / editor {{{1
@@ -259,17 +222,12 @@ E()
   fi
 }
 
-unfuck_postgres()
+# Fix postgres
+fixpg()
 {
   rm /opt/homebrew/var/postgres/postmaster.pid
-  brew services restart 'postgresql@14'
+  brew services restart postgresql
 }
-
-
-alias vid='e $(git diff master --name-only)'
-
-# tmux
-alias ta="tmux attach-session -t "
 
 # tasks {{{1
 alias -g ctags="/usr/local/bin/ctags -R -f tags --exclude=.git --exclude=log --exclude=public --exclude=tmp --exclude=app/assets --exclude=vendor"
@@ -282,10 +240,11 @@ bindkey '^R' history-incremental-search-backward
 
 # zfz {{{1
 if [ -f ~/.fzf.zsh ]; then
-  source ~/.fzf.zsh
-  export FZF_TMUX=1
+  # source ~/.fzf/bin/fzf
+  # export FZF_TMUX=1
   # export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD | grep -v "fonts\/*" | grep -v "images\/*" | grep -v "db\/*" | grep -v "public\/*" || find * -name ".*" -prune -o -type f -print -o -type l -print) 2> /dev/null'
-  export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public --ignore-dir assets/vendor/heroicons'
+  # export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir db --ignore-dir tmp --ignore-dir log --ignore-dir public --ignore-dir assets/vendor/heroicons --ignore-dir deps'
+  export FZF_DEFAULT_COMMAND='rg --files'
 fi
 
 # Shell tools {{{1
@@ -309,8 +268,6 @@ ssh-add -q ~/.ssh/github
 
 [ -f "$HOME/.privaterc" ] && . "$HOME/.privaterc"
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
 # opam configuration
 [[ ! -r /Users/andrewhaust/.opam/opam-init/init.zsh ]] || source /Users/andrewhaust/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
@@ -320,12 +277,9 @@ upgrade_chromedriver()
   brew upgrade chromedriver && xattr -d com.apple.quarantine $(which chromedriver)
 }
 
-unfuck_chromedriver()
+unquarantine_chromedriver()
 {
   xattr -d com.apple.quarantine $(which chromedriver)
 }
-
-# Shopify Hydrogen alias to local projects
-alias h2='$(npm prefix -s)/node_modules/.bin/shopify hydrogen'
 
 eval "$(direnv hook zsh)"
