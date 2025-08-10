@@ -8,4 +8,4 @@ syn match qfEmptyPipes '^||'
 
 highlight! qfEmptyPipes ctermfg=bg
 
-nnoremap q ZQ
+nnoremap <buffer> q ZQ
