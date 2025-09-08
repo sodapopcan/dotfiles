@@ -334,6 +334,7 @@ nnoremap <expr> <silent> S getline('.') =~ '^\s*$' ? '"_S' : 'S'
 
 " do it
 nnoremap vv vg_
+nnoremap <expr> <silent> dd getline('.') =~ '^\s*$' ? '"_dd' : 'dd'
 
 " Enter normal mode
 tmap <silent> <c-/> <c-g>N
