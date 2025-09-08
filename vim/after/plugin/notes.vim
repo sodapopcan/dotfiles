@@ -7,6 +7,7 @@ function! s:Notes(bang, mods) abort
   if !a:bang
     let cmd = a:mods ==# '' ? 'vsplit' : 'split'
     exec a:mods cmd '+set\ filetype=markdown\|\set\ bufhidden=delete ' .. s:MY_NOTES
+    nnoremap <buffer> <silent> q :q!<cr>
   else
     call s:setup_buf(s:get_section())
   endif
@@ -35,10 +36,12 @@ endfunction
 function! s:setup_buf(contents) abort
   new
   setlocal buftype=nofile bufhidden=delete
+  set filetype=markdown
   call append(0, a:contents)
   delete_
   1
   nnoremap <buffer> <silent> <CR> :call <SID>toggle_todo()<CR>
+  nnoremap <buffer> <silent> q :q!<cr>
 endfunction
 
 function! s:toggle_todo() abort
@@ -57,8 +60,12 @@ function! s:toggle_todo() abort
   call winrestview(view)
 endfunction
 
+fu! A() abort
+  return s:curr_branch()
+endfu
+
 function! s:curr_branch() abort
-  system('command -v git')
+  call system('command -v git')
 
   if v:shell_error > 0
     return ''
@@ -68,5 +75,6 @@ function! s:curr_branch() abort
 endfunction
 
 function! s:get_section() abort
-  return matchstr(readfile(s:MY_NOTES), '^#\{2}\s\+\_.\{-}\ze\%(^#\{2}\)')
+  " \%(^\|\n\)#\{-2}\s\+\_.\{-}\ze\%(^\|\n\)#\{-2}\s\+
+  return matchstr(readfile('./' .. s:MY_NOTES)->join("\n"), '\%(^\|\n\)#\{-2}\s\+.*' .. s:curr_branch() .. '.*\n\_.\{-}\ze\%(\%(\%(^\|\n\)#\{-2}\s\+\)\|\%$\)')->split("\n")
 endfunction
