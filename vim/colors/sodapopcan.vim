@@ -30,8 +30,6 @@ hi StatusLineTermNC                  ctermbg=237    ctermfg=237   cterm=none
 
 hi VertSplit                         ctermbg=bg     ctermfg=235    cterm=none
 
-hi VimVar                            ctermfg=208
-
 hi! link Conceal Normal
 hi Comment                           ctermfg=242
 hi Constant                          ctermfg=74
@@ -112,9 +110,14 @@ hi link rubyMacro rubyDefine
 hi link rubyMagicComment rubySymbol
 hi shTodo ctermbg=bg ctermfg=11
 hi rubyTodo ctermbg=bg ctermfg=11
+
+" VimL
+hi VimVar ctermfg=16
 hi VimTodo ctermbg=bg ctermfg=11
 hi Vim9Todo ctermbg=bg ctermfg=11
 hi helpNote ctermbg=bg ctermfg=11
+hi link vimType Comment
+hi link vimContinue Comment
 
 " syn keyword elixirBuiltin @moduledoc
 " hi! link elixirBuiltin Comment
