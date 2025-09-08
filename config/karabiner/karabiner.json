@@ -1,0 +1,140 @@
+{
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "description": "Post Esc if Caps is tapped, Control if held.",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_control",
+                  "modifiers": { "optional": ["any"] }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [{ "key_code": "escape" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Disable Cmd+m minimise",
+            "manipulators": [
+              {
+                "description": "",
+                "from": {
+                  "key_code": "m",
+                  "modifiers": { "mandatory": ["command"] }
+                },
+                "to": { "key_code": "out" },
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "description": "Hold command ± shift ± control for numpad",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "space",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "0" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "m",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "1" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "comma",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "2" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "period",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "3" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "j",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "4" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "k",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "5" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "l",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "6" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "u",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "7" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "i",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "8" }],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "o",
+                  "modifiers": { "mandatory": ["left_control", "left_shift", "left_command"] }
+                },
+                "to": [{ "key_code": "9" }],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "name": "Default profile",
+      "selected": true,
+      "simple_modifications": [
+        {
+          "from": { "key_code": "caps_lock" },
+          "to": [{ "key_code": "left_control" }]
+        }
+      ],
+      "virtual_hid_keyboard": {
+        "country_code": 0,
+        "keyboard_type_v2": "ansi"
+      }
+    }
+  ]
+}
