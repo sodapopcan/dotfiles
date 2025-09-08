@@ -19,6 +19,7 @@ let g:kitty_navigator_no_mappings = 1
 
 Plug 'dzeban/vim-log-syntax'
 Plug 'garbas/vim-snipmate' | Plug 'marcweber/vim-addon-mw-utils'
+Plug 'github/copilot.vim'
 
 " Utility
 Plug 'tpope/vim-dispatch'
