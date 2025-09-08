@@ -372,8 +372,6 @@ nnoremap z; :wall \| qall!<CR>
 " I've never used more than one macro register before (though maybe I should?)
 " In any event, qq for recording, Q to playback (stolen from junegunn)
 nnoremap Q @q
-" Only show this window
-nnoremap <silent> L :IfIOnly<CR>
 " Send line to blackhole
 nnoremap <silent> d_ :d_<cr>
 " Make Y do what you think it would
