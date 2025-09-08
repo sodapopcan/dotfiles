@@ -259,7 +259,7 @@ set breakindentopt=shift:2
 set ruler
 set textwidth=80
 set nowrap
-set scrolloff=5
+set scrolloff=2
 set sidescrolloff=0
 set shortmess=atWI
 set pumheight=5
