@@ -1,9 +1,12 @@
 if !&compatible | set nocompatible | endif
 
-" Hopefully this is just temporary so I'm throwing it at the top.
-au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
-au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
-au BufRead,BufNewFile mix.lock set filetype=elixir
+augroup sodapopcanElixir
+  au!
+  " Hopefully this is just temporary so I'm throwing it at the top.
+  au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+  au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+  au BufRead,BufNewFile mix.lock set filetype=elixir
+augroup END
 
 " Plugins {{{1
 "
