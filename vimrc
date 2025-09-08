@@ -324,6 +324,9 @@ nnoremap <silent> g<cr> :botright terminal<cr>
 tmap <c-j> <c-g>j
 tmap <c-k> <c-g>k
 
+nnoremap <leader><leader>c :syn sync fromstart<cr>
+nnoremap <leader><leader>r :redraw!<cr>
+
 " I'm big into seeing proper indentation as I type.
 " This doesn't clobber the " register when using S.
 " Can still use cc to get S's original behaviour.
