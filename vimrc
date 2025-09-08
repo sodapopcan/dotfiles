@@ -343,13 +343,7 @@ autocmd TerminalWinOpen *
       \ endif
 
 " Don't jump on search (and always highlight)
-nnoremap <silent> * :let winstate = winsaveview()<bar>
-      \ setlocal noignorecase<bar>
-      \ exec "normal! *"<bar>
-      \ setlocal ignorecase<bar>
-      \ setlocal hlsearch<bar>
-      \ call winrestview(winstate)<bar>
-      \ unlet winstate<cr>
+nnoremap <silent> * :let @/ = '\<' . expand('<cword>') . '\>'<bar>setlocal hlsearch<cr>
 
 " Control when you want to see more
 exec "nnoremap \<silent> H :vertical resize " . string(&columns * 0.6) "\<CR>"
