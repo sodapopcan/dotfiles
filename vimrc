@@ -217,7 +217,6 @@ endif
 " The following defaults are required to maintain my sanity.
 " More, and file-type overrides, can be found in vim/ftplugins.
 
-set path+=**
 set hidden " navigate away from  a buffer without saving it first
 set shell=/bin/zsh
 set grepprg=rg\ --vimgrep\ $*
