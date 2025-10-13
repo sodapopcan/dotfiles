@@ -23,6 +23,7 @@ endfunction
 
 augroup Functions
   autocmd!
+  autocmd FileType vim call s:map('^\s*\%(export\s\+\)\=\zs\<\%(def\|fu\%[nction]\)\>')
   autocmd FileType elixir call s:map('^\s*\zs\<defp\=\>')
   autocmd FileType vim,lua,javascript call s:map('^\s*\zs\<function\>')
   autocmd FileType rust call s:map('^\s*\zs\<fn\>')
