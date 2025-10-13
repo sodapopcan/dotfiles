@@ -401,6 +401,20 @@ function! s:paste_at_eol()
   " add trailing space then paste
   exec "normal! A\<space>\<esc>mzp`z"
 endfunction
+" Invoke :Messages
+nnoremap dM :call <sid>messages()<cr>
+function! s:messages() abort
+  if exists(':Messages') == 2
+    " Try/catch will be unnecessary if https://github.com/tpope/vim-scriptease/pull/60 gets merged.
+    try
+      bo Messages
+    catch
+      Messages
+    endtry
+  else
+    messages
+  endif
+endfunction
 
 " Reformat entire file
 nnoremap <silent> + :let winstate = winsaveview()<bar>
