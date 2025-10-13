@@ -267,7 +267,6 @@ set updatetime=100  " Update gitgutter and ale quickly
 set completeopt-=preview
 set diffopt=filler,foldcolumn:0,context:4
 set autoread
-set splitkeep=screen
 
 set fillchars=fold:\ ,vert:▕
 
