@@ -347,8 +347,6 @@ autocmd TerminalWinOpen *
 " Don't jump on search (and always highlight)
 nnoremap <silent> * :let @/ = '\<' . expand('<cword>') . '\>'<bar>setlocal hlsearch<cr>
 
-" Control when you want to see more
-exec "nnoremap \<silent> H :vertical resize " . string(&columns * 0.6) "\<CR>"
 " Up/Down in command line
 cnoremap <C-N> <Down>
 cnoremap <C-P> <Up>
