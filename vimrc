@@ -208,8 +208,8 @@ endfunction
 
 " When switching buffers, preserve window view.
 if v:version >= 700
-    autocmd BufLeave * call s:auto_save_win_view()
-    autocmd BufEnter * call s:auto_restore_win_view()
+  autocmd BufLeave * call s:auto_save_win_view()
+  autocmd BufEnter * call s:auto_restore_win_view()
 endif
 
 " Settings {{{1
