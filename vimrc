@@ -379,6 +379,15 @@ nnoremap ypR :let @+ = expand('%').":".line(".")<CR>:echo "Yanked: ".expand('%')
 " Yank base path ([y]ank [p]ath [b]asename)
 nnoremap yfb :let @+ = expand('%:t')<CR>:echo "Yanked: ".expand('%:t')<CR>
 nnoremap yfB :let @+ = expand('%:t').":".line(".")<CR>:echo "Yanked: ".expand('%:t').":".line(".")<CR>
+" Yank ticket number
+nnoremap <silent> ysi. :let @+ = <sid>ticket_number()<cr>
+function! s:ticket_number()
+  if has('*FugitiveHead')
+    return FugitiveHead()->matchstr('^\a\+-\d\+')
+  else
+    return system('git branch | grep \*')->substitute('\* ', '', '')
+  endif
+endfunction
 " I'm a S over cc kinda guy so may as well use cc for a corner case
 nnoremap cc S<esc>
 " I never use & but it drives me nuts when I hit due to the error it throws
