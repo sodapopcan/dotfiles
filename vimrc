@@ -707,51 +707,6 @@ set signcolumn=yes
 "
 let g:closetag_filenames = "*.html,*.erb,*.eex,*.leex,*.heex,*.xml,*.js,*.jsx,*.mustache"
 
-" Git {{{1
-"
-
-" Mappings (maybe I should move this to mappings section)
-
-nnoremap <silent> gs :keepalt Git<CR>
-nnoremap <silent> gC :Git commit -v<CR>
-nnoremap <silent> g? :G blame -w<CR>
-nnoremap <silent> gw :silent Gwrite<CR>
-nnoremap <silent> gb :Twiggy<CR>
-nnoremap          gB :Twiggy<Space>
-nnoremap <silent> gl :GV<CR>
-nnoremap <silent> gL :GV!<CR>
-
-" Commands
-command! -nargs=0 -bang Push call <SID>git_push(<bang>0)
-
-function! s:git_push(bang) abort
-  if a:bang
-    G push --force-with-lease
-  else
-    G push -u
-  endif
-endfunction
-
-" GV specific
-
-function! s:scroll_commits(down) abort
-  wincmd p
-  execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
-  wincmd p
-endfunction
-
-function! s:init_gv_scroll_mappings() abort
-  nnoremap <silent> <buffer> J :call s:scroll_commits(1)<CR>
-  nnoremap <silent> <buffer> K :call s:scroll_commits(0)<CR>
-endfunction
-
-augroup ScrollGV
-  autocmd!
-  autocmd FileType GV call s:init_gv_scroll_mappings()
-  autocmd FileType GV set buftype=nowrite
-augroup END
-
-
 " Rails
 command! -nargs=? Migrate call <SID>migrate_rails(<f-args>)
 command! -nargs=0 Rollback Dispatch rake db:rollback
